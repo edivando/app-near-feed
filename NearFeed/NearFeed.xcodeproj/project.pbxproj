@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
+		51ECA9AE1B52BE1D0006571B /* singupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AD1B52BE1D0006571B /* singupViewController.swift */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
 		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		51ECA9AD1B52BE1D0006571B /* singupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = singupViewController.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			children = (
 				723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */,
 				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
+				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
+				51ECA9AD1B52BE1D0006571B /* singupViewController.swift */,
 				723DB9321B4D91FB00A2CD80 /* Main.storyboard */,
 				723DB9351B4D91FB00A2CD80 /* Images.xcassets */,
 				723DB9371B4D91FB00A2CD80 /* LaunchScreen.xib */,
@@ -280,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */,
+				51ECA9AE1B52BE1D0006571B /* singupViewController.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
