@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
+		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
 		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
 				7241F6E81B53E38B0033BB3C /* SingupViewController.swift */,
 				7241F6FE1B53E4F00033BB3C /* Library */,
+				51ECA9AF1B53E81A0006571B /* IndexViewController.swift */,
 			);
 			path = NearFeed;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
+				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
