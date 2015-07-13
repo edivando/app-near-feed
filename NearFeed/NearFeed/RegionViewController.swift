@@ -13,23 +13,50 @@ class RegionViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // change indicator view style to white
+        tableView.infiniteScrollIndicatorStyle = .White
+        
+        // Add infinite scroll handler
+        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
+            let tableView = scrollView as! UITableView
+            
+            //
+            // fetch your data here, can be async operation,
+            // just make sure to call finishInfiniteScroll in the end
+            //
+            
+            tableView.finishInfiniteScroll()
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+//    private func fetchData(handler: ((Void) -> Void)?) {
+//        let hits: Int = Int(CGRectGetHeight(tableView.bounds)) / 44
+//        let requestURL = apiURL(hits, page: currentPage)
+//        
+//        let task = NSURLSession.sharedSession().dataTaskWithURL(requestURL, completionHandler: {
+//            (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+//            
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                self.handleResponse(data, response: response, error: error)
+//                
+//                UIApplication.sharedApplication().stopNetworkActivity()
+//                
+//                handler?()
+//            });
+//        })
+//        
+//        UIApplication.sharedApplication().startNetworkActivity()
+//        
+//        // I run task.resume() with delay because my network is too fast
+//        let delay = (stories.count == 0 ? 0 : 5) * Double(NSEC_PER_SEC)
+//        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        dispatch_after(time, dispatch_get_main_queue(), {
+//            task.resume()
+//        })
+//    }
+    
 
 }

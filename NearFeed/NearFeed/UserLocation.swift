@@ -18,9 +18,13 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-    var country: String?
-    var city: String?
-    var region: String?
+//    var country: String?
+//    var city: String?
+//    var region: String?
+    
+    var country = Country()
+    var city = City()
+    var region = Region()
     
     private var locationStatus = true
     
@@ -44,14 +48,15 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                     return
                 }else if placemarks.count > 0 {
                     let pm:CLPlacemark = placemarks[0] as! CLPlacemark
-                    self.country = pm.country
-                    self.city = pm.locality
-                    self.region = pm.subLocality
+                    self.country.name = pm.country
+                    self.city.name    = pm.locality
+                    self.region.name  = pm.subLocality
                 }
                 else {
                     println("Problem with the data received from geocoder")
                 }
                 self.startLocation(false)
+                self.save()
             })
         }
         return self
@@ -69,7 +74,17 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 locationStatus = false
             }
         }
-        
     }
+    
+    private func save(){
+        country.saveIfNotExiste()
+        
+        city.country = country
+        city.saveIfNotExiste()
+        
+        region.city = city
+        region.saveIfNotExiste()
+    }
+    
 
 }

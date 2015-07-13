@@ -57,6 +57,11 @@
 		7241F7141B53FD6B0033BB3C /* TWMessageBarManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7241F70C1B53FD6B0033BB3C /* TWMessageBarManager.podspec */; };
 		7241F7161B53FDAF0033BB3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7151B53FDAF0033BB3C /* Message.swift */; };
 		7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7261B5403570033BB3C /* SignupViewController.swift */; };
+		7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7281B543E360033BB3C /* PostTableViewCell.swift */; };
+		7241F72B1B5440210033BB3C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72A1B5440210033BB3C /* Country.swift */; };
+		7241F72D1B544B5F0033BB3C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72C1B544B5F0033BB3C /* City.swift */; };
+		7241F72F1B544EF50033BB3C /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72E1B544EF50033BB3C /* Region.swift */; };
+		7241F7311B5451B50033BB3C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7301B5451B50033BB3C /* Post.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +134,11 @@
 		7241F7151B53FDAF0033BB3C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearFeed-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		7241F7261B5403570033BB3C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		7241F7281B543E360033BB3C /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7241F72A1B5440210033BB3C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		7241F72C1B544B5F0033BB3C /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		7241F72E1B544EF50033BB3C /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		7241F7301B5451B50033BB3C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +334,7 @@
 				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
 				7241F7261B5403570033BB3C /* SignupViewController.swift */,
+				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -342,6 +353,10 @@
 			isa = PBXGroup;
 			children = (
 				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
+				7241F72A1B5440210033BB3C /* Country.swift */,
+				7241F72C1B544B5F0033BB3C /* City.swift */,
+				7241F72E1B544EF50033BB3C /* Region.swift */,
+				7241F7301B5451B50033BB3C /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -489,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7241F72F1B544EF50033BB3C /* Region.swift in Sources */,
 				51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
@@ -497,20 +513,24 @@
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
 				723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */,
+				7241F72B1B5440210033BB3C /* Country.swift in Sources */,
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,
 				7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */,
 				7241F6F91B53E4EB0033BB3C /* KaedeTextField.swift in Sources */,
+				7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */,
 				7241F6DF1B53E1980033BB3C /* RegionViewController.swift in Sources */,
 				7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
+				7241F7311B5451B50033BB3C /* Post.swift in Sources */,
 				7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */,
 				7241F7161B53FDAF0033BB3C /* Message.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
+				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
