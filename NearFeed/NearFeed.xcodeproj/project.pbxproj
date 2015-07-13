@@ -36,6 +36,7 @@
 		7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */; };
 		7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */; };
 		7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */; };
+		7241F6E91B53E38B0033BB3C /* SingupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E81B53E38B0033BB3C /* SingupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostViewController.swift; sourceTree = "<group>"; };
 		7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentViewController.swift; sourceTree = "<group>"; };
+		7241F6E81B53E38B0033BB3C /* SingupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
 				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
 				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
+				7241F6E81B53E38B0033BB3C /* SingupViewController.swift */,
 			);
 			path = NearFeed;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7241F6E91B53E38B0033BB3C /* SingupViewController.swift in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
