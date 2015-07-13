@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
+		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
 		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
@@ -488,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
 				7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */,

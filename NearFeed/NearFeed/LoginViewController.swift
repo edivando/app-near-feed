@@ -26,16 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if let user = PFUser.currentUser(){
             if user.isAuthenticated(){
                 NSLog("Opening app")
-                self.performSegueWithIdentifier("startFromIndex", sender: nil)
+                self.performSegueWithIdentifier("startFromLogin", sender: nil)
             }
-            else{
-                NSLog("Opening login")
-                self.performSegueWithIdentifier("login", sender: nil)
-            }
-        }
-        else{
-            NSLog("Opening login")
-            self.performSegueWithIdentifier("login", sender: nil)
         }
     }
     
