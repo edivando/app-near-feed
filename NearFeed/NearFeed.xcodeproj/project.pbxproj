@@ -37,7 +37,6 @@
 		7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */; };
 		7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */; };
 		7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */; };
-		7241F6E91B53E38B0033BB3C /* SingupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E81B53E38B0033BB3C /* SingupViewController.swift */; };
 		7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6EB1B53E4EB0033BB3C /* HoshiTextField.swift */; };
 		7241F6F61B53E4EB0033BB3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7241F6EC1B53E4EB0033BB3C /* Info.plist */; };
 		7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6ED1B53E4EB0033BB3C /* IsaoTextField.swift */; };
@@ -94,7 +93,6 @@
 		7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostViewController.swift; sourceTree = "<group>"; };
 		7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentViewController.swift; sourceTree = "<group>"; };
-		7241F6E81B53E38B0033BB3C /* SingupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingupViewController.swift; sourceTree = "<group>"; };
 		7241F6EB1B53E4EB0033BB3C /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
 		7241F6EC1B53E4EB0033BB3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7241F6ED1B53E4EB0033BB3C /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
 				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
 				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
-				7241F6E81B53E38B0033BB3C /* SingupViewController.swift */,
 				7241F6FE1B53E4F00033BB3C /* Library */,
 				51ECA9AF1B53E81A0006571B /* IndexViewController.swift */,
 			);
@@ -356,7 +353,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7241F6E91B53E38B0033BB3C /* SingupViewController.swift in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
