@@ -46,6 +46,7 @@
 		7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6F11B53E4EB0033BB3C /* MinoruTextField.swift */; };
 		7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6F31B53E4EB0033BB3C /* TextFieldsEffects.swift */; };
 		7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6F41B53E4EB0033BB3C /* YokoTextField.swift */; };
+		7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6FF1B53E6D90033BB3C /* UserLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		7241F6F21B53E4EB0033BB3C /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
 		7241F6F31B53E4EB0033BB3C /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		7241F6F41B53E4EB0033BB3C /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
+		7241F6FF1B53E6D90033BB3C /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		723DB92B1B4D91FB00A2CD80 /* NearFeed */ = {
 			isa = PBXGroup;
 			children = (
+				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
 				723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */,
 				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
@@ -367,6 +370,7 @@
 				7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
+				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
 				7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,

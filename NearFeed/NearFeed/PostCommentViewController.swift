@@ -12,8 +12,18 @@ class PostCommentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        
+        let location = UserLocation.location.get()
+        println(location.country)
+        println(location.city)
+        println(location.region)
     }
 
     override func didReceiveMemoryWarning() {
