@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class singupViewController: UIViewController {
+class SingupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
