@@ -14,16 +14,24 @@ class IndexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if let user = PFUser.currentUser(){
             if user.isAuthenticated(){
-                self.performSegueWithIdentifier("start", sender: nil)
+                NSLog("Opening app")
+                self.performSegueWithIdentifier("startFromIndex", sender: nil)
             }
             else{
+                NSLog("Opening login")
                 self.performSegueWithIdentifier("login", sender: nil)
             }
         }
-        
-        // Do any additional setup after loading the view.
+        else{
+            NSLog("Opening login")
+            self.performSegueWithIdentifier("login", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

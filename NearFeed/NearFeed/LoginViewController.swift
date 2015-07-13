@@ -22,6 +22,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if let user = PFUser.currentUser(){
+            if user.isAuthenticated(){
+                NSLog("Opening app")
+                self.performSegueWithIdentifier("startFromIndex", sender: nil)
+            }
+            else{
+                NSLog("Opening login")
+                self.performSegueWithIdentifier("login", sender: nil)
+            }
+        }
+        else{
+            NSLog("Opening login")
+            self.performSegueWithIdentifier("login", sender: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,12 +67,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             else{
                 NSLog("\(error)")
+                //error code 101 = Invalid login parameters
             }
         }
     }
     
     @IBAction func later(sender: AnyObject){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("startFromLogin", sender: nil)
     }
     
     @IBAction func singup(sender: AnyObject){
