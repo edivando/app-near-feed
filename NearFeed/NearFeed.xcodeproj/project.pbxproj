@@ -47,6 +47,16 @@
 		7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6F31B53E4EB0033BB3C /* TextFieldsEffects.swift */; };
 		7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6F41B53E4EB0033BB3C /* YokoTextField.swift */; };
 		7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6FF1B53E6D90033BB3C /* UserLocation.swift */; };
+		7241F70D1B53FD6B0033BB3C /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7041B53FD6B0033BB3C /* icon-error.png */; };
+		7241F70E1B53FD6B0033BB3C /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7051B53FD6B0033BB3C /* icon-error@2x.png */; };
+		7241F70F1B53FD6B0033BB3C /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7061B53FD6B0033BB3C /* icon-info.png */; };
+		7241F7101B53FD6B0033BB3C /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7071B53FD6B0033BB3C /* icon-info@2x.png */; };
+		7241F7111B53FD6B0033BB3C /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7081B53FD6B0033BB3C /* icon-success.png */; };
+		7241F7121B53FD6B0033BB3C /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7241F7091B53FD6B0033BB3C /* icon-success@2x.png */; };
+		7241F7131B53FD6B0033BB3C /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
+		7241F7141B53FD6B0033BB3C /* TWMessageBarManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7241F70C1B53FD6B0033BB3C /* TWMessageBarManager.podspec */; };
+		7241F7161B53FDAF0033BB3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7151B53FDAF0033BB3C /* Message.swift */; };
+		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +116,19 @@
 		7241F6F31B53E4EB0033BB3C /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		7241F6F41B53E4EB0033BB3C /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
 		7241F6FF1B53E6D90033BB3C /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		7241F7041B53FD6B0033BB3C /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
+		7241F7051B53FD6B0033BB3C /* icon-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error@2x.png"; sourceTree = "<group>"; };
+		7241F7061B53FD6B0033BB3C /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
+		7241F7071B53FD6B0033BB3C /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
+		7241F7081B53FD6B0033BB3C /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
+		7241F7091B53FD6B0033BB3C /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
+		7241F70A1B53FD6B0033BB3C /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
+		7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		7241F70C1B53FD6B0033BB3C /* TWMessageBarManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TWMessageBarManager.podspec; sourceTree = "<group>"; };
+		7241F7151B53FDAF0033BB3C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearFeed-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +151,7 @@
 				723DB95A1B4E97A100A2CD80 /* CFNetwork.framework in Frameworks */,
 				723DB9581B4E979A00A2CD80 /* AudioToolbox.framework in Frameworks */,
 				723DB9741B4E99C000A2CD80 /* Bolts.framework in Frameworks */,
+				CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14639667EE06F77F5CF3ADEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */,
+				F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		723DB9201B4D91FB00A2CD80 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +181,7 @@
 				723DB9411B4D91FB00A2CD80 /* NearFeedTests */,
 				723DB92A1B4D91FB00A2CD80 /* Products */,
 				723DB9761B4E99CF00A2CD80 /* Frameworks */,
+				14639667EE06F77F5CF3ADEE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +197,7 @@
 		723DB92B1B4D91FB00A2CD80 /* NearFeed */ = {
 			isa = PBXGroup;
 			children = (
+				7241F7151B53FDAF0033BB3C /* Message.swift */,
 				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
 				723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */,
 				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
@@ -169,6 +205,7 @@
 				723DB9321B4D91FB00A2CD80 /* Main.storyboard */,
 				723DB9351B4D91FB00A2CD80 /* Images.xcassets */,
 				723DB9371B4D91FB00A2CD80 /* LaunchScreen.xib */,
+				7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */,
 				723DB92C1B4D91FB00A2CD80 /* Supporting Files */,
 				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
 				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
@@ -226,6 +263,7 @@
 				723DB95B1B4E97AC00A2CD80 /* CoreGraphics.framework */,
 				723DB9591B4E97A100A2CD80 /* CFNetwork.framework */,
 				723DB9571B4E979A00A2CD80 /* AudioToolbox.framework */,
+				D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,9 +288,35 @@
 		7241F6FE1B53E4F00033BB3C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		7241F7021B53FD6B0033BB3C /* TWMessage */ = {
+			isa = PBXGroup;
+			children = (
+				7241F7031B53FD6B0033BB3C /* Icons */,
+				7241F70A1B53FD6B0033BB3C /* TWMessageBarManager.h */,
+				7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */,
+				7241F70C1B53FD6B0033BB3C /* TWMessageBarManager.podspec */,
+			);
+			name = TWMessage;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7241F7031B53FD6B0033BB3C /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7241F7041B53FD6B0033BB3C /* icon-error.png */,
+				7241F7051B53FD6B0033BB3C /* icon-error@2x.png */,
+				7241F7061B53FD6B0033BB3C /* icon-info.png */,
+				7241F7071B53FD6B0033BB3C /* icon-info@2x.png */,
+				7241F7081B53FD6B0033BB3C /* icon-success.png */,
+				7241F7091B53FD6B0033BB3C /* icon-success@2x.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +326,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 723DB9481B4D91FB00A2CD80 /* Build configuration list for PBXNativeTarget "NearFeed" */;
 			buildPhases = (
+				EDA29DC1608CC247F7EBB713 /* Check Pods Manifest.lock */,
 				723DB9251B4D91FB00A2CD80 /* Sources */,
 				723DB9261B4D91FB00A2CD80 /* Frameworks */,
 				723DB9271B4D91FB00A2CD80 /* Resources */,
+				1C917E099C24C6F4A67E37CD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,9 +402,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7241F6F61B53E4EB0033BB3C /* Info.plist in Resources */,
+				7241F70F1B53FD6B0033BB3C /* icon-info.png in Resources */,
+				7241F7111B53FD6B0033BB3C /* icon-success.png in Resources */,
 				723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */,
+				7241F70E1B53FD6B0033BB3C /* icon-error@2x.png in Resources */,
+				7241F7121B53FD6B0033BB3C /* icon-success@2x.png in Resources */,
 				723DB9391B4D91FB00A2CD80 /* LaunchScreen.xib in Resources */,
 				723DB9361B4D91FB00A2CD80 /* Images.xcassets in Resources */,
+				7241F7141B53FD6B0033BB3C /* TWMessageBarManager.podspec in Resources */,
+				7241F70D1B53FD6B0033BB3C /* icon-error.png in Resources */,
+				7241F7101B53FD6B0033BB3C /* icon-info@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,11 +424,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C917E099C24C6F4A67E37CD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDA29DC1608CC247F7EBB713 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		723DB9251B4D91FB00A2CD80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7241F7131B53FD6B0033BB3C /* TWMessageBarManager.m in Sources */,
 				7241F6E91B53E38B0033BB3C /* SingupViewController.swift in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
@@ -372,6 +479,7 @@
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
 				7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */,
+				7241F7161B53FDAF0033BB3C /* Message.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
@@ -502,6 +610,7 @@
 		};
 		723DB9491B4D91FB00A2CD80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -511,11 +620,13 @@
 				INFOPLIST_FILE = NearFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NearFeed-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		723DB94A1B4D91FB00A2CD80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -525,6 +636,7 @@
 				INFOPLIST_FILE = NearFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NearFeed-Bridging-Header.h";
 			};
 			name = Release;
 		};
