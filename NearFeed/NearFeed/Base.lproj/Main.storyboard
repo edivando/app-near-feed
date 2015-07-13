@@ -252,10 +252,10 @@
             </objects>
             <point key="canvasLocation" x="-2023" y="613"/>
         </scene>
-        <!--Singup View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="uAg-82-vaJ">
             <objects>
-                <viewController id="Tz0-fD-UYr" customClass="SingupViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tz0-fD-UYr" customClass="SignupViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7uz-jx-kzc"/>
                         <viewControllerLayoutGuide type="bottom" id="m9M-JD-2W1"/>
