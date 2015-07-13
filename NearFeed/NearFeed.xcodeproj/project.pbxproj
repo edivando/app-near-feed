@@ -197,24 +197,11 @@
 		723DB92B1B4D91FB00A2CD80 /* NearFeed */ = {
 			isa = PBXGroup;
 			children = (
-				7241F7151B53FDAF0033BB3C /* Message.swift */,
-				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
 				723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */,
-				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
-				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
-				723DB9321B4D91FB00A2CD80 /* Main.storyboard */,
-				723DB9351B4D91FB00A2CD80 /* Images.xcassets */,
-				723DB9371B4D91FB00A2CD80 /* LaunchScreen.xib */,
-				7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */,
+				7241F7251B5400D20033BB3C /* Model */,
+				7241F7241B54009B0033BB3C /* View */,
+				7241F7231B5400910033BB3C /* Controller */,
 				723DB92C1B4D91FB00A2CD80 /* Supporting Files */,
-				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
-				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
-				7241F6DE1B53E1980033BB3C /* RegionViewController.swift */,
-				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
-				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
-				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
-				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
-				7241F6E81B53E38B0033BB3C /* SingupViewController.swift */,
 				7241F6FE1B53E4F00033BB3C /* Library */,
 			);
 			path = NearFeed;
@@ -223,6 +210,7 @@
 		723DB92C1B4D91FB00A2CD80 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */,
 				723DB92D1B4D91FB00A2CD80 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -288,6 +276,7 @@
 		7241F6FE1B53E4F00033BB3C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7241F7151B53FDAF0033BB3C /* Message.swift */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
 			);
@@ -317,6 +306,41 @@
 				7241F7091B53FD6B0033BB3C /* icon-success@2x.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		7241F7231B5400910033BB3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
+				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
+				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
+				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
+				7241F6DE1B53E1980033BB3C /* RegionViewController.swift */,
+				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
+				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
+				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
+				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
+				7241F6E81B53E38B0033BB3C /* SingupViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7241F7241B54009B0033BB3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723DB9321B4D91FB00A2CD80 /* Main.storyboard */,
+				723DB9351B4D91FB00A2CD80 /* Images.xcassets */,
+				723DB9371B4D91FB00A2CD80 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7241F7251B5400D20033BB3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
