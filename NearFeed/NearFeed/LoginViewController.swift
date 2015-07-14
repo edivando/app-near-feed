@@ -48,20 +48,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textfieldIsNotEmpty(textField: UITextField) -> Bool{
+        if textField.text == ""{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
+    func showEmptyTextfieldAlertMessage(){
+        if !textfieldIsNotEmpty(usernameTextfield){
+            Message.error("Email field empty", text: "Please fill in your email")
+        }
+        else{
+            Message.error("Password field empty", text: "Please fill in your password")
+        }
+    }
+    
     @IBAction func login(sender: AnyObject){
-        //Need to check if the user filled all textfields
-        
-        PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
-            if (user != nil){
-                //Successful login
-                
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-            else{
-                NSLog("\(error)")
-                //error code 101 = Invalid login parameters
+        if textfieldIsNotEmpty(usernameTextfield) && textfieldIsNotEmpty(passwordTextfield){
+            PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
+                if (user != nil){
+                    //Successful login
+                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                else{
+                    NSLog("\(error)")
+                    //error code 101 = Invalid login parameters
+                }
             }
         }
+        else{
+            showEmptyTextfieldAlertMessage()
+        }
+        
+        
     }
     
     @IBAction func later(sender: AnyObject){
