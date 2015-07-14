@@ -45,6 +45,7 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 }else if placemarks.count > 0 {
                     if let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
                         
+                        //Save country if not Existe in server
                         if let ct = pm.country{
                             self.country.name = ct
                             self.country.findByName({ (countrys) -> () in
@@ -53,31 +54,35 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                                 }else{
                                     self.country = countrys[0]
                                 }
-                            }, error: { (erro) -> () in
-                            })
-                        }
-                        
-                        if let ct = pm.locality{
-                            self.city.name = pm.locality
-                            self.city.country = self.country
-                            self.city.findByName({ (citys) -> () in
-                                if citys.count == 0 {
-                                    self.city.saveInBackground()
-                                }else{
-                                    self.city = citys[0]
-                                }
-                            }, error: { (erro) -> () in
-                            })
-                        }
-                        
-                        if let rg = pm.subLocality{
-                            self.region.name = pm.subLocality
-                            self.region.city = self.city
-                            self.region.findByName({ (regions) -> () in
-                                if regions.count == 0 {
-                                    self.region.saveInBackground()
-                                }else{
-                                    self.region = regions[0]
+                                
+                                //Save city if not existe in server
+                                if let ct = pm.locality{
+                                    self.city.name = pm.locality
+                                    self.city.country = self.country
+                                    self.city.findByName({ (citys) -> () in
+                                        if citys.count == 0 {
+                                            self.city.saveInBackground()
+                                        }else{
+                                            self.city = citys[0]
+                                        }
+                                        
+                                        //Save region if not existe in server
+                                        if let rg = pm.subLocality{
+                                            self.region.name = pm.subLocality
+                                            self.region.city = self.city
+                                            self.region.findByName({ (regions) -> () in
+                                                if regions.count == 0 {
+                                                    self.region.saveInBackground()
+                                                }else{
+                                                    self.region = regions[0]
+                                                }
+                                                }, error: { (erro) -> () in
+                                            })
+                                        }
+                                        
+                                        
+                                    }, error: { (erro) -> () in
+                                    })
                                 }
                             }, error: { (erro) -> () in
                             })
