@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
+    @IBOutlet var imagePhoto: PFImageView!
+    
+    @IBAction func photoLibrary(sender: AnyObject) {
+    }
+    
+    @IBAction func photoCamera(sender: AnyObject) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
