@@ -48,6 +48,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //MARK: - Textfield input tests
+    
     func textfieldIsNotEmpty(textField: UITextField) -> Bool{
         if textField.text == ""{
             return false
@@ -56,6 +58,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return true
         }
     }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
+    }
+    
+    //MARK: - Error alerts
     
     func showEmptyTextfieldAlertMessage(){
         if !textfieldIsNotEmpty(usernameTextfield){
@@ -66,18 +77,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func showInvalidEmailAlertMessage(){
+        Message.error("Invalid email", text: "The email you provided is invalid")
+    }
+    
+    //MARK: - Buttons
+    
     @IBAction func login(sender: AnyObject){
         if textfieldIsNotEmpty(usernameTextfield) && textfieldIsNotEmpty(passwordTextfield){
-            PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
-                if (user != nil){
-                    //Successful login
-                    
-                    self.dismissViewControllerAnimated(true, completion: nil)
+            if isValidEmail(usernameTextfield.text){
+                PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
+                    if (user != nil){
+                        //Successful login
+                        
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    else{
+                        NSLog("\(error)")
+                        //error code 101 = Invalid login parameters
+                    }
                 }
-                else{
-                    NSLog("\(error)")
-                    //error code 101 = Invalid login parameters
-                }
+            }
+            else{
+                showInvalidEmailAlertMessage()
             }
         }
         else{
