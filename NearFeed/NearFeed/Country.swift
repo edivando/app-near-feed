@@ -26,27 +26,6 @@ class Country: PFObject, PFSubclassing  {
         return "Country"
     }
     
-    
-//    func findByName() -> Country?{
-//        if let query = Country.query(){
-//            query.whereKey("name", equalTo: name)
-//            let countrys = query.findObjects() as? [Country]
-//            if countrys?.count > 0{
-//                return countrys?.first
-//            }
-//        }
-//        return nil
-//    }
-//    
-//    func saveIfNotExiste() -> Country{
-//        if let obj = findByName(){
-//            return obj
-//        }else{
-//            self.save()
-//            return self
-//        }
-//    }
-    
     func findByName(success: (countrys: [Country])->(), error: (erro: NSError?)->()){
         if let query = Country.query(){
             query.whereKey("name", equalTo: name)

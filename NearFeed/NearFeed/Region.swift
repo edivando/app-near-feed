@@ -26,35 +26,6 @@ class Region: PFObject, PFSubclassing {
         return "Region"
     }
     
-    
-//    func findByName(region: (region: Region)->()){
-//        if let query = Region.query(){
-//            query.whereKey("name", equalTo: name)
-//            query.findObjectsInBackgroundWithBlock({ (objs, erro) -> Void in
-//                if erro != nil, obj as? [Region] where region.count > 0{
-//                    region()
-//                }
-//                
-//            })
-//            
-//            
-//            let regions = query.findObjects() as? [Region]
-//            if regions?.count > 0{
-//                return regions?.first
-//            }
-//        }
-//    }
-//
-//    func saveIfNotExiste() -> Region{
-//        if let obj = findByName(){
-//            return obj
-//        }else{
-//            self.save()
-//            return self
-//        }
-//    }
-
-    
     func findByName(success: (regions: [Region])->(), error: (erro: NSError?)->()){
         if let query = Region.query(){
             query.whereKey("name", equalTo: name)
@@ -69,16 +40,4 @@ class Region: PFObject, PFSubclassing {
             })
         }
     }
-    
-    func saveIfNotExiste(){
-        findByName({ (regions) -> () in
-            if regions.count == 0 {
-                self.saveInBackground()
-            }else{
-                self.objectId = regions[0].objectId
-            }
-        }, error: { (erro) -> () in
-        })
-    }
-   
 }
