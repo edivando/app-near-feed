@@ -18,25 +18,20 @@ class PostViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        let location = UserLocation.location.get()
-        println(location.country.name)
-        println(location.city.name)
-        println(location.region.name)
+        PostLike().findAll()
         
-        Post().newPost("Test new post \(NSUUID().UUIDString)", images: nil)
+        let post = Post()
+        post.newPost("Test new post \(NSUUID().UUIDString)", images: nil) { (error) -> () in
+            if error == nil{
+                PostLike().addLike(post, like: true)
+                
+                PostComment().addComment(post, message: "Test comment")
+                
+                PostReport().addReport(post, message: "Conteudo improprio")
+                
+            }
+        }
     }
 
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

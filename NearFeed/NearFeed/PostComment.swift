@@ -1,5 +1,5 @@
 //
-//  PostLike.swift
+//  PostComment.swift
 //  NearFeed
 //
 //  Created by Edivando Alves on 7/14/15.
@@ -8,9 +8,9 @@
 
 import Parse
 
-class PostLike: PFObject, PFSubclassing {
+class PostComment: PFObject, PFSubclassing {
     
-    @NSManaged var like: NSNumber
+    @NSManaged var message: String
     @NSManaged var post: Post
     @NSManaged var user: PFUser
     
@@ -24,31 +24,21 @@ class PostLike: PFObject, PFSubclassing {
     }
     
     static func parseClassName() -> String {
-        return "PostLike"
+        return "PostComment"
     }
     
-//    func findAll(){
-//        if let query = PostLike.query(){
-//            if let posts = query.findObjects() as? [PostLike]{
-//                for post in posts{
-//                    println(post)
-//                }
-//            }
-//        }
-//    }
-   
     
-    func addLike(post: Post, like: Bool){
-        self.like = like ? 1 : -1
+    func addComment(post: Post, message: String){
+        self.message = message
         self.post = post
         if let user = PFUser.currentUser(){
             self.user = user
         }
         self.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                println("save post like")
+                println("save post comment")
             }else{
-                println("not save post like")
+                println("not save post comment")
             }
         }
     }

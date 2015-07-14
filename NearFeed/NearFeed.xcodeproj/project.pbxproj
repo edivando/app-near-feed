@@ -63,6 +63,8 @@
 		7241F72F1B544EF50033BB3C /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72E1B544EF50033BB3C /* Region.swift */; };
 		7241F7311B5451B50033BB3C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7301B5451B50033BB3C /* Post.swift */; };
 		7241F7331B554F040033BB3C /* PostLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7321B554F040033BB3C /* PostLike.swift */; };
+		7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7341B5554AE0033BB3C /* PostComment.swift */; };
+		7241F7371B5555E10033BB3C /* PostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7361B5555E10033BB3C /* PostReport.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +143,8 @@
 		7241F72E1B544EF50033BB3C /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		7241F7301B5451B50033BB3C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7241F7321B554F040033BB3C /* PostLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLike.swift; sourceTree = "<group>"; };
+		7241F7341B5554AE0033BB3C /* PostComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
+		7241F7361B5555E10033BB3C /* PostReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReport.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,6 +364,8 @@
 				7241F72E1B544EF50033BB3C /* Region.swift */,
 				7241F7301B5451B50033BB3C /* Post.swift */,
 				7241F7321B554F040033BB3C /* PostLike.swift */,
+				7241F7341B5554AE0033BB3C /* PostComment.swift */,
+				7241F7361B5555E10033BB3C /* PostReport.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7241F7371B5555E10033BB3C /* PostReport.swift in Sources */,
 				7241F72F1B544EF50033BB3C /* Region.swift in Sources */,
 				51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */,
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
@@ -524,6 +531,7 @@
 				7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */,
 				7241F6DF1B53E1980033BB3C /* RegionViewController.swift in Sources */,
 				7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */,
+				7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,

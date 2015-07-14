@@ -16,6 +16,7 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var visualizations: NSNumber
     @NSManaged var region: Region
     @NSManaged var user: PFUser
+
     
     override class func initialize() {
         struct Static {
@@ -29,8 +30,18 @@ class Post: PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "Post"
     }
+    
+    func findAll(){
+        if let query = Post.query(){
+            if let posts = query.findObjects() as? [Post]{
+                for post in posts{
+                    println(post)
+                }
+            }
+        }
+    }
    
-    func newPost(text: String, images: [UIImage]?){
+    func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
         self.text = text
         self.clicked = 0
         self.visualizations = 0
@@ -41,10 +52,11 @@ class Post: PFObject, PFSubclassing {
             self.user = user
         }
         self.region = UserLocation.location.region
-        self.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
+        self.saveInBackgroundWithBlock { (success, erro) -> Void in
+            if erro != nil {
                 println("save post")
             }else{
+                error(error: erro)
                 println("not save post")
             }
         }
