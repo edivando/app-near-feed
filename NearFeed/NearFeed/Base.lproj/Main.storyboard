@@ -164,15 +164,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" id="ycy-SA-RVr"/>
                     <navigationItem key="navigationItem" id="dup-Fa-ged">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YhG-cs-q5U">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FxP-Qn-AdE">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="cmQ-WR-coN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9N9-P9-APn">
                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="done:" destination="BKD-Z8-GZ6" eventType="touchUpInside" id="9bx-7V-Kkm"/>
+                                    <action selector="done:" destination="BKD-Z8-GZ6" eventType="touchUpInside" id="XcT-g1-9Sn"/>
                                 </connections>
                             </button>
                         </barButtonItem>

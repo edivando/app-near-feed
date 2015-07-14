@@ -19,6 +19,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        textView.layer.cornerRadius = 5
+        textView.layer.borderColor = UIColor.grayColor().CGColor
+        textView.layer.borderWidth = 1
         // Do any additional setup after loading the view.
     }
     
@@ -30,7 +33,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.scrollView.pagingEnabled = true
             
             var subView = UIImageView(frame: frame)
-            subView.backgroundColor = UIColor.redColor()
+            subView.image = images[index]
+            //subView.backgroundColor = UIColor.redColor()
             self.scrollView.addSubview(subView)
         }
         
