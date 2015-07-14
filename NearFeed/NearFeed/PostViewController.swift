@@ -71,6 +71,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func locationChange(sender: AnyObject) {
+        //Para o usuario escolher se quer postar na localizacao atual dele, ou a localizacao que ele mora
     }
 
     @IBAction func addImage(sender: AnyObject) {
@@ -89,20 +90,11 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func done(sender: AnyObject) {
-        Post().newPost(textView.text, images: images)
+        Post().newPost(textView.text, images: images) { (error) -> () in
+            println("ok")
+        }
         textView.text = ""
         images = [UIImage]()
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-
-
 }
