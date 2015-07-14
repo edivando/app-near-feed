@@ -1,20 +1,17 @@
 //
-//  Post.swift
+//  PostLike.swift
 //  NearFeed
 //
-//  Created by Edivando Alves on 7/13/15.
+//  Created by Edivando Alves on 7/14/15.
 //  Copyright (c) 2015 J7ss. All rights reserved.
 //
 
 import Parse
 
-class Post: PFObject, PFSubclassing {
+class PostLike: PFObject, PFSubclassing {
     
-    @NSManaged var text: String
-    @NSManaged var images: [UIImage]
-    @NSManaged var clicked: NSNumber
-    @NSManaged var visualizations: NSNumber
-    @NSManaged var region: Region
+    @NSManaged var like: NSNumber
+    @NSManaged var post: Post
     @NSManaged var user: PFUser
     
     override class func initialize() {
@@ -27,27 +24,22 @@ class Post: PFObject, PFSubclassing {
     }
     
     static func parseClassName() -> String {
-        return "Post"
+        return "PostLike"
     }
    
-    func newPost(text: String, images: [UIImage]?){
-        self.text = text
-        self.clicked = 0
-        self.visualizations = 0
-        if let images = images{
-            self.images = images
-        }
+    
+    func addLike(post: Post, like: Bool){
+        self.like = like ? 1 : -1
+        self.post = post
         if let user = PFUser.currentUser(){
             self.user = user
         }
-        self.region = UserLocation.location.region
         self.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                println("save post")
+                println("save post like")
             }else{
-                println("not save post")
+                println("not save post like")
             }
         }
     }
-
 }

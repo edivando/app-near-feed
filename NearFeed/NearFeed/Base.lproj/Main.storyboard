@@ -103,7 +103,7 @@
         <!--Post-->
         <scene sceneID="4aa-um-Sx9">
             <objects>
-                <viewController id="BKD-Z8-GZ6" customClass="PostCommentViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BKD-Z8-GZ6" customClass="PostViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gbe-W8-TMU"/>
                         <viewControllerLayoutGuide type="bottom" id="RNe-Jl-dR5"/>

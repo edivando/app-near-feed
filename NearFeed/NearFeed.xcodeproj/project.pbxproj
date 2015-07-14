@@ -62,6 +62,7 @@
 		7241F72D1B544B5F0033BB3C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72C1B544B5F0033BB3C /* City.swift */; };
 		7241F72F1B544EF50033BB3C /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72E1B544EF50033BB3C /* Region.swift */; };
 		7241F7311B5451B50033BB3C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7301B5451B50033BB3C /* Post.swift */; };
+		7241F7331B554F040033BB3C /* PostLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7321B554F040033BB3C /* PostLike.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		7241F72C1B544B5F0033BB3C /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		7241F72E1B544EF50033BB3C /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		7241F7301B5451B50033BB3C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7241F7321B554F040033BB3C /* PostLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLike.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,6 +359,7 @@
 				7241F72C1B544B5F0033BB3C /* City.swift */,
 				7241F72E1B544EF50033BB3C /* Region.swift */,
 				7241F7301B5451B50033BB3C /* Post.swift */,
+				7241F7321B554F040033BB3C /* PostLike.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
+				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
 				723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */,
 				7241F72B1B5440210033BB3C /* Country.swift in Sources */,
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,

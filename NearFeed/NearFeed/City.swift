@@ -26,6 +26,27 @@ class City: PFObject, PFSubclassing {
         return "City"
     }
     
+    
+//    func findByName() -> City?{
+//        if let query = City.query(){
+//            query.whereKey("name", equalTo: name)
+//            let citys = query.findObjects() as? [City]
+//            if citys?.count > 0{
+//                return citys?.first
+//            }
+//        }
+//        return nil
+//    }
+//    
+//    func saveIfNotExiste() -> City{
+//        if let obj = findByName(){
+//            return obj
+//        }else{
+//            self.save()
+//            return self
+//        }
+//    }
+    
     func findByName(success: (citys: [City])->(), error: (erro: NSError?)->()){
         if let query = City.query(){
             query.whereKey("name", equalTo: name)
@@ -41,21 +62,4 @@ class City: PFObject, PFSubclassing {
         }
     }
     
-    func saveIfNotExiste(){
-        findByName({ (citys) -> () in
-            if citys.count == 0 {
-                self.saveInBackgroundWithBlock { (sucess, error) -> Void in
-                    if sucess {
-                        println("Save City")
-                    }else{
-                        println("Not Save City")
-                    }
-                }
-            }else{
-                self.objectId = citys[0].objectId
-            }
-            
-            }, error: { (erro) -> () in
-        })
-    }
 }

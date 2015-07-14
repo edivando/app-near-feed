@@ -18,10 +18,6 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-//    var country: String?
-//    var city: String?
-//    var region: String?
-    
     var country = Country()
     var city = City()
     var region = Region()
@@ -48,15 +44,46 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                     return
                 }else if placemarks.count > 0 {
                     let pm:CLPlacemark = placemarks[0] as! CLPlacemark
+                    
                     self.country.name = pm.country
-                    self.city.name    = pm.locality
-                    self.region.name  = pm.subLocality
+                    self.country.findByName({ (countrys) -> () in
+                        if countrys.count == 0 {
+                            self.country.saveInBackground()
+                        }else{
+                            self.country = countrys[0]
+                        }
+                    }, error: { (erro) -> () in
+                        
+                    })
+                
+                    self.city.name = pm.locality
+                    self.city.country = self.country
+                    self.city.findByName({ (citys) -> () in
+                        if citys.count == 0 {
+                            self.city.saveInBackground()
+                        }else{
+                            self.city = citys[0]
+                        }
+                    }, error: { (erro) -> () in
+                        
+                    })
+
+                    self.region.name = pm.subLocality
+                    self.region.city = self.city
+                    self.region.findByName({ (regions) -> () in
+                        if regions.count == 0 {
+                            self.region.saveInBackground()
+                        }else{
+                            self.region = regions[0]
+                        }
+                    }, error: { (erro) -> () in
+                        
+                    })
                 }
                 else {
                     println("Problem with the data received from geocoder")
                 }
                 self.startLocation(false)
-                self.save()
             })
         }
         return self
@@ -75,16 +102,5 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             }
         }
     }
-    
-    private func save(){
-        country.saveIfNotExiste()
-        
-        city.country = country
-        city.saveIfNotExiste()
-        
-        region.city = city
-        region.saveIfNotExiste()
-    }
-    
 
 }
