@@ -1,29 +1,37 @@
 //
-//  PostCommentViewController.swift
+//  IndexViewController.swift
 //  NearFeed
 //
-//  Created by Edivando Alves on 7/13/15.
+//  Created by Yuri Reis on 13/07/15.
 //  Copyright (c) 2015 J7ss. All rights reserved.
 //
 
 import UIKit
+import Parse
 
-class PostCommentViewController: UIViewController {
+class IndexViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Post().newPost("Test new post", images: nil)
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        let location = UserLocation.location.get()
-        println(location.country.name)
-        println(location.city.name)
-        println(location.region.name)
+        if let user = PFUser.currentUser(){
+            if user.isAuthenticated(){
+                NSLog("Opening app")
+                self.performSegueWithIdentifier("startFromIndex", sender: nil)
+            }
+            else{
+                NSLog("Opening login")
+                self.performSegueWithIdentifier("login", sender: nil)
+            }
+        }
+        else{
+            NSLog("Opening login")
+            self.performSegueWithIdentifier("login", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

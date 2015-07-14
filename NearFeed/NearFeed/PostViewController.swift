@@ -12,7 +12,8 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        Post().newPost("Test new post", images: nil)
         // Do any additional setup after loading the view.
     }
 
