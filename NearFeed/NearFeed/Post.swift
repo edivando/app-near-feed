@@ -31,12 +31,10 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-    func findAll(){
+    static func findAll(list: (posts: [Post])->()){
         if let query = Post.query(){
             if let posts = query.findObjects() as? [Post]{
-                for post in posts{
-                    println(post)
-                }
+                list(posts: posts)
             }
         }
     }
