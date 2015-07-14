@@ -18,7 +18,7 @@ class PostViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        PostLike().findAll()
+//        PostLike().findAll()
         
         let post = Post()
         post.newPost("Test new post \(NSUUID().UUIDString)", images: nil) { (error) -> () in

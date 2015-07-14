@@ -43,42 +43,46 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                     println("Reverse geocoder failed with error" + error.localizedDescription)
                     return
                 }else if placemarks.count > 0 {
-                    let pm:CLPlacemark = placemarks[0] as! CLPlacemark
-                    
-                    self.country.name = pm.country
-                    self.country.findByName({ (countrys) -> () in
-                        if countrys.count == 0 {
-                            self.country.saveInBackground()
-                        }else{
-                            self.country = countrys[0]
-                        }
-                    }, error: { (erro) -> () in
+                    if let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
                         
-                    })
-                
-                    self.city.name = pm.locality
-                    self.city.country = self.country
-                    self.city.findByName({ (citys) -> () in
-                        if citys.count == 0 {
-                            self.city.saveInBackground()
-                        }else{
-                            self.city = citys[0]
+                        if let ct = pm.country{
+                            self.country.name = ct
+                            self.country.findByName({ (countrys) -> () in
+                                if countrys.count == 0 {
+                                    self.country.saveInBackground()
+                                }else{
+                                    self.country = countrys[0]
+                                }
+                            }, error: { (erro) -> () in
+                            })
                         }
-                    }, error: { (erro) -> () in
                         
-                    })
-
-                    self.region.name = pm.subLocality
-                    self.region.city = self.city
-                    self.region.findByName({ (regions) -> () in
-                        if regions.count == 0 {
-                            self.region.saveInBackground()
-                        }else{
-                            self.region = regions[0]
+                        if let ct = pm.locality{
+                            self.city.name = pm.locality
+                            self.city.country = self.country
+                            self.city.findByName({ (citys) -> () in
+                                if citys.count == 0 {
+                                    self.city.saveInBackground()
+                                }else{
+                                    self.city = citys[0]
+                                }
+                            }, error: { (erro) -> () in
+                            })
                         }
-                    }, error: { (erro) -> () in
                         
-                    })
+                        if let rg = pm.subLocality{
+                            self.region.name = pm.subLocality
+                            self.region.city = self.city
+                            self.region.findByName({ (regions) -> () in
+                                if regions.count == 0 {
+                                    self.region.saveInBackground()
+                                }else{
+                                    self.region = regions[0]
+                                }
+                            }, error: { (erro) -> () in
+                            })
+                        }
+                    }
                 }
                 else {
                     println("Problem with the data received from geocoder")
