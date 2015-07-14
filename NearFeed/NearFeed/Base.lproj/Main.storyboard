@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -112,16 +112,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H4V-LY-gmq">
-                                <rect key="frame" x="154" y="188" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k86-XB-34x">
+                                <rect key="frame" x="314" y="120" width="270" height="30"/>
+                                <color key="backgroundColor" red="0.32578564983943148" green="0.98431372549999996" blue="0.36936067685454854" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Add image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addImage:" destination="BKD-Z8-GZ6" eventType="touchUpInside" id="qKd-aG-p7z"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your post here" translatesAutoresizingMaskIntoConstraints="NO" id="1LM-Xy-SPz">
+                                <rect key="frame" x="16" y="201" width="568" height="76"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lo4-fN-vxr">
+                                <rect key="frame" x="16" y="120" width="270" height="30"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.29803921570000003" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locationChange:" destination="BKD-Z8-GZ6" eventType="touchUpInside" id="d1S-09-scJ"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D42-Kh-sgr">
+                                <rect key="frame" x="16" y="285" width="568" height="258"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1LM-Xy-SPz" firstAttribute="leading" secondItem="AYb-dc-Xv8" secondAttribute="leadingMargin" id="8Ou-ZI-2ka"/>
+                            <constraint firstItem="D42-Kh-sgr" firstAttribute="top" secondItem="1LM-Xy-SPz" secondAttribute="bottom" constant="8" id="9Hi-xB-TBA"/>
+                            <constraint firstItem="1LM-Xy-SPz" firstAttribute="top" secondItem="lo4-fN-vxr" secondAttribute="bottom" constant="51" id="MwM-aS-0dH"/>
+                            <constraint firstItem="D42-Kh-sgr" firstAttribute="leading" secondItem="AYb-dc-Xv8" secondAttribute="leadingMargin" id="PhB-So-vSU"/>
+                            <constraint firstItem="1LM-Xy-SPz" firstAttribute="trailing" secondItem="AYb-dc-Xv8" secondAttribute="trailingMargin" id="TUi-C5-jOA"/>
+                            <constraint firstItem="lo4-fN-vxr" firstAttribute="top" secondItem="Gbe-W8-TMU" secondAttribute="bottom" constant="56" id="Tqy-TI-ZE9"/>
+                            <constraint firstItem="k86-XB-34x" firstAttribute="trailing" secondItem="AYb-dc-Xv8" secondAttribute="trailingMargin" id="ZTI-4j-QRx"/>
+                            <constraint firstItem="lo4-fN-vxr" firstAttribute="leading" secondItem="AYb-dc-Xv8" secondAttribute="leadingMargin" id="bL2-8k-njQ"/>
+                            <constraint firstItem="RNe-Jl-dR5" firstAttribute="top" secondItem="D42-Kh-sgr" secondAttribute="bottom" constant="8" id="cd6-qB-k9H"/>
+                            <constraint firstItem="k86-XB-34x" firstAttribute="height" secondItem="lo4-fN-vxr" secondAttribute="height" id="cef-Wk-jgU"/>
+                            <constraint firstItem="RNe-Jl-dR5" firstAttribute="top" secondItem="1LM-Xy-SPz" secondAttribute="bottom" constant="274" id="d68-3T-UOA"/>
+                            <constraint firstItem="k86-XB-34x" firstAttribute="centerY" secondItem="lo4-fN-vxr" secondAttribute="centerY" id="fED-QT-j2b"/>
+                            <constraint firstItem="k86-XB-34x" firstAttribute="width" secondItem="lo4-fN-vxr" secondAttribute="width" id="iCo-SU-9zk"/>
+                            <constraint firstItem="D42-Kh-sgr" firstAttribute="trailing" secondItem="AYb-dc-Xv8" secondAttribute="trailingMargin" id="slX-99-Tk6"/>
+                            <constraint firstItem="k86-XB-34x" firstAttribute="leading" secondItem="lo4-fN-vxr" secondAttribute="trailing" constant="28" id="uAt-Zj-Kog"/>
+                            <constraint firstAttribute="centerX" secondItem="1LM-Xy-SPz" secondAttribute="centerX" id="wBz-be-D6Z"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" id="ycy-SA-RVr"/>
-                    <navigationItem key="navigationItem" id="dup-Fa-ged"/>
+                    <navigationItem key="navigationItem" id="dup-Fa-ged">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="cmQ-WR-coN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9N9-P9-APn">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="done:" destination="BKD-Z8-GZ6" eventType="touchUpInside" id="XcT-g1-9Sn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="D42-Kh-sgr" id="vZb-e0-V5L"/>
+                        <outlet property="textView" destination="1LM-Xy-SPz" id="fRr-7P-XGH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr8-cL-zVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
