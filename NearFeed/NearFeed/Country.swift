@@ -26,6 +26,27 @@ class Country: PFObject, PFSubclassing  {
         return "Country"
     }
     
+    
+//    func findByName() -> Country?{
+//        if let query = Country.query(){
+//            query.whereKey("name", equalTo: name)
+//            let countrys = query.findObjects() as? [Country]
+//            if countrys?.count > 0{
+//                return countrys?.first
+//            }
+//        }
+//        return nil
+//    }
+//    
+//    func saveIfNotExiste() -> Country{
+//        if let obj = findByName(){
+//            return obj
+//        }else{
+//            self.save()
+//            return self
+//        }
+//    }
+    
     func findByName(success: (countrys: [Country])->(), error: (erro: NSError?)->()){
         if let query = Country.query(){
             query.whereKey("name", equalTo: name)
@@ -39,23 +60,6 @@ class Country: PFObject, PFSubclassing  {
                 }
             })
         }
-    }
-    
-    func saveIfNotExiste(){
-        findByName({ (countrys) -> () in
-            if countrys.count == 0 {
-                self.saveInBackgroundWithBlock { (sucess, error) -> Void in
-                    if sucess {
-                        println("Save Country")
-                    }else{
-                        println("Not Save Country")
-                    }
-                }
-            }else{
-                self.objectId = countrys[0].objectId
-            }
-            }, error: { (erro) -> () in
-        })
     }
     
 }
