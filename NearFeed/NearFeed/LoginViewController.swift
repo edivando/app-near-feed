@@ -89,12 +89,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
                     if (user != nil){
                         //Successful login
-                        
+                        Message.success("Success", text: "Login successful")
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         NSLog("\(error)")
-                        //error code 101 = Invalid login parameters
+                        if error?.code == 101{
+                            Message.error("Login failed", text: "Invalid login credentials")
+                        }
+                        else if error?.code == 100{
+                            Message.error("Login failed", text: "Timed out. Please, try again")
+                        }
+                        else if error?.code == -1{
+                            Message.error("Login failed", text: "An unknown error has occurred")
+                        }
+                        else if error?.code == 1{
+                            Message.error("Login failed", text: "Internal server error")
+                        }
                     }
                 }
             }
