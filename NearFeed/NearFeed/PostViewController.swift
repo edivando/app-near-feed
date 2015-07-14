@@ -91,7 +91,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func done(sender: AnyObject) {
         Post().newPost(textView.text, images: images) { (error) -> () in
-            println("ok")
+            if error == nil{
+                println("ok")
+            }
         }
         textView.text = ""
         images = [UIImage]()

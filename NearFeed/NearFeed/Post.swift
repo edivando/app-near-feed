@@ -11,7 +11,7 @@ import Parse
 class Post: PFObject, PFSubclassing {
     
     @NSManaged var text: String
-    @NSManaged var images: [UIImage]
+    @NSManaged var images: [PFFile]
     @NSManaged var clicked: NSNumber
     @NSManaged var visualizations: NSNumber
     @NSManaged var region: Region
@@ -45,15 +45,18 @@ class Post: PFObject, PFSubclassing {
         self.text = text
         self.clicked = 0
         self.visualizations = 0
-        if let images = images{
-            self.images = images
+        if let imgs = images{
+            self.images = [PFFile]()
+            for img in imgs{
+                self.images.append(PFFile(data: UIImagePNGRepresentation(img)))
+            }
         }
         if let user = PFUser.currentUser(){
             self.user = user
         }
         self.region = UserLocation.location.region
         self.saveInBackgroundWithBlock { (success, erro) -> Void in
-            if erro != nil {
+            if erro == nil {
                 println("save post")
             }else{
                 error(error: erro)
