@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var userLocation: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
@@ -28,9 +28,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textView.text = "Type your post here..."
         textView.textColor = UIColor.lightGrayColor()
         textView.becomeFirstResponder()
-        
         var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
         self.view.addGestureRecognizer(tapGesture)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -44,6 +44,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             var subView = UIImageView(frame: frame)
             subView.image = images[index]
             subView.contentMode = UIViewContentMode.ScaleAspectFit
+            var longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
+            //longPressGesture.delegate = self
+            subView.addGestureRecognizer(longPressGesture)
+            subView.userInteractionEnabled = true
             self.scrollView.addSubview(subView)
         }
         
@@ -54,11 +58,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     //MARK: - Gestures
     
     func handleTap(){
         self.view.endEditing(true)
+    }
+    
+    func handleLongPress(recognizer : UILongPressGestureRecognizer){
+        var alert = UIAlertController(title: "Image", message: nil, preferredStyle: .ActionSheet)
+        var deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) -> Void in
+            
+            var imageView = recognizer.view as! UIImageView
+            var index = find(self.images, imageView.image!)
+            if let index = index{
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.images.removeAtIndex(index)
+                    imageView.removeFromSuperview()
+                })
+                
+            }
+        }
+        var cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //MARK: - TextViewDelegate
@@ -77,6 +102,19 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             textView.textColor = UIColor.lightGrayColor()
         }
         textView.resignFirstResponder()
+    }
+    
+    //MARK: - Gestures delegate
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if otherGestureRecognizer.isKindOfClass(UIPanGestureRecognizer){
+            return true
+        }
+        return false
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     
