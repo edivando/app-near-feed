@@ -33,7 +33,7 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             startLocation(true)
         }
-        get()
+        getDefualtLocation()
     }
     
     func get() -> UserLocation{
@@ -97,6 +97,32 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             })
         }
         return self
+    }
+    
+    private func getDefualtLocation(){
+        country.name = "Brasil"
+        country.findByName({ (countrys) -> () in
+            if countrys.count > 0 {
+                self.country = countrys[0]
+            }
+        }, error: { (erro) -> () in
+        })
+        
+        city.name = "Fortaleza"
+        city.findByName({ (citys) -> () in
+            if citys.count > 0{
+                self.city = citys[0]
+            }
+        }, error: { (erro) -> () in
+        })
+        
+        region.name = "Benfica"
+        region.findByName({ (regions) -> () in
+            if regions.count > 0{
+                self.region = regions[0]
+            }
+        }, error: { (erro) -> () in
+        })
     }
     
     private func startLocation(status: Bool){

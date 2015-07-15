@@ -26,16 +26,16 @@ class RegionViewController: UITableViewController {
         self.refreshControl = refreshControl
         
         
-        // change indicator view style to white
-        tableView.infiniteScrollIndicatorStyle = .White
-        
-        // Add infinite scroll handler
-        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
-            let tableView = scrollView as! UITableView
-            
-
-            tableView.finishInfiniteScroll()
-        }
+//        // change indicator view style to white
+//        tableView.infiniteScrollIndicatorStyle = .White
+//        
+//        // Add infinite scroll handler
+//        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
+//            let tableView = scrollView as! UITableView
+//            
+//
+//            tableView.finishInfiniteScroll()
+//        }
     }
     
     func refresh() {
