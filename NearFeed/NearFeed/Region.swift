@@ -40,22 +40,4 @@ class Region: PFObject, PFSubclassing {
             })
         }
     }
-    
-    func saveIfNotExiste(){
-        findByName({ (regions) -> () in
-            if regions.count == 0 {
-                self.saveInBackgroundWithBlock { (sucess, error) -> Void in
-                    if sucess {
-                        println("Save Region")
-                    }else{
-                        println("Not Save Region")
-                    }
-                }
-            }else{
-                self.objectId = regions[0].objectId
-            }
-            }, error: { (erro) -> () in
-        })
-    }
-   
 }

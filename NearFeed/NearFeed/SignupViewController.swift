@@ -1,5 +1,5 @@
 //
-//  SingupViewController.swift
+//  SignupViewController.swift
 //  NearFeed
 //
 //  Created by Edivando Alves on 7/13/15.
@@ -61,11 +61,22 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showEmptyTextfieldAlertMessage(){
-        //Verificar quem esta vazio e mostrar o alerta correspondente
+        if !textfieldIsNotEmpty(nameTextfield){
+            Message.error("Name empty", text: "Please, fill in your name")
+        }
+        else if !textfieldIsNotEmpty(emailTextfield){
+            Message.error("Email empty", text: "Please, fill in your email")
+        }
+        else if !textfieldIsNotEmpty(passwordTextfield){
+            Message.error("Password empty", text: "Please, fill in your password")
+        }
+        else{
+            Message.error("Password verify empty", text: "Please, fill in your password verification")
+        }
     }
     
     func showNotMatchingPasswordAlert(){
-        
+        Message.error("Password does not match", text: "The passwords provided do not match")
     }
     
     @IBAction func singup(sender: AnyObject){
@@ -83,6 +94,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                     }
                     else{
                         NSLog("\(error)")
+                        if error?.code == 202{
+                            Message.error("Sign up failed", text: "User already exists")
+                        }
+                        else if error?.code == 100{
+                            Message.error("Sign up failed", text: "Connection error. Trying again...")
+                        }
                     }
                 }
             }

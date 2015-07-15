@@ -41,21 +41,4 @@ class City: PFObject, PFSubclassing {
         }
     }
     
-    func saveIfNotExiste(){
-        findByName({ (citys) -> () in
-            if citys.count == 0 {
-                self.saveInBackgroundWithBlock { (sucess, error) -> Void in
-                    if sucess {
-                        println("Save City")
-                    }else{
-                        println("Not Save City")
-                    }
-                }
-            }else{
-                self.objectId = citys[0].objectId
-            }
-            
-            }, error: { (erro) -> () in
-        })
-    }
 }

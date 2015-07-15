@@ -48,20 +48,76 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func login(sender: AnyObject){
-        //Need to check if the user filled all textfields
+    //MARK: - Textfield input tests
+    
+    func textfieldIsNotEmpty(textField: UITextField) -> Bool{
+        if textField.text == ""{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         
-        PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
-            if (user != nil){
-                //Successful login
-                
-                self.dismissViewControllerAnimated(true, completion: nil)
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
+    }
+    
+    //MARK: - Error alerts
+    
+    func showEmptyTextfieldAlertMessage(){
+        if !textfieldIsNotEmpty(usernameTextfield){
+            Message.error("Email field empty", text: "Please fill in your email")
+        }
+        else{
+            Message.error("Password field empty", text: "Please fill in your password")
+        }
+    }
+    
+    func showInvalidEmailAlertMessage(){
+        Message.error("Invalid email", text: "The email you provided is invalid")
+    }
+    
+    //MARK: - Buttons
+    
+    @IBAction func login(sender: AnyObject){
+        if textfieldIsNotEmpty(usernameTextfield) && textfieldIsNotEmpty(passwordTextfield){
+            if isValidEmail(usernameTextfield.text){
+                PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
+                    if (user != nil){
+                        //Successful login
+                        Message.success("Success", text: "Login successful")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    else{
+                        NSLog("\(error)")
+                        if error?.code == 101{
+                            Message.error("Login failed", text: "Invalid login credentials")
+                        }
+                        else if error?.code == 100{
+                            Message.error("Login failed", text: "Timed out. Please, try again")
+                        }
+                        else if error?.code == -1{
+                            Message.error("Login failed", text: "An unknown error has occurred")
+                        }
+                        else if error?.code == 1{
+                            Message.error("Login failed", text: "Internal server error")
+                        }
+                    }
+                }
             }
             else{
-                NSLog("\(error)")
-                //error code 101 = Invalid login parameters
+                showInvalidEmailAlertMessage()
             }
         }
+        else{
+            showEmptyTextfieldAlertMessage()
+        }
+        
+        
     }
     
     @IBAction func later(sender: AnyObject){
