@@ -10,8 +10,10 @@ import UIKit
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
+    @IBOutlet weak var userLocation: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     var images = [UIImage]()
     var frame: CGRect = CGRectMake(0, 0, 0, 0)
     let picker = UIImagePickerController()
@@ -19,6 +21,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let location = UserLocation.location
+        //userLocation.title = "\(location.country.name) / \(location.city.name) / \(location.region.name)"
+        userLocation.enabled = false
         textView.delegate = self
         textView.text = "Type your post here..."
         textView.textColor = UIColor.lightGrayColor()

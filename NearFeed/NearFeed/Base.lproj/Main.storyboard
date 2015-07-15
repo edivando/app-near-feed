@@ -187,6 +187,7 @@
                     <connections>
                         <outlet property="scrollView" destination="D42-Kh-sgr" id="vZb-e0-V5L"/>
                         <outlet property="textView" destination="1LM-Xy-SPz" id="fRr-7P-XGH"/>
+                        <outlet property="userLocation" destination="1hR-7I-fCF" id="oOI-vH-Uj5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr8-cL-zVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
