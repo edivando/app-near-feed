@@ -14,8 +14,14 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var images: [PFFile]
     @NSManaged var clicked: NSNumber
     @NSManaged var visualizations: NSNumber
+    
     @NSManaged var region: Region
+    @NSManaged var city: City
+    @NSManaged var country: Country
+    
     @NSManaged var user: PFUser
+    
+    let location = UserLocation.location.get()
 
     
     override class func initialize() {
@@ -43,13 +49,29 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-//    static func findAll(list: (posts: [Post])->()){
-//        if let query = Post.query(){
-//            if let posts = query.findObjects() as? [Post]{
-//                list(posts: posts)
-//            }
-//        }
-//    }
+    static func findByCity(city: City, list: (posts: [Post])->()){
+        if let query = Post.query(){
+            query.whereKey("city", equalTo: city)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
+    
+    static func findByCountry(country: Country, list: (posts: [Post])->()){
+        if let query = Post.query(){
+            query.whereKey("city", equalTo: country)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
    
     func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
         self.text = text
@@ -61,10 +83,15 @@ class Post: PFObject, PFSubclassing {
                 self.images.append(PFFile(data: UIImagePNGRepresentation(img)))
             }
         }
-        if let user = PFUser.currentUser(){
+        if let user = PFUser.currentUser() where user.isAuthenticated(){
             self.user = user
+        }else{
+            error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
-        self.region = UserLocation.location.region
+        self.region = location.region
+        self.city = location.city
+        self.country = location.country
+        
         self.saveInBackgroundWithBlock { (success, erro) -> Void in
             if erro == nil {
                 println("save post")
