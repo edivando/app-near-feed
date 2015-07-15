@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -18,10 +18,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        textView.layer.cornerRadius = 5
-        textView.layer.borderColor = UIColor.grayColor().CGColor
-        textView.layer.borderWidth = 1
+        
+        textView.delegate = self
+        textView.text = "Type your post here..."
+        textView.textColor = UIColor.lightGrayColor()
+        textView.becomeFirstResponder()
+        
+        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
+        self.view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +38,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             var subView = UIImageView(frame: frame)
             subView.image = images[index]
-            //subView.backgroundColor = UIColor.redColor()
+            subView.contentMode = UIViewContentMode.ScaleAspectFit
             self.scrollView.addSubview(subView)
         }
         
@@ -45,6 +49,33 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: - Gestures
+    
+    func handleTap(){
+        self.view.endEditing(true)
+    }
+    
+    //MARK: - TextViewDelegate
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.text == "Type your post here..." {
+            textView.text = ""
+            textView.textColor = UIColor.blackColor()
+        }
+        textView.becomeFirstResponder()
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text == ""{
+            textView.text = "Type your post here..."
+            textView.textColor = UIColor.lightGrayColor()
+        }
+        textView.resignFirstResponder()
+    }
+    
+    
+    //MARK: - ImagePicker
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image = info[UIImagePickerControllerEditedImage] as! UIImage
@@ -69,6 +100,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.sourceType = .PhotoLibrary
         self.presentViewController(picker, animated: true, completion: nil)
     }
+    
+    //MARK: - Actions
     
     @IBAction func locationChange(sender: AnyObject) {
         //Para o usuario escolher se quer postar na localizacao atual dele, ou a localizacao que ele mora
@@ -95,8 +128,28 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 println("ok")
             }
         }
-        textView.text = ""
+        textView.text = "Type your post here..."
+        textView.textColor = UIColor.lightGrayColor()
         images = [UIImage]()
+        for subview in scrollView.subviews{
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                subview.removeFromSuperview()
+            })
+        }
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        textView.text = "Type your post here..."
+        textView.textColor = UIColor.lightGrayColor()
+        images = [UIImage]()
+        
+        for subview in scrollView.subviews{
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                subview.removeFromSuperview()
+            })
+        }
+        self.view.endEditing(true)
     }
     
 }
