@@ -33,6 +33,7 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             startLocation(true)
         }
+        get()
     }
     
     func get() -> UserLocation{
