@@ -528,7 +528,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Jr-ks1" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Jr-ks1">
                                 <rect key="frame" x="86" y="123" width="240" height="128"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3X-5Y-Scq">
@@ -537,7 +537,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="photoLibrary:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="urv-3b-pds"/>
+                                    <action selector="photoLibraryButton:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="z52-gm-OKz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sp-jW-Po5">
@@ -562,6 +562,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="savePerfilButton:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="Auv-iQ-zoH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E4o-bS-2cI">
                                 <rect key="frame" x="160" y="362" width="342" height="30"/>
@@ -574,15 +577,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="photoCamera:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="4qq-f3-6wo"/>
+                                    <action selector="photoCameraButton:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="RcC-9V-TLa"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Gdv-XQ-fg8"/>
+                    <navigationItem key="navigationItem" title="Profile" id="8rv-7g-ieE"/>
                     <connections>
-                        <outlet property="imagePhoto" destination="zSV-Jr-ks1" id="AsV-R0-ub6"/>
+                        <outlet property="emailTextField" destination="Z3u-0g-ta1" id="ENW-fm-odE"/>
+                        <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
+                        <outlet property="nameTextField" destination="E4o-bS-2cI" id="dXU-E1-bJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBc-J6-LYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
