@@ -11,16 +11,15 @@ import UIKit
 class RegionViewController: UITableViewController {
 
     private var posts = [Post]()
+    private let location = UserLocation.location
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        Post.findAll { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-        }
+        refresh()
+        
         
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
@@ -40,17 +39,16 @@ class RegionViewController: UITableViewController {
     }
     
     func refresh() {
-        //Obter mais dados do servidor
-        
+        Post.findByRegion(location.region, list: { (posts) -> () in
+            self.posts = posts
+            self.tableView.reloadData()
+        })
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
-        Post.findAll { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-        }
+        refresh()
     }
 
 //MARK: UITableViewDataSource

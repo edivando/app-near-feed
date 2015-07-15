@@ -31,13 +31,25 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-    static func findAll(list: (posts: [Post])->()){
+    static func findByRegion(region: Region, list: (posts: [Post])->()){
         if let query = Post.query(){
-            if let posts = query.findObjects() as? [Post]{
-                list(posts: posts)
-            }
+            query.whereKey("region", equalTo: region)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
         }
     }
+    
+//    static func findAll(list: (posts: [Post])->()){
+//        if let query = Post.query(){
+//            if let posts = query.findObjects() as? [Post]{
+//                list(posts: posts)
+//            }
+//        }
+//    }
    
     func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
         self.text = text
