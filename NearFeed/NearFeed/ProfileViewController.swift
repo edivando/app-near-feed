@@ -13,10 +13,43 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        imagePicker.delegate = self
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        
+        currentObject = PFUser.currentUser()
+        
+        if let object = currentObject {
+            
+            nameTextField.text = object["name"] as! String
+            emailTextField.text = object["email"] as! String
+            
+            if let thumbnail = object["image"] as? PFFile {
+                
+                //var userPhoto = PFObject(className: "postString")
+                
+                imageFile = thumbnail
+                
+                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                    if error == nil {
+                        self.imageImageView.image = UIImage(data: imageData!)
+                    }
+                })
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+            nameTextField.resignFirstResponder()
+            emailTextField.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
