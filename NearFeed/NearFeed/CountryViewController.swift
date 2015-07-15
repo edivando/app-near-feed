@@ -12,6 +12,7 @@ class CountryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserLocation.location.get()
 
         // Do any additional setup after loading the view.
     }

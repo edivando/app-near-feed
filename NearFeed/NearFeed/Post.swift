@@ -21,7 +21,7 @@ class Post: PFObject, PFSubclassing {
     
     @NSManaged var user: PFUser
     
-    let location = UserLocation.location.get()
+    let location = UserLocation.location
 
     
     override class func initialize() {
