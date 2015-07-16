@@ -10,7 +10,7 @@ import UIKit
 
 class ImageFocusViewController: UIViewController, UIScrollViewDelegate {
     
-    var imageToShow:UIImage?
+    var imageToShow:UIImage!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
@@ -90,7 +90,7 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func done(){
-        println("done")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func dislike(){

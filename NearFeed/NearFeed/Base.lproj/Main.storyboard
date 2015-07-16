@@ -380,8 +380,7 @@
         <!--Image Focus View Controller-->
         <scene sceneID="NT5-XZ-gyR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kch-0J-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="M4a-c4-Cpc" customClass="ImageFocusViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageFocus" id="M4a-c4-Cpc" customClass="ImageFocusViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ROG-Me-jnC"/>
                         <viewControllerLayoutGuide type="bottom" id="VCr-yo-Mg5"/>
@@ -477,6 +476,7 @@
                         <outlet property="scrollView" destination="meD-aO-1l3" id="bDO-7s-e3v"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kch-0J-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1852" y="-1120"/>
         </scene>
