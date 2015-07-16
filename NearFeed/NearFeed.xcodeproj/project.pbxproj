@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111933C1B57E6C80024828E /* ImageFocusViewController.swift */; };
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.debug.xcconfig"; sourceTree = "<group>"; };
+		5111933C1B57E6C80024828E /* ImageFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFocusViewController.swift; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,6 +343,7 @@
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
 				7241F7261B5403570033BB3C /* SignupViewController.swift */,
 				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
+				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				7241F7161B53FDAF0033BB3C /* Message.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
+				5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
