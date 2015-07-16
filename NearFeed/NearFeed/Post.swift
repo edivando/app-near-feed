@@ -37,8 +37,25 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-    static func findByRegion(region: Region, list: (posts: [Post])->()){
+    
+    static func findByRegionNewPosts(region: Region, createdAt: NSDate, list: (posts: [Post])->()){
         if let query = Post.query(){
+            query.whereKey("region", equalTo: region)
+            query.whereKey("createdAt", greaterThan: createdAt)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+
+    }
+    
+    static func findByRegion(region: Region, page: Int, list: (posts: [Post])->()){
+        if let query = Post.query(){
+            query.skip = page * 5
+            query.limit = 5
             query.whereKey("region", equalTo: region)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -49,8 +66,10 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-    static func findByCity(city: City, list: (posts: [Post])->()){
+    static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
         if let query = Post.query(){
+            query.skip = page * 5
+            query.limit = 5
             query.whereKey("city", equalTo: city)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -61,8 +80,10 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-    static func findByCountry(country: Country, list: (posts: [Post])->()){
+    static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
         if let query = Post.query(){
+            query.skip = page * 5
+            query.limit = 5
             query.whereKey("city", equalTo: country)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -85,20 +106,20 @@ class Post: PFObject, PFSubclassing {
         }
         if let user = PFUser.currentUser() where user.isAuthenticated(){
             self.user = user
+            self.region = location.region
+            self.city = location.city
+            self.country = location.country
+            self.saveInBackgroundWithBlock { (success, erro) -> Void in
+                if erro == nil {
+                    println("save post")
+                    error(error: nil)
+                }else{
+                    error(error: erro)
+                    println("not save post")
+                }
+            }
         }else{
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
-        }
-        self.region = location.region
-        self.city = location.city
-        self.country = location.country
-        
-        self.saveInBackgroundWithBlock { (success, erro) -> Void in
-            if erro == nil {
-                println("save post")
-            }else{
-                error(error: erro)
-                println("not save post")
-            }
         }
     }
 

@@ -13,42 +13,36 @@ class RegionViewController: UITableViewController {
     private var posts = [Post]()
     private let location = UserLocation.location
     
+    private var pagePost = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        refresh()
-        
+        Post.findByRegion(location.region, page: pagePost, list: { (posts) -> () in
+            self.posts = posts
+            self.tableView.reloadData()
+        })
         
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
         
+        if tableView.respondsToSelector("layoutMargins") {
+            tableView.estimatedRowHeight = 88
+            tableView.rowHeight = UITableViewAutomaticDimension
+        }
         
-//        // change indicator view style to white
-//        tableView.infiniteScrollIndicatorStyle = .White
-//        
-//        // Add infinite scroll handler
-//        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
-//            let tableView = scrollView as! UITableView
-//            
-//
-//            tableView.finishInfiniteScroll()
-//        }
     }
     
     func refresh() {
-        Post.findByRegion(location.region, list: { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-        })
-        tableView.reloadData()
-        refreshControl?.endRefreshing()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        refresh()
+//        pagePost = 0
+//        Post.findByRegion(location.region, page: pagePost, list: { (posts) -> () in
+//            self.posts = posts
+//            self.tableView.reloadData()
+//            self.refreshControl?.endRefreshing()
+//        })
     }
 
 //MARK: UITableViewDataSource
@@ -70,6 +64,7 @@ class RegionViewController: UITableViewController {
         }
         return cell
     }
+    
     
 
 }
