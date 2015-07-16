@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M4a-c4-Cpc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -377,11 +377,11 @@
             </objects>
             <point key="canvasLocation" x="-2519" y="-300"/>
         </scene>
-        <!--View Controller-->
+        <!--Image Focus View Controller-->
         <scene sceneID="NT5-XZ-gyR">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kch-0J-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="M4a-c4-Cpc" sceneMemberID="viewController">
+                <viewController id="M4a-c4-Cpc" customClass="ImageFocusViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ROG-Me-jnC"/>
                         <viewControllerLayoutGuide type="bottom" id="VCr-yo-Mg5"/>
@@ -409,30 +409,45 @@
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="done" destination="M4a-c4-Cpc" eventType="touchUpInside" id="pTK-mo-NMx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsN-Qu-znA">
                                 <rect key="frame" x="516" y="550" width="68" height="30"/>
                                 <state key="normal" title="Comment">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="comment" destination="M4a-c4-Cpc" eventType="touchUpInside" id="6RX-FY-WAZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JR-FE-hDC">
                                 <rect key="frame" x="463" y="550" width="45" height="30"/>
                                 <state key="normal" title="Dislike">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dislike" destination="M4a-c4-Cpc" eventType="touchUpInside" id="fn2-8i-IZx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88a-bz-TAR">
                                 <rect key="frame" x="16" y="550" width="47" height="30"/>
                                 <state key="normal" title="Report">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="report" destination="M4a-c4-Cpc" eventType="touchUpInside" id="F9G-ZK-nKA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vav-CA-RVl">
                                 <rect key="frame" x="425" y="550" width="30" height="30"/>
                                 <state key="normal" title="Like">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="like" destination="M4a-c4-Cpc" eventType="touchUpInside" id="wul-IQ-jNZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -453,6 +468,14 @@
                             <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="EsN-Qu-znA" secondAttribute="bottom" constant="20" id="rJn-RZ-c33"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageConstraintBottom" destination="H0I-XM-zRQ" id="9r7-Ui-uXp"/>
+                        <outlet property="imageConstraintLeft" destination="pTf-fp-CWa" id="Bqs-Ek-tGI"/>
+                        <outlet property="imageConstraintRight" destination="41y-ks-BHn" id="1VB-qa-baG"/>
+                        <outlet property="imageConstraintTop" destination="fgY-IV-ZPh" id="5a2-z4-Aqw"/>
+                        <outlet property="imageView" destination="ApI-9M-Kkm" id="7J9-03-seu"/>
+                        <outlet property="scrollView" destination="meD-aO-1l3" id="bDO-7s-e3v"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-1852" y="-1120"/>
@@ -1068,6 +1091,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L84-T4-LT8"/>
+        <segue reference="ynV-gR-9md"/>
     </inferredMetricsTieBreakers>
 </document>
