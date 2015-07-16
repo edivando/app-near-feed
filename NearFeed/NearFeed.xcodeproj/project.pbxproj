@@ -65,6 +65,8 @@
 		7241F7331B554F040033BB3C /* PostLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7321B554F040033BB3C /* PostLike.swift */; };
 		7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7341B5554AE0033BB3C /* PostComment.swift */; };
 		7241F7371B5555E10033BB3C /* PostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7361B5555E10033BB3C /* PostReport.swift */; };
+		724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */; };
+		724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		7241F7321B554F040033BB3C /* PostLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLike.swift; sourceTree = "<group>"; };
 		7241F7341B5554AE0033BB3C /* PostComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		7241F7361B5555E10033BB3C /* PostReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReport.swift; sourceTree = "<group>"; };
+		724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
+		724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+NetworkIndicator.swift"; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -341,6 +345,8 @@
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
 				7241F7261B5403570033BB3C /* SignupViewController.swift */,
 				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
+				724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */,
+				724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -519,7 +525,9 @@
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
 				7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */,
+				724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
+				724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
 				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
