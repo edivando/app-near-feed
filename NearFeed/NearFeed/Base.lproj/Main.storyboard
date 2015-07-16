@@ -377,6 +377,76 @@
             </objects>
             <point key="canvasLocation" x="-2519" y="-300"/>
         </scene>
+        <!--Image Focus View Controller-->
+        <scene sceneID="NT5-XZ-gyR">
+            <objects>
+                <viewController id="M4a-c4-Cpc" customClass="ImageFocusViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ROG-Me-jnC"/>
+                        <viewControllerLayoutGuide type="bottom" id="VCr-yo-Mg5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AYt-JF-SLp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8T-Kv-lwI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Eh-Id-GHc">
+                                        <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rb-SM-fgH">
+                                        <rect key="frame" x="524" y="562" width="68" height="30"/>
+                                        <state key="normal" title="Comment">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXh-P8-EfT">
+                                        <rect key="frame" x="471" y="562" width="45" height="30"/>
+                                        <state key="normal" title="Dislike">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4M3-8g-7Jm">
+                                        <rect key="frame" x="433" y="562" width="30" height="30"/>
+                                        <state key="normal" title="Like">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXm-pz-qT0">
+                                        <rect key="frame" x="8" y="562" width="47" height="30"/>
+                                        <state key="normal" title="Report">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrr-cF-BS3">
+                                        <rect key="frame" x="555" y="8" width="37" height="30"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8Eh-Id-GHc" firstAttribute="top" secondItem="O8T-Kv-lwI" secondAttribute="top" constant="250" id="H2I-rP-8oj"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Eh-Id-GHc" secondAttribute="bottom" constant="250" id="QIC-lF-MiR"/>
+                                    <constraint firstItem="8Eh-Id-GHc" firstAttribute="leading" secondItem="O8T-Kv-lwI" secondAttribute="leading" constant="250" id="SUf-zO-UZR"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Eh-Id-GHc" secondAttribute="trailing" constant="250" id="eH5-QQ-2dW"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="O8T-Kv-lwI" secondAttribute="bottom" id="CmW-eF-PIm"/>
+                            <constraint firstItem="O8T-Kv-lwI" firstAttribute="leading" secondItem="AYt-JF-SLp" secondAttribute="leading" id="LWO-zr-G9w"/>
+                            <constraint firstAttribute="trailing" secondItem="O8T-Kv-lwI" secondAttribute="trailing" id="bhr-1k-UVB"/>
+                            <constraint firstItem="O8T-Kv-lwI" firstAttribute="top" secondItem="AYt-JF-SLp" secondAttribute="top" id="uk6-8o-abS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kch-0J-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1852" y="-1120"/>
+        </scene>
         <!--Signup View Controller-->
         <scene sceneID="uAg-82-vaJ">
             <objects>

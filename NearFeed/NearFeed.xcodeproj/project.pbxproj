@@ -349,6 +349,8 @@
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
 				7241F7261B5403570033BB3C /* SignupViewController.swift */,
 				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
+				724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */,
+				724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */,
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 			);
 			name = Controller;
