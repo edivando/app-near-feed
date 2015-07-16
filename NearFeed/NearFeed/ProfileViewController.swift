@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let imagePicker = UIImagePickerController()
     
     // MARK: - Outlets
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var imageImageView: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -27,8 +28,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         libraryPhoto()
     }
     
+    @IBAction func editBarButton(sender: AnyObject) {
+        
+    }
+   
     @IBAction func photoCameraButton(sender: AnyObject) {
         cameraPhoto()
+    }
+    
+    @IBAction func changePasswordButton(sender: AnyObject) {
     }
     
     @IBAction func savePerfilButton(sender: AnyObject) {
@@ -104,15 +112,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        nameTextField.delegate = self
-        emailTextField.delegate = self
+        //nameTextField.delegate = self
+        //emailTextField.delegate = self
         
         currentObject = PFUser.currentUser()
         
         if let object = currentObject {
             
-            nameTextField.text = object["name"] as! String
-            emailTextField.text = object["email"] as! String
+            nameLabel.text = object["name"] as? String
+            //nameTextField.text = object["name"] as! String
+            //emailTextField.text = object["email"] as! String
             
             if let thumbnail = object["image"] as? PFFile {
                 
