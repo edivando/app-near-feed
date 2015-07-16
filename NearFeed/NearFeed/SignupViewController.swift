@@ -91,6 +91,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 user.signUpInBackgroundWithBlock { (succeded, error) -> Void in
                     if succeded{
                         //Registered and logged in
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         NSLog("\(error)")
