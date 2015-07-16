@@ -35,6 +35,15 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewWillAppear(animated: Bool) {
+        refreshScrollView()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshScrollView(){
         for index in 0..<images.count {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
@@ -54,11 +63,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * CGFloat(images.count), self.scrollView.frame.size.height)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
     //MARK: - Gestures
     
@@ -67,23 +71,22 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func handleLongPress(recognizer : UILongPressGestureRecognizer){
-        var alert = UIAlertController(title: "Image", message: nil, preferredStyle: .ActionSheet)
-        var deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) -> Void in
-            
-            var imageView = recognizer.view as! UIImageView
-            var index = find(self.images, imageView.image!)
-            if let index = index{
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        if recognizer.state == UIGestureRecognizerState.Began{
+            var alert = UIAlertController(title: "Image", message: nil, preferredStyle: .ActionSheet)
+            var deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) -> Void in
+                self.removeImagesFromScrollView()
+                var imageView = recognizer.view as! UIImageView
+                var index = find(self.images, imageView.image!)
+                if let index = index{
                     self.images.removeAtIndex(index)
-                    imageView.removeFromSuperview()
-                })
-                
+                }
+                self.refreshScrollView()
             }
+            var cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        var cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //MARK: - TextViewDelegate
@@ -106,16 +109,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //MARK: - Gestures delegate
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if otherGestureRecognizer.isKindOfClass(UIPanGestureRecognizer){
-            return true
-        }
-        return false
-    }
+//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if otherGestureRecognizer.isKindOfClass(UIPanGestureRecognizer){
+//            return true
+//        }
+//        return false
+//    }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
     
     
     //MARK: - ImagePicker
@@ -142,6 +145,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.allowsEditing = true
         picker.sourceType = .PhotoLibrary
         self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    func removeImagesFromScrollView(){
+        for subview in scrollView.subviews{
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                subview.removeFromSuperview()
+            })
+        }
     }
     
     //MARK: - Actions
@@ -174,11 +185,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textView.text = "Type your post here..."
         textView.textColor = UIColor.lightGrayColor()
         images = [UIImage]()
-        for subview in scrollView.subviews{
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                subview.removeFromSuperview()
-            })
-        }
+        removeImagesFromScrollView()
         self.view.endEditing(true)
     }
     
@@ -186,12 +193,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textView.text = "Type your post here..."
         textView.textColor = UIColor.lightGrayColor()
         images = [UIImage]()
-        
-        for subview in scrollView.subviews{
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                subview.removeFromSuperview()
-            })
-        }
+        removeImagesFromScrollView()
         self.view.endEditing(true)
     }
     
