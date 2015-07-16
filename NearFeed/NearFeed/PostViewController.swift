@@ -8,7 +8,8 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate {
+    @IBOutlet weak var pageControl: UIPageControl!
 
     @IBOutlet weak var userLocation: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
@@ -20,6 +21,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.grayColor()
+        pageControl.currentPage = 0
+        
+        scrollView.delegate = self
         
         let location = UserLocation.location
         userLocation.title = "\(location.country.name) / \(location.city.name) / \(location.region.name)"
@@ -43,7 +50,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - ScrollView
+    
     func refreshScrollView(){
+        pageControl.numberOfPages = images.count
         for index in 0..<images.count {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
@@ -62,7 +72,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * CGFloat(images.count), self.scrollView.frame.size.height)
     }
-
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var pageWidth = self.scrollView.frame.size.width
+        var fractionalPage = Double(self.scrollView.contentOffset.x / pageWidth)
+        var page = lround(fractionalPage)
+        self.pageControl.currentPage = page;
+    }
     
     //MARK: - Gestures
     
@@ -107,20 +123,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         textView.resignFirstResponder()
     }
-    
-    //MARK: - Gestures delegate
-    
-//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if otherGestureRecognizer.isKindOfClass(UIPanGestureRecognizer){
-//            return true
-//        }
-//        return false
-//    }
-    
-//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-    
     
     //MARK: - ImagePicker
     
