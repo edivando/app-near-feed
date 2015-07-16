@@ -22,7 +22,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         
         let location = UserLocation.location
-        //userLocation.title = "\(location.country.name) / \(location.city.name) / \(location.region.name)"
+        userLocation.title = "\(location.country.name) / \(location.city.name) / \(location.region.name)"
         userLocation.enabled = false
         textView.delegate = self
         textView.text = "Type your post here..."
@@ -81,6 +81,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     self.images.removeAtIndex(index)
                 }
                 self.refreshScrollView()
+                Message.info("Image removed", text: "")
             }
             var cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             alert.addAction(deleteAction)
@@ -177,16 +178,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func done(sender: AnyObject) {
-        Post().newPost(textView.text, images: images) { (error) -> () in
-            if error == nil{
-                println("ok")
+        
+        var rawString = textView.text
+        var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
+        var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
+        
+        if (count(trimmed) == 0 || textView.text == "Type your post here") && images.count == 0{
+            Message.info("Post empty", text: "Add an image or some text to your post")
+        }
+        else{
+            Post().newPost(textView.text, images: images) { (error) -> () in
+                if error == nil{
+                    println("ok")
+                    Message.success("Post sent", text: "")
+                    self.textView.text = "Type your post here..."
+                    self.textView.textColor = UIColor.lightGrayColor()
+                    self.images = [UIImage]()
+                    self.removeImagesFromScrollView()
+                    self.view.endEditing(true)
+                }
+                else{
+                    if error?.code == 01{
+                        Message.error("User not logged in", text: "Please, login before posting")
+                    }
+                }
             }
         }
-        textView.text = "Type your post here..."
-        textView.textColor = UIColor.lightGrayColor()
-        images = [UIImage]()
-        removeImagesFromScrollView()
-        self.view.endEditing(true)
     }
     
     @IBAction func cancel(sender: AnyObject) {
@@ -195,6 +212,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         images = [UIImage]()
         removeImagesFromScrollView()
         self.view.endEditing(true)
+        Message.info("Canceled", text: "")
     }
     
 }
