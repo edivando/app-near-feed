@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ImageFocusViewController: UIViewController, UIScrollViewDelegate {
+class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate {
     
     var imageToShow:UIImage!
+    var post:Post!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
@@ -72,6 +73,16 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate {
             scrollView.zoomScale = minZoom
             lastZoomScale = minZoom
         }
+    }
+    
+    //MARK: - Popover
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
     
     // UIScrollViewDelegate
