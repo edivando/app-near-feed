@@ -78,7 +78,12 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     //MARK: - Popover
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "PopoverComment"{
+            var popoverCommentViewController = segue.destinationViewController as! PopoverCommentViewController
+            popoverCommentViewController.modalPresentationStyle = .Popover
+            popoverCommentViewController.popoverPresentationController?.delegate = self
+            popoverCommentViewController.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width,300)
+        }
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
