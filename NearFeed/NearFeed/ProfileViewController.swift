@@ -12,9 +12,11 @@ import Parse
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
     
     // MARK: - Variaveis globais 
-    var currentObject : PFObject?
+    //var currentObject : PFObject?
+    var currentObject : PFUser?
     var imageFile: PFFile?
     let imagePicker = UIImagePickerController()
+    var email : String?
     
     // MARK: - Outlets
     @IBOutlet var nameLabel: UILabel!
@@ -37,6 +39,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func changePasswordButton(sender: AnyObject) {
+        
+        
+        
+        //if let object = currentObject {
+            
+            //nameLabel.text = object["name"] as? String
+            //nameTextField.text = object["name"] as! String
+            //emailTextField.text = object["email"] as! String
+            
+            //nameLabel.text = object["email"] as? String
+            
+            PFUser.requestPasswordResetForEmailInBackground(email!)
+            
+       // }
+        
+        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
+        alerta.show()
+        
     }
     
     @IBAction func savePerfilButton(sender: AnyObject) {
@@ -108,6 +128,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        // Get the new view controller using [segue destinationViewController].
+//        //var editView = segue.destinationViewController as! EditProfileViewController
+//        
+//        if segue.identifier == "toEditView" {
+//            var editView = segue.destinationViewController as! EditProfileViewController
+//            editView.currentObject = currentObject
+//        }
+//
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -119,6 +151,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if let object = currentObject {
             
+            email = object["email"] as? String
             nameLabel.text = object["name"] as? String
             //nameTextField.text = object["name"] as! String
             //emailTextField.text = object["email"] as! String
@@ -140,6 +173,29 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        if let object = currentObject {
+            
+            nameLabel.text = object["name"] as? String
+            email = object["email"] as? String
+            //nameTextField.text = object["name"] as! String
+            //emailTextField.text = object["email"] as! String
+            
+            if let thumbnail = object["image"] as? PFFile {
+                
+                //var userPhoto = PFObject(className: "postString")
+                
+                imageFile = thumbnail
+                
+                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                    if error == nil {
+                        self.imageImageView.image = UIImage(data: imageData!)
+                    }
+                })
+            }
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
@@ -153,7 +209,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    
+    
     /*
     // MARK: - Navigation
 
