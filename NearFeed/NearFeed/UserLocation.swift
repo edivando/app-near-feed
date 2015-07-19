@@ -7,88 +7,58 @@
 //
 
 import CoreLocation
+import Parse
 
-private let _UserLocation = UserLocation()
+//var userCountry = Country()
+//var userCity = City()
+//var userRegion = Region()
 
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
-    static var location : UserLocation {
-        return _UserLocation
-    }
-    
     let locationManager = CLLocationManager()
-    
-    var country = Country()
-    var city = City()
-    var region = Region()
-    
+
     private var locationStatus = true
     
+    private static var countryName = "Default_Country"
+    private static var cityName    = "Default_City"
+    private static var regionName  = "Default_Region"
     
-    private override init(){
+    static var country = Country()
+    static var city = City()
+    static var region = Region()
+    
+    override init(){
         super.init()
+        UserLocation.country.name = UserLocation.countryName
+        UserLocation.city.name = UserLocation.cityName
+        UserLocation.region.name = UserLocation.regionName
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
             startLocation(true)
         }
-        getDefualtLocation()
+        getGeocoder()
     }
     
-    func get() -> UserLocation{
+    func getGeocoder(){
         startLocation(true)
         if locationManager.location != nil{
             CLGeocoder().reverseGeocodeLocation(locationManager.location, completionHandler: {(placemarks, error) -> Void in
                 if error != nil {
                     println("Reverse geocoder failed with error" + error.localizedDescription)
                     return
-                }else if placemarks.count > 0 {
-                    if let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
-                        
-                        //Save country if not Existe in server
-                        if let ct = pm.country{
-                            self.country.name = ct
-                            self.country.findByName({ (countrys) -> () in
-                                if countrys.count == 0 {
-                                    self.country.saveInBackground()
-                                }else{
-                                    self.country = countrys[0]
-                                }
-                                
-                                //Save city if not existe in server
-                                if let ct = pm.locality{
-                                    self.city.name = pm.locality
-                                    self.city.country = self.country
-                                    self.city.findByName({ (citys) -> () in
-                                        if citys.count == 0 {
-                                            self.city.saveInBackground()
-                                        }else{
-                                            self.city = citys[0]
-                                        }
-                                        
-                                        //Save region if not existe in server
-                                        if let rg = pm.subLocality{
-                                            self.region.name = pm.subLocality
-                                            self.region.city = self.city
-                                            self.region.findByName({ (regions) -> () in
-                                                if regions.count == 0 {
-                                                    self.region.saveInBackground()
-                                                }else{
-                                                    self.region = regions[0]
-                                                }
-                                                }, error: { (erro) -> () in
-                                            })
-                                        }
-                                        
-                                        
-                                    }, error: { (erro) -> () in
-                                    })
-                                }
-                            }, error: { (erro) -> () in
-                            })
-                        }
+                }else if placemarks.count > 0, let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
+                    if let country = pm.country{
+                        UserLocation.countryName = country
                     }
+                    if let locality = pm.locality{
+                        UserLocation.cityName = pm.locality
+                    }
+                    if let sublocality = pm.subLocality{
+                        UserLocation.regionName = sublocality
+                    }
+                    self.updateCountryLocalityParse()
                 }
                 else {
                     println("Problem with the data received from geocoder")
@@ -96,33 +66,60 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 self.startLocation(false)
             })
         }
-        return self
     }
     
-    private func getDefualtLocation(){
-        country.name = "Brasil"
-        country.findByName({ (countrys) -> () in
-            if countrys.count > 0 {
-                self.country = countrys[0]
+    private func updateCountryLocalityParse(){
+        Country.findByName(UserLocation.countryName, success: { (countrys) -> () in
+            if let countrys = countrys{
+                if let firstCountry = countrys.first{
+                    UserLocation.country = firstCountry
+                    self.updateCityLocalityParse()
+                }else{
+                    self.saveCountry({ self.updateCityLocalityParse() })
+                }
+            }else{
+                self.saveCountry({ self.updateCityLocalityParse() })
             }
-        }, error: { (erro) -> () in
         })
-        
-        city.name = "Fortaleza"
-        city.findByName({ (citys) -> () in
-            if citys.count > 0{
-                self.city = citys[0]
+    }
+    
+    private func updateCityLocalityParse(){
+        City.findByName(UserLocation.cityName, success: { (citys) -> () in
+            if let citys = citys{
+                if let firstCity = citys.first{
+                    UserLocation.city = firstCity
+                    self.updateRegionLocalityParse()
+                }else{
+                    self.saveCity({ self.updateRegionLocalityParse() })
+                }
+            }else{
+                self.saveCity({ self.updateRegionLocalityParse() })
             }
-        }, error: { (erro) -> () in
         })
-        
-        region.name = "Benfica"
-        region.findByName({ (regions) -> () in
-            if regions.count > 0{
-                self.region = regions[0]
+    }
+    
+    private func updateRegionLocalityParse(){
+        Region.findByName(UserLocation.regionName, success: { (regions) -> () in
+            if let regions = regions{
+                if let firstRegion = regions.first{
+                    UserLocation.region = firstRegion
+                    self.updateUserLocalityParse()
+                }else{
+                    self.saveRegion({ self.updateUserLocalityParse() })
+                }
+            }else{
+                self.saveRegion({ self.updateUserLocalityParse() })
             }
-        }, error: { (erro) -> () in
         })
+    }
+    
+    private func updateUserLocalityParse(){
+        if let user = User.currentUser(){
+            user.country = UserLocation.country
+            user.city =  UserLocation.city
+            user.region = UserLocation.region
+            user.saveInBackground()
+        }
     }
     
     private func startLocation(status: Bool){
@@ -136,6 +133,30 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 locationManager.stopUpdatingLocation()
                 locationStatus = false
             }
+        }
+    }
+    
+//MARK: Save data in parse
+    private func saveCountry(funcBack: ()->()){
+        UserLocation.country.name = UserLocation.countryName
+        UserLocation.country.saveInBackgroundWithBlock { (success, error) -> Void in
+            funcBack()
+        }
+    }
+    
+    private func saveCity(funcBack: ()->()){
+        UserLocation.city.name = UserLocation.cityName
+        UserLocation.city.country = UserLocation.country
+        UserLocation.city.saveInBackgroundWithBlock { (success, error) -> Void in
+            funcBack()
+        }
+    }
+    
+    private func saveRegion(funcBack: ()->()){
+        UserLocation.region.name = UserLocation.regionName
+        UserLocation.region.city = UserLocation.city
+        UserLocation.region.saveInBackgroundWithBlock { (success, error) -> Void in
+            funcBack()
         }
     }
 

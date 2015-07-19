@@ -14,6 +14,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     
+    @IBOutlet var postLocality: UILabel!
     @IBOutlet var postText: UITextView!
     @IBOutlet var postImage: UIImageView!
     

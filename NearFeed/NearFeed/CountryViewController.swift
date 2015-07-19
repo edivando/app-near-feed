@@ -12,9 +12,12 @@ class CountryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserLocation.location.get()
+        UserLocation()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        println("\(UserLocation.country.name) / \(UserLocation.city.name) / \(UserLocation.region.name)")
     }
 
     override func didReceiveMemoryWarning() {

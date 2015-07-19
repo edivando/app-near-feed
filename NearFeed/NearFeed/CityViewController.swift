@@ -10,15 +10,44 @@ import UIKit
 
 class CityViewController: UITableViewController {
 
+    var posts = [Post]()
+    var pagePost = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
+            self.posts = posts
+            self.tableView.reloadData()
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //MARK: UITableViewDataSource
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
+        let post = posts[indexPath.row]
+        if let userName = post.user["name"] as? String{
+            cell.userName.text = userName
+        }
+        cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
+        
+        cell.textLabel?.text = "aa"
+        return cell
     }
     
 }

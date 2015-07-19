@@ -11,7 +11,6 @@ import UIKit
 class RegionViewController: UITableViewController {
 
     private var posts = [Post]()
-    private let location = UserLocation.location
     
     private var pagePost = 0
     
@@ -20,20 +19,24 @@ class RegionViewController: UITableViewController {
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        Post.findByRegion(location.region, page: pagePost, list: { (posts) -> () in
+        Post.findByRegion(UserLocation.region, page: pagePost, list: { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         })
+  
+        
+        
+       
         
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
         
-        if tableView.respondsToSelector("layoutMargins") {
-            tableView.estimatedRowHeight = 88
-            tableView.rowHeight = UITableViewAutomaticDimension
-        }
-        
+//        if tableView.respondsToSelector("layoutMargins") {
+//            tableView.estimatedRowHeight = 88
+//            tableView.rowHeight = UITableViewAutomaticDimension
+//        }
+//        
     }
     
     func refresh() {
@@ -62,6 +65,7 @@ class RegionViewController: UITableViewController {
         if let userName = post.user["name"] as? String{
             cell.userName.text = userName
         }
+        cell.postLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         return cell
     }
     

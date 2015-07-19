@@ -26,7 +26,7 @@ class Region: PFObject, PFSubclassing {
         return "Region"
     }
     
-    func findByName(success: (regions: [Region])->(), error: (erro: NSError?)->()){
+    static func findByName(name: String, success: (regions: [Region]?)->()){
         if let query = Region.query(){
             query.whereKey("name", equalTo: name)
             query.findObjectsInBackgroundWithBlock({ (objects, erro) -> Void in
@@ -35,7 +35,7 @@ class Region: PFObject, PFSubclassing {
                         success(regions: regions)
                     }
                 }else{
-                    error(erro: erro)
+                    success(regions: nil)
                 }
             })
         }

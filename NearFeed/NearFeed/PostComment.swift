@@ -27,7 +27,7 @@ class PostComment: PFObject, PFSubclassing {
         return "PostComment"
     }
     
-    
+
     func addComment(post: Post, message: String){
         self.message = message
         self.post = post

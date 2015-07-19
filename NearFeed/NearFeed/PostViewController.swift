@@ -28,8 +28,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         scrollView.delegate = self
         
-        let location = UserLocation.location
-        userLocation.title = "\(location.country.name) / \(location.city.name) / \(location.region.name)"
+        userLocation.title = "\(UserLocation.country.name) / \(UserLocation.city.name) / \(UserLocation.region.name)"
+
+
         userLocation.enabled = false
         textView.delegate = self
         textView.text = "Type your post here..."
