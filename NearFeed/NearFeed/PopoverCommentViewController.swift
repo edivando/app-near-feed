@@ -8,15 +8,19 @@
 
 import UIKit
 
-class PopoverCommentViewController: UIViewController, UITextFieldDelegate {
+class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+    
     @IBOutlet weak var textField: UITextField!
-
+    var post:Post!
+    @IBOutlet weak var tableView: UITableView!
+    
     //MARK: - Life cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textField.delegate = self
-
+        textField.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -28,6 +32,8 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate {
     //MARK: - TextField
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //Enviar comentário
+        
         textField.resignFirstResponder()
         return true
     }
@@ -50,9 +56,8 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate {
     func keyboardDidShow(notification: NSNotification){
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-
-            self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + keyboardSize.height, self.view.frame.width, self.view.frame.height)
             
+            self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + keyboardSize.height, self.view.frame.width, self.view.frame.height)
         }
     }
     
@@ -60,13 +65,29 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             
             self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y - keyboardSize.height, self.view.frame.width, self.view.frame.height)
-            
+        
         }
+    }
+    
+    //MARK: - TableView
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
     //MARK: - Actions
     
     @IBAction func send(sender: AnyObject) {
+        //Enviar comentário
     }
     
     @IBAction func done(sender: AnyObject) {
