@@ -52,7 +52,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textfieldIsNotEmpty(textField: UITextField) -> Bool{
-        if textField.text == ""{
+        var rawString = textField.text
+        var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
+        var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
+        
+        if count(trimmed) == 0{
             return false
         }
         else{
