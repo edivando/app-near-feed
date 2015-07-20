@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -863,11 +863,20 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dep-he-AQu">
-                                <rect key="frame" x="277.5" y="376" width="45.5" height="20.5"/>
+                                <rect key="frame" x="277" y="376" width="45.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-VP-bMf">
+                                <rect key="frame" x="273" y="414" width="53" height="30"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Tz0-fD-UYr" kind="showDetail" id="r8a-Lw-s7B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -877,9 +886,11 @@
                             <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="23" id="Uke-00-1Gu"/>
                             <constraint firstItem="kcw-9f-oMF" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="hoE-O2-V4x"/>
                             <constraint firstItem="Dep-he-AQu" firstAttribute="top" secondItem="zSV-Jr-ks1" secondAttribute="bottom" constant="41" id="iVR-7P-bRw"/>
+                            <constraint firstItem="zuP-VP-bMf" firstAttribute="top" secondItem="Dep-he-AQu" secondAttribute="bottom" constant="17.5" id="ih8-jd-bWt"/>
                             <constraint firstItem="qLg-nI-qeG" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="nS6-wS-YER"/>
                             <constraint firstItem="qLg-nI-qeG" firstAttribute="top" secondItem="kcw-9f-oMF" secondAttribute="bottom" constant="8" id="sFi-lp-tTQ"/>
                             <constraint firstAttribute="centerX" secondItem="zSV-Jr-ks1" secondAttribute="centerX" id="tLh-Np-PNy"/>
+                            <constraint firstAttribute="centerX" secondItem="zuP-VP-bMf" secondAttribute="centerX" id="u4K-il-SmS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -898,6 +909,7 @@
                     <connections>
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
                         <outlet property="nameLabel" destination="Dep-he-AQu" id="eEK-qK-SgB"/>
+                        <outlet property="signUpButton" destination="zuP-VP-bMf" id="2lc-Yf-Mlf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBc-J6-LYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1498,5 +1510,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="l0b-9c-w9F"/>
+        <segue reference="r8a-Lw-s7B"/>
     </inferredMetricsTieBreakers>
 </document>

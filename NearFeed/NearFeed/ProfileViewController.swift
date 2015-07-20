@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var imageImageView: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var signUpButton: UIButton!
     
     
     // MARK: - Buttons
@@ -149,8 +150,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         currentObject = PFUser.currentUser()
         
+        
+        
+        if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
+            println("nao anonimo")
         if let object = currentObject {
-            
+            signUpButton.hidden = true
             email = object["email"] as? String
             nameLabel.text = object["name"] as? String
             //nameTextField.text = object["name"] as! String
@@ -169,12 +174,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 })
             }
         }
+        } else {
+            signUpButton.hidden = false
+            println("anonimo")
+        }
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         
+        
+        if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
+            println("nao anonimo")
         if let object = currentObject {
             
             nameLabel.text = object["name"] as? String
@@ -194,6 +206,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     }
                 })
             }
+        }
+        } else {
+            signUpButton.hidden = false
+            println("anonimo")
         }
     }
     
