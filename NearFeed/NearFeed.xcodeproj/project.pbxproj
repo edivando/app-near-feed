@@ -343,6 +343,7 @@
 			children = (
 				721674FD1B5D3FF700AC5881 /* Extension.swift */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
+				51BDAD1F1B5D3B7300BFB6C3 /* KASlideShow */,
 				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
