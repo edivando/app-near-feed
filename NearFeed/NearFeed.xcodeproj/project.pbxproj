@@ -18,6 +18,8 @@
 		721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674EE1B5BE77500AC5881 /* PostViewCell.swift */; };
 		721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */; };
 		721674F91B5D1C2F00AC5881 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 721674F81B5D1C2F00AC5881 /* MBProgressHUD.m */; };
+		721674FC1B5D3DBC00AC5881 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674FB1B5D3DBC00AC5881 /* Scores.swift */; };
+		721674FE1B5D3FF700AC5881 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674FD1B5D3FF700AC5881 /* Extension.swift */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
 		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
@@ -101,6 +103,8 @@
 		721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
 		721674F71B5D1C2F00AC5881 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		721674F81B5D1C2F00AC5881 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		721674FB1B5D3DBC00AC5881 /* Scores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
+		721674FD1B5D3FF700AC5881 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -325,8 +329,9 @@
 		7241F6FE1B53E4F00033BB3C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
+				721674FD1B5D3FF700AC5881 /* Extension.swift */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
+				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
 			);
@@ -406,6 +411,7 @@
 				7241F7321B554F040033BB3C /* PostLike.swift */,
 				7241F7341B5554AE0033BB3C /* PostComment.swift */,
 				7241F7361B5555E10033BB3C /* PostReport.swift */,
+				721674FB1B5D3DBC00AC5881 /* Scores.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */,
 				51BDAD111B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
+				721674FC1B5D3DBC00AC5881 /* Scores.swift in Sources */,
 				724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
@@ -585,6 +592,7 @@
 				7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */,
 				7241F7161B53FDAF0033BB3C /* Message.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
+				721674FE1B5D3FF700AC5881 /* Extension.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
 				5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,

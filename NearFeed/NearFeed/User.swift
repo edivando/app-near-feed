@@ -23,8 +23,8 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     
     var imageProfile: UIImage?{
         get{
-            if let imgData = image.getData(){
-                return UIImage(data: imgData)
+            if let img = image.image{
+                return img
             }
             return UIImage(named: "user")
         }
@@ -40,4 +40,15 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
             self.registerSubclass()
         }
     }
+    
+    static func updateScores(scores: Int, callback: (success: Bool)->()){
+        if let user = User.currentUser(){
+            user.score = NSNumber(integer: user.score.integerValue + scores)
+            user.saveInBackgroundWithBlock({ (success, error) -> Void in
+                callback(success: success)
+            })
+        }
+    }
+    
+    
 }
