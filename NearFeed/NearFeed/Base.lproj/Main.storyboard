@@ -220,7 +220,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pageControl" destination="fq1-gs-wJR" id="KtI-gn-yH1"/>
-                        <outlet property="scrollView" destination="D42-Kh-sgr" id="vZb-e0-V5L"/>
+                        <outlet property="scrollView" destination="D42-Kh-sgr" id="0PF-Xb-j9y"/>
                         <outlet property="textView" destination="1LM-Xy-SPz" id="fRr-7P-XGH"/>
                         <outlet property="userLocation" destination="1hR-7I-fCF" id="oOI-vH-Uj5"/>
                     </connections>
