@@ -67,6 +67,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func refreshScrollView(){
         pageControl.numberOfPages = images.count
+        scrollView.contentMode = UIViewContentMode.ScaleAspectFill
         for index in 0..<images.count {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
@@ -75,7 +76,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             var subView = UIImageView(frame: frame)
             subView.image = images[index]
-            subView.contentMode = UIViewContentMode.ScaleAspectFit
+            subView.contentMode = UIViewContentMode.ScaleAspectFill
             var longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
             
 //            let horizontalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)

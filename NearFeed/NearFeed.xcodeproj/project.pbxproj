@@ -10,7 +10,8 @@
 		5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111933C1B57E6C80024828E /* ImageFocusViewController.swift */; };
 		51BDAD0D1B57F7A300BFB6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */; };
 		51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */; };
-		51BDAD111B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD101B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift */; };
+		51BDAD131B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */; };
+		51BDAD1E1B5D3B6F00BFB6C3 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD1D1B5D3B6F00BFB6C3 /* KASlideShow.m */; };
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
@@ -93,7 +94,9 @@
 		5111933C1B57E6C80024828E /* ImageFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFocusViewController.swift; sourceTree = "<group>"; };
 		51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCommentViewController.swift; sourceTree = "<group>"; };
-		51BDAD101B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
+		51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
+		51BDAD1C1B5D3B6F00BFB6C3 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KASlideShow.h; path = "../../../../../../../Downloads/KASlideShow-master/KASlideShow/KASlideShow.h"; sourceTree = "<group>"; };
+		51BDAD1D1B5D3B6F00BFB6C3 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KASlideShow.m; path = "../../../../../../../Downloads/KASlideShow-master/KASlideShow/KASlideShow.m"; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		721674EA1B5A750D00AC5881 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -213,6 +216,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		51BDAD1F1B5D3B7300BFB6C3 /* KASlideShow */ = {
+			isa = PBXGroup;
+			children = (
+				51BDAD1C1B5D3B6F00BFB6C3 /* KASlideShow.h */,
+				51BDAD1D1B5D3B6F00BFB6C3 /* KASlideShow.m */,
+			);
+			name = KASlideShow;
+			sourceTree = "<group>";
+		};
 		721674FA1B5D1C3200AC5881 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +337,7 @@
 		7241F6FE1B53E4F00033BB3C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				51BDAD1F1B5D3B7300BFB6C3 /* KASlideShow */,
 				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
@@ -361,6 +374,7 @@
 		7241F7231B5400910033BB3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
 				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
 				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
 				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
@@ -379,7 +393,6 @@
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
-				51BDAD101B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -553,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BDAD131B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */,
 				51BDAD0D1B57F7A300BFB6C3 /* EditProfileViewController.swift in Sources */,
 				7241F7371B5555E10033BB3C /* PostReport.swift in Sources */,
 				7241F72F1B544EF50033BB3C /* Region.swift in Sources */,
@@ -561,7 +575,6 @@
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
 				7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */,
 				724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */,
-				51BDAD111B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
@@ -579,6 +592,7 @@
 				51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
+				51BDAD1E1B5D3B6F00BFB6C3 /* KASlideShow.m in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
 				721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */,
 				7241F7311B5451B50033BB3C /* Post.swift in Sources */,
