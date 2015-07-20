@@ -35,7 +35,7 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-    
+//MARK: Post Region
     static func findByRegionNewPosts(region: Region, createdAt: NSDate, list: (posts: [Post])->()){
         if let query = Post.query(){
             query.whereKey("region", equalTo: region)
@@ -63,18 +63,11 @@ class Post: PFObject, PFSubclassing {
             })
         }
     }
-    
+
+//MARK: Post City
     static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
-        if let query = Post.query(){
-            query.skip = page * 5
-            query.limit = 5
-//            PFQuery.orQueryWithSubqueries(<#queries: [AnyObject]#>)
-//            
+        if let query = Post.postQuery(page){
             query.whereKey("city", equalTo: city)
-            query.includeKey("user")
-            query.includeKey("country")
-            query.includeKey("city")
-            query.includeKey("region")
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
@@ -84,11 +77,23 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
+    static func findByCity(city: City, createdAt: NSDate, list: (posts: [Post])->()){
+        if let query = Post.postQuery(){
+            query.whereKey("createdAt", greaterThan: createdAt)
+            query.whereKey("city", equalTo: city)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
+    
+//MARK: Post Country
     static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
-        if let query = Post.query(){
-            query.skip = page * 5
-            query.limit = 5
-            query.whereKey("city", equalTo: country)
+        if let query = Post.postQuery(page){
+            query.whereKey("country", equalTo: country)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
@@ -98,6 +103,7 @@ class Post: PFObject, PFSubclassing {
         }
     }
    
+//Mark: Post
     func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
         self.text = text
         self.clicked = 0
@@ -141,6 +147,27 @@ class Post: PFObject, PFSubclassing {
                 callback(success: success)
             }
         }
+    }
+    
+    private static func postQuery() -> PFQuery?{
+        if let query = Post.query(){
+            query.includeKey("user")
+            query.includeKey("country")
+            query.includeKey("city")
+            query.includeKey("region")
+            return query
+        }
+        return nil
+    }
+    
+    private static func postQuery(page: Int) -> PFQuery?{
+        let pageLenght = 5
+        if let query = Post.postQuery(){
+            query.skip = page * pageLenght
+            query.limit = pageLenght
+            return query
+        }
+        return nil
     }
 
 }

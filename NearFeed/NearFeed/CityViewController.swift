@@ -16,20 +16,30 @@ class CityViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         }
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        refresh()
+    }
+    
+    func refresh() {
+        if let createdAt = posts.first?.createdAt{
+            Post.findByCity(UserLocation.city, createdAt: createdAt) { (posts) -> () in
+                self.posts.splice(posts, atIndex: 0)
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
     //MARK: UITableViewDataSource
@@ -42,27 +52,6 @@ class CityViewController: UITableViewController {
         cell.post = posts[indexPath.row]
         cell.makePostCell()
         
-//        let post = posts[indexPath.row]
-//        if let userName = post.user["name"] as? String{
-//            cell.userName.text = userName
-//        }
-//        if let img = post.user.imageProfile{
-//            cell.userImage.image = img
-//        }
-//        
-//        cell.postTime.text = post.createdAt?.dateFormat()
-//        cell.postText.text = post.text
-//        //cell.slide.delegate = self
-//        cell.slide.delay = 1
-//        cell.slide.transitionDuration = 5
-//        cell.slide.transitionType = KASlideShowTransitionType.Slide
-//        cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
-//        cell.slide.addGesture(KASlideShowGestureType.Swipe)
-//        
-//        for imagePF in post.images{
-//            cell.slide.addImage(imagePF.image!)
-//        }
-//        cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         return cell
     }
     

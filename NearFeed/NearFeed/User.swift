@@ -23,10 +23,7 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     
     var imageProfile: UIImage?{
         get{
-            if let img = image.image{
-                return img
-            }
-            return UIImage(named: "user")
+            return image.image
         }
     }
     

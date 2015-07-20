@@ -18,15 +18,9 @@ class IndexViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let user = PFUser.currentUser(){
-            if user.isAuthenticated(){
-                NSLog("Opening app")
-                self.performSegueWithIdentifier("startFromIndex", sender: nil)
-            }
-            else{
-                NSLog("Opening login")
-                self.performSegueWithIdentifier("login", sender: nil)
-            }
+        if let user = PFUser.currentUser() where user.isAuthenticated(){
+            NSLog("Opening app")
+            self.performSegueWithIdentifier("startFromIndex", sender: nil)
         }
         else{
             NSLog("Opening login")

@@ -28,21 +28,20 @@ class PostViewCell: UITableViewCell {
         postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
         postCell.layer.borderWidth = 0.5
         postCell.layer.cornerRadius = 5
+        
+        userImage.layer.cornerRadius = 25
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func makePostCell(){
-        if let name = post.user["name"] as? String{
-            userName.text = name
-        }
+        userName.text = post.user.name
         if let img = post.user.imageProfile{
             userImage.image = img
         }
+        userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
@@ -57,7 +56,6 @@ class PostViewCell: UITableViewCell {
         for imagePF in post.images{
             slide.addImage(imagePF.image!)
         }
-        userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
     }
 
     @IBAction func postComment(sender: UIButton) {
