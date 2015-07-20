@@ -21,9 +21,6 @@ class Post: PFObject, PFSubclassing {
     
     @NSManaged var user: PFUser
     
-    let location = UserLocation.location
-
-    
     override class func initialize() {
         struct Static {
             static var onceToken : dispatch_once_t = 0;
@@ -68,9 +65,13 @@ class Post: PFObject, PFSubclassing {
     
     static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
         if let query = Post.query(){
-            query.skip = page * 5
-            query.limit = 5
-            query.whereKey("city", equalTo: city)
+//            query.skip = page * 5
+//            query.limit = 5
+//            query.whereKey("city", equalTo: "Fortaleza")
+            query.includeKey("user")
+            query.includeKey("country")
+            query.includeKey("city")
+            query.includeKey("region")
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
@@ -106,9 +107,10 @@ class Post: PFObject, PFSubclassing {
         }
         if let user = PFUser.currentUser() where user.isAuthenticated(){
             self.user = user
-            self.region = location.region
-            self.city = location.city
-            self.country = location.country
+            self.country = UserLocation.country
+            self.city = UserLocation.city
+            self.region = UserLocation.region
+            
             self.saveInBackgroundWithBlock { (success, erro) -> Void in
                 if erro == nil {
                     println("save post")

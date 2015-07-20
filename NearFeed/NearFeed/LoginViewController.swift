@@ -125,7 +125,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func later(sender: AnyObject){
-        self.performSegueWithIdentifier("startFromLogin", sender: nil)
+        PFAnonymousUtils.logInWithBlock { (user, error) -> Void in
+            if error == nil{
+                self.performSegueWithIdentifier("startFromLogin", sender: nil)
+            }else{
+                Message.error("Login", text: "Error")
+            }
+        }
+        
     }
     
     @IBAction func singup(sender: AnyObject){
