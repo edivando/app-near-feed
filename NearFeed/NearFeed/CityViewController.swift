@@ -47,6 +47,21 @@ class CityViewController: UITableViewController {
             cell.userImage.image = img
         }
         
+        //cell.slide.delegate = self
+        cell.slide.delay = 1
+        cell.slide.transitionDuration = 5
+        cell.slide.transitionType = KASlideShowTransitionType.Slide
+        cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
+        
+        for imagePF in post.images{
+            //array.append(imagePF.image)
+        }
+        
+        //cell.slide.images =
+        
+        //[_slideshow addImagesFromResources:@[@"test_1.jpeg",@"test_2.jpeg",@"test_3.jpeg", @"test_4.jpg", @"test_5.jpg"]]; // Add images from resources
+        //[_slideshow addGesture:KASlideShowGestureTap]; // Gesture to go previous/next directly on the image
+        
         cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         cell.textLabel?.text = "aa"
