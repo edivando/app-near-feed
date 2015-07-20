@@ -15,6 +15,7 @@
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
 		721674EB1B5A750D00AC5881 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674EA1B5A750D00AC5881 /* User.swift */; };
 		721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674EE1B5BE77500AC5881 /* PostViewCell.swift */; };
+		721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
 		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		721674EA1B5A750D00AC5881 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		721674EE1B5BE77500AC5881 /* PostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
+		721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +362,8 @@
 				724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */,
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
+				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
+				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -568,6 +572,7 @@
 				5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
 				721674EB1B5A750D00AC5881 /* User.swift in Sources */,
+				721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,

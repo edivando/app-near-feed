@@ -27,9 +27,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         pageControl.currentPage = 0
         
         scrollView.delegate = self
-        
-        userLocation.title = "\(UserLocation.country.name) / \(UserLocation.city.name) / \(UserLocation.region.name)"
-
 
         userLocation.enabled = false
         textView.delegate = self
@@ -40,6 +37,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.view.addGestureRecognizer(tapGesture)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        userLocation.title = "\(UserLocation.country.name) / \(UserLocation.city.name) / \(UserLocation.region.name)"
     }
     
     override func viewWillAppear(animated: Bool) {

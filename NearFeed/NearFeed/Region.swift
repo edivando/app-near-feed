@@ -26,16 +26,17 @@ class Region: PFObject, PFSubclassing {
         return "Region"
     }
     
-    static func findByName(name: String, success: (regions: [Region]?)->()){
+    static func findByName(name: String, success: (regions: Region?)->()){
         if let query = Region.query(){
             query.whereKey("name", equalTo: name)
-            query.findObjectsInBackgroundWithBlock({ (objects, erro) -> Void in
-                if erro == nil{
-                    if let regions = objects as? [Region]{
-                        success(regions: regions)
-                    }
-                }else{
+            query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
+                if error == nil {
+                    success(regions: (object as? Region)!)
+                } else {
                     success(regions: nil)
+                    if let code = error?.code{
+                        Message.error("Country", text: "\(code)")
+                    }
                 }
             })
         }

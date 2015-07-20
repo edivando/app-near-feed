@@ -17,14 +17,13 @@ class CityViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         }
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

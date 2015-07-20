@@ -67,8 +67,12 @@ class Post: PFObject, PFSubclassing {
         if let query = Post.query(){
 //            query.skip = page * 5
 //            query.limit = 5
-//            query.whereKey("city", equalTo: city)
-//            query.orderByDescending("createdAt")
+//            query.whereKey("city", equalTo: "Fortaleza")
+            query.includeKey("user")
+            query.includeKey("country")
+            query.includeKey("city")
+            query.includeKey("region")
+            query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
                     list(posts: posts)

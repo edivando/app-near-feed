@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -279,12 +279,12 @@
                     </view>
                     <connections>
                         <segue destination="ycz-8A-c50" kind="show" identifier="login" id="y1O-7i-eHs"/>
-                        <segue destination="JG0-fL-cDQ" kind="show" identifier="startFromIndex" id="ynV-gR-9md"/>
+                        <segue destination="bC8-cX-p46" kind="show" identifier="startFromIndex" id="l0b-9c-w9F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ork-Yy-uvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2354" y="695"/>
+            <point key="canvasLocation" x="-2894" y="891"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Ndn-tg-opW">
@@ -397,7 +397,7 @@
                         <outlet property="passwordTextfield" destination="et9-Aq-HJR" id="zss-TC-89u"/>
                         <outlet property="usernameTextfield" destination="d4V-bO-2GN" id="YPa-vp-CXo"/>
                         <segue destination="Tz0-fD-UYr" kind="presentation" identifier="singup" modalTransitionStyle="crossDissolve" id="cTa-Ri-l7b"/>
-                        <segue destination="JG0-fL-cDQ" kind="show" identifier="startFromLogin" id="L84-T4-LT8"/>
+                        <segue destination="bC8-cX-p46" kind="show" identifier="startFromLogin" id="T4T-El-DVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiF-2w-9hU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -731,6 +731,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sc-jD-7qb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2494" y="-984"/>
+        </scene>
+        <!--User Location View Controller-->
+        <scene sceneID="6y0-qc-Vph">
+            <objects>
+                <viewController id="bC8-cX-p46" customClass="UserLocationViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D99-S8-ppS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lqh-KQ-jMN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="toa-GR-zwt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="JG0-fL-cDQ" kind="show" identifier="segueTabBar" id="c31-kM-aEv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="inV-fb-8FT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2115" y="-42"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bKr-Yy-PCB">
@@ -1403,6 +1424,6 @@
         <image name="6_6" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L84-T4-LT8"/>
+        <segue reference="l0b-9c-w9F"/>
     </inferredMetricsTieBreakers>
 </document>

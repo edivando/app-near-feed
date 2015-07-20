@@ -19,25 +19,22 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
 
     private var locationStatus = true
     
-    private static var countryName = "Default_Country"
-    private static var cityName    = "Default_City"
-    private static var regionName  = "Default_Region"
+    static var countryName = "Default_Country"
+    static var cityName    = "Default_City"
+    static var regionName  = "Default_Region"
     
     static var country = Country()
     static var city = City()
     static var region = Region()
     
-    override init(){
+    var successCallback: ()->() = {}
+    
+    init(successCallback: ()->()){
         super.init()
+        self.successCallback = successCallback
         UserLocation.country.name = UserLocation.countryName
         UserLocation.city.name = UserLocation.cityName
         UserLocation.region.name = UserLocation.regionName
-        if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            startLocation(true)
-        }
         getGeocoder()
     }
     
@@ -69,47 +66,37 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
     }
     
     private func updateCountryLocalityParse(){
-        Country.findByName(UserLocation.countryName, success: { (countrys) -> () in
-            if let countrys = countrys{
-                if let firstCountry = countrys.first{
-                    UserLocation.country = firstCountry
-                    self.updateCityLocalityParse()
-                }else{
-                    self.saveCountry({ self.updateCityLocalityParse() })
-                }
+        Country.findByName(UserLocation.countryName, success: { (country) -> () in
+            if let country = country{
+                UserLocation.country = country
             }else{
-                self.saveCountry({ self.updateCityLocalityParse() })
+                UserLocation.country.name = UserLocation.countryName
             }
+            self.updateCityLocalityParse()
         })
     }
     
     private func updateCityLocalityParse(){
-        City.findByName(UserLocation.cityName, success: { (citys) -> () in
-            if let citys = citys{
-                if let firstCity = citys.first{
-                    UserLocation.city = firstCity
-                    self.updateRegionLocalityParse()
-                }else{
-                    self.saveCity({ self.updateRegionLocalityParse() })
-                }
+        City.findByName(UserLocation.cityName, success: { (city) -> () in
+            if let city = city{
+                UserLocation.city = city
             }else{
-                self.saveCity({ self.updateRegionLocalityParse() })
+                UserLocation.city.name = UserLocation.cityName
+                UserLocation.city.country = UserLocation.country
             }
+            self.updateRegionLocalityParse()
         })
     }
     
     private func updateRegionLocalityParse(){
-        Region.findByName(UserLocation.regionName, success: { (regions) -> () in
-            if let regions = regions{
-                if let firstRegion = regions.first{
-                    UserLocation.region = firstRegion
-                    self.updateUserLocalityParse()
-                }else{
-                    self.saveRegion({ self.updateUserLocalityParse() })
-                }
+        Region.findByName(UserLocation.regionName, success: { (region) -> () in
+            if let region = region{
+                UserLocation.region = region
             }else{
-                self.saveRegion({ self.updateUserLocalityParse() })
+                UserLocation.region.name = UserLocation.regionName
+                UserLocation.region.city = UserLocation.city
             }
+            self.updateUserLocalityParse()
         })
     }
     
@@ -119,7 +106,10 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             user.city =  UserLocation.city
             user.region = UserLocation.region
             user.saveInBackground()
+        }else{
+            UserLocation.region.saveInBackground()
         }
+        self.successCallback()
     }
     
     private func startLocation(status: Bool){
@@ -133,30 +123,6 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 locationManager.stopUpdatingLocation()
                 locationStatus = false
             }
-        }
-    }
-    
-//MARK: Save data in parse
-    private func saveCountry(funcBack: ()->()){
-        UserLocation.country.name = UserLocation.countryName
-        UserLocation.country.saveInBackgroundWithBlock { (success, error) -> Void in
-            funcBack()
-        }
-    }
-    
-    private func saveCity(funcBack: ()->()){
-        UserLocation.city.name = UserLocation.cityName
-        UserLocation.city.country = UserLocation.country
-        UserLocation.city.saveInBackgroundWithBlock { (success, error) -> Void in
-            funcBack()
-        }
-    }
-    
-    private func saveRegion(funcBack: ()->()){
-        UserLocation.region.name = UserLocation.regionName
-        UserLocation.region.city = UserLocation.city
-        UserLocation.region.saveInBackgroundWithBlock { (success, error) -> Void in
-            funcBack()
         }
     }
 
