@@ -116,7 +116,11 @@ class Post: PFObject, PFSubclassing {
             
             self.saveInBackgroundWithBlock { (success, erro) -> Void in
                 if erro == nil {
-//                    User.updateScores(<#scores: Int#>, callback: <#(success: Bool) -> ()##(success: Bool) -> ()#>)
+                    User.updateScores(.NewPost, callback: { (success) -> () in
+                        if success {
+                            println("Add user scores new post")
+                        }
+                    })
                     println("save post")
                     error(error: nil)
                 }else{
