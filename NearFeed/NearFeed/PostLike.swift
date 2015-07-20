@@ -46,6 +46,14 @@ class PostLike: PFObject, PFSubclassing {
         }
         self.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
+                //Update my scores
+                User.updateScores(Score.LikeSend, user: User.currentUser(), callback: { (success) -> () in
+                    
+                })
+                User.updateScores(Score.LikeReceive, user: post.user, callback: { (success) -> () in
+                    
+                })
+                
                 println("save post like")
             }else{
                 println("not save post like")
