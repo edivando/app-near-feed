@@ -65,9 +65,11 @@ class Post: PFObject, PFSubclassing {
     
     static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
         if let query = Post.query(){
-//            query.skip = page * 5
-//            query.limit = 5
-//            query.whereKey("city", equalTo: "Fortaleza")
+            query.skip = page * 5
+            query.limit = 5
+//            PFQuery.orQueryWithSubqueries(<#queries: [AnyObject]#>)
+//            
+            query.whereKey("city", equalTo: city)
             query.includeKey("user")
             query.includeKey("country")
             query.includeKey("city")
