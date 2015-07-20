@@ -10,22 +10,21 @@ import Foundation
 
 enum Score: NSNumber{
     
-    case Post = 5
-    case LikeReceive = 1
-    case DislikeReceive = -1
-    case CommentReceive = 2
-//    case LikeSend = 1
-//    case DislikeSend = 1
-//    case CommentSend = 1
+    case NewPost
+    case LikeReceive
+    case DislikeReceive
+    case CommentReceive
+    case LikeSend
+    case DislikeSend
+    case CommentSend
     
-
+    static let values = [5, 1, -1, 2, 1, 1, 1]
     
-    var value: NSNumber{
+    var value: Int{
         get{
-            return self.rawValue
+            return Score.values[self.rawValue.integerValue]
         }
     }
-    
-    
 }
+
 
