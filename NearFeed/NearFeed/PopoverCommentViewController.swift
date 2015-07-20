@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var textField: UITextField!
-    var post:Post!
     @IBOutlet weak var tableView: UITableView!
+    var post:Post!
+    var comments:[PostComment]!
     
     //MARK: - Life cicle
     
@@ -23,6 +25,13 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        PostComment.findCommentsByPost(post, list: { (comments) -> () in
+            self.comments = comments
+            self.tableView.reloadData()
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,8 +41,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     //MARK: - TextField
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        //Enviar comentário
-        
+        checkIfEmptyAndSend()
         textField.resignFirstResponder()
         return true
     }
@@ -72,12 +80,28 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     //MARK: - TableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        var comment = comments[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as! CommentPopoverTableViewCell
+
+        cell.commentDate.text = NSDateFormatter.localizedStringFromDate(comment.createdAt!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        cell.userComment.text = comment.message
+        
+        if let imageFromUser = comment.user["image"] as? PFFile {
+            imageFromUser.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    cell.userImage.image = UIImage(data: imageData!)
+                }
+            })
+        }
+        
+        cell.userName.text = comment.user["name"] as? String
+        
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return comments.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -87,11 +111,27 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     //MARK: - Actions
     
     @IBAction func send(sender: AnyObject) {
-        //Enviar comentário
+        checkIfEmptyAndSend()
     }
     
     @IBAction func done(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - Helper
+    
+    func checkIfEmptyAndSend(){
+        var rawString = textField.text
+        var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
+        var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
+        
+        if count(trimmed) == 0{
+            Message.info("Comment empty", text: "")
+        }
+        else{
+            var newComment = PostComment()
+            newComment.addComment(post, message: textField.text)
+        }
     }
     
     
