@@ -1417,10 +1417,10 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="YeC-Yf-WeH"/>
                                             <exclude reference="NAa-hj-Ypz"/>
-                                            <exclude reference="rRa-jM-aeD"/>
                                             <exclude reference="TiS-4n-exd"/>
+                                            <exclude reference="YeC-Yf-WeH"/>
+                                            <exclude reference="rRa-jM-aeD"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -1454,13 +1454,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="eYA-up-1Op">
+                            <rect key="frame" x="0.0" y="545" width="600" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="noY-ec-223">
+                                    <rect key="frame" x="290" y="40" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerY" secondItem="noY-ec-223" secondAttribute="centerY" id="Omv-Dl-U98"/>
+                                <constraint firstAttribute="centerX" secondItem="noY-ec-223" secondAttribute="centerX" id="yod-mu-uY7"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="459" id="xXD-x6-esx" customClass="PostViewCell" customModule="NearFeed" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xXD-x6-esx" id="lBB-kH-mKD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70s-x0-Dvn">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70s-x0-Dvn">
                                             <rect key="frame" x="0.0" y="2" width="600" height="457"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="AIj-YL-mrF">
@@ -1498,11 +1512,11 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDI-NZ-idZ" customClass="KASlideShow">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDI-NZ-idZ" customClass="KASlideShow">
                                                     <rect key="frame" x="8" y="123" width="584" height="290"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-YH-bAL">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-YH-bAL">
                                                     <rect key="frame" x="8" y="412" width="584" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKm-mv-ZyW">
@@ -1572,7 +1586,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="tDI-NZ-idZ" secondAttribute="bottom" constant="62" id="01Z-B7-5pT"/>
+                                                <constraint firstAttribute="bottom" secondItem="tDI-NZ-idZ" secondAttribute="bottom" constant="44" id="01Z-B7-5pT"/>
                                                 <constraint firstItem="10X-kv-TOQ" firstAttribute="top" secondItem="CPT-HO-BYH" secondAttribute="bottom" constant="1" id="0Jt-F5-K2D"/>
                                                 <constraint firstAttribute="width" constant="596" id="3bU-eD-Yfl"/>
                                                 <constraint firstItem="lRg-XA-RZ9" firstAttribute="leading" secondItem="AIj-YL-mrF" secondAttribute="trailing" constant="8" id="6nz-QM-RZj"/>
@@ -1603,7 +1617,7 @@
                                     <constraints>
                                         <constraint firstItem="70s-x0-Dvn" firstAttribute="top" secondItem="lBB-kH-mKD" secondAttribute="topMargin" constant="-6" id="2Oy-ii-p08"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="70s-x0-Dvn" secondAttribute="trailing" constant="-8" id="B7o-fZ-bqo"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-9" id="HlH-OZ-xyk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-8" id="HlH-OZ-xyk"/>
                                         <constraint firstItem="70s-x0-Dvn" firstAttribute="leading" secondItem="lBB-kH-mKD" secondAttribute="leadingMargin" constant="-8" id="cnV-JW-xE0"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-8" id="k6W-ev-Ttv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="70s-x0-Dvn" secondAttribute="trailing" constant="-6" id="qwD-RW-dg9"/>
@@ -1636,6 +1650,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="City" id="Psw-Qy-TwF"/>
+                    <connections>
+                        <outlet property="footerView" destination="eYA-up-1Op" id="QZG-ns-6Xa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-8b-hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

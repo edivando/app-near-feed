@@ -77,9 +77,9 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-    static func findByCity(city: City, createdAt: NSDate, list: (posts: [Post])->()){
+    static func findByCity(city: City, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
         if let query = Post.postQuery(){
-            query.whereKey("createdAt", greaterThan: createdAt)
+            query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
             query.whereKey("city", equalTo: city)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -89,6 +89,21 @@ class Post: PFObject, PFSubclassing {
             })
         }
     }
+    
+    static func findByCity(city: City, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
+        if let query = Post.postQuery(){
+            query.whereKey("createdAt", lessThan: lessThanCreatedAt)
+            query.whereKey("city", equalTo: city)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
+    
+    
     
 //MARK: Post Country
     static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
