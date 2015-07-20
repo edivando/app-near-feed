@@ -18,6 +18,7 @@ class PostViewCell: UITableViewCell {
     
     @IBOutlet var postText: UITextView!
     
+    @IBOutlet weak var slide: KASlideShow!
     
     override func awakeFromNib() {
         super.awakeFromNib()
