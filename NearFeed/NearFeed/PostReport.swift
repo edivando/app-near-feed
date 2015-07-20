@@ -28,13 +28,14 @@ class PostReport: PFObject, PFSubclassing {
     }
     
     
-    func addReport(post: Post, message: String){
-        self.message = message
-        self.post = post
+    static func addReport(post: Post, message: String){
+        let postReport = PostReport()
+        postReport.message = message
+        postReport.post = post
         if let user = PFUser.currentUser(){
-            self.user = user
+            postReport.user = user
         }
-        self.saveInBackgroundWithBlock { (success, error) -> Void in
+        postReport.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 println("save post report")
             }else{

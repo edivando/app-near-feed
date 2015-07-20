@@ -39,27 +39,30 @@ class CityViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-        let post = posts[indexPath.row]
-        if let userName = post.user["name"] as? String{
-            cell.userName.text = userName
-        }
-        if let img = post.user.imageProfile{
-            cell.userImage.image = img
-        }
+        cell.post = posts[indexPath.row]
+        cell.makePostCell()
         
-        //cell.slide.delegate = self
-        cell.slide.delay = 1
-        cell.slide.transitionDuration = 5
-        cell.slide.transitionType = KASlideShowTransitionType.Slide
-        cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
-        cell.slide.addGesture(KASlideShowGestureType.Swipe)
-        
-        for imagePF in post.images{
-            cell.slide.addImage(imagePF.image!)
-        }
-        cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
-        
-        //cell.textLabel?.text = "aa"
+//        let post = posts[indexPath.row]
+//        if let userName = post.user["name"] as? String{
+//            cell.userName.text = userName
+//        }
+//        if let img = post.user.imageProfile{
+//            cell.userImage.image = img
+//        }
+//        
+//        cell.postTime.text = post.createdAt?.dateFormat()
+//        cell.postText.text = post.text
+//        //cell.slide.delegate = self
+//        cell.slide.delay = 1
+//        cell.slide.transitionDuration = 5
+//        cell.slide.transitionType = KASlideShowTransitionType.Slide
+//        cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
+//        cell.slide.addGesture(KASlideShowGestureType.Swipe)
+//        
+//        for imagePF in post.images{
+//            cell.slide.addImage(imagePF.image!)
+//        }
+//        cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         return cell
     }
     
