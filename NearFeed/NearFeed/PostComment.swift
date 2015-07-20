@@ -38,9 +38,7 @@ class PostComment: PFObject, PFSubclassing {
             })
         }
     }
-    
-    
-    
+
     static func addComment(post: Post, message: String){
         let postComment = PostComment()
         postComment.message = message
@@ -66,4 +64,6 @@ class PostComment: PFObject, PFSubclassing {
             }
         }
     }
+    
+    
 }

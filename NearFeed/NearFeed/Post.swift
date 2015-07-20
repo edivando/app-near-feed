@@ -132,5 +132,15 @@ class Post: PFObject, PFSubclassing {
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
     }
+    
+    static func updateClicked(callback: (success: Bool)->()){
+        let post = Post()
+        post.clicked = post.clicked.integerValue + 1
+        post.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                callback(success: success)
+            }
+        }
+    }
 
 }

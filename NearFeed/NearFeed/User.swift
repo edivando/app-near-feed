@@ -43,7 +43,7 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     
     static func updateScores(score: Score, user: User?, callback: (success: Bool)->()){
         if let user = user{
-            user.score = NSNumber(integer: user.score.integerValue + score.value)
+            user.score = user.score.integerValue + score.value
             user.saveInBackgroundWithBlock({ (success, error) -> Void in
                 callback(success: success)
             })
