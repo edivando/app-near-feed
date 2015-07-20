@@ -54,7 +54,7 @@ class CityViewController: UITableViewController {
         cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
         
         for imagePF in post.images{
-            //array.append(imagePF.image)
+            //imagePF.im
         }
         
         //cell.slide.images =
