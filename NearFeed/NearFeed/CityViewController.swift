@@ -52,19 +52,14 @@ class CityViewController: UITableViewController {
         cell.slide.transitionDuration = 5
         cell.slide.transitionType = KASlideShowTransitionType.Slide
         cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
+        cell.slide.addGesture(KASlideShowGestureType.Swipe)
         
         for imagePF in post.images{
-            //imagePF.im
+            cell.slide.addImage(imagePF.image!)
         }
-        
-        //cell.slide.images =
-        
-        //[_slideshow addImagesFromResources:@[@"test_1.jpeg",@"test_2.jpeg",@"test_3.jpeg", @"test_4.jpg", @"test_5.jpg"]]; // Add images from resources
-        //[_slideshow addGesture:KASlideShowGestureTap]; // Gesture to go previous/next directly on the image
-        
         cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
-        cell.textLabel?.text = "aa"
+        //cell.textLabel?.text = "aa"
         return cell
     }
     
