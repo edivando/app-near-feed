@@ -4,6 +4,8 @@
 
 #import "TWMessageBarManager.h"
 
+#import "MBProgressHUD.h"
+
 //#import "UIScrollView+InfiniteScroll.h"
 
 

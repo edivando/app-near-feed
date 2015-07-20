@@ -7,6 +7,7 @@
 //
 
 import Parse
+import UIKit
 
 class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     
@@ -19,6 +20,15 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     @NSManaged var region: Region
     @NSManaged var city: City
     @NSManaged var country: Country
+    
+    var imageProfile: UIImage?{
+        get{
+            if let imgData = image.getData(){
+                return UIImage(data: imgData)
+            }
+            return UIImage(named: "user")
+        }
+    }
     
     
     override class func initialize() {

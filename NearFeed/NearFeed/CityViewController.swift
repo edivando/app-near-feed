@@ -43,6 +43,10 @@ class CityViewController: UITableViewController {
         if let userName = post.user["name"] as? String{
             cell.userName.text = userName
         }
+        if let img = post.user.imageProfile{
+            cell.userImage.image = img
+        }
+        
         cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         cell.textLabel?.text = "aa"
