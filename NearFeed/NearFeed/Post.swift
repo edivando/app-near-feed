@@ -21,6 +21,7 @@ class Post: PFObject, PFSubclassing {
     
     @NSManaged var user: User
     
+    
     override class func initialize() {
         struct Static {
             static var onceToken : dispatch_once_t = 0;
@@ -115,6 +116,7 @@ class Post: PFObject, PFSubclassing {
             
             self.saveInBackgroundWithBlock { (success, erro) -> Void in
                 if erro == nil {
+//                    User.updateScores(<#scores: Int#>, callback: <#(success: Bool) -> ()##(success: Bool) -> ()#>)
                     println("save post")
                     error(error: nil)
                 }else{
