@@ -11,7 +11,6 @@
 		51BDAD0D1B57F7A300BFB6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */; };
 		51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */; };
 		51BDAD131B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */; };
-		51BDAD1A1B5D39C900BFB6C3 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD191B5D39C900BFB6C3 /* KASlideShow.m */; };
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
@@ -94,8 +93,6 @@
 		51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCommentViewController.swift; sourceTree = "<group>"; };
 		51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
-		51BDAD181B5D39C900BFB6C3 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KASlideShow.h; path = "../../../../../../../Downloads/KASlideShow-master/KASlideShow/KASlideShow.h"; sourceTree = "<group>"; };
-		51BDAD191B5D39C900BFB6C3 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KASlideShow.m; path = "../../../../../../../Downloads/KASlideShow-master/KASlideShow/KASlideShow.m"; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		721674EA1B5A750D00AC5881 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -213,15 +210,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		51BDAD1B1B5D39CE00BFB6C3 /* KASlideShow */ = {
-			isa = PBXGroup;
-			children = (
-				51BDAD181B5D39C900BFB6C3 /* KASlideShow.h */,
-				51BDAD191B5D39C900BFB6C3 /* KASlideShow.m */,
-			);
-			name = KASlideShow;
-			sourceTree = "<group>";
-		};
 		723DB9201B4D91FB00A2CD80 = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +313,6 @@
 		7241F6FE1B53E4F00033BB3C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				51BDAD1B1B5D39CE00BFB6C3 /* KASlideShow */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
@@ -591,7 +578,6 @@
 				721674EB1B5A750D00AC5881 /* User.swift in Sources */,
 				721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
-				51BDAD1A1B5D39C900BFB6C3 /* KASlideShow.m in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
 			);
