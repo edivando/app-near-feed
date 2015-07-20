@@ -65,8 +65,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             subView.contentMode = UIViewContentMode.ScaleAspectFit
             var longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
             
-            //let horizontalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-            //view.addConstraint(horizontalConstraint)
+//            let horizontalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+//            let verticalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+//            subView.addConstraint(verticalConstraint)
+//            subView.addConstraint(horizontalConstraint)
             
             subView.addGestureRecognizer(longPressGesture)
             subView.userInteractionEnabled = true
@@ -134,12 +136,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         //Codigo teste para ImageFocusViewController
         
-        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-        testeViewController.imageToShow = image
-        picker.presentViewController(testeViewController, animated: true, completion: nil)
+//        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
+//        testeViewController.imageToShow = image
+//        picker.presentViewController(testeViewController, animated: true, completion: nil)
         
         images.append(image)
-        //picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
