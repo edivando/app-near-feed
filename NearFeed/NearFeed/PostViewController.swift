@@ -136,12 +136,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         //Codigo teste para ImageFocusViewController
         
-        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-        testeViewController.imageToShow = image
-        picker.presentViewController(testeViewController, animated: true, completion: nil)
+//        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
+//        testeViewController.imageToShow = image
+//        picker.presentViewController(testeViewController, animated: true, completion: nil)
         
         images.append(image)
-        //picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

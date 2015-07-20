@@ -366,6 +366,7 @@
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
+				51BDAD101B5BEBEF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
