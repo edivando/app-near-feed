@@ -21,6 +21,7 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var slide: KASlideShow!
     @IBOutlet var postTime: UILabel!
     
+    @IBOutlet var viewBarButton: UIView!
     var post = Post()
     
     override func awakeFromNib() {
@@ -30,6 +31,9 @@ class PostViewCell: UITableViewCell {
         postCell.layer.cornerRadius = 5
         
         userImage.layer.cornerRadius = 25
+        userImage.layer.masksToBounds = true
+        
+        viewBarButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
