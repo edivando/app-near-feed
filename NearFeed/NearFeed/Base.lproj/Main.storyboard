@@ -1342,31 +1342,29 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6_6" translatesAutoresizingMaskIntoConstraints="NO" id="MhN-hU-QDI">
-                                                    <rect key="frame" x="10" y="128" width="582" height="300"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="eFW-eH-MAA"/>
-                                                    </constraints>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDI-NZ-idZ" customClass="KASlideShow">
+                                                    <rect key="frame" x="10" y="134" width="582" height="293"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="tDI-NZ-idZ" secondAttribute="bottom" constant="8" id="01Z-B7-5pT"/>
                                                 <constraint firstItem="10X-kv-TOQ" firstAttribute="top" secondItem="CPT-HO-BYH" secondAttribute="bottom" constant="1" id="0Jt-F5-K2D"/>
                                                 <constraint firstAttribute="width" constant="596" id="3bU-eD-Yfl"/>
                                                 <constraint firstItem="lRg-XA-RZ9" firstAttribute="leading" secondItem="AIj-YL-mrF" secondAttribute="trailing" constant="8" id="6nz-QM-RZj"/>
-                                                <constraint firstItem="MhN-hU-QDI" firstAttribute="top" secondItem="10X-kv-TOQ" secondAttribute="bottom" constant="8" id="7Wi-b8-u4W"/>
+                                                <constraint firstAttribute="trailing" secondItem="tDI-NZ-idZ" secondAttribute="trailing" constant="8" id="7bF-Xz-VxI"/>
+                                                <constraint firstItem="tDI-NZ-idZ" firstAttribute="leading" secondItem="70s-x0-Dvn" secondAttribute="leading" constant="10" id="Cfn-4q-Ng1"/>
                                                 <constraint firstAttribute="trailing" secondItem="CPT-HO-BYH" secondAttribute="trailing" constant="8" id="Dxg-O7-XKW"/>
-                                                <constraint firstAttribute="bottom" secondItem="MhN-hU-QDI" secondAttribute="bottom" constant="7" id="Kl9-qm-Ujz"/>
                                                 <constraint firstItem="CPT-HO-BYH" firstAttribute="leading" secondItem="AIj-YL-mrF" secondAttribute="trailing" constant="8" id="NJr-ac-qL8"/>
                                                 <constraint firstAttribute="trailing" secondItem="10X-kv-TOQ" secondAttribute="trailing" constant="8" id="Q81-BQ-cY6"/>
                                                 <constraint firstItem="CPT-HO-BYH" firstAttribute="top" secondItem="lRg-XA-RZ9" secondAttribute="bottom" constant="3" id="TUS-fZ-MGe"/>
                                                 <constraint firstItem="AIj-YL-mrF" firstAttribute="top" secondItem="70s-x0-Dvn" secondAttribute="top" constant="10" id="Wbr-ZD-ruj"/>
                                                 <constraint firstAttribute="trailing" secondItem="lRg-XA-RZ9" secondAttribute="trailing" constant="8" id="YjO-eR-NYx"/>
-                                                <constraint firstAttribute="trailing" secondItem="MhN-hU-QDI" secondAttribute="trailing" constant="8" id="f9O-JZ-2c3"/>
+                                                <constraint firstItem="tDI-NZ-idZ" firstAttribute="top" secondItem="10X-kv-TOQ" secondAttribute="bottom" constant="14" id="m0x-R2-bUZ"/>
                                                 <constraint firstItem="AIj-YL-mrF" firstAttribute="leading" secondItem="70s-x0-Dvn" secondAttribute="leading" constant="10" id="nCW-88-0dj"/>
                                                 <constraint firstItem="lRg-XA-RZ9" firstAttribute="top" secondItem="70s-x0-Dvn" secondAttribute="top" constant="15" id="uhz-wR-IgM"/>
                                                 <constraint firstItem="10X-kv-TOQ" firstAttribute="leading" secondItem="70s-x0-Dvn" secondAttribute="leading" constant="10" id="wSc-Cj-NSY"/>
-                                                <constraint firstItem="MhN-hU-QDI" firstAttribute="leading" secondItem="70s-x0-Dvn" secondAttribute="leading" constant="10" id="ydB-Xm-dux"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1398,6 +1396,7 @@
                                 <connections>
                                     <outlet property="postCell" destination="70s-x0-Dvn" id="8s4-rr-STg"/>
                                     <outlet property="postText" destination="10X-kv-TOQ" id="6Ix-lY-jJR"/>
+                                    <outlet property="slide" destination="tDI-NZ-idZ" id="FBD-5l-j3J"/>
                                     <outlet property="userImage" destination="AIj-YL-mrF" id="lT1-GM-wpE"/>
                                     <outlet property="userLocality" destination="CPT-HO-BYH" id="IZF-7X-B7M"/>
                                     <outlet property="userName" destination="lRg-XA-RZ9" id="ZjD-uD-3tI"/>
@@ -1512,7 +1511,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6_6" width="200" height="200"/>
         <image name="user" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
