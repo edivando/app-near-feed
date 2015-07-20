@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, MBProgressHUDDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
 
     @IBOutlet weak var userLocation: UIBarButtonItem!
@@ -18,6 +18,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var images = [UIImage]()
     var frame: CGRect = CGRectMake(0, 0, 0, 0)
     let picker = UIImagePickerController()
+    
+    private var progress = MBProgressHUD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap"))
         self.view.addGestureRecognizer(tapGesture)
         
-        // Do any additional setup after loading the view.
+        configProgress()
+    }
+    
+    func configProgress(){
+        progress = MBProgressHUD(view: view)
+        view.addSubview(progress)
+        progress.labelText = "Saving..."
+        progress.dimBackground = true
+        progress.delegate = self
+//        progress.color = yuriColor_05
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -203,6 +214,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             Message.info("Post empty", text: "Add an image or some text to your post")
         }
         else{
+            view.endEditing(true)
+            navigationItem.leftBarButtonItem?.enabled = false
+            navigationItem.rightBarButtonItem?.enabled = false
+            progress.show(true)
             Post().newPost(textView.text, images: images) { (error) -> () in
                 if error == nil{
                     println("ok")
@@ -211,7 +226,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     self.textView.textColor = UIColor.lightGrayColor()
                     self.images = [UIImage]()
                     self.removeImagesFromScrollView()
-                    self.view.endEditing(true)
+                    self.refreshScrollView()
+                    self.progress.hide(true)
+                    self.navigationItem.leftBarButtonItem?.enabled = true
+                    self.navigationItem.rightBarButtonItem?.enabled = true
                 }
                 else{
                     if error?.code == 01{

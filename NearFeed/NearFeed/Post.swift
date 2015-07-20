@@ -19,7 +19,7 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var city: City
     @NSManaged var country: Country
     
-    @NSManaged var user: PFUser
+    @NSManaged var user: User
     
     override class func initialize() {
         struct Static {
@@ -105,7 +105,7 @@ class Post: PFObject, PFSubclassing {
                 self.images.append(PFFile(data: UIImagePNGRepresentation(img)))
             }
         }
-        if let user = PFUser.currentUser() where user.isAuthenticated(){
+        if let user = User.currentUser() where user.isAuthenticated(){
             self.user = user
             self.country = UserLocation.country
             self.city = UserLocation.city

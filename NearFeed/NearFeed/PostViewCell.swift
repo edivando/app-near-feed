@@ -16,6 +16,9 @@ class PostViewCell: UITableViewCell {
     @IBOutlet var userName: UILabel!
     @IBOutlet var userLocality: UILabel!
     
+    @IBOutlet var postText: UITextView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
