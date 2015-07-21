@@ -73,9 +73,9 @@ class CityViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-        if cell.isEqual(nil){
-            cell = PostViewCell()
-        }
+//        if cell.isEqual(nil){
+//            cell = PostViewCell()
+//        }
         cell.post = posts[indexPath.row]
         cell.makePostCell()
         cell.contentView.userInteractionEnabled = true
@@ -83,7 +83,10 @@ class CityViewController: UITableViewController {
         //cell.postImagesScroll.tag = indexPath.row
         
         cell.postImagesScroll.userInteractionEnabled = true
-        cell.postImagesScroll.delegate = self
+        cell.postImagesScroll.delegate = cell
+        
+        cell.pageControl.numberOfPages = cell.post.images.count
+        
         cell.removeImagesFromScrollView()
         
         for (index,image) in enumerate(cell.post.images) {

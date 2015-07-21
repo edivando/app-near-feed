@@ -18,6 +18,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet var postText: UITextView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var postImagesScroll: UIScrollView!
     @IBOutlet var postTime: UILabel!
     
@@ -65,6 +66,10 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         println("DidScroll")
+        var pageWidth = postImagesScroll.frame.size.width
+        var fractionalPage = Double(postImagesScroll.contentOffset.x / pageWidth)
+        var page = lround(fractionalPage)
+        self.pageControl.currentPage = page;
     }
     
     func handleTap(recognizer: UITapGestureRecognizer){
@@ -99,8 +104,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
                 self.userImage.image = img
             }
         })
+        //pageControl.currentPage = post.images.count
         
-        postImagesScroll.delegate = self
+        //postImagesScroll.delegate = self
 
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
