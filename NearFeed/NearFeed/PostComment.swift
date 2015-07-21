@@ -12,7 +12,7 @@ class PostComment: PFObject, PFSubclassing {
     
     @NSManaged var message: String
     @NSManaged var post: Post
-    @NSManaged var user: PFUser
+    @NSManaged var user: User
     
     override class func initialize() {
         struct Static {

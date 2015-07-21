@@ -86,7 +86,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         
         cell.userComment.text = comment.message
         
-        post.user.image.image({ (image) -> () in
+        comment.user.image.image({ (image) -> () in
             if let img = image{
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! CommentPopoverTableViewCell

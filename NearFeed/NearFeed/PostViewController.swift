@@ -200,7 +200,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
         var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
         
-        if (count(trimmed) == 0 || textView.text == "Type your post here") && images.count == 0{
+        if (count(trimmed) == 0 || textView.text == "Type your post here...") && images.count == 0{
             Message.info("Post empty", text: "Add an image or some text to your post")
         }
         else{
