@@ -148,9 +148,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var star : RatingView = RatingView(frame: CGRectMake(0, 0, 100, 100), selectedImageName: "user", unSelectedImage: "user", minValue: 0, maxValue: 1000, intervalValue: 50.0, stepByStep: false)
         
-        star.value = 222.0
         
         imagePicker.delegate = self
         

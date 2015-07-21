@@ -8,7 +8,6 @@
 
 #import "KASlideShow.h"
 
-#import "RatingView.h"
 
 //#import "UIScrollView+InfiniteScroll.h"
 
