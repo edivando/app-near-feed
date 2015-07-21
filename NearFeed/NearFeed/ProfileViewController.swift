@@ -26,7 +26,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var signUpButton: UIButton!
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var pontuacaoLabel: UILabel!
+    @IBOutlet var starRatingImageView: UIImageView!
     
+    @IBOutlet var floatRatingView: FloatRatingView!
     
     // MARK: - Buttons
     @IBAction func photoLibraryButton(sender: AnyObject) {
@@ -146,7 +148,21 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         imagePicker.delegate = self
+        
+        self.floatRatingView.emptyImage = UIImage(named: "StarEmpty")
+        self.floatRatingView.fullImage = UIImage(named: "StarFull")
+        // Optional params
+        self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
+        self.floatRatingView.maxRating = 5
+        self.floatRatingView.minRating = 1
+        self.floatRatingView.rating = 2.5
+        self.floatRatingView.editable = false
+        self.floatRatingView.halfRatings = true
+        self.floatRatingView.floatRatings = false
+        
         //nameTextField.delegate = self
         //emailTextField.delegate = self
         
@@ -167,15 +183,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             println("nao anonimo")
             
             
+//            currentObject!["score"] = 222
+//            currentObject!.ACL = PFACL(user: PFUser.currentUser()!)
+//            currentObject!.save()
+
+            
             
             if let object = currentObject {
                 editButton.enabled = true
                 signUpButton.hidden = true
                 email = object["email"] as? String
                 nameLabel.text = object["name"] as? String
+                
                 let number = object["score"] as? NSNumber
-                pontuacaoLabel.text = String(stringInterpolationSegment: number)
-                //nameTextField.text = object["name"] as! String
+                
+                if let num = number {
+                    pontuacaoLabel.text = String(stringInterpolationSegment: number!)
+                } else {
+                    pontuacaoLabel.text = String(0)
+                }
+                    //nameTextField.text = object["name"] as! String
                 //emailTextField.text = object["email"] as! String
                 
                 if let thumbnail = object["image"] as? PFFile {

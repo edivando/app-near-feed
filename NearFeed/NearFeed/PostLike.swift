@@ -27,6 +27,8 @@ class PostLike: PFObject, PFSubclassing {
         return "PostLike"
     }
     
+    
+    
 //    func findAll(){
 //        if let query = PostLike.query(){
 //            if let posts = query.findObjects() as? [PostLike]{

@@ -843,12 +843,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estrelas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLg-nI-qeG">
-                                <rect key="frame" x="16" y="94" width="61" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Jr-ks1">
                                 <rect key="frame" x="220" y="94" width="160" height="160"/>
                                 <constraints>
@@ -871,36 +865,64 @@
                                     <segue destination="Tz0-fD-UYr" kind="showDetail" id="r8a-Lw-s7B"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcw-9f-oMF">
-                                <rect key="frame" x="16" y="122" width="61" height="30.5"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fg4-vX-B2e" customClass="FloatRatingView" customModule="NearFeed" customModuleProvider="target">
+                                <rect key="frame" x="16" y="94" width="85" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="cFu-y6-PSn"/>
+                                    <constraint firstAttribute="width" constant="85" id="iGY-Rb-lrZ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="iGY-Rb-lrZ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcw-9f-oMF">
+                                <rect key="frame" x="16" y="148" width="61" height="30.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="S63-zs-LtV"/>
                                     <constraint firstAttribute="height" constant="30.5" id="XEK-pz-Qud"/>
                                     <constraint firstAttribute="width" constant="61" id="wGD-lm-bqm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XEK-pz-Qud"/>
+                                        <exclude reference="wGD-lm-bqm"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="56" id="06y-4K-ISw"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="16m-17-8Jc"/>
+                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="fg4-vX-B2e" secondAttribute="bottom" constant="20" id="6Pl-gI-GNR"/>
                             <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="6ip-F7-zbc"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="84D-SW-Ofg"/>
                             <constraint firstAttribute="centerX" secondItem="Dep-he-AQu" secondAttribute="centerX" id="GYn-Z4-RTA"/>
-                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="qLg-nI-qeG" secondAttribute="bottom" constant="7.5" id="KVb-8Q-5kY"/>
+                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="fg4-vX-B2e" secondAttribute="bottom" constant="50" id="JKP-xS-MNY"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="O6K-5u-u2m"/>
                             <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="80" id="Uke-00-1Gu"/>
-                            <constraint firstItem="qLg-nI-qeG" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="XuK-E3-6ye"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="bdF-go-Hav"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" constant="26" id="fes-FT-vH9"/>
                             <constraint firstItem="kcw-9f-oMF" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="hoE-O2-V4x"/>
                             <constraint firstItem="Dep-he-AQu" firstAttribute="top" secondItem="zSV-Jr-ks1" secondAttribute="bottom" constant="41" id="iVR-7P-bRw"/>
                             <constraint firstItem="zuP-VP-bMf" firstAttribute="top" secondItem="Dep-he-AQu" secondAttribute="bottom" constant="17.5" id="ih8-jd-bWt"/>
-                            <constraint firstItem="qLg-nI-qeG" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="nS6-wS-YER"/>
-                            <constraint firstItem="qLg-nI-qeG" firstAttribute="top" secondItem="kcw-9f-oMF" secondAttribute="bottom" constant="8" id="sFi-lp-tTQ"/>
                             <constraint firstAttribute="centerX" secondItem="zSV-Jr-ks1" secondAttribute="centerX" id="tLh-Np-PNy"/>
                             <constraint firstAttribute="centerX" secondItem="zuP-VP-bMf" secondAttribute="centerX" id="u4K-il-SmS"/>
+                            <constraint firstItem="fg4-vX-B2e" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="xvt-zP-toQ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="sFi-lp-tTQ"/>
+                                <exclude reference="84D-SW-Ofg"/>
+                                <exclude reference="O6K-5u-u2m"/>
+                                <exclude reference="bdF-go-Hav"/>
+                                <exclude reference="fes-FT-vH9"/>
+                                <exclude reference="6Pl-gI-GNR"/>
                                 <exclude reference="Uke-00-1Gu"/>
                                 <exclude reference="06y-4K-ISw"/>
                             </mask>
@@ -916,6 +938,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="BsX-7y-0xR" id="Oit-zh-TXy"/>
+                        <outlet property="floatRatingView" destination="fg4-vX-B2e" id="I7Q-e6-PQH"/>
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
                         <outlet property="nameLabel" destination="Dep-he-AQu" id="eEK-qK-SgB"/>
                         <outlet property="pontuacaoLabel" destination="kcw-9f-oMF" id="APs-7d-qKr"/>

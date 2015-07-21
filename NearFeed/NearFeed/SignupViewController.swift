@@ -95,6 +95,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 user.email = emailTextfield.text
                 user.password = passwordTextfield.text
                 user["name"] = nameTextfield.text
+                user["score"] = 0
                 user.signUpInBackgroundWithBlock { (succeded, error) -> Void in
                     if succeded{
                         //Registered and logged in

@@ -15,6 +15,7 @@
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
+		6DEAA2021B5E889000A657C6 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */; };
 		721674EB1B5A750D00AC5881 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674EA1B5A750D00AC5881 /* User.swift */; };
 		721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674EE1B5BE77500AC5881 /* PostViewCell.swift */; };
 		721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */; };
@@ -78,6 +79,7 @@
 		7241F7371B5555E10033BB3C /* PostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7361B5555E10033BB3C /* PostReport.swift */; };
 		724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */; };
 		724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */; };
+		7265B7F21B5E7F29008CF73D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F11B5E7F29008CF73D /* User.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,7 @@
 		51BDAD211B5D42FE00BFB6C3 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		721674EA1B5A750D00AC5881 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		721674EE1B5BE77500AC5881 /* PostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
 		721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 		7241F7361B5555E10033BB3C /* PostReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReport.swift; sourceTree = "<group>"; };
 		724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
 		724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+NetworkIndicator.swift"; sourceTree = "<group>"; };
+		7265B7F11B5E7F29008CF73D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -398,6 +402,7 @@
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
+				6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -415,7 +420,7 @@
 		7241F7251B5400D20033BB3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				721674EA1B5A750D00AC5881 /* User.swift */,
+				7265B7F11B5E7F29008CF73D /* User.swift */,
 				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
 				7241F72A1B5440210033BB3C /* Country.swift */,
 				7241F72C1B544B5F0033BB3C /* City.swift */,
@@ -604,15 +609,16 @@
 				721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */,
 				7241F7311B5451B50033BB3C /* Post.swift in Sources */,
 				7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */,
+				7265B7F21B5E7F29008CF73D /* User.swift in Sources */,
 				7241F7161B53FDAF0033BB3C /* Message.swift in Sources */,
 				723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */,
 				721674FE1B5D3FF700AC5881 /* Extension.swift in Sources */,
 				7241F6D91B53E15F0033BB3C /* CityViewController.swift in Sources */,
 				5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */,
 				7241F6FC1B53E4EB0033BB3C /* TextFieldsEffects.swift in Sources */,
-				721674EB1B5A750D00AC5881 /* User.swift in Sources */,
 				721674F91B5D1C2F00AC5881 /* MBProgressHUD.m in Sources */,
 				721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */,
+				6DEAA2021B5E889000A657C6 /* FloatRatingView.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
