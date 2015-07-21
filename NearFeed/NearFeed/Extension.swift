@@ -19,15 +19,6 @@ extension PFFile{
             callback(image: nil)
         }
     }
-    
-//    var image: UIImage?{
-//        get{
-//            if let data = getData(){
-//                return UIImage(data: data)
-//            }
-//            return nil
-//        }
-//    }
 }
 
 extension NSDate {
