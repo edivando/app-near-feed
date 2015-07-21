@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewCell: UITableViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class PostViewCell: UITableViewCell, UIScrollViewDelegate {
 
     @IBOutlet var postCell: UIView!
     
@@ -54,8 +54,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate, UIGestureRecognizerDe
         btPostDislike.layer.borderColor = UIColor.whiteColor().CGColor
         btPostDislike.layer.borderWidth = 1
         btPostDislike.layer.cornerRadius = 5
-        
-        //self.setNeedsLayout()
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -79,14 +78,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate, UIGestureRecognizerDe
         for view in postImagesScroll.subviews{
             if let imageView = view as? UIImageView{
                 var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
-                tapGesture.delegate = self
                 imageView.addGestureRecognizer(tapGesture)
             }
         }
-    }
-    
-    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
     
     func removeImagesFromScrollView(){
@@ -106,7 +100,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate, UIGestureRecognizerDe
             }
         })
         
-        //postImagesScroll.delegate = self
+        postImagesScroll.delegate = self
 
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
