@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewCell: UITableViewCell, UIScrollViewDelegate {
+class PostViewCell: UITableViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet var postCell: UIView!
     
@@ -55,6 +55,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         btPostDislike.layer.borderWidth = 1
         btPostDislike.layer.cornerRadius = 5
         
+        //self.setNeedsLayout()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -64,38 +65,35 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     //MARK: - ScrollView
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-    }
-    
-    func refreshScrollView(){
-        //pageControl.numberOfPages = post.images.count
-        for index in 0..<post.images.count {
-            
-            imageFrame.origin.x = self.postImagesScroll.frame.size.width * CGFloat(index)
-            imageFrame.size = self.postImagesScroll.frame.size
-            self.postImagesScroll.pagingEnabled = true
-            
-            var subView = UIImageView(frame: frame)
-
-            post.images[index].image({ (image) -> () in
-                subView.image = image
-            })
-            
-            var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
-            
-            subView.addGestureRecognizer(tapGesture)
-            subView.userInteractionEnabled = true
-            
-            self.postImagesScroll.addSubview(subView)
-        }
-        postImagesScroll.contentInset = UIEdgeInsetsZero
-        self.postImagesScroll.contentSize = CGSizeMake(self.postImagesScroll.frame.size.width * CGFloat(post.images.count), postImagesScroll.frame.size.height)
+        println("DidScroll")
     }
     
     func handleTap(recognizer: UITapGestureRecognizer){
         let imageView = recognizer.view as! UIImageView
         if let image = imageView.image{
             openFocusImage(image: image)
+        }
+    }
+    
+    func addGesturesToSubviews(){
+        for view in postImagesScroll.subviews{
+            if let imageView = view as? UIImageView{
+                var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+                tapGesture.delegate = self
+                imageView.addGestureRecognizer(tapGesture)
+            }
+        }
+    }
+    
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func removeImagesFromScrollView(){
+        for subview in postImagesScroll.subviews{
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                subview.removeFromSuperview()
+            })
         }
     }
     
@@ -107,6 +105,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
                 self.userImage.image = img
             }
         })
+        
+        //postImagesScroll.delegate = self
+
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         postTime.text = post.createdAt?.dateFormat()
@@ -114,8 +115,6 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         btPostComment.titleLabel?.text = " \(post.comments.count)"
         btPostLike.titleLabel?.text = " \(post.likes.count)"
-        
-        refreshScrollView()
         
         println("Likes: \(post.likes.count)")
         println("Reports: \(post.reports.count)")
