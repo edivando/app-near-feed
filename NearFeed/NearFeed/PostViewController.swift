@@ -47,7 +47,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         progress.labelText = "Saving..."
         progress.dimBackground = true
         progress.delegate = self
-//        progress.color = yuriColor_05
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,29 +66,26 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func refreshScrollView(){
         pageControl.numberOfPages = images.count
-        scrollView.contentMode = UIViewContentMode.ScaleAspectFill
         for index in 0..<images.count {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
             frame.size = self.scrollView.frame.size
             self.scrollView.pagingEnabled = true
-            
+    
             var subView = UIImageView(frame: frame)
             subView.image = images[index]
-            subView.contentMode = UIViewContentMode.ScaleAspectFill
+    
+            //subView.contentMode = UIViewContentMode.ScaleAspectFit
             var longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
-            
-//            let horizontalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//            let verticalConstraint = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
-//            subView.addConstraint(verticalConstraint)
-//            subView.addConstraint(horizontalConstraint)
             
             subView.addGestureRecognizer(longPressGesture)
             subView.userInteractionEnabled = true
+            
+            
             self.scrollView.addSubview(subView)
         }
-        
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * CGFloat(images.count), self.scrollView.frame.size.height)
+        scrollView.contentInset = UIEdgeInsetsZero
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * CGFloat(images.count), scrollView.frame.size.height)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

@@ -12,23 +12,57 @@ class CityViewController: UITableViewController {
 
     var posts = [Post]()
     var pagePost = 0
+    var isLoading = false
+    
+    @IBOutlet var footerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         }
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        refresh()
+    }
+    
+    func refresh() {
+        if let createdAt = posts.first?.createdAt{
+            Post.findByCity(UserLocation.city, greaterThanCreatedAt: createdAt) { (posts) -> () in
+                self.posts.splice(posts, atIndex: 0)
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        var offset = scrollView.contentOffset.y
+        var maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if (maxOffset - offset) <= 40 {
+            if !isLoading, let lastCreatedAt = posts.last?.createdAt{
+                isLoading = true
+                self.footerView.hidden = (offset==0) ? true : false
+                Post.findByCity(UserLocation.city, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
+                    
+                    for post in posts{
+                        var indexPath = NSIndexPath(forRow: self.posts.count, inSection: 0)
+                        self.posts.append(post)
+                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    }
+                    
+                    self.isLoading = false
+                    self.footerView.hidden = true
+                })
+            }
+        }
     }
     
     
@@ -39,32 +73,9 @@ class CityViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-        let post = posts[indexPath.row]
-        if let userName = post.user["name"] as? String{
-            cell.userName.text = userName
-        }
-        if let img = post.user.imageProfile{
-            cell.userImage.image = img
-        }
+        cell.post = posts[indexPath.row]
+        cell.makePostCell()
         
-        //cell.slide.delegate = self
-        cell.slide.delay = 1
-        cell.slide.transitionDuration = 5
-        cell.slide.transitionType = KASlideShowTransitionType.Slide
-        cell.slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
-        
-        for imagePF in post.images{
-            //array.append(imagePF.image)
-        }
-        
-        //cell.slide.images =
-        
-        //[_slideshow addImagesFromResources:@[@"test_1.jpeg",@"test_2.jpeg",@"test_3.jpeg", @"test_4.jpg", @"test_5.jpg"]]; // Add images from resources
-        //[_slideshow addGesture:KASlideShowGestureTap]; // Gesture to go previous/next directly on the image
-        
-        cell.userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
-        
-        cell.textLabel?.text = "aa"
         return cell
     }
     

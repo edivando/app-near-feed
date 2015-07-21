@@ -129,8 +129,8 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
             Message.info("Comment empty", text: "")
         }
         else{
-            var newComment = PostComment()
-            newComment.addComment(post, message: textField.text)
+            post.addComment(textField.text)
+//            PostComment.addComment(post, message: textField.text)
         }
     }
     

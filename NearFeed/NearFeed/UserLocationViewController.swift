@@ -9,9 +9,10 @@
 import UIKit
 import CoreLocation
 
-class UserLocationViewController: UIViewController, CLLocationManagerDelegate {
+class UserLocationViewController: UIViewController, CLLocationManagerDelegate, MBProgressHUDDelegate {
 
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
+    private var progress = MBProgressHUD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,13 @@ class UserLocationViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
+        
+        progress = MBProgressHUD(view: view)
+        view.addSubview(progress)
+        progress.labelText = "Loading..."
+        progress.dimBackground = true
+        progress.delegate = self
+        progress.show(true)
     }
     
     override func viewDidAppear(animated: Bool) {

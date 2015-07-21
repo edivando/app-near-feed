@@ -21,15 +21,6 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     @NSManaged var city: City
     @NSManaged var country: Country
     
-    var imageProfile: UIImage?{
-        get{
-            if let imgData = image.getData(){
-                return UIImage(data: imgData)
-            }
-            return UIImage(named: "user")
-        }
-    }
-    
     
     override class func initialize() {
         struct Static {
@@ -40,4 +31,15 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
             self.registerSubclass()
         }
     }
+    
+    static func updateScores(score: Score, user: User?, callback: (success: Bool)->()){
+        if let user = user{
+            user.score = user.score.integerValue + score.value
+            user.saveInBackgroundWithBlock({ (success, error) -> Void in
+                callback(success: success)
+            })
+        }
+    }
+    
+    
 }
