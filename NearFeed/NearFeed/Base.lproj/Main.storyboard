@@ -907,6 +907,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="BsX-7y-0xR" id="Oit-zh-TXy"/>
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
                         <outlet property="nameLabel" destination="Dep-he-AQu" id="eEK-qK-SgB"/>
                         <outlet property="signUpButton" destination="zuP-VP-bMf" id="2lc-Yf-Mlf"/>

@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var editButton: UIBarButtonItem!
     
     
     // MARK: - Buttons
@@ -154,27 +155,31 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
             println("nao anonimo")
-        if let object = currentObject {
-            signUpButton.hidden = true
-            email = object["email"] as? String
-            nameLabel.text = object["name"] as? String
-            //nameTextField.text = object["name"] as! String
-            //emailTextField.text = object["email"] as! String
             
-            if let thumbnail = object["image"] as? PFFile {
+            if let object = currentObject {
+                editButton.enabled = true
+                signUpButton.hidden = true
+                email = object["email"] as? String
+                nameLabel.text = object["name"] as? String
+                //nameTextField.text = object["name"] as! String
+                //emailTextField.text = object["email"] as! String
                 
-                //var userPhoto = PFObject(className: "postString")
-                
-                imageFile = thumbnail
-                
-                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.imageImageView.image = UIImage(data: imageData!)
-                    }
-                })
+                if let thumbnail = object["image"] as? PFFile {
+                    
+                    //var userPhoto = PFObject(className: "postString")
+                    
+                    imageFile = thumbnail
+                    
+                    thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if error == nil {
+                            self.imageImageView.image = UIImage(data: imageData!)
+                        }
+                    })
+                }
             }
-        }
+            
         } else {
+            editButton.enabled = false
             signUpButton.hidden = false
             println("anonimo")
         }
@@ -187,27 +192,32 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
             println("nao anonimo")
-        if let object = currentObject {
+            signUpButton.hidden = true
+            editButton.enabled = true
             
-            nameLabel.text = object["name"] as? String
-            email = object["email"] as? String
-            //nameTextField.text = object["name"] as! String
-            //emailTextField.text = object["email"] as! String
-            
-            if let thumbnail = object["image"] as? PFFile {
+            if let object = currentObject {
                 
-                //var userPhoto = PFObject(className: "postString")
+                nameLabel.text = object["name"] as? String
+                email = object["email"] as? String
+                //nameTextField.text = object["name"] as! String
+                //emailTextField.text = object["email"] as! String
                 
-                imageFile = thumbnail
-                
-                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.imageImageView.image = UIImage(data: imageData!)
-                    }
-                })
+                if let thumbnail = object["image"] as? PFFile {
+                    
+                    //var userPhoto = PFObject(className: "postString")
+                    
+                    imageFile = thumbnail
+                    
+                    thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if error == nil {
+                            self.imageImageView.image = UIImage(data: imageData!)
+                        }
+                    })
+                }
             }
-        }
+            
         } else {
+            editButton.enabled = false
             signUpButton.hidden = false
             println("anonimo")
         }
