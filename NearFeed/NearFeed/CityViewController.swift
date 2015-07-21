@@ -44,6 +44,8 @@ class CityViewController: UITableViewController {
         }
     }
     
+    //MARK: - ScrollView Delegate
+    
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.y
         var maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
@@ -73,14 +75,11 @@ class CityViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-//        if cell.isEqual(nil){
-//            cell = PostViewCell()
-//        }
+
         cell.post = posts[indexPath.row]
         cell.makePostCell()
-        cell.contentView.userInteractionEnabled = true
         
-        //cell.postImagesScroll.tag = indexPath.row
+        cell.contentView.userInteractionEnabled = true
         
         cell.postImagesScroll.userInteractionEnabled = true
         cell.postImagesScroll.delegate = cell
@@ -111,6 +110,8 @@ class CityViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - Helper (ScrollViewCell)
+    
     func refreshScrollView(scrollView:UIScrollView, image:UIImage, index:Int, size:Int){
         imageFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
         imageFrame.size = scrollView.frame.size
@@ -121,9 +122,6 @@ class CityViewController: UITableViewController {
         subView.image = image
         
         subView.contentMode = UIViewContentMode.ScaleAspectFit
-        
-//        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
-//        subView.addGestureRecognizer(tapGesture)
         
         subView.userInteractionEnabled = true
         
