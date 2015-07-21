@@ -31,6 +31,7 @@ class PostComment: PFObject, PFSubclassing {
         if let query = PostComment.query(){
             query.whereKey("post", equalTo: post)
             query.orderByAscending("createdAt")
+            
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let comments = objects as? [PostComment]{
                     list(comments: comments)
