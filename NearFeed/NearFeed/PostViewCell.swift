@@ -65,7 +65,6 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     //MARK: - ScrollView
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("DidScroll")
         var pageWidth = postImagesScroll.frame.size.width
         var fractionalPage = Double(postImagesScroll.contentOffset.x / pageWidth)
         var page = lround(fractionalPage)
