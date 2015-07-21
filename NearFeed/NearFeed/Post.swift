@@ -193,7 +193,7 @@ class Post: PFObject, PFSubclassing {
             
             self.saveInBackgroundWithBlock { (success, erro) -> Void in
                 if erro == nil {
-                    User.updateScores(.NewPost, user: User.currentUser(), callback: { (success) -> () in
+                    User.currentUser()!.updateScores(.NewPost, callback: { (success) -> () in
                         if success {
                             println("Add user scores new post")
                         }
@@ -233,12 +233,12 @@ class Post: PFObject, PFSubclassing {
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 //Update my scores
-                User.updateScores(.LikeSend, user: User.currentUser(), callback: { (success) -> () in
+                User.currentUser()!.updateScores(.LikeSend, callback: { (success) -> () in
                     if success {
                         println("like post user")
                     }
                 })
-                User.updateScores(like ? .LikeReceive : .DislikeReceive, user: self.user, callback: { (success) -> () in
+                self.user.updateScores(like ? .LikeReceive : .DislikeReceive, callback: { (success) -> () in
                     if success {
                         println("post like by user")
                     }
@@ -263,12 +263,12 @@ class Post: PFObject, PFSubclassing {
         comments.append(postComment)
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                User.updateScores(.CommentSend, user: User.currentUser(), callback: { (success) -> () in
+                User.currentUser()!.updateScores(.CommentSend, callback: { (success) -> () in
                     if success {
                         println("user send comment")
                     }
                 })
-                User.updateScores(.CommentReceive, user: self.user, callback: { (success) -> () in
+                self.user.updateScores(.CommentReceive, callback: { (success) -> () in
                     if success {
                         println("user receive comment")
                     }

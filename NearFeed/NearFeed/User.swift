@@ -2,15 +2,14 @@
 //  User.swift
 //  NearFeed
 //
-//  Created by Edivando Alves on 7/18/15.
+//  Created by Edivando Alves on 7/16/15.
 //  Copyright (c) 2015 J7ss. All rights reserved.
 //
 
 import Parse
-import UIKit
 
 class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
-    
+   
     @NSManaged var name: String
     @NSManaged var blocked: String
     @NSManaged var image: PFFile
@@ -32,14 +31,23 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
         }
     }
     
-    static func updateScores(score: Score, user: User?, callback: (success: Bool)->()){
-        if let user = user{
-            user.score = user.score.integerValue + score.value
-            user.saveInBackgroundWithBlock({ (success, error) -> Void in
-                callback(success: success)
-            })
+    func updateScores(score: Score, callback: (success: Bool) ->()){
+        self.score = self.score.integerValue + score.value
+        saveInBackgroundWithBlock { (success, error) -> Void in
+            callback(success: success)
         }
     }
     
-    
+//    static func updateScores(score: Score, user: User?, callback: (success: Bool)->()){
+//        if let user = user{
+//            user.score = user.score.integerValue + score.value
+//            user.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                   callback(success: success)
+//            })
+//        }
+//    }
 }
+
+
+
+
