@@ -47,7 +47,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             
             currentObject?.setObject(imageFile!, forKey: "image")
             
-            updateObject.ACL = PFACL(user: PFUser.currentUser()!)
+            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
             updateObject.saveInBackground()
             //updateObject.saveEventually()
             
@@ -64,7 +64,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             updateObject["email"] = emailTextField.text
             updateObject["name"] = nameTextField.text
             updateObject.setObject(imageFile!, forKey: "image")
-            updateObject.ACL = PFACL(user: PFUser.currentUser()!)
+            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
             updateObject.saveInBackground()
             
             println("SALVOU AQUI")

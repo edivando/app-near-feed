@@ -57,13 +57,13 @@ class PostViewCell: UITableViewCell {
     }
     
     func makePostCell(){
-        userName.text = post.user.name
-        
-        post.user.image.image({ (image) -> () in
-            if let img = image{
-                self.userImage.image = img
-            }
-        })
+//        userName.text = post.user.name
+//        
+//        post.user.image.image({ (image) -> () in
+//            if let img = image{
+//                self.userImage.image = img
+//            }
+//        })
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         postTime.text = post.createdAt?.dateFormat()
