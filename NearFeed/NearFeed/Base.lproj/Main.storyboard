@@ -843,33 +843,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pontos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcw-9f-oMF">
-                                <rect key="frame" x="16" y="87" width="54.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estrelas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLg-nI-qeG">
-                                <rect key="frame" x="16" y="115" width="61" height="20.5"/>
+                                <rect key="frame" x="16" y="94" width="61" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Jr-ks1">
-                                <rect key="frame" x="220" y="175" width="160" height="160"/>
+                                <rect key="frame" x="220" y="94" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="GEw-qt-kNc"/>
                                     <constraint firstAttribute="height" constant="160" id="Hhb-oH-WOT"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dep-he-AQu">
-                                <rect key="frame" x="277" y="376" width="45.5" height="20.5"/>
+                                <rect key="frame" x="277" y="295" width="45.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-VP-bMf">
-                                <rect key="frame" x="273" y="414" width="53" height="30"/>
+                                <rect key="frame" x="273" y="333" width="53" height="30"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -877,13 +871,25 @@
                                     <segue destination="Tz0-fD-UYr" kind="showDetail" id="r8a-Lw-s7B"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcw-9f-oMF">
+                                <rect key="frame" x="16" y="122" width="61" height="30.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30.5" id="XEK-pz-Qud"/>
+                                    <constraint firstAttribute="width" constant="61" id="wGD-lm-bqm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="56" id="06y-4K-ISw"/>
-                            <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="111" id="6ip-F7-zbc"/>
+                            <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="6ip-F7-zbc"/>
                             <constraint firstAttribute="centerX" secondItem="Dep-he-AQu" secondAttribute="centerX" id="GYn-Z4-RTA"/>
-                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="23" id="Uke-00-1Gu"/>
+                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="qLg-nI-qeG" secondAttribute="bottom" constant="7.5" id="KVb-8Q-5kY"/>
+                            <constraint firstItem="kcw-9f-oMF" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="80" id="Uke-00-1Gu"/>
+                            <constraint firstItem="qLg-nI-qeG" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="XuK-E3-6ye"/>
                             <constraint firstItem="kcw-9f-oMF" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="hoE-O2-V4x"/>
                             <constraint firstItem="Dep-he-AQu" firstAttribute="top" secondItem="zSV-Jr-ks1" secondAttribute="bottom" constant="41" id="iVR-7P-bRw"/>
                             <constraint firstItem="zuP-VP-bMf" firstAttribute="top" secondItem="Dep-he-AQu" secondAttribute="bottom" constant="17.5" id="ih8-jd-bWt"/>
@@ -894,6 +900,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="sFi-lp-tTQ"/>
+                                <exclude reference="Uke-00-1Gu"/>
                                 <exclude reference="06y-4K-ISw"/>
                             </mask>
                         </variation>
@@ -910,6 +918,7 @@
                         <outlet property="editButton" destination="BsX-7y-0xR" id="Oit-zh-TXy"/>
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
                         <outlet property="nameLabel" destination="Dep-he-AQu" id="eEK-qK-SgB"/>
+                        <outlet property="pontuacaoLabel" destination="kcw-9f-oMF" id="APs-7d-qKr"/>
                         <outlet property="signUpButton" destination="zuP-VP-bMf" id="2lc-Yf-Mlf"/>
                     </connections>
                 </viewController>

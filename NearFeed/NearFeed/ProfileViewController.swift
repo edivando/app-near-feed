@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var signUpButton: UIButton!
     @IBOutlet var editButton: UIBarButtonItem!
+    @IBOutlet var pontuacaoLabel: UILabel!
     
     
     // MARK: - Buttons
@@ -151,16 +152,29 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         currentObject = PFUser.currentUser()
         
+        //let image = UIImageView(frame: CGRectMake(0, 0, 100, 100))
         
+        //imageImageView.frame =
+            CGRectMake(0, 0, 100, 100)
+            imageImageView.layer.borderWidth=1.0
+            imageImageView.layer.masksToBounds = false
+            imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            imageImageView.layer.cornerRadius = 13
+            imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
+            imageImageView.clipsToBounds = true
         
         if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
             println("nao anonimo")
+            
+            
             
             if let object = currentObject {
                 editButton.enabled = true
                 signUpButton.hidden = true
                 email = object["email"] as? String
                 nameLabel.text = object["name"] as? String
+                let number = object["score"] as? NSNumber
+                pontuacaoLabel.text = String(stringInterpolationSegment: number)
                 //nameTextField.text = object["name"] as! String
                 //emailTextField.text = object["email"] as! String
                 
