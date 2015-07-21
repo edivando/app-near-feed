@@ -42,11 +42,11 @@ class Country: PFObject, PFSubclassing  {
         }
     }
     
-    static func findAll(callback: (countrys: Country?)->()){
+    static func findAll(list: (countrys: Country?)->()){
         if let query = Country.query(){
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil{
-//                    callback(countrys: (objects as? [Country])!)
+//                    list(countrys: (objects as? [Country])!)
                 }
             })
         }

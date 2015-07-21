@@ -39,31 +39,31 @@ class PostComment: PFObject, PFSubclassing {
         }
     }
 
-    static func addComment(post: Post, message: String){
-        let postComment = PostComment()
-        postComment.message = message
-        postComment.post = post
-        if let user = PFUser.currentUser(){
-            postComment.user = user
-        }
-        postComment.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                User.updateScores(.CommentSend, user: User.currentUser(), callback: { (success) -> () in
-                    if success {
-                        println("user send comment")
-                    }
-                })
-                User.updateScores(.CommentReceive, user: post.user, callback: { (success) -> () in
-                    if success {
-                        println("user receive comment")
-                    }
-                })
-                println("save post comment")
-            }else{
-                println("not save post comment")
-            }
-        }
-    }
+//    static func addComment(post: Post, message: String){
+//        let postComment = PostComment()
+//        postComment.message = message
+//        postComment.post = post
+//        if let user = PFUser.currentUser(){
+//            postComment.user = user
+//        }
+//        postComment.saveInBackgroundWithBlock { (success, error) -> Void in
+//            if success {
+//                User.updateScores(.CommentSend, user: User.currentUser(), callback: { (success) -> () in
+//                    if success {
+//                        println("user send comment")
+//                    }
+//                })
+//                User.updateScores(.CommentReceive, user: post.user, callback: { (success) -> () in
+//                    if success {
+//                        println("user receive comment")
+//                    }
+//                })
+//                println("save post comment")
+//            }else{
+//                println("not save post comment")
+//            }
+//        }
+//    }
     
     
 }

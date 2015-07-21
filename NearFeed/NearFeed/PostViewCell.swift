@@ -33,7 +33,7 @@ class PostViewCell: UITableViewCell {
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true
         
-        viewBarButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -49,7 +49,7 @@ class PostViewCell: UITableViewCell {
         
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
-        
+
         //slide.delegate = self
         slide.delay = 1
         slide.transitionDuration = 5
@@ -67,10 +67,10 @@ class PostViewCell: UITableViewCell {
     }
 
     @IBAction func postLike(sender: UIButton) {
-        PostLike.addLike(post, like: true)
+        post.addLike(true)
     }
     
     @IBAction func postDislike(sender: UIButton) {
-        PostLike.addLike(post, like: false)
+        post.addLike(false)
     }
 }

@@ -103,7 +103,8 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     
     @IBAction func like(){
         println("like")
-        PostLike.addLike(post, like: true)
+        post.addLike(true)
+//        PostLike.addLike(post, like: true)
     }
     
     @IBAction func done(){
@@ -112,7 +113,8 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     
     @IBAction func dislike(){
         println("dislike")
-        PostLike.addLike(post, like: false)
+        post.addLike(false)
+//        PostLike.addLike(post, like: false)
     }
     
     @IBAction func comment(){
@@ -121,7 +123,8 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     
     @IBAction func report(){
         println("report")
-        PostReport.addReport(post, message: "placeholder")
+        post.addReport("placeholder")
+//        PostReport.addReport(post, message: "placeholder")
     }
     
 }

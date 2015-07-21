@@ -19,6 +19,10 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var city: City
     @NSManaged var country: Country
     
+    @NSManaged var likes: [PostLike]
+    @NSManaged var comments: [PostComment]
+    @NSManaged var reports: [PostReport]
+    
     @NSManaged var user: User
     
     
@@ -36,19 +40,6 @@ class Post: PFObject, PFSubclassing {
     }
     
 //MARK: Post Region
-//    static func findByRegionNewPosts(region: Region, createdAt: NSDate, list: (posts: [Post])->()){
-//        if let query = Post.query(){
-//            query.whereKey("region", equalTo: region)
-//            query.whereKey("createdAt", greaterThan: createdAt)
-//            query.orderByDescending("createdAt")
-//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-//                if error == nil, let posts = objects as? [Post]{
-//                    list(posts: posts)
-//                }
-//            })
-//        }
-//    }
-    
     static func findByRegion(region: Region, page: Int, list: (posts: [Post])->()){
         if let query = Post.postQuery(page){
             query.whereKey("region", equalTo: region)
@@ -120,8 +111,6 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-    
-    
 //MARK: Post Country
     static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
         if let query = Post.postQuery(page){
@@ -157,8 +146,35 @@ class Post: PFObject, PFSubclassing {
             })
         }
     }
-   
-//Mark: Post
+    
+    private static func postQuery() -> PFQuery?{
+        if let query = Post.query(){
+            query.includeKey("user")
+            query.includeKey("country")
+            query.includeKey("city")
+            query.includeKey("region")
+            query.orderByDescending("createdAt")
+            return query
+        }
+        return nil
+    }
+    
+    private static func postQuery(page: Int) -> PFQuery?{
+        let pageLenght = 5
+        if let query = Post.postQuery(){
+            query.skip = page * pageLenght
+            query.limit = pageLenght
+            return query
+        }
+        return nil
+    }
+    
+    
+    
+    
+    
+    
+//Mark: Post methods
     func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
         self.text = text
         self.clicked = 0
@@ -193,37 +209,97 @@ class Post: PFObject, PFSubclassing {
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
     }
+    func addVisualization(){
+        visualizations = visualizations.integerValue + 1
+        saveInBackground()
+    }
     
-    static func updateClicked(callback: (success: Bool)->()){
-        let post = Post()
-        post.clicked = post.clicked.integerValue + 1
-        post.saveInBackgroundWithBlock { (success, error) -> Void in
+    func addClick(){
+        clicked = clicked.integerValue + 1
+        saveInBackground()
+    }
+    
+    func addLike(like: Bool){
+        let postLike = PostLike()
+        postLike.like = like ? 1 : -1
+        postLike.post = self
+        if let user = User.currentUser(){
+            postLike.user = user
+        }
+        if likes.count == 0{
+            likes = [PostLike]()
+        }
+        likes.append(postLike)
+        saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                callback(success: success)
+                //Update my scores
+                User.updateScores(.LikeSend, user: User.currentUser(), callback: { (success) -> () in
+                    if success {
+                        println("like post user")
+                    }
+                })
+                User.updateScores(like ? .LikeReceive : .DislikeReceive, user: self.user, callback: { (success) -> () in
+                    if success {
+                        println("post like by user")
+                    }
+                })
+                println("save post like")
+            }else{
+                println("not save post like")
             }
         }
     }
     
-    private static func postQuery() -> PFQuery?{
-        if let query = Post.query(){
-            query.includeKey("user")
-            query.includeKey("country")
-            query.includeKey("city")
-            query.includeKey("region")
-            query.orderByDescending("createdAt")
-            return query
+    func addComment(message: String){
+        let postComment = PostComment()
+        postComment.message = message
+        postComment.post = self
+        if let user = User.currentUser(){
+            postComment.user = user
         }
-        return nil
+        if comments.count == 0 {
+            comments = [PostComment]()
+        }
+        comments.append(postComment)
+        saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                User.updateScores(.CommentSend, user: User.currentUser(), callback: { (success) -> () in
+                    if success {
+                        println("user send comment")
+                    }
+                })
+                User.updateScores(.CommentReceive, user: self.user, callback: { (success) -> () in
+                    if success {
+                        println("user receive comment")
+                    }
+                })
+                println("save post comment")
+            }else{
+                println("not save post comment")
+            }
+        }
     }
     
-    private static func postQuery(page: Int) -> PFQuery?{
-        let pageLenght = 5
-        if let query = Post.postQuery(){
-            query.skip = page * pageLenght
-            query.limit = pageLenght
-            return query
+    func addReport(message: String){
+        let postReport = PostReport()
+        postReport.message = message
+        postReport.post = self
+        if let user = User.currentUser(){
+            postReport.user = user
         }
-        return nil
+        if reports.count == 0{
+            reports = [PostReport]()
+        }
+        reports.append(postReport)
+        saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                println("save post report")
+            }else{
+                println("not save post report")
+            }
+        }
+        
     }
+    
 
 }
