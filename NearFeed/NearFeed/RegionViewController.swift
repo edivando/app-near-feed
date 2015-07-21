@@ -19,10 +19,10 @@ class RegionViewController: UITableViewController {
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        Post.findByRegion(UserLocation.region, page: pagePost, list: { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-        })
+//        Post.findByRegion(UserLocation.region, page: pagePost, list: { (posts) -> () in
+//            self.posts = posts
+//            self.tableView.reloadData()
+//        })
   
         
         
