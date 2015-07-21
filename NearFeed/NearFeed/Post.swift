@@ -154,6 +154,7 @@ class Post: PFObject, PFSubclassing {
             query.includeKey("city")
             query.includeKey("region")
             query.includeKey("likes")
+            query.includeKey("comments")
             query.orderByDescending("createdAt")
             return query
         }

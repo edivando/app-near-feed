@@ -27,18 +27,19 @@ class PostComment: PFObject, PFSubclassing {
         return "PostComment"
     }
     
-    static func findCommentsByPost(post: Post, list: (comments: [PostComment]) -> ()){
-        if let query = PostComment.query(){
-            query.whereKey("post", equalTo: post)
-            query.orderByAscending("createdAt")
-            
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let comments = objects as? [PostComment]{
-                    list(comments: comments)
-                }
-            })
-        }
-    }
+//    static func findCommentsByPost(post: Post, list: (comments: [PostComment]) -> ()){
+//        if let query = PostComment.query(){
+//            query.whereKey("post", equalTo: post)
+//            //query.includeKey("postComment")
+//            query.orderByAscending("createdAt")
+//            
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let comments = objects as? [PostComment]{
+//                    list(comments: comments)
+//                }
+//            })
+//        }
+//    }
 
 //    static func addComment(post: Post, message: String){
 //        let postComment = PostComment()
