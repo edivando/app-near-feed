@@ -103,9 +103,6 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
                 self.userImage.image = img
             }
         })
-        //pageControl.currentPage = post.images.count
-        
-        //postImagesScroll.delegate = self
 
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
