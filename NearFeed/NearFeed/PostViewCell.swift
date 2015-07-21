@@ -57,6 +57,8 @@ class PostViewCell: UITableViewCell {
     }
     
     func makePostCell(){
+        println("Post: \(post.user.name)")
+        
         userName.text = post.user.name
         
         post.user.image.image({ (image) -> () in
@@ -70,8 +72,14 @@ class PostViewCell: UITableViewCell {
         postText.text = post.text
         
         btPostComment.titleLabel?.text = " \(post.comments.count)"
-        btPostLike.titleLabel?.text = " \(post.likes.count)"
         
+        
+        btPostLike.titleLabel?.text = " \(post.likes.count)"
+        if isUserLike() {
+            enableLike(false)
+        }else{
+            enableLike(true)
+        }
         
         println("Likes: \(post.likes.count)")
         println("Reports: \(post.reports.count)")
@@ -94,6 +102,22 @@ class PostViewCell: UITableViewCell {
             })
         }
     }
+    
+    func isUserLike() ->Bool{
+        for postLike in post.likes{
+            if let likeObjId = postLike.user.objectId, let userId = User.currentUser()?.objectId{
+                if likeObjId == userId{
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func enableLike(value: Bool){
+        btPostLike.enabled = value
+        btPostDislike.enabled = value
+    }
 
     @IBAction func postComment(sender: UIButton) {
         
@@ -101,9 +125,17 @@ class PostViewCell: UITableViewCell {
 
     @IBAction func postLike(sender: UIButton) {
         post.addLike(true)
+        enableLike(false)
+        btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
     
     @IBAction func postDislike(sender: UIButton) {
         post.addLike(false)
+        enableLike(false)
+        btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
+        
     }
+
+    
+    
 }
