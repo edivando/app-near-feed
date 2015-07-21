@@ -27,8 +27,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.comments = post.comments
-        self.tableView.reloadData()
+        updateComments()
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,8 +129,15 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         }
         else{
             post.addComment(textField.text)
+            textField.text = ""
+            view.endEditing(true)
+            updateComments()
 //            PostComment.addComment(post, message: textField.text)
         }
+    }
+    func updateComments(){
+        self.comments = post.comments
+        self.tableView.reloadData()
     }
     
     
