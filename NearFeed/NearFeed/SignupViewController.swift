@@ -84,10 +84,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func singup(sender: AnyObject){
+        
+        
+        
         if textfieldIsNotEmpty(nameTextfield) && textfieldIsNotEmpty(emailTextfield) && textfieldIsNotEmpty(passwordTextfield) && textfieldIsNotEmpty(verifyPassTextfield){
             if passwordTextfield.text == verifyPassTextfield.text{
                 
-                var user = PFUser()
+                var user = User()
                 user.username = emailTextfield.text
                 user.email = emailTextfield.text
                 user.password = passwordTextfield.text

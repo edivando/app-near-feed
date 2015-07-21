@@ -23,6 +23,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var imageImageView: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var editButton: UIBarButtonItem!
+    @IBOutlet var pontuacaoLabel: UILabel!
     
     
     // MARK: - Buttons
@@ -149,25 +152,50 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         currentObject = PFUser.currentUser()
         
-        if let object = currentObject {
+        //let image = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+        
+        //imageImageView.frame =
+            CGRectMake(0, 0, 100, 100)
+            imageImageView.layer.borderWidth=1.0
+            imageImageView.layer.masksToBounds = false
+            imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            imageImageView.layer.cornerRadius = 13
+            imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
+            imageImageView.clipsToBounds = true
+        
+        if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
+            println("nao anonimo")
             
-            email = object["email"] as? String
-            nameLabel.text = object["name"] as? String
-            //nameTextField.text = object["name"] as! String
-            //emailTextField.text = object["email"] as! String
             
-            if let thumbnail = object["image"] as? PFFile {
+            
+            if let object = currentObject {
+                editButton.enabled = true
+                signUpButton.hidden = true
+                email = object["email"] as? String
+                nameLabel.text = object["name"] as? String
+                let number = object["score"] as? NSNumber
+                pontuacaoLabel.text = String(stringInterpolationSegment: number)
+                //nameTextField.text = object["name"] as! String
+                //emailTextField.text = object["email"] as! String
                 
-                //var userPhoto = PFObject(className: "postString")
-                
-                imageFile = thumbnail
-                
-                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.imageImageView.image = UIImage(data: imageData!)
-                    }
-                })
+                if let thumbnail = object["image"] as? PFFile {
+                    
+                    //var userPhoto = PFObject(className: "postString")
+                    
+                    imageFile = thumbnail
+                    
+                    thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if error == nil {
+                            self.imageImageView.image = UIImage(data: imageData!)
+                        }
+                    })
+                }
             }
+            
+        } else {
+            editButton.enabled = false
+            signUpButton.hidden = false
+            println("anonimo")
         }
         
         // Do any additional setup after loading the view.
@@ -175,25 +203,37 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(animated: Bool) {
         
-        if let object = currentObject {
+        
+        if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
+            println("nao anonimo")
+            signUpButton.hidden = true
+            editButton.enabled = true
             
-            nameLabel.text = object["name"] as? String
-            email = object["email"] as? String
-            //nameTextField.text = object["name"] as! String
-            //emailTextField.text = object["email"] as! String
-            
-            if let thumbnail = object["image"] as? PFFile {
+            if let object = currentObject {
                 
-                //var userPhoto = PFObject(className: "postString")
+                nameLabel.text = object["name"] as? String
+                email = object["email"] as? String
+                //nameTextField.text = object["name"] as! String
+                //emailTextField.text = object["email"] as! String
                 
-                imageFile = thumbnail
-                
-                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.imageImageView.image = UIImage(data: imageData!)
-                    }
-                })
+                if let thumbnail = object["image"] as? PFFile {
+                    
+                    //var userPhoto = PFObject(className: "postString")
+                    
+                    imageFile = thumbnail
+                    
+                    thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if error == nil {
+                            self.imageImageView.image = UIImage(data: imageData!)
+                        }
+                    })
+                }
             }
+            
+        } else {
+            editButton.enabled = false
+            signUpButton.hidden = false
+            println("anonimo")
         }
     }
     

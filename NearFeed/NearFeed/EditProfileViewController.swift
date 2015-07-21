@@ -30,8 +30,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func changePasswordButton(sender: AnyObject) {
         
         PFUser.requestPasswordResetForEmailInBackground(email!)
-        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
-        alerta.show()
+        Message.info("Alert", text: "Mensagem enviada para o email")
+//        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
+//        alerta.show()
         
         
     }
