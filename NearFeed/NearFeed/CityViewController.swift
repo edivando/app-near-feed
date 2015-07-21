@@ -65,7 +65,6 @@ class CityViewController: UITableViewController {
         }
     }
     
-    
     //MARK: UITableViewDataSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -75,6 +74,14 @@ class CityViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
         cell.post = posts[indexPath.row]
         cell.makePostCell()
+        cell.openFocusImage = {(image) in
+            var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
+            focusImageViewController.imageToShow = image
+            focusImageViewController.post = cell.post
+            self.presentViewController(focusImageViewController, animated: true, completion: nil)
+        }
+
+        
         
         return cell
     }

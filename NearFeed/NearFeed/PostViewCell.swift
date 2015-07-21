@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewCell: UITableViewCell {
+class PostViewCell: UITableViewCell, UIScrollViewDelegate {
 
     @IBOutlet var postCell: UIView!
     
@@ -18,15 +18,19 @@ class PostViewCell: UITableViewCell {
     
     @IBOutlet var postText: UITextView!
     
-    @IBOutlet weak var slide: KASlideShow!
+    @IBOutlet weak var postImagesScroll: UIScrollView!
     @IBOutlet var postTime: UILabel!
     
     @IBOutlet var viewBarButton: UIView!
     var post = Post()
     
+    var imageFrame: CGRect = CGRectMake(0, 0, 0, 0)
+    
     @IBOutlet var btPostComment: UIButton!
     @IBOutlet var btPostLike: UIButton!
     @IBOutlet var btPostDislike: UIButton!
+    
+    var openFocusImage: (image:UIImage)->() = {(image) in}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,10 +54,49 @@ class PostViewCell: UITableViewCell {
         btPostDislike.layer.borderColor = UIColor.whiteColor().CGColor
         btPostDislike.layer.borderWidth = 1
         btPostDislike.layer.cornerRadius = 5
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    //MARK: - ScrollView
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+    }
+    
+    func refreshScrollView(){
+        //pageControl.numberOfPages = post.images.count
+        for index in 0..<post.images.count {
+            
+            imageFrame.origin.x = self.postImagesScroll.frame.size.width * CGFloat(index)
+            imageFrame.size = self.postImagesScroll.frame.size
+            self.postImagesScroll.pagingEnabled = true
+            
+            var subView = UIImageView(frame: frame)
+
+            post.images[index].image({ (image) -> () in
+                subView.image = image
+            })
+            
+            var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+            
+            subView.addGestureRecognizer(tapGesture)
+            subView.userInteractionEnabled = true
+            
+            self.postImagesScroll.addSubview(subView)
+        }
+        postImagesScroll.contentInset = UIEdgeInsetsZero
+        self.postImagesScroll.contentSize = CGSizeMake(self.postImagesScroll.frame.size.width * CGFloat(post.images.count), postImagesScroll.frame.size.height)
+    }
+    
+    func handleTap(recognizer: UITapGestureRecognizer){
+        let imageView = recognizer.view as! UIImageView
+        if let image = imageView.image{
+            openFocusImage(image: image)
+        }
     }
     
     func makePostCell(){
@@ -72,27 +115,12 @@ class PostViewCell: UITableViewCell {
         btPostComment.titleLabel?.text = " \(post.comments.count)"
         btPostLike.titleLabel?.text = " \(post.likes.count)"
         
+        refreshScrollView()
         
         println("Likes: \(post.likes.count)")
         println("Reports: \(post.reports.count)")
         println("Cliked: \(post.clicked)")
         println("Visualizations: \(post.visualizations)")
-
-        //slide.delegate = self
-        slide.images = NSMutableArray()
-        slide.delay = 1
-        slide.transitionDuration = 5
-        slide.transitionType = KASlideShowTransitionType.Slide
-        slide.imagesContentMode = UIViewContentMode.ScaleAspectFit
-        slide.addGesture(KASlideShowGestureType.Swipe)
-        
-        for imagePF in post.images{
-            imagePF.image({ (image) -> () in
-                if let img = image{
-                    self.slide.addImage(img)
-                }
-            })
-        }
     }
 
     @IBAction func postComment(sender: UIButton) {

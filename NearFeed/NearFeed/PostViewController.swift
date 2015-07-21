@@ -143,13 +143,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        //Codigo teste para ImageFocusViewController
-        
-//        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-//        testeViewController.imageToShow = image
-//        picker.presentViewController(testeViewController, animated: true, completion: nil)
-        
         images.append(image)
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
