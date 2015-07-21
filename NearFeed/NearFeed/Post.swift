@@ -153,6 +153,7 @@ class Post: PFObject, PFSubclassing {
             query.includeKey("country")
             query.includeKey("city")
             query.includeKey("region")
+            query.includeKey("likes")
             query.orderByDescending("createdAt")
             return query
         }
