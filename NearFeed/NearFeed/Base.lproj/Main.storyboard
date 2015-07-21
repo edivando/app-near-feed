@@ -1333,27 +1333,26 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-YH-bAL">
                                                     <rect key="frame" x="0.0" y="360" width="600" height="40"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKm-mv-ZyW">
-                                                            <rect key="frame" x="476" y="5" width="50" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKm-mv-ZyW">
+                                                            <rect key="frame" x="478" y="3" width="55" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="6yD-Ij-fts"/>
-                                                                <constraint firstAttribute="height" constant="30" id="8su-wj-8on"/>
+                                                                <constraint firstAttribute="width" constant="55" id="6yD-Ij-fts"/>
+                                                                <constraint firstAttribute="height" constant="34" id="8su-wj-8on"/>
                                                             </constraints>
-                                                            <state key="normal" title="Like">
+                                                            <state key="normal" title=" 0" image="thumbs-up">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="postLike:" destination="xXD-x6-esx" eventType="touchUpInside" id="CSC-uS-AJ8"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RS-f9-adS">
-                                                            <rect key="frame" x="534" y="5" width="50" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RS-f9-adS">
+                                                            <rect key="frame" x="539" y="3" width="55" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="iUa-Bg-nf3"/>
-                                                                <constraint firstAttribute="width" constant="50" id="zu8-f1-Wmv"/>
+                                                                <constraint firstAttribute="height" constant="34" id="iUa-Bg-nf3"/>
+                                                                <constraint firstAttribute="width" constant="55" id="zu8-f1-Wmv"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <state key="normal" title="Comment">
+                                                            <state key="normal" title=" 0" image="bubble">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -1370,13 +1369,13 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zb-NG-dK0">
-                                                            <rect key="frame" x="418" y="5" width="50" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zb-NG-dK0">
+                                                            <rect key="frame" x="417" y="3" width="55" height="34"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="6m5-ql-mgx"/>
-                                                                <constraint firstAttribute="height" constant="30" id="ry1-2v-njw"/>
+                                                                <constraint firstAttribute="width" constant="55" id="6m5-ql-mgx"/>
+                                                                <constraint firstAttribute="height" constant="34" id="ry1-2v-njw"/>
                                                             </constraints>
-                                                            <state key="normal" title="Dislike">
+                                                            <state key="normal" title=" 0" image="thumbs-up2">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -1388,12 +1387,12 @@
                                                     <constraints>
                                                         <constraint firstItem="Rzt-WG-LQ0" firstAttribute="leading" secondItem="s2K-YH-bAL" secondAttribute="leading" constant="8" id="M8n-RL-RsO"/>
                                                         <constraint firstAttribute="bottom" secondItem="Rzt-WG-LQ0" secondAttribute="bottom" constant="5" id="Mcp-WM-S1h"/>
-                                                        <constraint firstAttribute="bottom" secondItem="zKm-mv-ZyW" secondAttribute="bottom" constant="5" id="T3Y-2e-Ozw"/>
-                                                        <constraint firstAttribute="bottom" secondItem="4zb-NG-dK0" secondAttribute="bottom" constant="5" id="VAp-Pz-xjD"/>
-                                                        <constraint firstAttribute="trailing" secondItem="7RS-f9-adS" secondAttribute="trailing" constant="16" id="VTp-Lw-cNR"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7RS-f9-adS" secondAttribute="bottom" constant="5" id="YWU-U3-evc"/>
-                                                        <constraint firstItem="7RS-f9-adS" firstAttribute="leading" secondItem="zKm-mv-ZyW" secondAttribute="trailing" constant="8" id="cPm-79-2qt"/>
-                                                        <constraint firstItem="zKm-mv-ZyW" firstAttribute="leading" secondItem="4zb-NG-dK0" secondAttribute="trailing" constant="8" id="ebN-v6-KQQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zKm-mv-ZyW" secondAttribute="bottom" constant="3" id="T3Y-2e-Ozw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4zb-NG-dK0" secondAttribute="bottom" constant="3" id="VAp-Pz-xjD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7RS-f9-adS" secondAttribute="trailing" constant="6" id="VTp-Lw-cNR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7RS-f9-adS" secondAttribute="bottom" constant="3" id="YWU-U3-evc"/>
+                                                        <constraint firstItem="7RS-f9-adS" firstAttribute="leading" secondItem="zKm-mv-ZyW" secondAttribute="trailing" constant="6" id="cPm-79-2qt"/>
+                                                        <constraint firstItem="zKm-mv-ZyW" firstAttribute="leading" secondItem="4zb-NG-dK0" secondAttribute="trailing" constant="6" id="ebN-v6-KQQ"/>
                                                         <constraint firstAttribute="height" constant="40" id="gOR-jU-ghK"/>
                                                     </constraints>
                                                 </view>
@@ -1459,6 +1458,9 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="btPostComment" destination="7RS-f9-adS" id="Uw4-HN-cMk"/>
+                                    <outlet property="btPostDislike" destination="4zb-NG-dK0" id="XSv-ox-xk1"/>
+                                    <outlet property="btPostLike" destination="zKm-mv-ZyW" id="q1o-xF-wuO"/>
                                     <outlet property="postCell" destination="70s-x0-Dvn" id="8s4-rr-STg"/>
                                     <outlet property="postText" destination="10X-kv-TOQ" id="6Ix-lY-jJR"/>
                                     <outlet property="postTime" destination="Rzt-WG-LQ0" id="j67-ik-jRq"/>
@@ -1581,6 +1583,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bubble" width="20" height="20"/>
+        <image name="thumbs-up" width="20" height="20"/>
+        <image name="thumbs-up2" width="20" height="20"/>
         <image name="user" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>

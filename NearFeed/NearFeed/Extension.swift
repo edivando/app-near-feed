@@ -11,14 +11,23 @@ import Parse
 
 extension PFFile{
     
-    var image: UIImage?{
-        get{
-            if let data = getData(){
-                return UIImage(data: data)
+    func image(callback:(image: UIImage?)->()){
+        getDataInBackgroundWithBlock { (data, error) -> Void in
+            if let data = data{
+                callback(image: UIImage(data: data))
             }
-            return nil
+            callback(image: nil)
         }
     }
+    
+//    var image: UIImage?{
+//        get{
+//            if let data = getData(){
+//                return UIImage(data: data)
+//            }
+//            return nil
+//        }
+//    }
 }
 
 extension NSDate {

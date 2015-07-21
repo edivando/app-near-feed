@@ -24,6 +24,10 @@ class PostViewCell: UITableViewCell {
     @IBOutlet var viewBarButton: UIView!
     var post = Post()
     
+    @IBOutlet var btPostComment: UIButton!
+    @IBOutlet var btPostLike: UIButton!
+    @IBOutlet var btPostDislike: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -33,7 +37,19 @@ class PostViewCell: UITableViewCell {
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true
         
-        viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1)
+        viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.25)
+        
+        btPostComment.layer.borderColor = UIColor.whiteColor().CGColor
+        btPostComment.layer.borderWidth = 1
+        btPostComment.layer.cornerRadius = 5
+        
+        btPostLike.layer.borderColor = UIColor.whiteColor().CGColor
+        btPostLike.layer.borderWidth = 1
+        btPostLike.layer.cornerRadius = 5
+        
+        btPostDislike.layer.borderColor = UIColor.whiteColor().CGColor
+        btPostDislike.layer.borderWidth = 1
+        btPostDislike.layer.cornerRadius = 5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -42,15 +58,28 @@ class PostViewCell: UITableViewCell {
     
     func makePostCell(){
         userName.text = post.user.name
-        if let img = post.user.imageProfile{
-            userImage.image = img
-        }
+        
+        post.user.image.image({ (image) -> () in
+            if let img = image{
+                self.userImage.image = img
+            }
+        })
         userLocality.text = "\(post.country.name) / \(post.city.name) / \(post.region.name)"
         
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
+        
+        btPostComment.titleLabel?.text = " \(post.comments.count)"
+        btPostLike.titleLabel?.text = " \(post.likes.count)"
+        
+        
+        println("Likes: \(post.likes.count)")
+        println("Reports: \(post.reports.count)")
+        println("Cliked: \(post.clicked)")
+        println("Visualizations: \(post.visualizations)")
 
         //slide.delegate = self
+        slide.images = NSMutableArray()
         slide.delay = 1
         slide.transitionDuration = 5
         slide.transitionType = KASlideShowTransitionType.Slide
@@ -58,7 +87,11 @@ class PostViewCell: UITableViewCell {
         slide.addGesture(KASlideShowGestureType.Swipe)
         
         for imagePF in post.images{
-            slide.addImage(imagePF.image!)
+            imagePF.image({ (image) -> () in
+                if let img = image{
+                    self.slide.addImage(img)
+                }
+            })
         }
     }
 

@@ -21,12 +21,6 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     @NSManaged var city: City
     @NSManaged var country: Country
     
-    var imageProfile: UIImage?{
-        get{
-            return image.image
-        }
-    }
-    
     
     override class func initialize() {
         struct Static {
