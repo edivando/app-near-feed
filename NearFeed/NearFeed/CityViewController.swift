@@ -156,7 +156,8 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             var popoverMenuViewController = segue.destinationViewController as! MenuPopoverViewController
             popoverMenuViewController.modalPresentationStyle = .Popover
             popoverMenuViewController.popoverPresentationController?.delegate = self
-            popoverMenuViewController.preferredContentSize = CGSizeMake(150,150)
+            var dummyCell = UITableViewCell() //celula pra fazer calculo da altura do popover
+            popoverMenuViewController.preferredContentSize = CGSizeMake(150,dummyCell.frame.size.height * 3)
             popoverMenuViewController.feedType = feedType
         }
     }

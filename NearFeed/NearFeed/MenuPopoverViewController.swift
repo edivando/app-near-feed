@@ -13,6 +13,7 @@ class MenuPopoverViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     var locationOptions = ["Country", "City", "Region"]
     var feedType:LocationType!
+    //var updateFeedToLocation: ()->() = {() in}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +36,43 @@ class MenuPopoverViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        //cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        cell.textLabel?.text = locationOptions[indexPath.row]
+        if feedType == LocationType.Country && indexPath.row == 0{
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        else if feedType == LocationType.City && indexPath.row == 1{
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        else if feedType == LocationType.Region && indexPath.row == 2{
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellToCheck = tableView.cellForRowAtIndexPath(indexPath)
-        cellToCheck?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        var cellClicked = tableView.cellForRowAtIndexPath(indexPath)
+        if cellClicked?.accessoryType == UITableViewCellAccessoryType.Checkmark {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else if indexPath.row == 0{
+            feedType = LocationType.Country
+            //updateFeedToLocation(feedType)
+            
+        }
+        else if indexPath.row == 1{
+            feedType = LocationType.City
+            //updateFeedToLocation(feedType)
+        }
+        else{
+            feedType = LocationType.Region
+            //updateFeedToLocation(feedType)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-    
-    
-
-    
-    // MARK: - Navigation
 
 }
