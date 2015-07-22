@@ -95,7 +95,7 @@ class CityViewController: UITableViewController {
         cell.postImagesScroll.userInteractionEnabled = true
         cell.postImagesScroll.delegate = cell
         
-        cell.pageControl.numberOfPages = cell.post.images.count
+        cell.pageControl?.numberOfPages = cell.post.images.count
         
         cell.removeImagesFromScrollView()
         
