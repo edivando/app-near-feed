@@ -15,8 +15,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     var pagePost = 0
     var isLoading = false
     var imageFrame = CGRectMake(0, 0, 0, 0)
-    
-    
+
     //Object do filtro que pode ser country, city ou region
     var locationObject: PFObject?
     
@@ -158,7 +157,17 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             var popoverMenuViewController = segue.destinationViewController as! MenuPopoverViewController
             popoverMenuViewController.modalPresentationStyle = .Popover
             popoverMenuViewController.popoverPresentationController?.delegate = self
-            popoverMenuViewController.preferredContentSize = CGSizeMake(150,150)
+            var dummyCell = UITableViewCell() //celula pra fazer calculo da altura do popover
+            popoverMenuViewController.preferredContentSize = CGSizeMake(150,dummyCell.frame.size.height * 3)
+            popoverMenuViewController.feedType = feedType
+            popoverMenuViewController.updateFeedToLocation = {(location) in
+                self.feedType = location
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
+            }
         }
     }
     
