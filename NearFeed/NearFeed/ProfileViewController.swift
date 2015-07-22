@@ -172,8 +172,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             println("nao anonimo")
             
             
-            currentObject!["score"] = 99
-            currentObject!.saveInBackground()
+            //currentObject!["score"] = 99
+            //currentObject!.saveInBackground()
 
             
             
