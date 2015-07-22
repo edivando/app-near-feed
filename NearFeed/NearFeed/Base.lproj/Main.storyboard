@@ -1512,7 +1512,10 @@
                             <outlet property="delegate" destination="fbl-s8-0LV" id="uO5-Sn-LTD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="City" id="Psw-Qy-TwF"/>
+                    <navigationItem key="navigationItem" title="City" id="Psw-Qy-TwF">
+                        <barButtonItem key="leftBarButtonItem" image="list" id="3Zl-ww-753"/>
+                        <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="footerView" destination="eYA-up-1Op" id="QZG-ns-6Xa"/>
                     </connections>
@@ -1525,7 +1528,7 @@
         <scene sceneID="Lw0-3f-7t7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9C2-XE-Kp2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Post" image="comment" id="ycy-SA-RVr"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="paperplane" id="ycy-SA-RVr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iyh-IT-YSJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1544,7 +1547,7 @@
         <scene sceneID="Qsw-EG-fD3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hNA-VB-2Og" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="bubble" id="Unn-Jh-Ndf"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="news" id="Unn-Jh-Ndf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fDM-CF-vAW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1563,7 +1566,7 @@
         <scene sceneID="aUN-7V-JCv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="igT-Rz-ROX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="thumbs-up" id="Gdv-XQ-fg8"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user2" id="Gdv-XQ-fg8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5iM-Mv-54h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1581,10 +1584,14 @@
     </scenes>
     <resources>
         <image name="bubble" width="20" height="20"/>
-        <image name="comment" width="20" height="20"/>
+        <image name="filter" width="20" height="20"/>
+        <image name="list" width="20" height="20"/>
+        <image name="news" width="20" height="20"/>
+        <image name="paperplane" width="20" height="20"/>
         <image name="thumbs-up" width="20" height="20"/>
         <image name="thumbs-up2" width="20" height="20"/>
         <image name="user" width="150" height="150"/>
+        <image name="user2" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="l0b-9c-w9F"/>
