@@ -172,6 +172,13 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
                 })
             }
         }
+        else if segue.identifier == "filterPopover"{
+            var popoverFilterViewController = segue.destinationViewController as! FilterPopoverViewController
+            popoverFilterViewController.modalPresentationStyle = .Popover
+            popoverFilterViewController.popoverPresentationController?.delegate = self
+            popoverFilterViewController.preferredContentSize = CGSizeMake(250,200)
+        }
+
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
