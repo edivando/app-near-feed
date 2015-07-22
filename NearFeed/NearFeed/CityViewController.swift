@@ -15,9 +15,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     var pagePost = 0
     var isLoading = false
     var imageFrame = CGRectMake(0, 0, 0, 0)
-    var feedType = LocationType.Country
-    
-    
+
     //Object do filtro que pode ser country, city ou region
     var locationObject: PFObject?
     
@@ -152,10 +150,6 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         
     }
     
-    func changeFeedToLocation(location:LocationType){
-        self.feedType = location
-    }
-    
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -168,6 +162,11 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             popoverMenuViewController.feedType = feedType
             popoverMenuViewController.updateFeedToLocation = {(location) in
                 self.feedType = location
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
             }
         }
     }
