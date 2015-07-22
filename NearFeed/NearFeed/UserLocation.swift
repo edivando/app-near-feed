@@ -66,21 +66,8 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
     }
     
-//    func updateLocationParse(){
-//        if UserLocation.country.name != UserLocation.countryName{
-//            
-//        }else{
-//            
-//        }
-//        
-//        
-//        if UserLocation.country.objectId == nil{
-//            updateCountryLocalityParse()
-//        }
-//    }
-    
-    private func updateCountryLocalityParse(){
-        if UserLocation.country.name != UserLocation.countryName && UserLocation.country.objectId == nil{
+    static func updateCountryLocalityParse(){
+        if UserLocation.country.name != UserLocation.countryName || UserLocation.country.objectId == nil{
             Country.findByName(UserLocation.countryName, success: { (country) -> () in
                 if let country = country{
                     UserLocation.country = country
@@ -94,8 +81,8 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func updateCityLocalityParse(){
-        if UserLocation.city.name != UserLocation.cityName && UserLocation.city.objectId == nil{
+    private static func updateCityLocalityParse(){
+        if UserLocation.city.name != UserLocation.cityName || UserLocation.city.objectId == nil{
             City.findByName(UserLocation.cityName, success: { (city) -> () in
                 if let city = city{
                     UserLocation.city = city
@@ -110,22 +97,26 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func updateRegionLocalityParse(){
-        Region.findByName(UserLocation.regionName, success: { (region) -> () in
-            if let region = region{
-                UserLocation.region = region
-            }else{
-                UserLocation.region.name = UserLocation.regionName
-                UserLocation.region.city = UserLocation.city
-            }
+    private static func updateRegionLocalityParse(){
+        if UserLocation.region.name != UserLocation.regionName || UserLocation.region.objectId == nil{
+            Region.findByName(UserLocation.regionName, success: { (region) -> () in
+                if let region = region{
+                    UserLocation.region = region
+                }else{
+                    UserLocation.region.name = UserLocation.regionName
+                    UserLocation.region.city = UserLocation.city
+                }
+                self.updateUserLocalityParse()
+            })
+        }else{
             self.updateUserLocalityParse()
-        })
+        }
     }
     
-    private func updateUserLocalityParse(){
-        if let user = User.currentUser(){
+    private static func updateUserLocalityParse(){
+        if let user = User.currentUser() where (user.country != UserLocation.country || user.city != UserLocation.city || user.region != UserLocation.region){
             user.country = UserLocation.country
-            user.city =  UserLocation.city
+            user.city   = UserLocation.city
             user.region = UserLocation.region
             user.saveInBackground()
         }else{

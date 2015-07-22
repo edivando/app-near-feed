@@ -37,6 +37,8 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         Post.find(locationObject, type: feedType, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
+            
+            UserLocation.updateCountryLocalityParse()
         }
         
         let refreshControl = UIRefreshControl()
