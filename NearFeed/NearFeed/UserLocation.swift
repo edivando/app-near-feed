@@ -66,31 +66,48 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func updateLocatyParse(){
-//        if let obj =
-    }
+//    func updateLocationParse(){
+//        if UserLocation.country.name != UserLocation.countryName{
+//            
+//        }else{
+//            
+//        }
+//        
+//        
+//        if UserLocation.country.objectId == nil{
+//            updateCountryLocalityParse()
+//        }
+//    }
     
     private func updateCountryLocalityParse(){
-        Country.findByName(UserLocation.countryName, success: { (country) -> () in
-            if let country = country{
-                UserLocation.country = country
-            }else{
-                UserLocation.country.name = UserLocation.countryName
-            }
+        if UserLocation.country.name != UserLocation.countryName && UserLocation.country.objectId == nil{
+            Country.findByName(UserLocation.countryName, success: { (country) -> () in
+                if let country = country{
+                    UserLocation.country = country
+                }else{
+                    UserLocation.country.name = UserLocation.countryName
+                }
+                self.updateCityLocalityParse()
+            })
+        }else{
             self.updateCityLocalityParse()
-        })
+        }
     }
     
     private func updateCityLocalityParse(){
-        City.findByName(UserLocation.cityName, success: { (city) -> () in
-            if let city = city{
-                UserLocation.city = city
-            }else{
-                UserLocation.city.name = UserLocation.cityName
-                UserLocation.city.country = UserLocation.country
-            }
+        if UserLocation.city.name != UserLocation.cityName && UserLocation.city.objectId == nil{
+            City.findByName(UserLocation.cityName, success: { (city) -> () in
+                if let city = city{
+                    UserLocation.city = city
+                }else{
+                    UserLocation.city.name = UserLocation.cityName
+                    UserLocation.city.country = UserLocation.country
+                }
+                self.updateRegionLocalityParse()
+            })
+        }else{
             self.updateRegionLocalityParse()
-        })
+        }
     }
     
     private func updateRegionLocalityParse(){
