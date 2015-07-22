@@ -11,6 +11,7 @@ import UIKit
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, MBProgressHUDDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
 
+    @IBOutlet var btAddImage: UIBarButtonItem!
     @IBOutlet weak var userLocation: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -28,7 +29,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         pageControl.currentPageIndicatorTintColor = UIColor.grayColor()
         pageControl.currentPage = 0
         
+        navigationController?.navigationBar.barTintColor = Color.blue
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         scrollView.delegate = self
+        
+        btAddImage.tintColor = Color.blue
 
         userLocation.enabled = false
         textView.delegate = self
