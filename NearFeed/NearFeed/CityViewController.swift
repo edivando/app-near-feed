@@ -80,6 +80,7 @@ class CityViewController: UITableViewController {
 //        return 550
 //    }
     
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }

@@ -39,6 +39,24 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
+    
+//MARK: Post
+    static func find(region: Region?, city: City?, country: Country?, page: Int, list: (posts: [Post])->()){
+        if let query = Post.postQuery(page){
+            if let region = region{
+                query.whereKey("region", equalTo: region)
+            }
+            
+            
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
+    
+    
 //MARK: Post Region
     static func findByRegion(region: Region, page: Int, list: (posts: [Post])->()){
         if let query = Post.postQuery(page){
@@ -78,7 +96,7 @@ class Post: PFObject, PFSubclassing {
 //MARK: Post City
     static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
         if let query = Post.postQuery(page){
-            query.whereKey("city", equalTo: city)
+            query.whereKey("city.name", equalTo: "Fortaleza")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
                     list(posts: posts)
