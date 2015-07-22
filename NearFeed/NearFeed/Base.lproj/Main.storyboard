@@ -1295,6 +1295,48 @@
             </objects>
             <point key="canvasLocation" x="1522" y="2299"/>
         </scene>
+        <!--Menu Popover View Controller-->
+        <scene sceneID="lQo-uj-uUp">
+            <objects>
+                <viewController id="fVO-z7-CiB" customClass="MenuPopoverViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bta-Ru-V8S"/>
+                        <viewControllerLayoutGuide type="bottom" id="v2k-zJ-aGe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4JZ-dA-x0s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WVU-07-AKH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="ZS9-0g-Oys">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZS9-0g-Oys" id="a2P-x4-d8X">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WVU-07-AKH" firstAttribute="top" secondItem="4JZ-dA-x0s" secondAttribute="top" id="9lZ-uU-nsU"/>
+                            <constraint firstItem="WVU-07-AKH" firstAttribute="bottom" secondItem="v2k-zJ-aGe" secondAttribute="top" id="huO-z4-M4w"/>
+                            <constraint firstItem="WVU-07-AKH" firstAttribute="leading" secondItem="4JZ-dA-x0s" secondAttribute="leading" id="jue-Sl-fPj"/>
+                            <constraint firstAttribute="trailing" secondItem="WVU-07-AKH" secondAttribute="trailing" id="zGd-mG-M4v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="WVU-07-AKH" id="ZyS-6Q-GtD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Eu-YA-nCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="731" y="-1120"/>
+        </scene>
         <!--City-->
         <scene sceneID="qyk-b6-tuZ">
             <objects>
@@ -1513,7 +1555,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="City" id="Psw-Qy-TwF">
-                        <barButtonItem key="leftBarButtonItem" image="list" id="3Zl-ww-753"/>
+                        <barButtonItem key="leftBarButtonItem" image="list" id="3Zl-ww-753">
+                            <connections>
+                                <segue destination="fVO-z7-CiB" kind="popoverPresentation" identifier="popoverMenu" popoverAnchorBarButtonItem="3Zl-ww-753" id="3Hf-lu-pIP">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU"/>
                     </navigationItem>
                     <connections>
