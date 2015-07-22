@@ -14,6 +14,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     var pagePost = 0
     var isLoading = false
     var imageFrame = CGRectMake(0, 0, 0, 0)
+    var feedType = LocationType.Country
     
     @IBOutlet var footerView: UIView!
     
@@ -156,6 +157,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             popoverMenuViewController.modalPresentationStyle = .Popover
             popoverMenuViewController.popoverPresentationController?.delegate = self
             popoverMenuViewController.preferredContentSize = CGSizeMake(150,150)
+            popoverMenuViewController.feedType = feedType
         }
     }
     

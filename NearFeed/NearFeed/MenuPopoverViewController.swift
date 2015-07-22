@@ -11,7 +11,8 @@ import UIKit
 class MenuPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var selected:Int?
+    var locationOptions = ["Country", "City", "Region"]
+    var feedType:LocationType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
