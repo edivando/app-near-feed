@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1165,11 +1165,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="FBD-QF-OWJ"/>
+                                <exclude reference="HCU-MS-fkp"/>
                                 <exclude reference="HzX-T5-wtC"/>
                                 <exclude reference="Ovu-eg-yqT"/>
                                 <exclude reference="pyq-n5-dLT"/>
-                                <exclude reference="FBD-QF-OWJ"/>
-                                <exclude reference="HCU-MS-fkp"/>
                                 <exclude reference="JIy-xb-ydT"/>
                                 <exclude reference="S8b-9M-ghw"/>
                                 <exclude reference="JRu-2B-aKg"/>
