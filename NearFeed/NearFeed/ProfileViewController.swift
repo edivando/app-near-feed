@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // MARK: - Outlets
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
     @IBOutlet var imageImageView: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -133,91 +134,80 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-//        // Get the new view controller using [segue destinationViewController].
-//        //var editView = segue.destinationViewController as! EditProfileViewController
-//        
-//        if segue.identifier == "toEditView" {
-//            var editView = segue.destinationViewController as! EditProfileViewController
-//            editView.currentObject = currentObject
-//        }
-//
-//    }
+    func arredondarImagem(){
+        imageImageView.layer.borderWidth=1.0
+        imageImageView.layer.masksToBounds = false
+        imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageImageView.layer.cornerRadius = 13
+        imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
+        imageImageView.clipsToBounds = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
+        var maxScore : Float = 100.0
         imagePicker.delegate = self
         
-        self.floatRatingView.emptyImage = UIImage(named: "StarEmpty")
-        self.floatRatingView.fullImage = UIImage(named: "StarFull")
+//        self.floatRatingView.emptyImage = UIImage(named: "StarEmpty")
+//        self.floatRatingView.fullImage = UIImage(named: "StarFull")
         // Optional params
-        self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
-        self.floatRatingView.maxRating = 5
-        self.floatRatingView.minRating = 1
-        self.floatRatingView.rating = 2.5
+        //self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
+//        self.floatRatingView.maxRating = 5
+//        self.floatRatingView.minRating = 1
+//        self.floatRatingView.rating = 2.5
         self.floatRatingView.editable = false
-        self.floatRatingView.halfRatings = true
-        self.floatRatingView.floatRatings = false
+//        self.floatRatingView.halfRatings = true
+//        self.floatRatingView.floatRatings = false
         
-        //nameTextField.delegate = self
-        //emailTextField.delegate = self
+
         
         currentObject = PFUser.currentUser()
+        //imageImageView.frame = CGRectMake(0, 0, 100, 100)
         
-        //let image = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-        
-        //imageImageView.frame =
-            CGRectMake(0, 0, 100, 100)
-            imageImageView.layer.borderWidth=1.0
-            imageImageView.layer.masksToBounds = false
-            imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
-            imageImageView.layer.cornerRadius = 13
-            imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
-            imageImageView.clipsToBounds = true
+        arredondarImagem()
         
         if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
             println("nao anonimo")
             
             
-//            currentObject!["score"] = 222
-//            currentObject!.ACL = PFACL(user: PFUser.currentUser()!)
-//            currentObject!.save()
+            currentObject!["score"] = 99
+            currentObject!.saveInBackground()
 
             
             
-            if let object = currentObject {
+            //if let object = currentObject {
                 editButton.enabled = true
                 signUpButton.hidden = true
-                email = object["email"] as? String
-                nameLabel.text = object["name"] as? String
+                emailLabel.text = currentObject!["email"] as? String
+                nameLabel.text = currentObject!["name"] as? String
                 
-                let number = object["score"] as? NSNumber
+                let number = currentObject!["score"] as? NSNumber
                 
                 if let num = number {
                     pontuacaoLabel.text = String(stringInterpolationSegment: number!)
+                    floatRatingView.rating = Float(Int(Float(num) / maxScore * 5.0))
                 } else {
                     pontuacaoLabel.text = String(0)
                 }
-                    //nameTextField.text = object["name"] as! String
-                //emailTextField.text = object["email"] as! String
+
                 
-                if let thumbnail = object["image"] as? PFFile {
+                if let thumbnail = currentObject!["image"] as? PFFile {
                     
-                    //var userPhoto = PFObject(className: "postString")
                     
-                    imageFile = thumbnail
+                    //imageFile = thumbnail
                     
                     thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                         if error == nil {
+                            println("entrou no thumb")
                             self.imageImageView.image = UIImage(data: imageData!)
                         }
                     })
+                } else {
+                    self.imageImageView.image = UIImage(named: "user")
                 }
-            }
+            
             
         } else {
             editButton.enabled = false
@@ -239,7 +229,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if let object = currentObject {
                 
                 nameLabel.text = object["name"] as? String
-                email = object["email"] as? String
+                emailLabel.text = object["email"] as? String
+                
                 //nameTextField.text = object["name"] as! String
                 //emailTextField.text = object["email"] as! String
                 
@@ -254,6 +245,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                             self.imageImageView.image = UIImage(data: imageData!)
                         }
                     })
+                } else {
+                    self.imageImageView.image = UIImage(named: "user")
                 }
             }
             
