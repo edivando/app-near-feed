@@ -141,7 +141,10 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         
         subView.image = image
         
-        subView.contentMode = UIViewContentMode.ScaleAspectFit
+        subView.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        subView.clipsToBounds = true
+        
         
         subView.userInteractionEnabled = true
         
@@ -171,6 +174,23 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
                 })
             }
         }
+        else if segue.identifier == "filterPopover"{
+            var popoverFilterViewController = segue.destinationViewController as! FilterPopoverViewController
+            popoverFilterViewController.modalPresentationStyle = .Popover
+            popoverFilterViewController.popoverPresentationController?.delegate = self
+            popoverFilterViewController.preferredContentSize = CGSizeMake(250,200)
+            popoverFilterViewController.locationObject = self.locationObject
+            popoverFilterViewController.feedType = self.feedType
+            popoverFilterViewController.updateFeedToLocation = {(locationObject) in
+                self.locationObject = locationObject
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
+            }
+        }
+
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

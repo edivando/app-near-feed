@@ -1392,6 +1392,48 @@
             </objects>
             <point key="canvasLocation" x="731" y="-1120"/>
         </scene>
+        <!--Filter Popover View Controller-->
+        <scene sceneID="su2-51-HV1">
+            <objects>
+                <viewController id="30V-Wa-Dny" customClass="FilterPopoverViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qvl-sF-UnQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="NgZ-Iu-f6J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9hM-yf-Fmf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-kj-EFZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" id="8gh-E1-vFp" customClass="FilterTableViewCell" customModule="NearFeed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8gh-E1-vFp" id="SKC-c8-5Hb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="leading" secondItem="9hM-yf-Fmf" secondAttribute="leading" id="7KN-MF-sms"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="top" secondItem="9hM-yf-Fmf" secondAttribute="top" id="Ref-b8-6LC"/>
+                            <constraint firstAttribute="trailing" secondItem="LCR-kj-EFZ" secondAttribute="trailing" id="ucI-Ns-Ojf"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="bottom" secondItem="NgZ-Iu-f6J" secondAttribute="top" id="z95-Te-arh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="LCR-kj-EFZ" id="HiD-JP-nvJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VAT-dL-iEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="-1120"/>
+        </scene>
         <!--City-->
         <scene sceneID="qyk-b6-tuZ">
             <objects>
@@ -1617,7 +1659,13 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU"/>
+                        <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU">
+                            <connections>
+                                <segue destination="30V-Wa-Dny" kind="popoverPresentation" identifier="filterPopover" popoverAnchorBarButtonItem="tzH-l9-OeU" id="38N-dg-pgz">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="footerView" destination="eYA-up-1Op" id="QZG-ns-6Xa"/>
