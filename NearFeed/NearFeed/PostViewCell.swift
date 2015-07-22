@@ -98,6 +98,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     func makePostCell(){
         userName.text = post.user.name
         
+        userImage.image = UIImage(named: "user")
         post.user.image.image({ (image) -> () in
             if let img = image{
                 self.userImage.image = img
@@ -109,12 +110,13 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
         
-        btPostComment.titleLabel?.text = " \(post.comments.count)"
+        countLikeAndComment()
         
-        println("Likes: \(post.likes.count)")
-        println("Reports: \(post.reports.count)")
-        println("Cliked: \(post.clicked)")
-        println("Visualizations: \(post.visualizations)")
+        for comment in post.comments{
+            println("Comment: \(comment.message)")
+        }
+        
+        
     }
     
     func isUserLike() ->Bool{
@@ -132,6 +134,21 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         btPostLike.enabled = value
         btPostDislike.enabled = value
     }
+    
+    func countLikeAndComment(){
+        btPostComment.titleLabel?.text = " \(post.comments.count)"
+        var countLike = 0
+        var countDislike = 0
+        for like in post.likes{
+            if like.like == 1{
+                countLike++
+            }else{
+                countDislike++
+            }
+        }
+        btPostLike.titleLabel?.text = "\(countLike)"
+        btPostDislike.titleLabel?.text = "\(countDislike)"
+    }
 
     @IBAction func postComment(sender: UIButton) {
         
@@ -147,7 +164,6 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         post.addLike(false)
         enableLike(false)
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
-        
     }
 
     
