@@ -139,7 +139,10 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         
         subView.image = image
         
-        subView.contentMode = UIViewContentMode.ScaleAspectFit
+        subView.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        subView.clipsToBounds = true
+        
         
         subView.userInteractionEnabled = true
         
