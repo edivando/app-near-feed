@@ -55,7 +55,8 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                     if let sublocality = pm.subLocality{
                         UserLocation.regionName = sublocality
                     }
-                    self.updateCountryLocalityParse()
+                    self.successCallback()
+//                    self.updateCountryLocalityParse()
                 }
                 else {
                     println("Problem with the data received from geocoder")
@@ -63,6 +64,10 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                 self.startLocation(false)
             })
         }
+    }
+    
+    func updateLocatyParse(){
+//        if let obj =
     }
     
     private func updateCountryLocalityParse(){
@@ -109,7 +114,6 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }else{
             UserLocation.region.saveInBackground()
         }
-        self.successCallback()
     }
     
     private func startLocation(status: Bool){

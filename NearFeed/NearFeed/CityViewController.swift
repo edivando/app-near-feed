@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class CityViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
@@ -15,6 +16,13 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     var isLoading = false
     var imageFrame = CGRectMake(0, 0, 0, 0)
     var feedType = LocationType.Country
+    
+    
+    //Object do filtro que pode ser country, city ou region
+    var locationObject: PFObject?
+    
+    //Tipo do feed: Country, City or Region
+    var feedType: LocationType = .Country
     
     @IBOutlet var footerView: UIView!
     
@@ -27,15 +35,11 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        Post.find(UserLocation.city, type: .City, page: pagePost) { (posts) -> () in
+        
+        Post.find(locationObject, type: feedType, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         }
-        
-//        Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
-//            self.posts = posts
-//            self.tableView.reloadData()
-//        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
@@ -48,11 +52,11 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     
     func refresh() {
         if let createdAt = posts.first?.createdAt{
-            Post.findByCity(UserLocation.city, greaterThanCreatedAt: createdAt) { (posts) -> () in
+            Post.find(locationObject, type: feedType, greaterThanCreatedAt: createdAt, list: { (posts) -> () in
                 self.posts.splice(posts, atIndex: 0)
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
-            }
+            })
         }
     }
     
@@ -65,8 +69,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             if !isLoading, let lastCreatedAt = posts.last?.createdAt{
                 isLoading = true
                 self.footerView.hidden = (offset==0) ? true : false
-                Post.findByCity(UserLocation.city, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
-                    
+                Post.find(locationObject, type: feedType, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
                     for post in posts{
                         var indexPath = NSIndexPath(forRow: self.posts.count, inSection: 0)
                         self.posts.append(post)

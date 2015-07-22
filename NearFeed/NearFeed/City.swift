@@ -26,9 +26,9 @@ class City: PFObject, PFSubclassing {
         return "City"
     }
     
+//MARK: Finds
     static func findByName(name: String, success: (citys: City?)->()){
-        if let query = City.query(){
-            query.whereKey("name", equalTo: name)
+        if let query = City.queryByName(name){
             query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
                 if error == nil {
                     success(citys: (object as? City)!)
@@ -41,5 +41,17 @@ class City: PFObject, PFSubclassing {
             })
         }
     }
+    
+    
+//MARK: Querys
+    static func queryByName(name: String) -> PFQuery?{
+        if let query = City.query(){
+            query.whereKey("name", equalTo: name)
+            return query
+        }
+        return nil
+    }
+    
+    
     
 }
