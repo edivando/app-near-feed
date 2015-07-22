@@ -67,6 +67,10 @@ class CityViewController: UITableViewController {
     }
     
     //MARK: UITableViewDataSource
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 550
+//    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
