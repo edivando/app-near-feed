@@ -26,9 +26,10 @@ class Country: PFObject, PFSubclassing  {
         return "Country"
     }
     
+    
+//MARK: Finds
     static func findByName(name: String, success: (countrys: Country?)->()){
-        if let query = Country.query(){
-            query.whereKey("name", equalTo: name)
+        if let query = Country.queryByName(name){
             query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
                 if error == nil {
                     success(countrys: (object as? Country)!)
@@ -50,6 +51,16 @@ class Country: PFObject, PFSubclassing  {
                 }
             })
         }
+    }
+    
+    
+//MARK: Querys
+    static func queryByName(name: String) -> PFQuery?{
+        if let query = Country.query(){
+            query.whereKey("name", equalTo: name)
+            return query
+        }
+        return nil
     }
     
 }
