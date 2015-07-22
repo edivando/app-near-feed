@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import Parse
 
 class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var locationObject: PFObject?
+    var feedType: LocationType?
+    var updateFeedToLocation: (locationObject:PFObject)->() = {(locationObject) in}
+    var locationsFound:[PFObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if feedType == LocationType.Region{
+            //query for all regions in that city
+            //completion block calls reload data
+            //Region.findByName(<#name: String#>, success: <#(regions: Region?) -> ()##(regions: Region?) -> ()#>)
+        }
+        else if feedType == LocationType.City{
+            //query for all cities in that country
+            //completion block calls reload data
+        }
+        else{
+            //query for all countries
+            //completion block calls reload data
+        }
 
         // Do any additional setup after loading the view.
     }

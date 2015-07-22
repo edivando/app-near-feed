@@ -177,6 +177,16 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             popoverFilterViewController.modalPresentationStyle = .Popover
             popoverFilterViewController.popoverPresentationController?.delegate = self
             popoverFilterViewController.preferredContentSize = CGSizeMake(250,200)
+            popoverFilterViewController.locationObject = self.locationObject
+            popoverFilterViewController.feedType = self.feedType
+            popoverFilterViewController.updateFeedToLocation = {(locationObject) in
+                self.locationObject = locationObject
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
+            }
         }
 
     }
