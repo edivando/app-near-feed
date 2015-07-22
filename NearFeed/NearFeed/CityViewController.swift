@@ -26,11 +26,15 @@ class CityViewController: UITableViewController {
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        
-        Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
+        Post.find(UserLocation.city, type: .City, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
         }
+        
+//        Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
+//            self.posts = posts
+//            self.tableView.reloadData()
+//        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)

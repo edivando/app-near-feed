@@ -78,6 +78,7 @@
 		724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */; };
 		724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */; };
 		7265B7F21B5E7F29008CF73D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F11B5E7F29008CF73D /* User.swift */; };
+		7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F31B5FE184008CF73D /* LocationType.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +173,7 @@
 		724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
 		724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+NetworkIndicator.swift"; sourceTree = "<group>"; };
 		7265B7F11B5E7F29008CF73D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7265B7F31B5FE184008CF73D /* LocationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -407,6 +409,7 @@
 			children = (
 				7265B7F11B5E7F29008CF73D /* User.swift */,
 				7241F6FF1B53E6D90033BB3C /* UserLocation.swift */,
+				7265B7F31B5FE184008CF73D /* LocationType.swift */,
 				7241F72A1B5440210033BB3C /* Country.swift */,
 				7241F72C1B544B5F0033BB3C /* City.swift */,
 				7241F72E1B544EF50033BB3C /* Region.swift */,
@@ -578,6 +581,7 @@
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
 				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
 				723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */,
+				7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */,
 				7241F72B1B5440210033BB3C /* Country.swift in Sources */,
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,
 				7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */,
