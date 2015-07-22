@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityViewController: UITableViewController {
+class CityViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
     var posts = [Post]()
     var pagePost = 0
@@ -146,6 +146,21 @@ class CityViewController: UITableViewController {
         scrollView.contentInset = UIEdgeInsetsZero
         scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * CGFloat(size), scrollView.frame.size.height)
         
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "popoverMenu"{
+            var popoverMenuViewController = segue.destinationViewController as! MenuPopoverViewController
+            popoverMenuViewController.modalPresentationStyle = .Popover
+            popoverMenuViewController.popoverPresentationController?.delegate = self
+            popoverMenuViewController.preferredContentSize = CGSizeMake(150,150)
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
     
 }
