@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PostComment.registerSubclass()
         PostReport.registerSubclass()
         
+        
+        //Change color for TabBarItem
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Color.blue ], forState: .Selected)
+        UITabBar.appearance().tintColor = Color.blue
+        
         return true
     }
     

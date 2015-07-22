@@ -751,12 +751,12 @@ static UIColor *kTWDefaultMessageBarStyleSheetInfoStrokeColor = nil;
 
 + (void)initialize
 {
-	if (self == [TWDefaultMessageBarStyleSheet class])
-	{
+	if (self == [TWDefaultMessageBarStyleSheet class]) {
+        
         // Colors (background)
-        kTWDefaultMessageBarStyleSheetErrorBackgroundColor = [UIColor colorWithRed:222.0/255.0 green:106.0/255.0 blue:118.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // orange
-        kTWDefaultMessageBarStyleSheetSuccessBackgroundColor = [UIColor colorWithRed:106.0/255.0 green:222.0/255.0 blue:140.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // green
-        kTWDefaultMessageBarStyleSheetInfoBackgroundColor = [UIColor colorWithRed:106.0/255.0 green:165.0/255.0 blue:222.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // blue
+        kTWDefaultMessageBarStyleSheetErrorBackgroundColor = [UIColor colorWithRed:223.0/255.0 green:90.0/255.0 blue:73.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // red
+        kTWDefaultMessageBarStyleSheetSuccessBackgroundColor = [UIColor colorWithRed:69.0/255.0 green:178.0/255.0 blue:157.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // green
+        kTWDefaultMessageBarStyleSheetInfoBackgroundColor = [UIColor colorWithRed:239.0/255.0 green:201.0/255.0 blue:76.0/255.0 alpha:kTWMessageBarStyleSheetMessageBarAlpha]; // yellow
         
         // Colors (stroke)
         kTWDefaultMessageBarStyleSheetErrorStrokeColor = [UIColor colorWithRed:0.949f green:0.580f blue:0.0f alpha:1.0f]; // orange

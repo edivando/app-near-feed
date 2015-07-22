@@ -20,6 +20,13 @@ class CityViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        navigationController?.navigationBar.barTintColor = Color.blue
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        
         Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()

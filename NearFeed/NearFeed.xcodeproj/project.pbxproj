@@ -368,10 +368,10 @@
 		7241F7231B5400910033BB3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
 				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
 				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
 				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
-				7241F6D81B53E15F0033BB3C /* CityViewController.swift */,
 				7241F6DE1B53E1980033BB3C /* RegionViewController.swift */,
 				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
