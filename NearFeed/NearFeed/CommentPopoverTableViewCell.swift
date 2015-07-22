@@ -14,9 +14,12 @@ class CommentPopoverTableViewCell: UITableViewCell {
     @IBOutlet weak var commentDate: UILabel!
     @IBOutlet weak var userComment: UILabel!
     @IBOutlet weak var userName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        userImage.layer.cornerRadius = 25
+        userImage.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
