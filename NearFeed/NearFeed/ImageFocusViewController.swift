@@ -81,6 +81,7 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
         if segue.identifier == "PopoverComment"{
             var popoverCommentViewController = segue.destinationViewController as! PopoverCommentViewController
             popoverCommentViewController.modalPresentationStyle = .Popover
+            popoverCommentViewController.post = self.post
             popoverCommentViewController.popoverPresentationController?.delegate = self
             popoverCommentViewController.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width,300)
         }

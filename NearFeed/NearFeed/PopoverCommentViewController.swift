@@ -27,10 +27,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     }
     
     override func viewWillAppear(animated: Bool) {
-        PostComment.findCommentsByPost(post, list: { (comments) -> () in
-            self.comments = comments
-            self.tableView.reloadData()
-        })
+        updateComments()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,15 +82,17 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as! CommentPopoverTableViewCell
 
         cell.commentDate.text = NSDateFormatter.localizedStringFromDate(comment.createdAt!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
         cell.userComment.text = comment.message
         
-        if let imageFromUser = comment.user["image"] as? PFFile {
-            imageFromUser.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    cell.userImage.image = UIImage(data: imageData!)
-                }
-            })
-        }
+        comment.user.image.image({ (image) -> () in
+            if let img = image{
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! CommentPopoverTableViewCell
+                    cellToUpdate.userImage.image = img
+                })
+            }
+        })
         
         cell.userName.text = comment.user["name"] as? String
         
@@ -130,8 +129,15 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         }
         else{
             post.addComment(textField.text)
+            textField.text = ""
+            view.endEditing(true)
+            updateComments()
 //            PostComment.addComment(post, message: textField.text)
         }
+    }
+    func updateComments(){
+        self.comments = post.comments
+        self.tableView.reloadData()
     }
     
     

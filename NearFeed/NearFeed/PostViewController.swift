@@ -11,6 +11,7 @@ import UIKit
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, MBProgressHUDDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
 
+    @IBOutlet var btAddImage: UIBarButtonItem!
     @IBOutlet weak var userLocation: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -28,7 +29,14 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         pageControl.currentPageIndicatorTintColor = UIColor.grayColor()
         pageControl.currentPage = 0
         
+        navigationController?.navigationBar.barTintColor = Color.blue
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         scrollView.delegate = self
+        
+        btAddImage.tintColor = Color.blue
 
         userLocation.enabled = false
         textView.delegate = self
@@ -143,13 +151,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        //Codigo teste para ImageFocusViewController
-        
-//        var testeViewController = storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-//        testeViewController.imageToShow = image
-//        picker.presentViewController(testeViewController, animated: true, completion: nil)
-        
         images.append(image)
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -207,7 +208,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
         var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
         
-        if (count(trimmed) == 0 || textView.text == "Type your post here") && images.count == 0{
+        if (count(trimmed) == 0 || textView.text == "Type your post here...") && images.count == 0{
             Message.info("Post empty", text: "Add an image or some text to your post")
         }
         else{

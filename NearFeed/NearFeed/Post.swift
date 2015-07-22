@@ -39,46 +39,85 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-//MARK: Post Region
-    static func findByRegion(region: Region, page: Int, list: (posts: [Post])->()){
-        if let query = Post.postQuery(page){
-            query.whereKey("region", equalTo: region)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
     
-    static func findByRegion(region: Region, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
-        if let query = Post.postQuery(){
-            query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
-            query.whereKey("region", equalTo: region)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
+    let countryName = UserLocation.countryName
+    let cityName = UserLocation.cityName
+    let regionName = UserLocation.regionName
     
-    static func findByRegion(region: Region, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
-        if let query = Post.postQuery(){
-            query.whereKey("createdAt", lessThan: lessThanCreatedAt)
-            query.whereKey("region", equalTo: region)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
 
+    
+//MARK: Post
+    static func find(object: PFObject?, type: LocationType, page: Int, list: (posts: [Post])->()){
+        if let query = Post.postQuery(page){
+            switch(type){
+            case .Region:
+                if let obj = object, let region = obj as? Region{
+                    query.whereKey("region", equalTo: region)
+                }else if let obj = UserLocation.region.objectId{
+                    query.whereKey("region", equalTo: UserLocation.region)
+                }
+            case .City:
+                if let obj = object, let city = obj as? City{
+                    query.whereKey("city", equalTo: city)
+                }else if let obj = UserLocation.city.objectId{
+                    query.whereKey("city", equalTo: UserLocation.city)
+                }
+            default:
+                if let obj = object, let country = obj as? Country{
+                    query.whereKey("country", equalTo: country)
+                }else{
+                    query.whereKey("country", equalTo: UserLocation.country)
+                }
+            }
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let posts = objects as? [Post]{
+                    list(posts: posts)
+                }
+            })
+        }
+    }
+    
+    
+////MARK: Post Region
+//    static func findByRegion(region: Region, page: Int, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(page){
+//            query.whereKey("region", equalTo: region)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
+//    
+//    static func findByRegion(region: Region, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(){
+//            query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
+//            query.whereKey("region", equalTo: region)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
+//    
+//    static func findByRegion(region: Region, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(){
+//            query.whereKey("createdAt", lessThan: lessThanCreatedAt)
+//            query.whereKey("region", equalTo: region)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
+//
 //MARK: Post City
     static func findByCity(city: City, page: Int, list: (posts: [Post])->()){
         if let query = Post.postQuery(page){
-            query.whereKey("city", equalTo: city)
+            query.whereKey("city.name", equalTo: "Fortaleza")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil, let posts = objects as? [Post]{
                     list(posts: posts)
@@ -111,41 +150,41 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-//MARK: Post Country
-    static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
-        if let query = Post.postQuery(page){
-            query.whereKey("country", equalTo: country)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
-    
-    static func findByCountry(country: Country, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
-        if let query = Post.postQuery(){
-            query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
-            query.whereKey("country", equalTo: country)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
-    
-    static func findByCountry(country: Country, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
-        if let query = Post.postQuery(){
-            query.whereKey("createdAt", lessThan: lessThanCreatedAt)
-            query.whereKey("country", equalTo: country)
-            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
-            })
-        }
-    }
+////MARK: Post Country
+//    static func findByCountry(country: Country, page: Int, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(page){
+//            query.whereKey("country", equalTo: country)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
+//    
+//    static func findByCountry(country: Country, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(){
+//            query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
+//            query.whereKey("country", equalTo: country)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
+//    
+//    static func findByCountry(country: Country, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
+//        if let query = Post.postQuery(){
+//            query.whereKey("createdAt", lessThan: lessThanCreatedAt)
+//            query.whereKey("country", equalTo: country)
+//            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                if error == nil, let posts = objects as? [Post]{
+//                    list(posts: posts)
+//                }
+//            })
+//        }
+//    }
     
     private static func postQuery() -> PFQuery?{
         if let query = Post.query(){
@@ -154,6 +193,7 @@ class Post: PFObject, PFSubclassing {
             query.includeKey("city")
             query.includeKey("region")
             query.includeKey("likes")
+            query.includeKey("comments")
             query.orderByDescending("createdAt")
             return query
         }
@@ -301,6 +341,4 @@ class Post: PFObject, PFSubclassing {
         }
         
     }
-    
-
 }
