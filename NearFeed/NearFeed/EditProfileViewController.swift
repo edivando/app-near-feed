@@ -24,20 +24,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     
     // MARK: - Buttons
-    @IBAction func changeImageButton(sender: AnyObject) {
-        addPhoto()
-    }
-    @IBAction func changePasswordButton(sender: AnyObject) {
-        
-        PFUser.requestPasswordResetForEmailInBackground(email!)
-        Message.info("Alert", text: "Mensagem enviada para o email")
-//        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
-//        alerta.show()
-        
-        
-    }
-    @IBAction func saveButton(sender: AnyObject) {
-        
+    @IBAction func saveBarButton(sender: AnyObject) {
         if let updateObject = currentObject as PFObject? {
             
             updateObject["username"] = emailTextField.text
@@ -73,6 +60,56 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         // Return to table view
         self.navigationController?.popViewControllerAnimated(true)
     }
+    @IBAction func changeImageButton(sender: AnyObject) {
+        addPhoto()
+    }
+    @IBAction func changePasswordButton(sender: AnyObject) {
+        
+        PFUser.requestPasswordResetForEmailInBackground(email!)
+        Message.info("Alert", text: "Mensagem enviada para o email")
+//        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
+//        alerta.show()
+        
+        
+    }
+    @IBAction func saveButton(sender: AnyObject) {
+        /*
+        if let updateObject = currentObject as PFObject? {
+            
+            updateObject["username"] = emailTextField.text
+            updateObject["email"] = emailTextField.text
+            updateObject["name"] = nameTextField.text
+            
+            
+            currentObject?.setObject(imageFile!, forKey: "image")
+            
+            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
+            updateObject.saveInBackground()
+            //updateObject.saveEventually()
+            
+            println("SALVOU AQUI NO PRIMEIRO")
+            
+        } else {
+            
+            
+            //PFUser.currentUser()
+            //var updateObject = PFUser.currentUser()
+            var updateObject = PFObject(className:"User")
+            
+            updateObject["username"] = emailTextField.text
+            updateObject["email"] = emailTextField.text
+            updateObject["name"] = nameTextField.text
+            updateObject.setObject(imageFile!, forKey: "image")
+            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
+            updateObject.saveInBackground()
+            
+            println("SALVOU AQUI")
+        }
+        
+        // Return to table view
+        self.navigationController?.popViewControllerAnimated(true)
+        */
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +123,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 //        }
         
         currentObject = PFUser.currentUser()
+        
+        imagemRedonda()
         
         if let object = currentObject {
             
@@ -105,6 +144,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         self.imageImageView.image = UIImage(data: imageData!)
                     }
                 })
+            }  else {
+                self.imageImageView.image = UIImage(named: "user")
+                
             }
         }
         
@@ -118,6 +160,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     // MARK: - Metodos
+    
+    func imagemRedonda(){
+        imageImageView.layer.borderWidth=1.0
+        imageImageView.layer.masksToBounds = false
+        imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageImageView.layer.cornerRadius = 13
+        imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
+        imageImageView.clipsToBounds = true
+        
+    }
     func libraryPhoto(){
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .PhotoLibrary
@@ -133,7 +185,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
-        let pickedImage:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let pickedImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
         //let imageData = UIImagePNGRepresentation(pickedImage)
         imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 1.0))
         self.imageImageView.image = pickedImage
@@ -188,10 +240,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - Metodos para mover a screem para cima quando o teclado aparecer
     //http://www.jogendra.com/2015/01/uitextfield-move-up-when-keyboard.html
     func textFieldDidBeginEditing(textField: UITextField) {
-        animateViewMoving(true, moveValue: 200)
+        animateViewMoving(true, moveValue: 150)
     }
     func textFieldDidEndEditing(textField: UITextField) {
-        animateViewMoving(false, moveValue: 200)
+        animateViewMoving(false, moveValue: 150)
     }
     
     func animateViewMoving (up:Bool, moveValue :CGFloat){
