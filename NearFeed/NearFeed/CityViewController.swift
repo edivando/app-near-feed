@@ -149,6 +149,10 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         
     }
     
+    func changeFeedToLocation(location:LocationType){
+        self.feedType = location
+    }
+    
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -159,6 +163,9 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             var dummyCell = UITableViewCell() //celula pra fazer calculo da altura do popover
             popoverMenuViewController.preferredContentSize = CGSizeMake(150,dummyCell.frame.size.height * 3)
             popoverMenuViewController.feedType = feedType
+            popoverMenuViewController.updateFeedToLocation = {(location) in
+                self.feedType = location
+            }
         }
     }
     

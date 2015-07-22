@@ -13,7 +13,7 @@ class MenuPopoverViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     var locationOptions = ["Country", "City", "Region"]
     var feedType:LocationType!
-    //var updateFeedToLocation: ()->() = {() in}
+    var updateFeedToLocation: (location:LocationType)->() = {(location) in}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,17 +57,14 @@ class MenuPopoverViewController: UIViewController, UITableViewDataSource, UITabl
         }
         else if indexPath.row == 0{
             feedType = LocationType.Country
-            //updateFeedToLocation(feedType)
-            
         }
         else if indexPath.row == 1{
             feedType = LocationType.City
-            //updateFeedToLocation(feedType)
         }
         else{
             feedType = LocationType.Region
-            //updateFeedToLocation(feedType)
         }
+        updateFeedToLocation(location: feedType)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
