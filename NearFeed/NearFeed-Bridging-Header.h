@@ -6,8 +6,6 @@
 
 #import "MBProgressHUD.h"
 
-#import "KASlideShow.h"
-
 
 //#import "UIScrollView+InfiniteScroll.h"
 

@@ -11,7 +11,6 @@
 		51BDAD0D1B57F7A300BFB6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */; };
 		51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */; };
 		51BDAD131B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */; };
-		51BDAD221B5D42FE00BFB6C3 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD211B5D42FE00BFB6C3 /* KASlideShow.m */; };
 		51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */; };
 		51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ECA9AF1B53E81A0006571B /* IndexViewController.swift */; };
 		51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7241F70B1B53FD6B0033BB3C /* TWMessageBarManager.m */; };
@@ -98,8 +97,6 @@
 		51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCommentViewController.swift; sourceTree = "<group>"; };
 		51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
-		51BDAD201B5D42FE00BFB6C3 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASlideShow.h; sourceTree = "<group>"; };
-		51BDAD211B5D42FE00BFB6C3 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
 		51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51ECA9AF1B53E81A0006571B /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
@@ -222,15 +219,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		51BDAD1F1B5D3B7300BFB6C3 /* KASlideShow */ = {
-			isa = PBXGroup;
-			children = (
-				51BDAD201B5D42FE00BFB6C3 /* KASlideShow.h */,
-				51BDAD211B5D42FE00BFB6C3 /* KASlideShow.m */,
-			);
-			name = KASlideShow;
-			sourceTree = "<group>";
-		};
 		721674FA1B5D1C3200AC5881 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,7 +333,6 @@
 			children = (
 				721674FD1B5D3FF700AC5881 /* Extension.swift */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
-				51BDAD1F1B5D3B7300BFB6C3 /* KASlideShow */,
 				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
@@ -602,7 +589,6 @@
 				51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
 				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
-				51BDAD221B5D42FE00BFB6C3 /* KASlideShow.m in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
 				721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */,
 				7241F7311B5451B50033BB3C /* Post.swift in Sources */,
