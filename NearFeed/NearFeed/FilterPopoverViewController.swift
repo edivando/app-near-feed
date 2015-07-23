@@ -26,6 +26,7 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         tableView.delegate = self
         tableView.dataSource = self
         segmentedControl.addTarget(self, action: Selector("segmentedClicked:"), forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.selectedSegmentIndex = feedType!.hashValue
         
         //locationsFound.append(locationObject!)
         
@@ -48,8 +49,20 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
+        
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - TableView
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if feedType == LocationType.Region{
-            segmentedControl.selectedSegmentIndex = 2
             if locationObject == nil{
                 //Get user region
                 if UserLocation.region.objectId == nil{
@@ -68,7 +81,6 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             //Region.findAllRegionsInCity(locationObject["city"], result: <#(regions: [Region]?) -> ()##(regions: [Region]?) -> ()#>)
         }
         else if feedType == LocationType.City{
-            segmentedControl.selectedSegmentIndex = 1
             if locationObject == nil{
                 //Get user city
                 if UserLocation.city.objectId == nil{
@@ -90,7 +102,6 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             //City.findAllCitiesInCountry(locationObject["country"], result: )
         }
         else{
-            segmentedControl.selectedSegmentIndex = 0
             if locationObject == nil{
                 //Get user country
             }
@@ -98,18 +109,6 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             //completion block calls reload data
             //Country.findAllCountries(result: )
         }
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - TableView
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        if indexPath.row == 0{
 //            selectedIndexPath = indexPath
 //        }
