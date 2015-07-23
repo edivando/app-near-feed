@@ -42,6 +42,20 @@ class City: PFObject, PFSubclassing {
         }
     }
     
+    static func findAllCitiesInCountry(country: PFObject, result: (cities: [City]?) -> ()){
+        if let query = City.query(){
+            query.whereKey("country", equalTo: country)
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil{
+                    result(cities: objects as? [City])
+                }
+                else{
+                    result(cities: nil)
+                }
+            })
+        }
+    }
+    
     
 //MARK: Querys
     static func queryByName(name: String) -> PFQuery?{
