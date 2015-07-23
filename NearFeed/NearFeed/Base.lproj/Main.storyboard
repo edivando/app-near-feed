@@ -1442,28 +1442,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="eYA-up-1Op">
-                            <rect key="frame" x="0.0" y="491" width="600" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="noY-ec-223">
-                                    <rect key="frame" x="290" y="20" width="20" height="20"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="centerY" secondItem="noY-ec-223" secondAttribute="centerY" constant="-5" id="Omv-Dl-U98"/>
-                                <constraint firstAttribute="centerX" secondItem="noY-ec-223" secondAttribute="centerX" id="yod-mu-uY7"/>
-                            </constraints>
-                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="411" id="xXD-x6-esx" customClass="PostViewCell" customModule="NearFeed" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPostComment" rowHeight="50" id="nhc-qa-JiY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nhc-qa-JiY" id="IWu-i0-FIS">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellPost" rowHeight="400" id="xXD-x6-esx" customClass="PostViewCell" customModule="NearFeed" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xXD-x6-esx" id="lBB-kH-mKD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70s-x0-Dvn">
-                                            <rect key="frame" x="0.0" y="2" width="600" height="405"/>
+                                            <rect key="frame" x="0.0" y="2" width="600" height="400"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="AIj-YL-mrF">
                                                     <rect key="frame" x="10" y="10" width="50" height="50"/>
@@ -1594,7 +1587,7 @@
                                                 <constraint firstItem="AIj-YL-mrF" firstAttribute="top" secondItem="70s-x0-Dvn" secondAttribute="top" constant="10" id="Wbr-ZD-ruj"/>
                                                 <constraint firstAttribute="bottom" secondItem="s2K-YH-bAL" secondAttribute="bottom" constant="5" id="X4j-zN-ZzA"/>
                                                 <constraint firstAttribute="trailing" secondItem="lRg-XA-RZ9" secondAttribute="trailing" constant="8" id="YjO-eR-NYx"/>
-                                                <constraint firstAttribute="bottom" secondItem="3A5-Rm-iyc" secondAttribute="bottom" constant="5" id="hhK-aY-gqz"/>
+                                                <constraint firstAttribute="bottom" secondItem="3A5-Rm-iyc" secondAttribute="bottom" id="hhK-aY-gqz"/>
                                                 <constraint firstItem="AIj-YL-mrF" firstAttribute="leading" secondItem="70s-x0-Dvn" secondAttribute="leading" constant="10" id="nCW-88-0dj"/>
                                                 <constraint firstAttribute="centerX" secondItem="1Nu-x8-rtm" secondAttribute="centerX" constant="-0.5" id="pth-I9-Ac5"/>
                                                 <constraint firstItem="s2K-YH-bAL" firstAttribute="top" secondItem="3A5-Rm-iyc" secondAttribute="bottom" constant="-40" id="s31-CJ-f0Z"/>
@@ -1614,7 +1607,7 @@
                                     <constraints>
                                         <constraint firstItem="70s-x0-Dvn" firstAttribute="top" secondItem="lBB-kH-mKD" secondAttribute="topMargin" constant="-6" id="2Oy-ii-p08"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="70s-x0-Dvn" secondAttribute="trailing" constant="-8" id="B7o-fZ-bqo"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-4" id="HlH-OZ-xyk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-10" id="HlH-OZ-xyk"/>
                                         <constraint firstItem="70s-x0-Dvn" firstAttribute="leading" secondItem="lBB-kH-mKD" secondAttribute="leadingMargin" constant="-8" id="cnV-JW-xE0"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="70s-x0-Dvn" secondAttribute="bottom" constant="-8" id="k6W-ev-Ttv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="70s-x0-Dvn" secondAttribute="trailing" constant="-6" id="qwD-RW-dg9"/>
@@ -1667,9 +1660,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="footerView" destination="eYA-up-1Op" id="QZG-ns-6Xa"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-8b-hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

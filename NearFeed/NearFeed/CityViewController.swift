@@ -22,8 +22,6 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     //Tipo do feed: Country, City or Region
     var feedType: LocationType = .Country
     
-    @IBOutlet var footerView: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -38,7 +36,7 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             self.posts = posts
             self.tableView.reloadData()
             
-            UserLocation.updateCountryLocalityParse()
+//            UserLocation.updateCountryLocalityParse()
         }
         
         let refreshControl = UIRefreshControl()
@@ -68,65 +66,79 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         if (maxOffset - offset) <= 40 {
             if !isLoading, let lastCreatedAt = posts.last?.createdAt{
                 isLoading = true
-                self.footerView.hidden = (offset==0) ? true : false
                 Post.find(locationObject, type: feedType, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
                     for post in posts{
-                        var indexPath = NSIndexPath(forRow: self.posts.count, inSection: 0)
+//                        var indexPath = NSIndexPath(forRow: 0, inSection: self.posts.count)
                         self.posts.append(post)
-                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     }
-                    
+                    self.tableView.reloadData()
                     self.isLoading = false
-                    self.footerView.hidden = true
                 })
             }
         }
     }
     
     //MARK: UITableViewDataSource
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 550
-//    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 400
+        }
+        return 50
+    }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return posts.count
+    }
+
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return 2   //posts[section].comments.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-
-        cell.post = posts[indexPath.row]
-        cell.makePostCell()
-        
-        cell.contentView.userInteractionEnabled = true
-        
-        cell.postImagesScroll.userInteractionEnabled = true
-        cell.postImagesScroll.delegate = cell
-        
-        cell.pageControl?.numberOfPages = cell.post.images.count
-        
-        cell.removeImagesFromScrollView()
-        
-        for (index,image) in enumerate(cell.post.images) {
-            image.image({ (image) -> () in
-                if let image = image{
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
-                        self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
-                        cellToUpdate.addGesturesToSubviews()
-                    })
-                }
-            })
+        println(indexPath)
+        if indexPath.row == 0, let cell = tableView.dequeueReusableCellWithIdentifier("cellPost") as? PostViewCell{
+            cell.post = posts[indexPath.section]
+            cell.makePostCell()
+            
+            cell.contentView.userInteractionEnabled = true
+            
+            cell.postImagesScroll.userInteractionEnabled = true
+            cell.postImagesScroll.delegate = cell
+            
+            cell.pageControl?.numberOfPages = cell.post.images.count
+            
+            cell.removeImagesFromScrollView()
+            
+            for (index,image) in enumerate(cell.post.images) {
+                image.image({ (image) -> () in
+                    if let image = image{
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
+                            self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
+                            cellToUpdate.addGesturesToSubviews()
+                        })
+                    }
+                })
+            }
+            
+            cell.openFocusImage = {(image) in
+                var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
+                focusImageViewController.imageToShow = image
+                focusImageViewController.post = cell.post
+                self.presentViewController(focusImageViewController, animated: true, completion: nil)
+            }
+            
+            return cell
         }
         
-        cell.openFocusImage = {(image) in
-            var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-            focusImageViewController.imageToShow = image
-            focusImageViewController.post = cell.post
-            self.presentViewController(focusImageViewController, animated: true, completion: nil)
-        }
-
+        println("Comment: \(indexPath)")
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment") as! UITableViewCell
+        cell.textLabel?.text = "AAAA"
         return cell
     }
     
