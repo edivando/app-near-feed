@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111933C1B57E6C80024828E /* ImageFocusViewController.swift */; };
 		519F5A931B5FDB340067DA7E /* MenuPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */; };
+		519F5A951B601BDD0067DA7E /* FilterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A941B601BDD0067DA7E /* FilterPopoverViewController.swift */; };
+		519F5A971B6022270067DA7E /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A961B6022270067DA7E /* FilterTableViewCell.swift */; };
 		51BDAD0D1B57F7A300BFB6C3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */; };
 		51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */; };
 		51BDAD131B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */; };
@@ -24,7 +26,6 @@
 		721674FC1B5D3DBC00AC5881 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674FB1B5D3DBC00AC5881 /* Scores.swift */; };
 		721674FE1B5D3FF700AC5881 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721674FD1B5D3FF700AC5881 /* Extension.swift */; };
 		723DB92F1B4D91FB00A2CD80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */; };
-		723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB9301B4D91FB00A2CD80 /* ViewController.swift */; };
 		723DB9341B4D91FB00A2CD80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9321B4D91FB00A2CD80 /* Main.storyboard */; };
 		723DB9361B4D91FB00A2CD80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9351B4D91FB00A2CD80 /* Images.xcassets */; };
 		723DB9391B4D91FB00A2CD80 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723DB9371B4D91FB00A2CD80 /* LaunchScreen.xib */; };
@@ -82,6 +83,7 @@
 		724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */; };
 		7265B7F21B5E7F29008CF73D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F11B5E7F29008CF73D /* User.swift */; };
 		7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F31B5FE184008CF73D /* LocationType.swift */; };
+		7265B7F81B602C1E008CF73D /* PostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F71B602C1E008CF73D /* PostCommentCell.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		5111933C1B57E6C80024828E /* ImageFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFocusViewController.swift; sourceTree = "<group>"; };
 		519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopoverViewController.swift; sourceTree = "<group>"; };
+		519F5A941B601BDD0067DA7E /* FilterPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopoverViewController.swift; sourceTree = "<group>"; };
+		519F5A961B6022270067DA7E /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCommentViewController.swift; sourceTree = "<group>"; };
 		51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,7 +120,6 @@
 		723DB9291B4D91FB00A2CD80 /* NearFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723DB92D1B4D91FB00A2CD80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		723DB92E1B4D91FB00A2CD80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		723DB9301B4D91FB00A2CD80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		723DB9331B4D91FB00A2CD80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		723DB9351B4D91FB00A2CD80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		723DB9381B4D91FB00A2CD80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+NetworkIndicator.swift"; sourceTree = "<group>"; };
 		7265B7F11B5E7F29008CF73D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7265B7F31B5FE184008CF73D /* LocationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
+		7265B7F71B602C1E008CF73D /* PostCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentCell.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A7AF3020E01A0263DC92E0 /* Pods-NearFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -385,7 +389,6 @@
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
 				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
 				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
-				723DB9301B4D91FB00A2CD80 /* ViewController.swift */,
 				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
 				7241F7261B5403570033BB3C /* SignupViewController.swift */,
 				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
@@ -591,7 +594,7 @@
 				6D6E39ED1B60701000F19D6C /* RankingViewController.swift in Sources */,
 				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
 				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
-				723DB9311B4D91FB00A2CD80 /* ViewController.swift in Sources */,
+				519F5A951B601BDD0067DA7E /* FilterPopoverViewController.swift in Sources */,
 				7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */,
 				7241F72B1B5440210033BB3C /* Country.swift in Sources */,
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,
@@ -619,7 +622,9 @@
 				721674F31B5BEE0D00AC5881 /* UserLocationViewController.swift in Sources */,
 				6DEAA2021B5E889000A657C6 /* FloatRatingView.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
+				7265B7F81B602C1E008CF73D /* PostCommentCell.swift in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
+				519F5A971B6022270067DA7E /* FilterTableViewCell.swift in Sources */,
 				519F5A931B5FDB340067DA7E /* MenuPopoverViewController.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
 			);

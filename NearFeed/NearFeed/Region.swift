@@ -27,8 +27,7 @@ class Region: PFObject, PFSubclassing {
     }
     
     static func findByName(name: String, success: (regions: Region?)->()){
-        if let query = Region.query(){
-            query.whereKey("name", equalTo: name)
+        if let query = Region.queryByName(name){
             query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
                 if error == nil {
                     success(regions: (object as? Region)!)
@@ -40,5 +39,28 @@ class Region: PFObject, PFSubclassing {
                 }
             })
         }
+    }
+    
+    static func findAllRegionsInCity(city: PFObject, result: (regions: [Region]?) -> ()){
+        if let query = Region.query(){
+            query.whereKey("city", equalTo: city)
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil{
+                    result(regions: objects as? [Region])
+                }
+                else{
+                    result(regions: nil)
+                }
+            })
+        }
+    }
+    
+//MARK: Querys
+    static func queryByName(name: String) -> PFQuery?{
+        if let query = Region.query(){
+            query.whereKey("name", equalTo: name)
+            return query
+        }
+        return nil
     }
 }

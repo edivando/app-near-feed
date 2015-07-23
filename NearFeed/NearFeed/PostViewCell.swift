@@ -37,7 +37,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         super.awakeFromNib()
         postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
         postCell.layer.borderWidth = 0.5
-        postCell.layer.cornerRadius = 5
+        postCell.layer.cornerRadius = 3
         
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true
@@ -46,15 +46,15 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         btPostComment.layer.borderColor = UIColor.whiteColor().CGColor
         btPostComment.layer.borderWidth = 1
-        btPostComment.layer.cornerRadius = 5
+        btPostComment.layer.cornerRadius = 3
         
         btPostLike.layer.borderColor = UIColor.whiteColor().CGColor
         btPostLike.layer.borderWidth = 1
-        btPostLike.layer.cornerRadius = 5
+        btPostLike.layer.cornerRadius = 3
         
         btPostDislike.layer.borderColor = UIColor.whiteColor().CGColor
         btPostDislike.layer.borderWidth = 1
-        btPostDislike.layer.cornerRadius = 5
+        btPostDislike.layer.cornerRadius = 3
 
     }
 

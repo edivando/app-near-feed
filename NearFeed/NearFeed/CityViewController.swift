@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class CityViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
@@ -14,8 +15,12 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     var pagePost = 0
     var isLoading = false
     var imageFrame = CGRectMake(0, 0, 0, 0)
+
+    //Object do filtro que pode ser country, city ou region
+    var locationObject: PFObject?
     
-    @IBOutlet var footerView: UIView!
+    //Tipo do feed: Country, City or Region
+    var feedType: LocationType = .Country
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +31,13 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        Post.find(UserLocation.city, type: .City, page: pagePost) { (posts) -> () in
+        
+        Post.find(locationObject, type: feedType, page: pagePost) { (posts) -> () in
             self.posts = posts
             self.tableView.reloadData()
+            
+//            UserLocation.updateCountryLocalityParse()
         }
-        
-//        Post.findByCity(UserLocation.city, page: pagePost) { (posts) -> () in
-//            self.posts = posts
-//            self.tableView.reloadData()
-//        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
@@ -47,11 +50,11 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     
     func refresh() {
         if let createdAt = posts.first?.createdAt{
-            Post.findByCity(UserLocation.city, greaterThanCreatedAt: createdAt) { (posts) -> () in
+            Post.find(locationObject, type: feedType, greaterThanCreatedAt: createdAt, list: { (posts) -> () in
                 self.posts.splice(posts, atIndex: 0)
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
-            }
+            })
         }
     }
     
@@ -63,66 +66,80 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         if (maxOffset - offset) <= 40 {
             if !isLoading, let lastCreatedAt = posts.last?.createdAt{
                 isLoading = true
-                self.footerView.hidden = (offset==0) ? true : false
-                Post.findByCity(UserLocation.city, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
-                    
+                Post.find(locationObject, type: feedType, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
                     for post in posts{
-                        var indexPath = NSIndexPath(forRow: self.posts.count, inSection: 0)
+//                        var indexPath = NSIndexPath(forRow: 0, inSection: self.posts.count)
                         self.posts.append(post)
-                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     }
-                    
+                    self.tableView.reloadData()
                     self.isLoading = false
-                    self.footerView.hidden = true
                 })
             }
         }
     }
     
     //MARK: UITableViewDataSource
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 550
-//    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 400
+        }
+        return 50
+    }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return posts.count
+    }
+
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return 2   //posts[section].comments.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PostViewCell
-
-        cell.post = posts[indexPath.row]
-        cell.makePostCell()
-        
-        cell.contentView.userInteractionEnabled = true
-        
-        cell.postImagesScroll.userInteractionEnabled = true
-        cell.postImagesScroll.delegate = cell
-        
-        cell.pageControl?.numberOfPages = cell.post.images.count
-        
-        cell.removeImagesFromScrollView()
-        
-        for (index,image) in enumerate(cell.post.images) {
-            image.image({ (image) -> () in
-                if let image = image{
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
-                        self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
-                        cellToUpdate.addGesturesToSubviews()
-                    })
-                }
-            })
+        println(indexPath)
+        if indexPath.row == 0{
+            var cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as! PostViewCell
+            cell.post = posts[indexPath.section]
+            cell.makePostCell()
+            
+            cell.contentView.userInteractionEnabled = true
+            
+            cell.postImagesScroll.userInteractionEnabled = true
+            cell.postImagesScroll.delegate = cell
+            
+            cell.pageControl?.numberOfPages = cell.post.images.count
+            
+            cell.removeImagesFromScrollView()
+            
+            for (index,image) in enumerate(cell.post.images) {
+                image.image({ (image) -> () in
+                    if let image = image{
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
+                            self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
+                            cellToUpdate.addGesturesToSubviews()
+                        })
+                    }
+                })
+            }
+            
+            cell.openFocusImage = {(image) in
+                var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
+                focusImageViewController.imageToShow = image
+                focusImageViewController.post = cell.post
+                self.presentViewController(focusImageViewController, animated: true, completion: nil)
+            }
+            
+            return cell
         }
         
-        cell.openFocusImage = {(image) in
-            var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-            focusImageViewController.imageToShow = image
-            focusImageViewController.post = cell.post
-            self.presentViewController(focusImageViewController, animated: true, completion: nil)
-        }
-
+        println("Comment: \(indexPath)")
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment") as! UITableViewCell
+        cell.textLabel?.text = "AAAA"
         return cell
     }
     
@@ -137,7 +154,10 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
         
         subView.image = image
         
-        subView.contentMode = UIViewContentMode.ScaleAspectFit
+        subView.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        subView.clipsToBounds = true
+        
         
         subView.userInteractionEnabled = true
         
@@ -155,8 +175,35 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
             var popoverMenuViewController = segue.destinationViewController as! MenuPopoverViewController
             popoverMenuViewController.modalPresentationStyle = .Popover
             popoverMenuViewController.popoverPresentationController?.delegate = self
-            popoverMenuViewController.preferredContentSize = CGSizeMake(150,150)
+            var dummyCell = UITableViewCell() //celula pra fazer calculo da altura do popover
+            popoverMenuViewController.preferredContentSize = CGSizeMake(150,dummyCell.frame.size.height * 3)
+            popoverMenuViewController.feedType = feedType
+            popoverMenuViewController.updateFeedToLocation = {(location) in
+                self.feedType = location
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
+            }
         }
+        else if segue.identifier == "filterPopover"{
+            var popoverFilterViewController = segue.destinationViewController as! FilterPopoverViewController
+            popoverFilterViewController.modalPresentationStyle = .Popover
+            popoverFilterViewController.popoverPresentationController?.delegate = self
+            popoverFilterViewController.preferredContentSize = CGSizeMake(250,200)
+            popoverFilterViewController.locationObject = self.locationObject
+            popoverFilterViewController.feedType = self.feedType
+            popoverFilterViewController.updateFeedToLocation = {(locationObject) in
+                self.locationObject = locationObject
+                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
+                    self.posts = [Post]()
+                    self.posts = posts
+                    self.tableView.reloadData()
+                })
+            }
+        }
+
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
