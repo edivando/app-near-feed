@@ -101,7 +101,8 @@ class CityViewController: UITableViewController, UIPopoverPresentationController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         println(indexPath)
-        if indexPath.row == 0, let cell = tableView.dequeueReusableCellWithIdentifier("cellPost") as? PostViewCell{
+        if indexPath.row == 0{
+            var cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as! PostViewCell
             cell.post = posts[indexPath.section]
             cell.makePostCell()
             
