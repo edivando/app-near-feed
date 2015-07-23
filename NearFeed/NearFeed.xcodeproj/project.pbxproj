@@ -46,9 +46,7 @@
 		723DB9711B4E986B00A2CD80 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DB9701B4E986B00A2CD80 /* Social.framework */; };
 		723DB9741B4E99C000A2CD80 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DB9721B4E99C000A2CD80 /* Bolts.framework */; };
 		723DB9751B4E99C000A2CD80 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723DB9731B4E99C000A2CD80 /* Parse.framework */; };
-		7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6D61B53E1500033BB3C /* CountryViewController.swift */; };
 		7241F6D91B53E15F0033BB3C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6D81B53E15F0033BB3C /* FeedViewController.swift */; };
-		7241F6DF1B53E1980033BB3C /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6DE1B53E1980033BB3C /* RegionViewController.swift */; };
 		7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E01B53E1A70033BB3C /* PostViewController.swift */; };
 		7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */; };
 		7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */; };
@@ -101,9 +99,9 @@
 		0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		5111933C1B57E6C80024828E /* ImageFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFocusViewController.swift; sourceTree = "<group>"; };
 		519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopoverViewController.swift; sourceTree = "<group>"; };
-		519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterTableViewCell.swift; path = NearFeed/FilterTableViewCell.swift; sourceTree = "<group>"; };
-		519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCommentCell.swift; path = NearFeed/PostCommentCell.swift; sourceTree = "<group>"; };
-		519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterPopoverViewController.swift; path = NearFeed/FilterPopoverViewController.swift; sourceTree = "<group>"; };
+		519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCell.swift; sourceTree = "<group>"; };
+		519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopoverViewController.swift; sourceTree = "<group>"; };
 		51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCommentViewController.swift; sourceTree = "<group>"; };
 		51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -142,9 +140,7 @@
 		723DB9701B4E986B00A2CD80 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		723DB9721B4E99C000A2CD80 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		723DB9731B4E99C000A2CD80 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		7241F6D61B53E1500033BB3C /* CountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		7241F6D81B53E15F0033BB3C /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		7241F6DE1B53E1980033BB3C /* RegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
 		7241F6E01B53E1A70033BB3C /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostViewController.swift; sourceTree = "<group>"; };
@@ -243,9 +239,6 @@
 		723DB9201B4D91FB00A2CD80 = {
 			isa = PBXGroup;
 			children = (
-				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
-				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
-				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 				723DB92B1B4D91FB00A2CD80 /* NearFeed */,
 				723DB9411B4D91FB00A2CD80 /* NearFeedTests */,
 				723DB92A1B4D91FB00A2CD80 /* Products */,
@@ -348,6 +341,7 @@
 			children = (
 				721674FD1B5D3FF700AC5881 /* Extension.swift */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
+				72445BC61B6115980019AE8C /* FloatRating */,
 				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
 				7241F6EA1B53E4EB0033BB3C /* TextFieldEffects */,
@@ -383,11 +377,12 @@
 		7241F7231B5400910033BB3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				72445BC71B6115B60019AE8C /* TableViewCell */,
+				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
+				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 				7241F6D81B53E15F0033BB3C /* FeedViewController.swift */,
 				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
 				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
-				7241F6D61B53E1500033BB3C /* CountryViewController.swift */,
-				7241F6DE1B53E1980033BB3C /* RegionViewController.swift */,
 				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
 				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
@@ -398,10 +393,8 @@
 				724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */,
 				724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */,
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
-				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
-				6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */,
 				519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */,
 				6D6E39EC1B60701000F19D6C /* RankingViewController.swift */,
 				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
@@ -435,6 +428,23 @@
 				721674FB1B5D3DBC00AC5881 /* Scores.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		72445BC61B6115980019AE8C /* FloatRating */ = {
+			isa = PBXGroup;
+			children = (
+				6DEAA2011B5E889000A657C6 /* FloatRatingView.swift */,
+			);
+			name = FloatRating;
+			sourceTree = "<group>";
+		};
+		72445BC71B6115B60019AE8C /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
+				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
+			);
+			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,12 +616,10 @@
 				7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */,
 				7241F6F91B53E4EB0033BB3C /* KaedeTextField.swift in Sources */,
 				7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */,
-				7241F6DF1B53E1980033BB3C /* RegionViewController.swift in Sources */,
 				7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */,
 				7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */,
 				51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
-				7241F6D71B53E1500033BB3C /* CountryViewController.swift in Sources */,
 				7241F7001B53E6D90033BB3C /* UserLocation.swift in Sources */,
 				721674EF1B5BE77500AC5881 /* PostViewCell.swift in Sources */,
 				7241F7311B5451B50033BB3C /* Post.swift in Sources */,
