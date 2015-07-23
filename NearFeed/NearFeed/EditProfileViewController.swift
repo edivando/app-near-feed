@@ -32,7 +32,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             updateObject["name"] = nameTextField.text
             
             
-            currentObject?.setObject(imageFile!, forKey: "image")
+            //currentObject?.setObject(imageFile!, forKey: "image")
             
             //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
             updateObject.saveInBackground()
@@ -50,11 +50,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             updateObject["username"] = emailTextField.text
             updateObject["email"] = emailTextField.text
             updateObject["name"] = nameTextField.text
-            updateObject.setObject(imageFile!, forKey: "image")
+            //updateObject.setObject(imageFile!, forKey: "image")
             //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
             updateObject.saveInBackground()
             
-            println("SALVOU AQUI")
+            println("SALVOU AQUI DEPOIS")
         }
         
         // Return to table view
@@ -181,6 +181,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.allowsEditing = true
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(imagePicker, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -189,12 +190,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         //let imageData = UIImagePNGRepresentation(pickedImage)
         imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 1.0))
         self.imageImageView.image = pickedImage
+        currentObject!.setObject(imageFile!, forKey: "image")
+        currentObject!.saveInBackground()
+        println("PEGOU IMAGEM")
         picker.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        
+        println("NAO PEGOU IMAGEM")
         dismissViewControllerAnimated(true, completion: nil)
         
     }
