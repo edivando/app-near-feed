@@ -10,6 +10,9 @@ import UIKit
 import Parse
 
 class FeedViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var navigationTopView: UIView!
+    @IBOutlet weak var labelObjectName: UILabel!
+    @IBOutlet weak var labelLocationType: UILabel!
 
     var posts = [Post]()
     var pagePost = 0
@@ -25,6 +28,10 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        navigationTopView.backgroundColor = Color.blue
+        labelObjectName.textColor = UIColor.whiteColor()
+        labelLocationType.textColor = UIColor.whiteColor()
         
         navigationController?.navigationBar.barTintColor = Color.blue
         navigationController?.navigationBar.translucent = false
@@ -195,7 +202,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             popoverFilterViewController.locationObject = self.locationObject
             popoverFilterViewController.feedType = self.feedType
             popoverFilterViewController.updateFeedToLocation = {(locationObject) in
-                self.locationObject = locationObject
+                //self.locationObject = locationObject
                 Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
                     self.posts = [Post]()
                     self.posts = posts

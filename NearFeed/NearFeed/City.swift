@@ -27,13 +27,13 @@ class City: PFObject, PFSubclassing {
     }
     
 //MARK: Finds
-    static func findByName(name: String, success: (citys: City?)->()){
+    static func findByName(name: String, success: (city: City?)->()){
         if let query = City.queryByName(name){
             query.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
                 if error == nil {
-                    success(citys: (object as? City)!)
+                    success(city: (object as? City)!)
                 } else {
-                    success(citys: nil)
+                    success(city: nil)
                     if let code = error?.code{
                         Message.error("Country", text: "\(code)")
                     }

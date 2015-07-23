@@ -11,11 +11,12 @@ import Parse
 
 class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     var locationObject: PFObject?
     var feedType: LocationType?
-    var updateFeedToLocation: (locationObject:PFObject)->() = {(locationObject) in}
+    var updateFeedToLocation: (feedType: LocationType,locationObject:PFObject)->() = {(feedType, locationObject) in}
     var locationsFound = [PFObject]()
     var selectedIndexPath: NSIndexPath?
     
@@ -24,6 +25,7 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         
         tableView.delegate = self
         tableView.dataSource = self
+        segmentedControl.addTarget(self, action: Selector("segmentedClicked:"), forControlEvents: UIControlEvents.ValueChanged)
         
         //locationsFound.append(locationObject!)
         
@@ -47,16 +49,51 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         if feedType == LocationType.Region{
+            segmentedControl.selectedSegmentIndex = 2
+            if locationObject == nil{
+                //Get user region
+                if UserLocation.region.objectId == nil{
+                    Region.findByName(UserLocation.regionName, success: { (region) -> () in
+                        if region != nil{
+                            self.locationObject = region
+                        }
+                    })
+                }
+            }
+            else{
+                //Tenho o objecto de localizacao
+            }
             //query for all regions in that city
             //completion block calls reload data
             //Region.findAllRegionsInCity(locationObject["city"], result: <#(regions: [Region]?) -> ()##(regions: [Region]?) -> ()#>)
         }
         else if feedType == LocationType.City{
+            segmentedControl.selectedSegmentIndex = 1
+            if locationObject == nil{
+                //Get user city
+                if UserLocation.city.objectId == nil{
+                    City.findByName(UserLocation.cityName, success: { (city) -> () in
+                        if city != nil{
+                            self.locationObject = city
+                        }
+                        else{
+                            //cara, deu muita merda
+                        }
+                    })
+                }
+            }
+            else{
+                //Tenho o objecto de localizacao
+            }
             //query for all cities in that country
             //completion block calls reload data
             //City.findAllCitiesInCountry(locationObject["country"], result: )
         }
         else{
+            segmentedControl.selectedSegmentIndex = 0
+            if locationObject == nil{
+                //Get user country
+            }
             //query for all countries
             //completion block calls reload data
             //Country.findAllCountries(result: )
@@ -101,13 +138,29 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             previousSelectedCell.accessoryType = UITableViewCellAccessoryType.None
             currentSelectedCell.accessoryType = UITableViewCellAccessoryType.Checkmark
             
-            updateFeedToLocation(locationObject: currentSelectedCell.locationObject!)
+            //updateFeedToLocation(locationObject: currentSelectedCell.locationObject!)
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
+    }
+    
+    func segmentedClicked(sender:UISegmentedControl){
+        if sender.selectedSegmentIndex == 0{
+            //Country
+            self.feedType = LocationType.Country
+        }
+        else if sender.selectedSegmentIndex == 1{
+            //City
+            self.feedType = LocationType.City
+        }
+        else{
+            //Region
+            self.feedType = LocationType.Region
+        }
+        tableView.reloadData()
     }
 
     /*

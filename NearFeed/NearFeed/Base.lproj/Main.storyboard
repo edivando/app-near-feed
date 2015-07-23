@@ -1326,7 +1326,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LCR-kj-EFZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" id="8gh-E1-vFp" customClass="FilterTableViewCell" customModule="NearFeed" customModuleProvider="target">
@@ -1339,16 +1339,34 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sji-DJ-UdH">
+                                <rect key="frame" x="16" y="28" width="568" height="29"/>
+                                <segments>
+                                    <segment title="Country"/>
+                                    <segment title="City"/>
+                                    <segment title="Region"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="leading" secondItem="9hM-yf-Fmf" secondAttribute="leading" id="7KN-MF-sms"/>
-                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="top" secondItem="9hM-yf-Fmf" secondAttribute="top" id="Ref-b8-6LC"/>
-                            <constraint firstAttribute="trailing" secondItem="LCR-kj-EFZ" secondAttribute="trailing" id="ucI-Ns-Ojf"/>
-                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="bottom" secondItem="NgZ-Iu-f6J" secondAttribute="top" id="z95-Te-arh"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="centerX" secondItem="sji-DJ-UdH" secondAttribute="centerX" id="8zM-qp-Zex"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="bottom" secondItem="NgZ-Iu-f6J" secondAttribute="top" id="AFB-zK-CdP"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="top" secondItem="sji-DJ-UdH" secondAttribute="bottom" constant="8" symbolic="YES" id="YKf-09-PDx"/>
+                            <constraint firstAttribute="trailing" secondItem="LCR-kj-EFZ" secondAttribute="trailing" id="eAK-Ct-VI8"/>
+                            <constraint firstItem="sji-DJ-UdH" firstAttribute="leading" secondItem="9hM-yf-Fmf" secondAttribute="leadingMargin" id="err-c7-oCL"/>
+                            <constraint firstItem="sji-DJ-UdH" firstAttribute="top" secondItem="qvl-sF-UnQ" secondAttribute="bottom" constant="8" symbolic="YES" id="g7q-Bh-3wF"/>
+                            <constraint firstItem="sji-DJ-UdH" firstAttribute="top" secondItem="qvl-sF-UnQ" secondAttribute="bottom" id="gmo-gx-BoF"/>
+                            <constraint firstItem="LCR-kj-EFZ" firstAttribute="leading" secondItem="9hM-yf-Fmf" secondAttribute="leading" id="r9T-VL-ByK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gmo-gx-BoF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="segmentedControl" destination="sji-DJ-UdH" id="F2B-3r-uxA"/>
                         <outlet property="tableView" destination="LCR-kj-EFZ" id="HiD-JP-nvJ"/>
                     </connections>
                 </viewController>
@@ -1356,7 +1374,7 @@
             </objects>
             <point key="canvasLocation" x="1481" y="-1120"/>
         </scene>
-        <!--City View Controller-->
+        <!--Feed View Controller-->
         <scene sceneID="qyk-b6-tuZ">
             <objects>
                 <tableViewController id="fbl-s8-0LV" customClass="FeedViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -1569,17 +1587,17 @@
                     <navigationItem key="navigationItem" id="Psw-Qy-TwF">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="X0g-Eg-uiH">
-                            <rect key="frame" x="85" y="5.5" width="430" height="33"/>
+                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estados Unidos da America Continental Americana " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSw-lN-zTF">
-                                    <rect key="frame" x="8" y="16" width="414" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estados Unidos da America" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSw-lN-zTF">
+                                    <rect key="frame" x="0.0" y="16" width="240" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf8-qg-tr8">
-                                    <rect key="frame" x="8" y="0.0" width="414" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -1589,12 +1607,12 @@
                             <constraints>
                                 <constraint firstItem="bSw-lN-zTF" firstAttribute="top" secondItem="X0g-Eg-uiH" secondAttribute="top" constant="16" id="2Aa-lc-EV6"/>
                                 <constraint firstItem="mf8-qg-tr8" firstAttribute="top" secondItem="X0g-Eg-uiH" secondAttribute="top" id="Hk1-FQ-SMd"/>
+                                <constraint firstAttribute="trailing" secondItem="bSw-lN-zTF" secondAttribute="trailing" id="ITc-ET-B6n"/>
                                 <constraint firstAttribute="bottom" secondItem="bSw-lN-zTF" secondAttribute="bottom" constant="-4" id="Tjv-4t-eUt"/>
-                                <constraint firstItem="bSw-lN-zTF" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" constant="8" id="ajC-h0-JR6"/>
+                                <constraint firstItem="bSw-lN-zTF" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" id="ajC-h0-JR6"/>
                                 <constraint firstAttribute="bottom" secondItem="mf8-qg-tr8" secondAttribute="bottom" constant="12" id="cOe-8n-QIe"/>
-                                <constraint firstItem="mf8-qg-tr8" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" constant="8" id="ePd-r9-tx5"/>
-                                <constraint firstAttribute="trailing" secondItem="mf8-qg-tr8" secondAttribute="trailing" constant="8" id="pzf-St-X4a"/>
-                                <constraint firstAttribute="trailing" secondItem="bSw-lN-zTF" secondAttribute="trailing" constant="8" id="zus-uR-1jr"/>
+                                <constraint firstItem="mf8-qg-tr8" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" id="ePd-r9-tx5"/>
+                                <constraint firstAttribute="trailing" secondItem="mf8-qg-tr8" secondAttribute="trailing" id="pzf-St-X4a"/>
                             </constraints>
                         </view>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU">
@@ -1605,6 +1623,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="labelLocationType" destination="mf8-qg-tr8" id="7O2-3h-cLJ"/>
+                        <outlet property="labelObjectName" destination="bSw-lN-zTF" id="65l-Ka-G1H"/>
+                        <outlet property="navigationTopView" destination="X0g-Eg-uiH" id="h7x-qb-UWc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-8b-hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
