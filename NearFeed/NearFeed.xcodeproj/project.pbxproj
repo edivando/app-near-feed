@@ -49,7 +49,6 @@
 		7241F6D91B53E15F0033BB3C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6D81B53E15F0033BB3C /* FeedViewController.swift */; };
 		7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E01B53E1A70033BB3C /* PostViewController.swift */; };
 		7241F6E31B53E1B70033BB3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */; };
-		7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */; };
 		7241F6E71B53E2150033BB3C /* PostCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */; };
 		7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F6EB1B53E4EB0033BB3C /* HoshiTextField.swift */; };
 		7241F6F61B53E4EB0033BB3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7241F6EC1B53E4EB0033BB3C /* Info.plist */; };
@@ -78,8 +77,6 @@
 		7241F7331B554F040033BB3C /* PostLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7321B554F040033BB3C /* PostLike.swift */; };
 		7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7341B5554AE0033BB3C /* PostComment.swift */; };
 		7241F7371B5555E10033BB3C /* PostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7361B5555E10033BB3C /* PostReport.swift */; };
-		724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */; };
-		724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */; };
 		7265B7F21B5E7F29008CF73D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F11B5E7F29008CF73D /* User.swift */; };
 		7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F31B5FE184008CF73D /* LocationType.swift */; };
 		CBF30D32B58670E10EBE05F3 /* libPods-NearFeed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */; };
@@ -143,7 +140,6 @@
 		7241F6D81B53E15F0033BB3C /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7241F6E01B53E1A70033BB3C /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostViewController.swift; sourceTree = "<group>"; };
 		7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentViewController.swift; sourceTree = "<group>"; };
 		7241F6EB1B53E4EB0033BB3C /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
 		7241F6EC1B53E4EB0033BB3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,8 +172,6 @@
 		7241F7321B554F040033BB3C /* PostLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLike.swift; sourceTree = "<group>"; };
 		7241F7341B5554AE0033BB3C /* PostComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		7241F7361B5555E10033BB3C /* PostReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReport.swift; sourceTree = "<group>"; };
-		724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
-		724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+NetworkIndicator.swift"; sourceTree = "<group>"; };
 		7265B7F11B5E7F29008CF73D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7265B7F31B5FE184008CF73D /* LocationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		D62E48FF471CFDBBD40D08FC /* libPods-NearFeed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NearFeed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,7 +259,6 @@
 				7241F7231B5400910033BB3C /* Controller */,
 				723DB92C1B4D91FB00A2CD80 /* Supporting Files */,
 				7241F6FE1B53E4F00033BB3C /* Library */,
-				51ECA9AF1B53E81A0006571B /* IndexViewController.swift */,
 			);
 			path = NearFeed;
 			sourceTree = "<group>";
@@ -378,20 +371,12 @@
 			isa = PBXGroup;
 			children = (
 				72445BC71B6115B60019AE8C /* TableViewCell */,
-				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
-				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 				7241F6D81B53E15F0033BB3C /* FeedViewController.swift */,
-				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
+				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
 				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
 				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
-				7241F6E41B53E1FF0033BB3C /* ImagePostViewController.swift */,
 				7241F6E61B53E2150033BB3C /* PostCommentViewController.swift */,
-				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
-				7241F7261B5403570033BB3C /* SignupViewController.swift */,
-				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
-				724A43571B57D1DC003B7120 /* CustomInfiniteIndicator.swift */,
-				724A43591B57D341003B7120 /* UIApplication+NetworkIndicator.swift */,
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				721674F21B5BEE0D00AC5881 /* UserLocationViewController.swift */,
@@ -400,7 +385,9 @@
 				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
 				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 				6D6E39EC1B60701000F19D6C /* RankingViewController.swift */,
-				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
+				51ECA9AB1B52BA6C0006571B /* LoginViewController.swift */,
+				7241F7261B5403570033BB3C /* SignupViewController.swift */,
+				51ECA9AF1B53E81A0006571B /* IndexViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -446,6 +433,10 @@
 			children = (
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
 				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
+				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
+				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
+				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
+				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -605,13 +596,10 @@
 				7241F6E11B53E1A70033BB3C /* PostViewController.swift in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
 				7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */,
-				724A43581B57D1DC003B7120 /* CustomInfiniteIndicator.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				721674FC1B5D3DBC00AC5881 /* Scores.swift in Sources */,
-				724A435A1B57D341003B7120 /* UIApplication+NetworkIndicator.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
 				6D6E39ED1B60701000F19D6C /* RankingViewController.swift in Sources */,
-				7241F6E51B53E1FF0033BB3C /* ImagePostViewController.swift in Sources */,
 				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
 				7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */,
 				7241F72B1B5440210033BB3C /* Country.swift in Sources */,

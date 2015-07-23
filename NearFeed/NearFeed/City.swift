@@ -42,9 +42,15 @@ class City: PFObject, PFSubclassing {
         }
     }
     
-    static func findAllCitiesInCountry(country: PFObject, result: (cities: [City]?) -> ()){
+    static func findAllByCountry(country: PFObject?, result: (cities: [City]?) -> ()){
         if let query = City.query(){
-            query.whereKey("country", equalTo: country)
+            if let country = country{
+                query.whereKey("country", equalTo: country)
+            }else if let obj = UserLocation.country.objectId{
+                query.whereKey("country", equalTo: UserLocation.country)
+            }else if let countryQuery = Country.queryByName(UserLocation.countryName){
+                query.whereKey("country", matchesQuery: countryQuery)
+            }
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error == nil{
                     result(cities: objects as? [City])
@@ -65,7 +71,4 @@ class City: PFObject, PFSubclassing {
         }
         return nil
     }
-    
-    
-    
 }
