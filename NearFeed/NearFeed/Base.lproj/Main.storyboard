@@ -1356,7 +1356,7 @@
             </objects>
             <point key="canvasLocation" x="1481" y="-1120"/>
         </scene>
-        <!--City-->
+        <!--City View Controller-->
         <scene sceneID="qyk-b6-tuZ">
             <objects>
                 <tableViewController id="fbl-s8-0LV" customClass="CityViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -1566,14 +1566,37 @@
                             <outlet property="delegate" destination="fbl-s8-0LV" id="uO5-Sn-LTD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="City" id="Psw-Qy-TwF">
-                        <barButtonItem key="leftBarButtonItem" image="list" id="3Zl-ww-753">
-                            <connections>
-                                <segue destination="fVO-z7-CiB" kind="popoverPresentation" identifier="popoverMenu" popoverAnchorBarButtonItem="3Zl-ww-753" id="3Hf-lu-pIP">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" id="Psw-Qy-TwF">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="X0g-Eg-uiH">
+                            <rect key="frame" x="85" y="5.5" width="430" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estados Unidos da America Continental Americana " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSw-lN-zTF">
+                                    <rect key="frame" x="8" y="16" width="414" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf8-qg-tr8">
+                                    <rect key="frame" x="8" y="0.0" width="414" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="bSw-lN-zTF" firstAttribute="top" secondItem="X0g-Eg-uiH" secondAttribute="top" constant="16" id="2Aa-lc-EV6"/>
+                                <constraint firstItem="mf8-qg-tr8" firstAttribute="top" secondItem="X0g-Eg-uiH" secondAttribute="top" id="Hk1-FQ-SMd"/>
+                                <constraint firstAttribute="bottom" secondItem="bSw-lN-zTF" secondAttribute="bottom" constant="-4" id="Tjv-4t-eUt"/>
+                                <constraint firstItem="bSw-lN-zTF" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" constant="8" id="ajC-h0-JR6"/>
+                                <constraint firstAttribute="bottom" secondItem="mf8-qg-tr8" secondAttribute="bottom" constant="12" id="cOe-8n-QIe"/>
+                                <constraint firstItem="mf8-qg-tr8" firstAttribute="leading" secondItem="X0g-Eg-uiH" secondAttribute="leading" constant="8" id="ePd-r9-tx5"/>
+                                <constraint firstAttribute="trailing" secondItem="mf8-qg-tr8" secondAttribute="trailing" constant="8" id="pzf-St-X4a"/>
+                                <constraint firstAttribute="trailing" secondItem="bSw-lN-zTF" secondAttribute="trailing" constant="8" id="zus-uR-1jr"/>
+                            </constraints>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="tzH-l9-OeU">
                             <connections>
                                 <segue destination="30V-Wa-Dny" kind="popoverPresentation" identifier="filterPopover" popoverAnchorBarButtonItem="tzH-l9-OeU" id="38N-dg-pgz">
@@ -1650,7 +1673,6 @@
         <image name="StarFull" width="22" height="22"/>
         <image name="bubble" width="20" height="20"/>
         <image name="filter" width="20" height="20"/>
-        <image name="list" width="20" height="20"/>
         <image name="news" width="20" height="20"/>
         <image name="paperplane" width="20" height="20"/>
         <image name="thumbs-up" width="20" height="20"/>
