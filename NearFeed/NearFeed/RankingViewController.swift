@@ -11,14 +11,57 @@ import Parse
 
 class RankingViewController: UIViewController, UITableViewDataSource {
     
-    //MARK - Outlets
     
+    var currentObject : PFUser?
+    
+    //MARK - Outlets
     @IBOutlet var tableview: UITableView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentObject = PFUser.currentUser()
+        //imageImageView.frame = CGRectMake(0, 0, 100, 100)
         
+        var colecao : [AnyObject]?
+        
+        //if !PFAnonymousUtils.isLinkedWithUser(currentObject) {
+         //   println("nao anonimo")
+
+            var query = User.query()
+        
+        
+                query!.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil, let users = objects {
+                        println(users)
+                    }
+                })
+        
+//            query.findObjectsInBackgroundWithBlock({ (lista : [AnyObject]?, error : NSError?) -> Void in
+//                
+//                if (error != nil) {
+//                    colecao = lista
+//                    println("Printando a Lista")
+//                    println(lista)
+//                    // The find succeeded. The first 100 objects are available in objects
+//                } else {
+//                    // Log details of the failure
+//                    println("Entrou no error : \(error)")
+//                }
+//                
+//                
+//            })
+//        
+//            for var i = 0 ; i < colecao?.count ; i++ {
+//                //let user : PFUser = object["name"] as PFUser
+//                println("\(colecao![i])")
+//            }
+        
+        //}
+
 
         // Do any additional setup after loading the view.
     }
@@ -65,7 +108,7 @@ class RankingViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
 
     /*

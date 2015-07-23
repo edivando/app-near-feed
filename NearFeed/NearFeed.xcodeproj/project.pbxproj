@@ -402,6 +402,9 @@
 				519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */,
 				6D6E39EC1B60701000F19D6C /* RankingViewController.swift */,
 				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
+				519F5A941B601BDD0067DA7E /* FilterPopoverViewController.swift */,
+				519F5A961B6022270067DA7E /* FilterTableViewCell.swift */,
+				7265B7F71B602C1E008CF73D /* PostCommentCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
