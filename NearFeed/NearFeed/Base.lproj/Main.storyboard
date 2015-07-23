@@ -1365,12 +1365,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPostComment" rowHeight="50" id="nhc-qa-JiY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPostComment" rowHeight="80" id="nhc-qa-JiY" customClass="PostCommentCell" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nhc-qa-JiY" id="IWu-i0-FIS">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QD-eL-Q2d">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Tvu-ac-QzJ">
+                                                    <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Hi5-xB-I5h"/>
+                                                        <constraint firstAttribute="width" constant="40" id="wTT-1Q-twr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name Post Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elc-Mo-hsp">
+                                                    <rect key="frame" x="60" y="5" width="400" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="400" id="qZ7-su-ztO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datetime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjU-Gx-GGf">
+                                                    <rect key="frame" x="460" y="5" width="132" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="132" id="9nz-PB-Ei4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96O-Qn-qnY">
+                                                    <rect key="frame" x="60" y="38" width="532" height="42"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="IjU-Gx-GGf" firstAttribute="leading" secondItem="Elc-Mo-hsp" secondAttribute="trailing" id="6db-jm-Y1A"/>
+                                                <constraint firstAttribute="bottom" secondItem="Elc-Mo-hsp" secondAttribute="bottom" constant="50" id="7oS-7c-cUe"/>
+                                                <constraint firstAttribute="bottom" secondItem="IjU-Gx-GGf" secondAttribute="bottom" constant="50" id="A7u-MN-4VZ"/>
+                                                <constraint firstItem="IjU-Gx-GGf" firstAttribute="top" secondItem="1QD-eL-Q2d" secondAttribute="top" constant="5" id="Cwf-Zo-Zwq"/>
+                                                <constraint firstAttribute="bottom" secondItem="96O-Qn-qnY" secondAttribute="bottom" id="GjN-A4-jAS"/>
+                                                <constraint firstItem="Elc-Mo-hsp" firstAttribute="leading" secondItem="1QD-eL-Q2d" secondAttribute="leading" constant="60" id="NP6-JV-W7W"/>
+                                                <constraint firstAttribute="trailing" secondItem="96O-Qn-qnY" secondAttribute="trailing" constant="8" id="SCh-JC-hP3"/>
+                                                <constraint firstItem="Tvu-ac-QzJ" firstAttribute="leading" secondItem="1QD-eL-Q2d" secondAttribute="leading" constant="10" id="SQJ-b6-Kw5"/>
+                                                <constraint firstItem="96O-Qn-qnY" firstAttribute="leading" secondItem="1QD-eL-Q2d" secondAttribute="leading" constant="60" id="SXB-QL-o0d"/>
+                                                <constraint firstItem="96O-Qn-qnY" firstAttribute="top" secondItem="Elc-Mo-hsp" secondAttribute="bottom" constant="8" id="f34-E1-Bea"/>
+                                                <constraint firstAttribute="trailing" secondItem="Elc-Mo-hsp" secondAttribute="trailing" constant="140" id="jYL-ys-CYa"/>
+                                                <constraint firstItem="Tvu-ac-QzJ" firstAttribute="top" secondItem="1QD-eL-Q2d" secondAttribute="top" constant="5" id="mdC-Hr-JUK"/>
+                                                <constraint firstAttribute="trailing" secondItem="IjU-Gx-GGf" secondAttribute="trailing" constant="8" id="nr8-6F-8wj"/>
+                                                <constraint firstItem="Elc-Mo-hsp" firstAttribute="top" secondItem="1QD-eL-Q2d" secondAttribute="top" constant="5" id="xuv-pj-1Ub"/>
+                                                <constraint firstItem="IjU-Gx-GGf" firstAttribute="leading" secondItem="1QD-eL-Q2d" secondAttribute="leading" constant="460" id="zdI-va-NcW"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="jYL-ys-CYa"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.89803922179999995" green="0.89803922179999995" blue="0.89803916220000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="1QD-eL-Q2d" firstAttribute="top" secondItem="IWu-i0-FIS" secondAttribute="topMargin" constant="-8" id="1i1-MX-gdE"/>
+                                        <constraint firstItem="1QD-eL-Q2d" firstAttribute="leading" secondItem="IWu-i0-FIS" secondAttribute="leadingMargin" constant="-8" id="72T-A0-DpI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1QD-eL-Q2d" secondAttribute="trailing" constant="-8" id="irv-GK-x5g"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1QD-eL-Q2d" secondAttribute="bottom" constant="-8" id="zVS-Kg-neW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postComment" destination="96O-Qn-qnY" id="rax-GX-3cd"/>
+                                    <outlet property="postCommentCell" destination="1QD-eL-Q2d" id="dny-Pt-teW"/>
+                                    <outlet property="postDate" destination="IjU-Gx-GGf" id="tdZ-3X-mLo"/>
+                                    <outlet property="userImage" destination="Tvu-ac-QzJ" id="hyH-qP-H91"/>
+                                    <outlet property="userName" destination="Elc-Mo-hsp" id="S3J-qS-0LQ"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellPost" rowHeight="400" id="xXD-x6-esx" customClass="PostViewCell" customModule="NearFeed" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>

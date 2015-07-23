@@ -89,7 +89,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         if indexPath.row == 0{
             return 400
         }
-        return 50
+        return 80
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -146,9 +146,13 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             
             return cell
         }
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = post.comments[indexPath.row-1].message
+        let postComment = post.comments[indexPath.row-1]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as! PostCommentCell
+        cell.userName.text = "User name comment"
+        cell.userImage.image = UIImage(named: "user")
+        cell.postComment.text = postComment.message
+        cell.postDate.text = "dates" //postComment.createdAt?.dateFormat()
+
         return cell
     }
     
