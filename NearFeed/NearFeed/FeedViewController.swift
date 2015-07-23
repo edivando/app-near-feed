@@ -69,10 +69,11 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
                 Post.find(locationObject, type: feedType, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
                     for post in posts{
 //                        var indexPath = NSIndexPath(forRow: 0, inSection: self.posts.count)
+                        //self.tableView.insertSections(NSIndexSet(index: self.posts.count), withRowAnimation: .Fade)
                         self.posts.append(post)
 //                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                     }
-                    self.tableView.reloadData()
+//                    self.tableView.reloadData()
                     self.isLoading = false
                 })
             }
