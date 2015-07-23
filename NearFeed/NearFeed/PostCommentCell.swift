@@ -17,7 +17,8 @@ class PostCommentCell: UITableViewCell {
     @IBOutlet var userName: UILabel!
     
     @IBOutlet var postDate: UILabel!
-    @IBOutlet var postComment: UILabel!
+    @IBOutlet var postComment: UITextView!
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,7 @@ class PostCommentCell: UITableViewCell {
         
         postCommentCell.layer.borderColor = UIColor.lightGrayColor().CGColor
         postCommentCell.layer.borderWidth = 0.5
-        postCommentCell.layer.cornerRadius = 3
+//        postCommentCell.layer.cornerRadius = 3
         
         userImage.layer.cornerRadius = 20
         userImage.layer.masksToBounds = true

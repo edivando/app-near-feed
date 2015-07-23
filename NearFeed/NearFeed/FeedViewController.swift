@@ -151,7 +151,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         cell.userName.text = "User name comment"
         cell.userImage.image = UIImage(named: "user")
         cell.postComment.text = postComment.message
-        cell.postDate.text = "dates" //postComment.createdAt?.dateFormat()
+        cell.postDate.text = postComment.createdAt?.dateFormat()
 
         return cell
     }
