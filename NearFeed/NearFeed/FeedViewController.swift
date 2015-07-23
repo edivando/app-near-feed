@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CityViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+class FeedViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
     var posts = [Post]()
     var pagePost = 0
