@@ -38,6 +38,11 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
         }
     }
     
+    func updateScores(score: Score){
+        self.score = self.score.integerValue + score.value
+        saveInBackground()
+    }
+    
     static func findAllOrderByScores(callback: (users: [User]?) ->()){
         let query = User.query()
         query?.orderByDescending("scores")
@@ -49,15 +54,6 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
             }
         })
     }
-    
-//    static func updateScores(score: Score, user: User?, callback: (success: Bool)->()){
-//        if let user = user{
-//            user.score = user.score.integerValue + score.value
-//            user.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                   callback(success: success)
-//            })
-//        }
-//    }
 }
 
 
