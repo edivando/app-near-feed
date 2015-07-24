@@ -20,10 +20,11 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
         textField.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -81,10 +82,8 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         
         let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as! CommentPopoverTableViewCell
 
-        cell.commentDate.text = NSDateFormatter.localizedStringFromDate(comment.createdAt!, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
+        cell.commentDate.text = comment.createdAt?.dateFormat()
         cell.userComment.text = comment.message
-        
         comment.user.image.image({ (image) -> () in
             if let img = image{
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -95,7 +94,6 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         })
         
         cell.userName.text = comment.user["name"] as? String
-        
         return cell
     }
     

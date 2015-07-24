@@ -12,13 +12,13 @@ class CommentPopoverTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
 
     @IBOutlet weak var commentDate: UILabel!
-    @IBOutlet weak var userComment: UILabel!
+    @IBOutlet var userComment: UITextView!
     @IBOutlet weak var userName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        userImage.layer.cornerRadius = 25
+        userImage.layer.cornerRadius = 20
         userImage.layer.masksToBounds = true
     }
 
