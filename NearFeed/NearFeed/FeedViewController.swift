@@ -36,7 +36,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             self.posts = posts
             self.tableView.reloadData()
             
-//            UserLocation.updateCountryLocalityParse()
+            UserLocation.updateCountryLocalityParse()
         }
         
         let refreshControl = UIRefreshControl()
@@ -68,11 +68,10 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
                 isLoading = true
                 Post.find(locationObject, type: feedType, lessThanCreatedAt: lastCreatedAt, list: { (posts) -> () in
                     for post in posts{
-//                        var indexPath = NSIndexPath(forRow: 0, inSection: self.posts.count)
+                        let indexSet = NSIndexSet(index: self.posts.count)
                         self.posts.append(post)
-//                        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        self.tableView.insertSections(indexSet, withRowAnimation: .Fade)
                     }
-                    self.tableView.reloadData()
                     self.isLoading = false
                 })
             }
@@ -84,28 +83,28 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         if indexPath.row == 0{
             return 400
         }
-        return 50
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return posts.count
+        return 80
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return posts.count
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2   //posts[section].comments.count
+        return posts[section].comments.count + 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println(indexPath)
+        let post = posts[indexPath.section]
         if indexPath.row == 0{
             var cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as! PostViewCell
-            cell.post = posts[indexPath.section]
+            cell.post = post
             cell.makePostCell()
-            
+
             cell.contentView.userInteractionEnabled = true
             
             cell.postImagesScroll.userInteractionEnabled = true
@@ -133,14 +132,16 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
                 focusImageViewController.post = cell.post
                 self.presentViewController(focusImageViewController, animated: true, completion: nil)
             }
-            
+            return cell
+        }else{
+            let postComment = post.comments[indexPath.row-1]
+            let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as! PostCommentCell
+            cell.userName.text = "User name comment"
+            cell.userImage.image = UIImage(named: "user")
+            cell.postComment.text = postComment.message
+            cell.postDate.text = postComment.createdAt?.dateFormat()
             return cell
         }
-        
-        println("Comment: \(indexPath)")
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment") as! UITableViewCell
-        cell.textLabel?.text = "AAAA"
-        return cell
     }
     
     //MARK: - Helper (ScrollViewCell)

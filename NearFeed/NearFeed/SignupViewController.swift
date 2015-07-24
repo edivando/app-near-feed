@@ -15,6 +15,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextfield: HoshiTextField!
     @IBOutlet weak var passwordTextfield: HoshiTextField!
     @IBOutlet weak var verifyPassTextfield: HoshiTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,9 +85,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func singup(sender: AnyObject){
-        
-        
-        
         if textfieldIsNotEmpty(nameTextfield) && textfieldIsNotEmpty(emailTextfield) && textfieldIsNotEmpty(passwordTextfield) && textfieldIsNotEmpty(verifyPassTextfield){
             if passwordTextfield.text == verifyPassTextfield.text{
                 
@@ -94,8 +92,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 user.username = emailTextfield.text
                 user.email = emailTextfield.text
                 user.password = passwordTextfield.text
-                user["name"] = nameTextfield.text
-                user["score"] = 0
+                user.name = nameTextfield.text
+                user.score = 0
                 user.signUpInBackgroundWithBlock { (succeded, error) -> Void in
                     if succeded{
                         //Registered and logged in
@@ -126,17 +124,4 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
-    /*
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

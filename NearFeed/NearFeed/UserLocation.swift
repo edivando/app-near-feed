@@ -9,19 +9,15 @@
 import CoreLocation
 import Parse
 
-//var userCountry = Country()
-//var userCity = City()
-//var userRegion = Region()
-
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
 
     private var locationStatus = true
     
-    static var countryName = "Default_Country"
-    static var cityName    = "Default_City"
-    static var regionName  = "Default_Region"
+    static var countryName = "Brasil"
+    static var cityName    = "Fortaleza"
+    static var regionName  = "Benfica"
     
     static var country = Country()
     static var city = City()
@@ -43,9 +39,8 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         if locationManager.location != nil{
             CLGeocoder().reverseGeocodeLocation(locationManager.location, completionHandler: {(placemarks, error) -> Void in
                 if error != nil {
-                    println("Reverse geocoder failed with error" + error.localizedDescription)
-                    return
-                }else if placemarks.count > 0, let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
+                    println("Geocoder error: " + error.localizedDescription)
+                } else if placemarks.count > 0, let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
                     if let country = pm.country{
                         UserLocation.countryName = country
                     }
@@ -55,13 +50,11 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
                     if let sublocality = pm.subLocality{
                         UserLocation.regionName = sublocality
                     }
-                    self.successCallback()
-//                    self.updateCountryLocalityParse()
-                }
-                else {
+                } else {
                     println("Problem with the data received from geocoder")
                 }
                 self.startLocation(false)
+                self.successCallback()
             })
         }
     }
