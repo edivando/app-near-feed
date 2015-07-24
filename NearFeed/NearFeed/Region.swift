@@ -41,6 +41,26 @@ class Region: PFObject, PFSubclassing {
         }
     }
     
+    static func findAllByCity(city: PFObject?, result: (regions: [Region]?) -> ()){
+        if let query = Region.query(){
+            if let city = city{
+                query.whereKey("city", equalTo: city)
+            }else if let obj = UserLocation.city.objectId{
+                query.whereKey("city", equalTo: UserLocation.city)
+            }else if let cityQuery = City.queryByName(UserLocation.cityName){
+                query.whereKey("city", matchesQuery: cityQuery)
+            }
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil{
+                    result(regions: objects as? [Region])
+                }
+                else{
+                    result(regions: nil)
+                }
+            })
+        }
+    }
+    
     static func findAllRegionsInCity(city: PFObject, result: (regions: [Region]?) -> ()){
         if let query = Region.query(){
             query.whereKey("city", equalTo: city)
