@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ymx-jV-jzg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -523,6 +523,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4VX-Je-CVZ" id="HYc-I3-hoF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -907,13 +910,12 @@
                     <navigationItem key="navigationItem" title="Profile" id="8rv-7g-ieE">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="BsX-7y-0xR">
                             <connections>
-                                <action selector="editBarButton:" destination="kaP-yj-CXQ" id="8Q7-PE-GNh"/>
                                 <segue destination="7ZI-Ba-rTh" kind="show" identifier="toEditView" id="mfF-M8-rTs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="BsX-7y-0xR" id="Oit-zh-TXy"/>
+                        <outlet property="editButton" destination="BsX-7y-0xR" id="hGe-NJ-i7M"/>
                         <outlet property="emailLabel" destination="0qE-9Z-WUb" id="KFa-XW-lQp"/>
                         <outlet property="floatRatingView" destination="fg4-vX-B2e" id="I7Q-e6-PQH"/>
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
@@ -1321,6 +1323,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OrD-AA-wwk" id="uFP-Fi-3Pf"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1449,7 +1454,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="D3C-X5-tG7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datetime" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjU-Gx-GGf">

@@ -11,25 +11,16 @@ import Parse
 
 class RankingViewController: UIViewController, UITableViewDataSource {
     
-    
-    var currentObject : User?
-    var usersTemp = [User]()
     var users = [User]()
     var position : String?
     
     //MARK: - Outlets
     @IBOutlet var tableview: UITableView!
     
-    @IBOutlet var positionLabel: UILabel!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //currentObject = User.currentUser()
-        //imageImageView.frame = CGRectMake(0, 0, 100, 100)
 
+        //Remove linhas vazias
         tableview.tableFooterView = UIView(frame: CGRectZero)
         
         navigationController?.navigationBar.barTintColor = Color.blue
@@ -37,52 +28,31 @@ class RankingViewController: UIViewController, UITableViewDataSource {
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        tableview.dataSource = self
-        
-        
-        
+//        tableview.dataSource = self
+
         User.findAllOrderByScores { (users) -> () in
-            
-            var i = 0
-            
-            for ; i < users?.count ; i++ {
+            if let users = users{
+                var i = 0
                 
-                if let data = users![i]["name"] as? String{
+                for ; i < users.count ; i++ {
                     
-                    self.users.append(users![i])
-                    println(data)
-                    
-                    if data == User.currentUser()?.name{
-                        //self.positionLabel.text = String(i+1)
-                        self.position = String(i+1)
+                    if let data = users[i]["name"] as? String{
+                        
+                        self.users.append(users[i])
+                        println(data)
+                        
+                        if data == User.currentUser()?.name{
+                            //self.positionLabel.text = String(i+1)
+                            self.position = String(i+1)
+                        }
+                        
                     }
                     
                 }
-                
             }
-            
             self.tableview.reloadData()
         }
-        
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func arredondarImagem(imageView: UIImageView ){
-        imageView.layer.borderWidth=1.0
-        imageView.layer.masksToBounds = false
-        imageView.layer.borderColor = UIColor.whiteColor().CGColor
-        imageView.layer.cornerRadius = 13
-        imageView.layer.cornerRadius = imageView.frame.size.height/2
-        imageView.clipsToBounds = true
-    }
-    
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
@@ -108,42 +78,27 @@ class RankingViewController: UIViewController, UITableViewDataSource {
                 imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                     if error == nil {
                         cell.imageview.image = UIImage(data: imageData!)
-                        self.arredondarImagem(cell.imageview)
                     }
                 })
             } else {
                 cell.imageview.image = UIImage(named: "user")
-                self.arredondarImagem(cell.imageview)
             }
             
             return cell
             
         } else {
-        
-            let linha = indexPath.row
-            //cell.positionLabel.text = String(linha + 1)
-            cell.nameLabel.text = self.users[linha].name
-            cell.positionLabel.text = String(linha + 1)
-            cell.scoreLabel.text = "\(self.users[linha].score) scores"
+            let user = users[indexPath.row]
+            cell.nameLabel.text = user.name
+            cell.positionLabel.text = String(indexPath.row + 1)
+            cell.scoreLabel.text = "\(user.score) scores"
             
-            if let imageFile = users[linha]["image"] as? PFFile {
-                
-                
-                //imageFile = thumbnail
-                
-                imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        println("entrou no thumb")
-                        cell.imageview.image = UIImage(data: imageData!)
-                        self.arredondarImagem(cell.imageview)
-                    }
-                })
-            } else {
-                cell.imageview.image = UIImage(named: "user")
-                self.arredondarImagem(cell.imageview)
-            }
-        
-        
+            cell.imageview.image = UIImage(named: "user")
+            user.image.image({ (image) -> () in
+                if let image = image{
+                    println("entrou no thumb")
+                    cell.imageview.image = image
+                }
+            })
             return cell
         }
     }
@@ -164,15 +119,5 @@ class RankingViewController: UIViewController, UITableViewDataSource {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

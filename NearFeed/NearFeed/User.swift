@@ -54,6 +54,18 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
             }
         })
     }
+    
+    static func findFirstUserByScore(callback: (user: User?) ->()){
+        let query = User.query()
+        query?.orderByDescending("score")
+        query?.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
+            if error == nil{
+                callback(user: object as? User)
+            }else{
+                callback(user: nil)
+            }
+        })
+    }
 }
 
 

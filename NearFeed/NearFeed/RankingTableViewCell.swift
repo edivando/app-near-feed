@@ -17,7 +17,12 @@ class RankingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        imageview.layer.borderWidth=1.0
+        imageview.layer.masksToBounds = false
+        imageview.layer.borderColor = UIColor.whiteColor().CGColor
+        imageview.layer.cornerRadius = imageview.frame.size.height/2
+        imageview.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
