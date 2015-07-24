@@ -27,29 +27,8 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         tableView.dataSource = self
         segmentedControl.addTarget(self, action: Selector("segmentedClicked:"), forControlEvents: UIControlEvents.ValueChanged)
         segmentedControl.selectedSegmentIndex = feedType!.hashValue
-        
-        //locationsFound.append(locationObject!)
-        
-        //Código dummy pra testes
-        var dummyQuery = PFQuery(className: "City")
-        dummyQuery.whereKey("name", equalTo: "Fortaleza")
-        dummyQuery.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
-            if error == nil{
-                
-                //Usar a partir daqui dentro dos ifs (fazer os outros metodos de findAll)
-                Region.findAllRegionsInCity(object!, result: { (regions) -> () in
-                    if let regions = regions{
-                        self.locationsFound = regions
-//                        for index in 1..<regions.count{
-//                            self.locationsFound[index] = regions[index-1]
-//                        }
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-        }
-        
-        
+
+        requestLocations()
 
         // Do any additional setup after loading the view.
     }
@@ -62,66 +41,27 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - TableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if feedType == LocationType.Region{
-            if locationObject == nil{
-                //Get user region
-                if UserLocation.region.objectId == nil{
-                    Region.findByName(UserLocation.regionName, success: { (region) -> () in
-                        if region != nil{
-                            self.locationObject = region
-                        }
-                    })
-                }
-            }
-            else{
-                //Tenho o objecto de localizacao
-            }
-            //query for all regions in that city
-            //completion block calls reload data
-            //Region.findAllRegionsInCity(locationObject["city"], result: <#(regions: [Region]?) -> ()##(regions: [Region]?) -> ()#>)
-        }
-        else if feedType == LocationType.City{
-            if locationObject == nil{
-                //Get user city
-                if UserLocation.city.objectId == nil{
-                    City.findByName(UserLocation.cityName, success: { (city) -> () in
-                        if city != nil{
-                            self.locationObject = city
-                        }
-                        else{
-                            //cara, deu muita merda
-                        }
-                    })
-                }
-            }
-            else{
-                //Tenho o objecto de localizacao
-            }
-            //query for all cities in that country
-            //completion block calls reload data
-            //City.findAllCitiesInCountry(locationObject["country"], result: )
+        
+        //se o locationobject q vier for igual a o da celula, marca
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("filterCell", forIndexPath: indexPath) as! FilterTableViewCell
+        if indexPath.section == 0{
+            cell.locationObject = locationsFound[0]
+            cell.textLabel?.text = cell.locationObject?.objectForKey("name") as? String
         }
         else{
-            if locationObject == nil{
-                //Get user country
-            }
-            //query for all countries
-            //completion block calls reload data
-            //Country.findAllCountries(result: )
+            var location = locationsFound[indexPath.row + 1]
+            cell.locationObject = location
+            cell.textLabel?.text = location["name"] as? String
         }
-//        if indexPath.row == 0{
-//            selectedIndexPath = indexPath
-//        }
-        var cell = tableView.dequeueReusableCellWithIdentifier("filterCell", forIndexPath: indexPath) as! FilterTableViewCell
-        var location = locationsFound[indexPath.row]
-        cell.locationObject = location
-        cell.textLabel?.text = location["name"] as? String
 
-        
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return 1
+        }
         return locationsFound.count
     }
     
@@ -146,6 +86,8 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         return 2
     }
     
+    //MARK: - Helper
+    
     func segmentedClicked(sender:UISegmentedControl){
         if sender.selectedSegmentIndex == 0{
             //Country
@@ -159,7 +101,45 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
             //Region
             self.feedType = LocationType.Region
         }
-        tableView.reloadData()
+        requestLocations()
+    }
+    
+    func requestLocations(){
+        var control = 0
+        if feedType == LocationType.Region{
+//            var city = locationObject?.objectForKey("city") as? PFObject
+//            Region.findAllByCity(city, result: { (regions) -> () in
+//                if let regions = regions{
+//                    self.locationsFound = regions
+//                    self.tableView.reloadData()
+//                }
+//            })
+        }
+        else if feedType == LocationType.City{
+            var country = locationObject?.objectForKey("country") as? PFObject
+            City.findAllByCountry(country, result: { (cities) -> () in
+                if let cities = cities{
+                    self.locationsFound = cities
+                    for city in self.locationsFound{
+                        if city.objectForKey("name") as! String == UserLocation.cityName{
+                            //trazer city pro inicio do array
+                            self.locationsFound.removeAtIndex(control)
+                            self.locationsFound.insert(city, atIndex: 0)
+                        }
+                        control++
+                    }
+                }
+                self.tableView.reloadData()
+            })
+        }
+        else{
+            Country.findAll({ (countries) -> () in
+                if let countries = countries{
+                    self.locationsFound = countries
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
 
     /*
