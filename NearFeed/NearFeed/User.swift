@@ -40,7 +40,7 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     
     static func findAllOrderByScores(callback: (users: [User]?) ->()){
         let query = User.query()
-        query?.orderByDescending("scores")
+        query?.orderByDescending("score")
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil{
                 callback(users: objects as? [User])

@@ -147,6 +147,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         
         
+        navigationController?.navigationBar.barTintColor = Color.blue
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         var maxScore : Float = 100.0
         imagePicker.delegate = self
         

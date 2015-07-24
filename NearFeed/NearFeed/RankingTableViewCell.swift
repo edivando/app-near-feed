@@ -13,6 +13,7 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet var positionLabel: UILabel!
     @IBOutlet var imageview: UIImageView!
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
