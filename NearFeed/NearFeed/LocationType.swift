@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum LocationType{
+enum LocationType: String{
     
-    case Country
-    case City
-    case Region
+    case Country = "Country"
+    case City = "City"
+    case Region = "Region"
     
 }
