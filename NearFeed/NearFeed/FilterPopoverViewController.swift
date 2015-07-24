@@ -170,18 +170,12 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var previousSelectedCell = FilterTableViewCell()
-        if let selectedIndex = selectedIndexPath{
-            previousSelectedCell = tableView.cellForRowAtIndexPath(selectedIndex) as! FilterTableViewCell
-        }
+
         var currentSelectedCell = tableView.cellForRowAtIndexPath(indexPath) as! FilterTableViewCell
 
         if segmentedControl.selectedSegmentIndex == 1{
             segmentedControl.setEnabled(true, forSegmentAtIndex: 2)
         }
-        
-        previousSelectedCell.accessoryType = UITableViewCellAccessoryType.None
-        currentSelectedCell.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         updateFeedToLocation(feedType: self.feedType!, locationObject: currentSelectedCell.locationObject!)
         
