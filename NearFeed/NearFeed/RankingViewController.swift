@@ -100,7 +100,7 @@ class RankingViewController: UIViewController, UITableViewDataSource {
             
             cell.positionLabel.text = position
             cell.nameLabel.text = User.currentUser()?.name
-            cell.scoreLabel.text = "\(User.currentUser()?.score) scores"
+            cell.scoreLabel.text = "\((User.currentUser()?.score)!) scores"
             //cell.positionLabel.text = String(linha + 1)
             
             if let imageFile = User.currentUser()!["image"] as? PFFile {

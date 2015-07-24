@@ -388,10 +388,8 @@
 				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
 				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
 				6D6E39EC1B60701000F19D6C /* RankingViewController.swift */,
-				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
-				519F5A941B601BDD0067DA7E /* FilterPopoverViewController.swift */,
-				519F5A961B6022270067DA7E /* FilterTableViewCell.swift */,
-				7265B7F71B602C1E008CF73D /* PostCommentCell.swift */,
+				7214F28C1B61C94B00BD8E2D /* Home */,
+				72445BC71B6115B60019AE8C /* TableViewCell */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
