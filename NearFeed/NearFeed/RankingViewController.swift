@@ -13,9 +13,12 @@ class RankingViewController: UIViewController, UITableViewDataSource {
     
     var users = [User]()
     var position : String?
+    var maxScore : Int?
     
     //MARK: - Outlets
     @IBOutlet var tableview: UITableView!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +32,11 @@ class RankingViewController: UIViewController, UITableViewDataSource {
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
 //        tableview.dataSource = self
-
+        //self.floatRatingView.editable = false
+        
         User.findAllOrderByScores { (users) -> () in
             if let users = users{
                 var i = 0
-                
                 for ; i < users.count ; i++ {
                     
                     if let data = users[i]["name"] as? String{
@@ -49,6 +52,7 @@ class RankingViewController: UIViewController, UITableViewDataSource {
                     }
                     
                 }
+                self.maxScore = Int(users[0].score)
             }
             self.tableview.reloadData()
         }
@@ -68,21 +72,35 @@ class RankingViewController: UIViewController, UITableViewDataSource {
         
         if indexPath.section == 0 {
             
-            cell.positionLabel.text = position
-            cell.nameLabel.text = User.currentUser()?.name
-            cell.scoreLabel.text = "\((User.currentUser()?.score)!) scores"
-            //cell.positionLabel.text = String(linha + 1)
+            //self.position = "999"
             
-            if let imageFile = User.currentUser()!["image"] as? PFFile {
-                
-                imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        cell.imageview.image = UIImage(data: imageData!)
-                    }
-                })
+            let user = User.currentUser()!
+            
+            if self.position?.toInt() <= 1000 {
+                cell.positionLabel.text = "\(self.position!)"
             } else {
-                cell.imageview.image = UIImage(named: "user")
+                cell.positionLabel.font = UIFont(name: "Helvetica", size: 10)
+                cell.positionLabel.text = "\(self.position!)"
             }
+            cell.nameLabel.text = User.currentUser()?.name
+            cell.scoreLabel.text = "\(user.score) scores"
+            cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
+            user.image.image({ (image) -> () in
+                if let image = image{
+                    println("entrou no thumb")
+                    cell.imageview.image = image
+                }
+            })
+//            if let imageFile = User.currentUser()!["image"] as? PFFile {
+//                
+//                imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+//                    if error == nil {
+//                        cell.imageview.image = UIImage(data: imageData!)
+//                    }
+//                })
+//            } else {
+//                cell.imageview.image = UIImage(named: "user")
+//            }
             
             return cell
             
@@ -91,7 +109,7 @@ class RankingViewController: UIViewController, UITableViewDataSource {
             cell.nameLabel.text = user.name
             cell.positionLabel.text = String(indexPath.row + 1)
             cell.scoreLabel.text = "\(user.score) scores"
-            
+            cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
             cell.imageview.image = UIImage(named: "user")
             user.image.image({ (image) -> () in
                 if let image = image{

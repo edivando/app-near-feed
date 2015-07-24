@@ -15,6 +15,7 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     
+    @IBOutlet var floatRatingView: FloatRatingView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
