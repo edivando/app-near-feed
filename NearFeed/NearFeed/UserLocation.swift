@@ -9,10 +9,6 @@
 import CoreLocation
 import Parse
 
-//var userCountry = Country()
-//var userCity = City()
-//var userRegion = Region()
-
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
@@ -44,7 +40,7 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             CLGeocoder().reverseGeocodeLocation(locationManager.location, completionHandler: {(placemarks, error) -> Void in
                 if error != nil {
                     println("Geocoder error: " + error.localizedDescription)
-                }else if placemarks.count > 0, let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
+                } else if placemarks.count > 0, let pm:CLPlacemark = placemarks[0] as? CLPlacemark{
                     if let country = pm.country{
                         UserLocation.countryName = country
                     }

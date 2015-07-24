@@ -145,11 +145,7 @@ class Post: PFObject, PFSubclassing {
             
             self.saveInBackgroundWithBlock { (success, erro) -> Void in
                 if erro == nil {
-                    User.currentUser()!.updateScores(.NewPost, callback: { (success) -> () in
-                        if success {
-                            println("Add user scores new post")
-                        }
-                    })
+                    User.currentUser()!.updateScores(.NewPost)
                     println("save post")
                     error(error: nil)
                 }else{
@@ -185,16 +181,8 @@ class Post: PFObject, PFSubclassing {
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 //Update my scores
-                User.currentUser()!.updateScores(.LikeSend, callback: { (success) -> () in
-                    if success {
-                        println("like post user")
-                    }
-                })
-                self.user.updateScores(like ? .LikeReceive : .DislikeReceive, callback: { (success) -> () in
-                    if success {
-                        println("post like by user")
-                    }
-                })
+                User.currentUser()!.updateScores(.LikeSend)
+                self.user.updateScores(like ? .LikeReceive : .DislikeReceive)
                 println("save post like")
             }else{
                 println("not save post like")
@@ -215,16 +203,8 @@ class Post: PFObject, PFSubclassing {
         comments.append(postComment)
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                User.currentUser()!.updateScores(.CommentSend, callback: { (success) -> () in
-                    if success {
-                        println("user send comment")
-                    }
-                })
-                self.user.updateScores(.CommentReceive, callback: { (success) -> () in
-                    if success {
-                        println("user receive comment")
-                    }
-                })
+                User.currentUser()!.updateScores(.CommentSend)
+                self.user.updateScores(.CommentReceive)
                 println("save post comment")
             }else{
                 println("not save post comment")

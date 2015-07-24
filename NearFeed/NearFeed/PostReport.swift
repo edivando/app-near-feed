@@ -27,20 +27,4 @@ class PostReport: PFObject, PFSubclassing {
         return "PostReport"
     }
     
-    
-//    static func addReport(post: Post, message: String){
-//        let postReport = PostReport()
-//        postReport.message = message
-//        postReport.post = post
-//        if let user = PFUser.currentUser(){
-//            postReport.user = user
-//        }
-//        postReport.saveInBackgroundWithBlock { (success, error) -> Void in
-//            if success {
-//                println("save post report")
-//            }else{
-//                println("not save post report")
-//            }
-//        }
-//    }
 }

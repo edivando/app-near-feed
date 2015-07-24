@@ -23,17 +23,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let user = PFUser.currentUser(){
+        if let user = User.currentUser(){
             if user.isAuthenticated(){
                 NSLog("Opening app")
                 self.performSegueWithIdentifier("startFromLogin", sender: nil)
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -90,7 +85,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func login(sender: AnyObject){
         if textfieldIsNotEmpty(usernameTextfield) && textfieldIsNotEmpty(passwordTextfield){
             if isValidEmail(usernameTextfield.text){
-                PFUser.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
+                User.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
                     if (user != nil){
                         //Successful login
                         Message.success("Success", text: "Login successful")
@@ -138,16 +133,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func singup(sender: AnyObject){
         self.performSegueWithIdentifier("singup", sender: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
