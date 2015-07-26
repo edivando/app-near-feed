@@ -198,7 +198,21 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
+        if section == 0{
+            return 30
+        }
+        else{
+            return 20
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Your location"
+        }
+        else{
+            return "Other locations"
+        }
     }
     
     //MARK: - Helper
