@@ -9,17 +9,43 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDDelegate {
 
+    @IBOutlet weak var signupBt: UIButton!
+    @IBOutlet weak var notNowBut: UIButton!
+    @IBOutlet weak var loginBt: UIButton!
     @IBOutlet weak var usernameTextfield: HoshiTextField!
     @IBOutlet weak var passwordTextfield: HoshiTextField!
+    
+    private var progress = MBProgressHUD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         usernameTextfield.delegate = self
         passwordTextfield.delegate = self
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = Color.blue
+        
+        signupBt.backgroundColor = UIColor.clearColor()
+        signupBt.tintColor = UIColor.whiteColor()
+        signupBt.layer.cornerRadius = 5
+        signupBt.layer.borderWidth = 1
+        signupBt.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        loginBt.backgroundColor = UIColor.clearColor()
+        loginBt.tintColor = UIColor.whiteColor()
+        loginBt.layer.cornerRadius = 5
+        loginBt.layer.borderWidth = 1
+        loginBt.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        notNowBut.backgroundColor = UIColor.clearColor()
+        notNowBut.tintColor = UIColor.whiteColor()
+        notNowBut.layer.cornerRadius = 5
+        notNowBut.layer.borderWidth = 1
+        notNowBut.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        configProgress()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,6 +57,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func configProgress(){
+        progress = MBProgressHUD(view: view)
+        view.addSubview(progress)
+        progress.labelText = nil
+        progress.dimBackground = true
+        progress.delegate = self
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         var nextResponder = UIResponder()
         if textField.isEqual(usernameTextfield){
@@ -38,9 +72,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             nextResponder.becomeFirstResponder()
         }
         else{
+            login(textField)
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
     }
     
     //MARK: - Textfield input tests
@@ -68,6 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Error alerts
     
     func showEmptyTextfieldAlertMessage(){
+        self.progress.hide(true)
         if !textfieldIsNotEmpty(usernameTextfield){
             Message.error("Email field empty", text: "Please fill in your email")
         }
@@ -77,12 +117,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showInvalidEmailAlertMessage(){
+        self.progress.hide(true)
         Message.error("Invalid email", text: "The email you provided is invalid")
     }
     
     //MARK: - Buttons
     
     @IBAction func login(sender: AnyObject){
+        progress.show(true)
         if textfieldIsNotEmpty(usernameTextfield) && textfieldIsNotEmpty(passwordTextfield){
             if isValidEmail(usernameTextfield.text){
                 User.logInWithUsernameInBackground(usernameTextfield.text, password: passwordTextfield.text) { (user, error) -> Void in
@@ -106,6 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             Message.error("Login failed", text: "Internal server error")
                         }
                     }
+                    self.progress.hide(true)
                 }
             }
             else{
