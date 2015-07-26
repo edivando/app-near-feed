@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -23,10 +23,12 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
     var selectedCity:City?
     var selectedRegion:Region?
     var selectedCountry:Country?
+    
+    private var progress = MBProgressHUD()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         segmentedControl.addTarget(self, action: Selector("segmentedClicked:"), forControlEvents: UIControlEvents.ValueChanged)
@@ -50,8 +52,17 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         }
 
         requestLocations()
+        configProgress()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func configProgress(){
+        progress = MBProgressHUD(view: view)
+        view.addSubview(progress)
+        progress.labelText = nil
+        progress.dimBackground = true
+        progress.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -170,18 +181,12 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var previousSelectedCell = FilterTableViewCell()
-        if let selectedIndex = selectedIndexPath{
-            previousSelectedCell = tableView.cellForRowAtIndexPath(selectedIndex) as! FilterTableViewCell
-        }
+
         var currentSelectedCell = tableView.cellForRowAtIndexPath(indexPath) as! FilterTableViewCell
 
         if segmentedControl.selectedSegmentIndex == 1{
             segmentedControl.setEnabled(true, forSegmentAtIndex: 2)
         }
-        
-        previousSelectedCell.accessoryType = UITableViewCellAccessoryType.None
-        currentSelectedCell.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         updateFeedToLocation(feedType: self.feedType!, locationObject: currentSelectedCell.locationObject!)
         
@@ -219,6 +224,7 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
         var control = 0
         if feedType == LocationType.Region{
             var city = locationObject?.objectForKey("city") as? PFObject
+            progress.show(true)
             Region.findAllByCity(city, result: { (regions) -> () in
                 if let regions = regions{
                     self.locationsFound = regions
@@ -232,11 +238,13 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
                     }
                 }
                 self.tableView.reloadData()
+                self.progress.hide(true)
             })
 
         }
         else if feedType == LocationType.City{
             var country = locationObject?.objectForKey("country") as? PFObject
+            progress.show(true)
             City.findAllByCountry(country, result: { (cities) -> () in
                 if let cities = cities{
                     self.locationsFound = cities
@@ -250,9 +258,11 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
                     }
                 }
                 self.tableView.reloadData()
+                self.progress.hide(true)
             })
         }
         else{
+            progress.show(true)
             Country.findAll({ (countries) -> () in
                 if let countries = countries{
                     self.locationsFound = [PFObject]()
@@ -267,6 +277,7 @@ class FilterPopoverViewController: UIViewController, UITableViewDataSource, UITa
                     }
                 }
                 self.tableView.reloadData()
+                self.progress.hide(true)
             })
         }
     }

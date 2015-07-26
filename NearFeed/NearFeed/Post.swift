@@ -143,7 +143,7 @@ class Post: PFObject, PFSubclassing {
             self.city = UserLocation.city
             self.region = UserLocation.region
             
-            self.saveInBackgroundWithBlock { (success, erro) -> Void in
+            self.saveEventually({ (success, erro) -> Void in
                 if erro == nil {
                     User.currentUser()!.updateScores(.NewPost)
                     println("save post")
@@ -152,7 +152,7 @@ class Post: PFObject, PFSubclassing {
                     error(error: erro)
                     println("not save post")
                 }
-            }
+            })
         }else{
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }

@@ -6,13 +6,15 @@
 //  Copyright (c) 2015 J7ss. All rights reserved.
 //
 
+
+
 import UIKit
 import Parse
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: - Variaveis globais
-    var currentObject : PFObject?
+    var currentUser : User?
     var imageFile: PFFile?
     let imagePicker = UIImagePickerController()
     var email : String?
@@ -25,36 +27,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - Buttons
     @IBAction func saveBarButton(sender: AnyObject) {
-        if let updateObject = currentObject as PFObject? {
+        
+        if let user = currentUser{
             
-            updateObject["username"] = emailTextField.text
-            updateObject["email"] = emailTextField.text
-            updateObject["name"] = nameTextField.text
+            user["username"] = emailTextField.text
+            user["email"] = emailTextField.text
+            user["name"] = nameTextField.text
             
+            user.saveInBackground()
             
-            //currentObject?.setObject(imageFile!, forKey: "image")
-            
-            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
-            updateObject.saveInBackground()
-            //updateObject.saveEventually()
-            
-            println("SALVOU AQUI NO PRIMEIRO")
-            
-        } else {
-            
-            
-            //PFUser.currentUser()
-            //var updateObject = PFUser.currentUser()
-            var updateObject = PFObject(className:"User")
-            
-            updateObject["username"] = emailTextField.text
-            updateObject["email"] = emailTextField.text
-            updateObject["name"] = nameTextField.text
-            //updateObject.setObject(imageFile!, forKey: "image")
-            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
-            updateObject.saveInBackground()
-            
-            println("SALVOU AQUI DEPOIS")
         }
         
         // Return to table view
@@ -67,49 +48,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         PFUser.requestPasswordResetForEmailInBackground(email!)
         Message.info("Alert", text: "Mensagem enviada para o email")
-//        var alerta = UIAlertView(title: "Alerta", message: "Mensagem enviada para o seu email", delegate: self, cancelButtonTitle: "Ok")
-//        alerta.show()
-        
-        
     }
-    @IBAction func saveButton(sender: AnyObject) {
-        /*
-        if let updateObject = currentObject as PFObject? {
-            
-            updateObject["username"] = emailTextField.text
-            updateObject["email"] = emailTextField.text
-            updateObject["name"] = nameTextField.text
-            
-            
-            currentObject?.setObject(imageFile!, forKey: "image")
-            
-            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
-            updateObject.saveInBackground()
-            //updateObject.saveEventually()
-            
-            println("SALVOU AQUI NO PRIMEIRO")
-            
-        } else {
-            
-            
-            //PFUser.currentUser()
-            //var updateObject = PFUser.currentUser()
-            var updateObject = PFObject(className:"User")
-            
-            updateObject["username"] = emailTextField.text
-            updateObject["email"] = emailTextField.text
-            updateObject["name"] = nameTextField.text
-            updateObject.setObject(imageFile!, forKey: "image")
-            //updateObject.ACL = PFACL(user: PFUser.currentUser()!)
-            updateObject.saveInBackground()
-            
-            println("SALVOU AQUI")
-        }
-        
-        // Return to table view
-        self.navigationController?.popViewControllerAnimated(true)
-        */
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,40 +64,26 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         nameTextField.delegate = self
         emailTextField.delegate = self
         
-//        if let object = currentObject {
-//            println("PASSOU A REFERENCIA DO ANTIGO OBJECT")
-//        }
-        
-        currentObject = PFUser.currentUser()
+        currentUser = User.currentUser()
         
         imagemRedonda()
         
-        if let object = currentObject {
+        if let user = currentUser {
             
-            email = object["email"] as? String
-            //nameLabel.text = object["name"] as? String
-            nameTextField.text = object["name"] as! String
-            emailTextField.text = object["email"] as! String
+            email = user["email"] as? String
+            nameTextField.text = user["name"] as! String
+            emailTextField.text = user["email"] as! String
             
-            if let thumbnail = object["image"] as? PFFile {
-                
-                //var userPhoto = PFObject(className: "postString")
-                
-                imageFile = thumbnail
-                
-                thumbnail.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.imageImageView.image = UIImage(data: imageData!)
-                    }
-                })
-            }  else {
-                self.imageImageView.image = UIImage(named: "user")
-                
-            }
+            imageImageView.image = UIImage(named: "user")
+        
+            user.image.image({ (image) -> () in
+                if let image = image{
+                    println("entrou no thumb")
+                    self.imageImageView.image = image
+                }
+            })
         }
         
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,8 +122,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         //let imageData = UIImagePNGRepresentation(pickedImage)
         imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 1.0))
         self.imageImageView.image = pickedImage
-        currentObject!.setObject(imageFile!, forKey: "image")
-        currentObject!.saveInBackground()
+        currentUser!.setObject(imageFile!, forKey: "image")
+        currentUser!.saveInBackground()
         println("PEGOU IMAGEM")
         picker.dismissViewControllerAnimated(true, completion: nil)
         
@@ -266,14 +192,5 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         UIView.commitAnimations()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
