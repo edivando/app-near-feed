@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class FeedViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+    
     @IBOutlet weak var navigationTopView: UIView!
     @IBOutlet weak var labelObjectName: UILabel!
     @IBOutlet weak var labelLocationType: UILabel!
@@ -49,6 +50,8 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
+        
+        labelObjectName.text = UserLocation.countryName
     }
     
     override func viewDidAppear(animated: Bool) {
