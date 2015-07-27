@@ -73,6 +73,9 @@
 		7241F7331B554F040033BB3C /* PostLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7321B554F040033BB3C /* PostLike.swift */; };
 		7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7341B5554AE0033BB3C /* PostComment.swift */; };
 		7241F7371B5555E10033BB3C /* PostReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7361B5555E10033BB3C /* PostReport.swift */; };
+		724D450E1B653904002CB563 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 724D45081B653904002CB563 /* EAIntroPage.m */; };
+		724D450F1B653904002CB563 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 724D450A1B653904002CB563 /* EAIntroView.m */; };
+		724D45101B653904002CB563 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 724D450D1B653904002CB563 /* EARestrictedScrollView.m */; };
 		7265B7F21B5E7F29008CF73D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F11B5E7F29008CF73D /* User.swift */; };
 		7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265B7F31B5FE184008CF73D /* LocationType.swift */; };
 		72A0E7761B62B13600CBCBD6 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A0E7731B62B13600CBCBD6 /* EditProfileViewController.swift */; };
@@ -167,6 +170,12 @@
 		7241F7321B554F040033BB3C /* PostLike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLike.swift; sourceTree = "<group>"; };
 		7241F7341B5554AE0033BB3C /* PostComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		7241F7361B5555E10033BB3C /* PostReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReport.swift; sourceTree = "<group>"; };
+		724D45071B653904002CB563 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
+		724D45081B653904002CB563 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
+		724D45091B653904002CB563 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
+		724D450A1B653904002CB563 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
+		724D450C1B653904002CB563 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARestrictedScrollView.h; sourceTree = "<group>"; };
+		724D450D1B653904002CB563 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
 		7265B7F11B5E7F29008CF73D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7265B7F31B5FE184008CF73D /* LocationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationType.swift; sourceTree = "<group>"; };
 		72A0E7731B62B13600CBCBD6 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +352,7 @@
 			children = (
 				721674FD1B5D3FF700AC5881 /* Extension.swift */,
 				7241F7151B53FDAF0033BB3C /* Message.swift */,
+				724D45061B653904002CB563 /* EAIntroView */,
 				72445BC61B6115980019AE8C /* FloatRating */,
 				721674FA1B5D1C3200AC5881 /* MBProgressHUD */,
 				7241F7021B53FD6B0033BB3C /* TWMessage */,
@@ -384,9 +394,6 @@
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */,
-				7241F6E01B53E1A70033BB3C /* PostViewController.swift */,
-				7241F6E21B53E1B70033BB3C /* ProfileViewController.swift */,
-				51BDAD0C1B57F7A300BFB6C3 /* EditProfileViewController.swift */,
 				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
 				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
 				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
@@ -444,6 +451,28 @@
 				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		724D45061B653904002CB563 /* EAIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				724D45071B653904002CB563 /* EAIntroPage.h */,
+				724D45081B653904002CB563 /* EAIntroPage.m */,
+				724D45091B653904002CB563 /* EAIntroView.h */,
+				724D450A1B653904002CB563 /* EAIntroView.m */,
+				724D450B1B653904002CB563 /* EARestrictedScrollView */,
+			);
+			name = EAIntroView;
+			path = ../EAIntroView;
+			sourceTree = "<group>";
+		};
+		724D450B1B653904002CB563 /* EARestrictedScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				724D450C1B653904002CB563 /* EARestrictedScrollView.h */,
+				724D450D1B653904002CB563 /* EARestrictedScrollView.m */,
+			);
+			path = EARestrictedScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,12 +629,15 @@
 				72A0E7761B62B13600CBCBD6 /* EditProfileViewController.swift in Sources */,
 				51ECA9B11B5423670006571B /* TWMessageBarManager.m in Sources */,
 				7241F6FB1B53E4EB0033BB3C /* MinoruTextField.swift in Sources */,
+				724D45101B653904002CB563 /* EARestrictedScrollView.m in Sources */,
 				7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */,
 				51ECA9AC1B52BA6C0006571B /* LoginViewController.swift in Sources */,
 				721674FC1B5D3DBC00AC5881 /* Scores.swift in Sources */,
 				7241F6F51B53E4EB0033BB3C /* HoshiTextField.swift in Sources */,
+				724D450F1B653904002CB563 /* EAIntroView.m in Sources */,
 				6D6E39ED1B60701000F19D6C /* RankingViewController.swift in Sources */,
 				7241F7331B554F040033BB3C /* PostLike.swift in Sources */,
+				724D450E1B653904002CB563 /* EAIntroPage.m in Sources */,
 				7265B7F41B5FE184008CF73D /* LocationType.swift in Sources */,
 				7241F72B1B5440210033BB3C /* Country.swift in Sources */,
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,

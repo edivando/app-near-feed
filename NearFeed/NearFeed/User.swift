@@ -43,9 +43,13 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
         saveInBackground()
     }
     
-    static func findAllOrderByScores(callback: (users: [User]?) ->()){
+    static func findAllOrderByScores(page: Int, callback: (users: [User]?) ->()){
+        let pageLenght = 2
         let query = User.query()
         query?.orderByDescending("score")
+        query?.skip = page * pageLenght
+        query?.limit = pageLenght
+        query?.whereKeyExists("name")
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil{
                 callback(users: objects as? [User])
