@@ -61,6 +61,20 @@ extension UIColor {
     }
 }
 
+extension UIView{
+    func toRound(){
+        layer.masksToBounds = false
+        layer.cornerRadius = frame.size.height/2
+        clipsToBounds = true
+    }
+    
+    func cornerAndWhiteBorder(){
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 1
+        layer.cornerRadius = 3
+    }
+}
+
 
 class Color{
     static let blue     = UIColor(netHex: 0x334D5C)

@@ -94,22 +94,21 @@ class RankingViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! RankingTableViewCell
+        
         if indexPath.section == 0 {
             
-            let user = User.currentUser()!
-            cell.positionLabel.text = userPosition == 0 ? "..." : "\(userPosition)"
-            cell.nameLabel.text = User.currentUser()?.name
-            cell.scoreLabel.text = "\(user.score) scores"
-            cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
-            user.image.image({ (image) -> () in
-                if let image = image{
-                    cell.imageview.image = image
-                }
-            })
-            return cell
-            
+            if let user = User.currentUser(){
+                cell.positionLabel.text = userPosition == 0 ? "..." : "\(userPosition)"
+                cell.nameLabel.text = user.name
+                cell.scoreLabel.text = "\(user.score) scores"
+                cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
+                user.image.image({ (image) -> () in
+                    if let image = image{
+                        cell.imageview.image = image
+                    }
+                })
+            }
         } else {
             let user = users[indexPath.row]
             cell.nameLabel.text = user.name
@@ -122,8 +121,8 @@ class RankingViewController: UITableViewController {
                     cell.imageview.image = image
                 }
             })
-            return cell
         }
+        return cell
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
