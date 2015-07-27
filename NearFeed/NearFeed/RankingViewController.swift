@@ -14,7 +14,7 @@ class RankingViewController: UITableViewController {
     var users = [User]()
     var userPosition = 0
     var maxScore : Int?
-    
+    let pageLenght = 4
     var page = 0
     var isLoading = false
     

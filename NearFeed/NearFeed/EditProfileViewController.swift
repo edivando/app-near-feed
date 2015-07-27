@@ -78,7 +78,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     self.imageImageView.image = image
                 }
             })
@@ -97,7 +96,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         imageImageView.layer.borderWidth=1.0
         imageImageView.layer.masksToBounds = false
         imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        imageImageView.layer.cornerRadius = 13
         imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
         imageImageView.clipsToBounds = true
         
@@ -120,7 +118,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         let pickedImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
         //let imageData = UIImagePNGRepresentation(pickedImage)
-        imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 1.0))
+        imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 0.1))
         self.imageImageView.image = pickedImage
         currentUser!.setObject(imageFile!, forKey: "image")
         currentUser!.saveInBackground()
