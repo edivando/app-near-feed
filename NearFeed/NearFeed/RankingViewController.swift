@@ -14,7 +14,6 @@ class RankingViewController: UITableViewController {
     var users = [User]()
     var userPosition = 0
     var maxScore : Int?
-    let pageLenght = 4
     var page = 0
     var isLoading = false
     
@@ -47,7 +46,7 @@ class RankingViewController: UITableViewController {
                 
                 for (index, user) in enumerate(users){
                     if user.objectId == User.currentUser()?.objectId{
-                        self.userPosition = index
+                        self.userPosition = User.paginationLenght * self.page + index + 1
                     }
                     self.users.append(user)
                 }
