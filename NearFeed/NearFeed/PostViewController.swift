@@ -58,7 +58,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewDidAppear(animated: Bool) {
-        userLocation.title = "\(UserLocation.country.name) / \(UserLocation.city.name) / \(UserLocation.region.name)"
+        userLocation.title = "\(UserLocation.countryName) / \(UserLocation.cityName) / \(UserLocation.regionName)"
     }
     
     override func viewWillAppear(animated: Bool) {

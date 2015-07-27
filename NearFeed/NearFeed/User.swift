@@ -15,11 +15,13 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     @NSManaged var image: PFFile
     @NSManaged var score: NSNumber
     
+    @NSManaged var region: Region?
+    @NSManaged var city: City?
+    @NSManaged var country: Country?
+    @NSManaged var latitude: NSNumber
+    @NSManaged var longitude: NSNumber
     
-    @NSManaged var region: Region
-    @NSManaged var city: City
-    @NSManaged var country: Country
-    
+    static let paginationLenght = 10
     
     override class func initialize() {
         struct Static {
@@ -29,6 +31,12 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
         dispatch_once(&Static.onceToken) {
             self.registerSubclass()
         }
+    }
+    
+    private static var crtUser = User.currentUser()
+    
+    static func current() -> User?{
+        return crtUser
     }
     
     func updateScores(score: Score, callback: (success: Bool) ->()){
@@ -44,11 +52,10 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     }
     
     static func findAllOrderByScores(page: Int, callback: (users: [User]?) ->()){
-        let pageLenght = 2
         let query = User.query()
         query?.orderByDescending("score")
-        query?.skip = page * pageLenght
-        query?.limit = pageLenght
+        query?.skip = page * User.paginationLenght
+        query?.limit = paginationLenght
         query?.whereKeyExists("name")
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil{

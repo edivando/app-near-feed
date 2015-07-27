@@ -12,6 +12,7 @@ import Parse
 class Country: PFObject, PFSubclassing  {
     
     @NSManaged var name: String
+    @NSManaged var code: String
    
     override class func initialize() {
         struct Static {

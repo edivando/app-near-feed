@@ -12,7 +12,7 @@ import Parse
 class RankingViewController: UITableViewController {
     
     var users = [User]()
-    var userPosition = "9999"
+    var userPosition = 0
     var maxScore : Int?
     
     var page = 0
@@ -42,17 +42,17 @@ class RankingViewController: UITableViewController {
     
     func loadUsers(){
         User.findAllOrderByScores(page, callback: { (users) -> () in
-            if let users = users{
+            if let users = users where users.count > 0{
                 self.maxScore = Int(users[0].score)
                 
                 for (index, user) in enumerate(users){
                     if user.objectId == User.currentUser()?.objectId{
-                        self.userPosition = "\(index)"
+                        self.userPosition = index
                     }
                     self.users.append(user)
                 }
+                self.page++
             }
-            self.page++
             self.isLoading = false
             self.tableView.reloadData()
         })
@@ -63,14 +63,14 @@ class RankingViewController: UITableViewController {
             if let users = users where users.count > 0{
                 for (index, user) in enumerate(users){
                     if user.objectId == User.currentUser()?.objectId{
-                        self.userPosition = "\(index)"
+                        self.userPosition = User.paginationLenght * self.page + index + 1
                     }
                     let indexPath = NSIndexPath(forRow: self.users.count, inSection: 1)
                     self.users.append(user)
                     self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 }
+                self.page++
             }
-            self.page++
             self.isLoading = false
         })
     }
@@ -100,22 +100,12 @@ class RankingViewController: UITableViewController {
         if indexPath.section == 0 {
             
             let user = User.currentUser()!
-            cell.positionLabel.text = userPosition
-            
-//            if position <= 1000 {
-//                cell.positionLabel.text = "\(position)"
-//            } else {
-//                cell.positionLabel.font = UIFont(name: "Helvetica", size: 10)
-//                cell.positionLabel.text = "\(position)"
-//            }
-            
-            
+            cell.positionLabel.text = userPosition == 0 ? "..." : "\(userPosition)"
             cell.nameLabel.text = User.currentUser()?.name
             cell.scoreLabel.text = "\(user.score) scores"
             cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     cell.imageview.image = image
                 }
             })
@@ -130,7 +120,6 @@ class RankingViewController: UITableViewController {
             cell.imageview.image = UIImage(named: "user")
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     cell.imageview.image = image
                 }
             })
@@ -154,47 +143,5 @@ class RankingViewController: UITableViewController {
             }
         }
     }
-    
-//    private func getCurrentUserPosition() -> Int?{
-//        for (index, user) in enumerate(users){
-//            if user.objectId == User.currentUser()?.objectId{
-//                return index
-//            }
-//        }
-//        return nil
-//    }
 
 }
-
-
-
-
-
-//func updateUsers(){
-//    User.findAllOrderByScores(page, callback: { (users) -> () in
-//        if let users = users{
-//            self.users = users
-//            self.maxScore = Int(users[0].score)
-//            
-//            //                var i = 0
-//            //                for ; i < users.count ; i++ {
-//            //
-//            //                    if let data = users[i]["name"] as? String{
-//            //
-//            //                        self.users.append(users[i])
-//            //                        println(data)
-//            //
-//            //                        if data == User.currentUser()?.name{
-//            //                            //self.positionLabel.text = String(i+1)
-//            //                            self.position = String(i+1)
-//            //                        }
-//            //
-//            //                    }
-//            //
-//            //                }
-//            
-//        }
-//        self.isLoading = false
-//        self.tableview.reloadData()
-//    })
-//}

@@ -39,13 +39,15 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        
-        Post.find(locationObject, type: feedType, page: pagePost) { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-            
-            UserLocation.updateCountryLocalityParse()
-        }
+        UserLocation(callback: { (success) -> () in
+            if !success {
+                println("Nao foi possivel obter sua localizacao: FeedViewController: viewDidLoad")
+            }
+            Post.find(self.locationObject, type: self.feedType, page: self.pagePost) { (posts) -> () in
+                self.posts = posts
+                self.tableView.reloadData() 
+            }
+        })
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
