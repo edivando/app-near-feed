@@ -130,8 +130,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let post = posts[indexPath.section]
-        if indexPath.row == 0{
-            var cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as! PostViewCell
+        if indexPath.row == 0, let cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as? PostViewCell {
             cell.post = post
             cell.makePostCell()
 
@@ -147,14 +146,24 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             for (index,image) in enumerate(cell.post.images) {
                 image.image({ (image) -> () in
                     if let image = image{
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
-                            self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
-                            cellToUpdate.addGesturesToSubviews()
-                        })
+                        var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
+                        self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
+                        cellToUpdate.addGesturesToSubviews()
                     }
                 })
             }
+ 
+//            for (index,image) in enumerate(cell.post.images) {
+//                image.image({ (image) -> () in
+//                    if let image = image{
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
+//                            self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
+//                            cellToUpdate.addGesturesToSubviews()
+//                        })
+//                    }
+//                })
+//            }
             
             cell.openFocusImage = {(image) in
                 var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
@@ -163,14 +172,17 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
                 self.presentViewController(focusImageViewController, animated: true, completion: nil)
             }
             return cell
-        }else{
+        }else if let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as? PostCommentCell{
+                
             let postComment = post.comments[indexPath.row-1]
-            let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as! PostCommentCell
+        
             cell.userName.text = "User name comment"
             cell.userImage.image = UIImage(named: "user")
             cell.postComment.text = postComment.message
             cell.postDate.text = postComment.createdAt?.dateFormat()
             return cell
+        }else{
+            return UITableViewCell()
         }
     }
     
