@@ -44,7 +44,7 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     }
     
     static func findAllOrderByScores(page: Int, callback: (users: [User]?) ->()){
-        let pageLenght = 2
+        let pageLenght = 4
         let query = User.query()
         query?.orderByDescending("score")
         query?.skip = page * pageLenght

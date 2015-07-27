@@ -14,7 +14,7 @@ class RankingViewController: UITableViewController {
     var users = [User]()
     var userPosition = "9999"
     var maxScore : Int?
-    
+    let pageLenght = 4
     var page = 0
     var isLoading = false
     
@@ -47,7 +47,8 @@ class RankingViewController: UITableViewController {
                 
                 for (index, user) in enumerate(users){
                     if user.objectId == User.currentUser()?.objectId{
-                        self.userPosition = "\(index)"
+                        //self.userPosition = "\(index)"
+                        self.userPosition = "\(index + 1 + (self.page * self.pageLenght) )"
                     }
                     self.users.append(user)
                 }
@@ -63,7 +64,8 @@ class RankingViewController: UITableViewController {
             if let users = users where users.count > 0{
                 for (index, user) in enumerate(users){
                     if user.objectId == User.currentUser()?.objectId{
-                        self.userPosition = "\(index)"
+                        //self.userPosition = "\(index)"
+                        self.userPosition = "\(index + 1 + (self.page * self.pageLenght) )"
                     }
                     let indexPath = NSIndexPath(forRow: self.users.count, inSection: 1)
                     self.users.append(user)
@@ -115,7 +117,6 @@ class RankingViewController: UITableViewController {
             cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     cell.imageview.image = image
                 }
             })
@@ -130,7 +131,6 @@ class RankingViewController: UITableViewController {
             cell.imageview.image = UIImage(named: "user")
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     cell.imageview.image = image
                 }
             })
