@@ -6,6 +6,9 @@
 
 #import "MBProgressHUD.h"
 
+#import "EAIntroPage.h"
+
+#import "EAIntroView.h"
 
 //#import "UIScrollView+InfiniteScroll.h"
 

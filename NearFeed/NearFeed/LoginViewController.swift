@@ -46,6 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         notNowBut.layer.borderColor = UIColor.whiteColor().CGColor
         
         configProgress()
+        configIntroPage()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -63,6 +64,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MBProgressHUDD
         progress.labelText = nil
         progress.dimBackground = true
         progress.delegate = self
+    }
+    
+    func configIntroPage(){
+        let size = UIScreen.mainScreen().bounds
+        let page01 = introPage("Welcome to NAME", descKey: "Here you can see everything that's taking place around you, in your community, neighborhood, city or country.", image: "teste", color: Color.red)
+        
+        let page02 = introPage("Filter what you want to see", descKey: "Filter feeds by region, city or country.", image: "teste", color: Color.orange)
+        
+        let page03 = introPage("Make posts at the location you are", descKey: "Get popular by posting relevant information. If your post gets popular, it will be promoted to the city status or maybe even the country status, being visible to more people.", image: "teste", color: Color.yellow)
+        
+        let page04 = introPage("Rank up and get seen as a helpful user", descKey: " Your actions will have more impact inside the app.", image: "teste", color: Color.green)
+        
+        let intro = EAIntroView(frame: self.view.frame, andPages: [page01,page02,page03,page04])
+        intro.pageControl.hidden = true
+        intro.showInView(self.view, animateDuration: 0.3)
+    }
+    
+    func introPage(titleKey: String, descKey: String, image: String, titleSize: CGFloat = 20, color: UIColor, descSize: CGFloat = 15, yTitleIcon: CGFloat = 20, yTitle: CGFloat = 160, yDesc: CGFloat = 140) -> EAIntroPage{
+            let page = EAIntroPage()
+            page.title = titleKey
+            page.titlePositionY = yTitle
+            page.desc = descKey
+            page.descPositionY = yDesc
+            page.bgColor = color
+            page.titleIconView = UIImageView(image: UIImage(named: image))
+            page.titleIconPositionY = yTitleIcon
+            return page
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

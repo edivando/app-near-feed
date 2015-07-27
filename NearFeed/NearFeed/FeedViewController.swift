@@ -55,7 +55,25 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     }
     
     override func viewDidAppear(animated: Bool) {
+        refreshNavbarColor()
         refresh()
+    }
+    
+    func refreshNavbarColor(){
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            if self.feedType == LocationType.Country{
+                self.navigationController?.navigationBar.barTintColor = Color.blue
+                self.navigationTopView.backgroundColor = Color.blue
+            }
+            else if self.feedType == LocationType.City{
+                self.navigationController?.navigationBar.barTintColor = Color.green
+                self.navigationTopView.backgroundColor = Color.green
+            }
+            else{
+                self.navigationController?.navigationBar.barTintColor = Color.red
+                self.navigationTopView.backgroundColor = Color.red
+            }
+        })
     }
     
     func refresh() {
@@ -208,6 +226,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             popoverFilterViewController.updateFeedToLocation = {(feedType,locationObject) in
                 self.locationObject = locationObject
                 self.feedType = feedType
+                self.refreshNavbarColor()
                 self.labelObjectName.text = self.locationObject?.objectForKey("name") as? String
                 self.labelLocationType.text = self.feedType.rawValue as String
                 Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
