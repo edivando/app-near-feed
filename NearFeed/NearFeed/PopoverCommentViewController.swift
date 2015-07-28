@@ -20,24 +20,14 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        textField.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     override func viewWillAppear(animated: Bool) {
         updateComments()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - TextField
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkIfEmptyAndSend()
         textField.resignFirstResponder()

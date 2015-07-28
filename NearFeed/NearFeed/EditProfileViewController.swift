@@ -35,17 +35,17 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             user["name"] = nameTextField.text
             
             user.saveInBackground()
-            
         }
         
         // Return to table view
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func changeImageButton(sender: AnyObject) {
         addPhoto()
     }
+    
     @IBAction func changePasswordButton(sender: AnyObject) {
-        
         PFUser.requestPasswordResetForEmailInBackground(email!)
         Message.info("Alert", text: "Mensagem enviada para o email")
     }

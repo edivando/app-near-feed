@@ -297,7 +297,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="comment" destination="M4a-c4-Cpc" eventType="touchUpInside" id="6RX-FY-WAZ"/>
                                     <segue destination="4VX-Je-CVZ" kind="popoverPresentation" identifier="PopoverComment" popoverAnchorView="EsN-Qu-znA" id="2cC-AA-Qet">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -386,6 +385,9 @@
                                         <exclude reference="ZQL-5N-Hab"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="4VX-Je-CVZ" id="oQr-QI-Bma"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOU-Km-fqb">
                                 <rect key="frame" x="548" y="550" width="36" height="30"/>
@@ -418,7 +420,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Zb-jB-tnA" id="WtV-9B-TpN">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-k7-lvb">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-k7-lvb">
                                                     <rect key="frame" x="5" y="5" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="EwH-tw-G8d"/>
@@ -496,6 +498,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="4VX-Je-CVZ" id="HYc-I3-hoF"/>
+                                    <outlet property="delegate" destination="4VX-Je-CVZ" id="tbs-UC-fjM"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -670,7 +673,7 @@
                             <constraint firstItem="yzp-DF-g15" firstAttribute="trailing" secondItem="cq7-A9-b7O" secondAttribute="trailingMargin" id="kIG-3i-HZL"/>
                             <constraint firstItem="AB1-i6-QPO" firstAttribute="width" secondItem="E3U-ge-ZAf" secondAttribute="width" id="pFh-BS-MIm"/>
                             <constraint firstItem="D75-dJ-ZDx" firstAttribute="trailing" secondItem="cq7-A9-b7O" secondAttribute="trailingMargin" id="sIC-gl-0xa"/>
-                            <constraint firstItem="vtV-Nn-zHC" firstAttribute="top" secondItem="7uz-jx-kzc" secondAttribute="bottom" constant="101" id="sLw-AE-Zbr"/>
+                            <constraint firstItem="vtV-Nn-zHC" firstAttribute="top" secondItem="7uz-jx-kzc" secondAttribute="bottom" constant="121" id="sLw-AE-Zbr"/>
                             <constraint firstItem="yzp-DF-g15" firstAttribute="top" secondItem="D75-dJ-ZDx" secondAttribute="bottom" constant="21" id="uLP-9A-EfT"/>
                             <constraint firstItem="E3U-ge-ZAf" firstAttribute="trailing" secondItem="cq7-A9-b7O" secondAttribute="trailingMargin" id="wKk-oi-ds1"/>
                             <constraint firstItem="m9M-JD-2W1" firstAttribute="top" secondItem="E3U-ge-ZAf" secondAttribute="bottom" constant="172" id="x8B-iR-Rgl"/>
