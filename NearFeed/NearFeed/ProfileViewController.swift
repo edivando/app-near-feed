@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var pontuacaoLabel: UILabel!
     
+    @IBOutlet var signUpButton: UIButton!
+    
     @IBOutlet var floatRatingView: FloatRatingView!
     
     override func viewDidLoad() {
@@ -35,6 +37,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
             if PFAnonymousUtils.isLinkedWithUser(currentUser) {
                 editButton.enabled = false
                 performSegueWithIdentifier("segueSignUp", sender: nil)
+                signUpButton.hidden = false
+            } else {
+                signUpButton.hidden = true
             }
             
         }
@@ -46,6 +51,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
         if let currentUser = User.currentUser(){
             if !PFAnonymousUtils.isLinkedWithUser(currentUser) {
                 editButton.enabled = true
+                signUpButton.hidden = true
                 
                 emailLabel.text = currentUser.email
                 nameLabel.text = currentUser.name
@@ -64,6 +70,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
                         self.imageImageView.image = image
                     }
                 })
+            } else {
+                signUpButton.hidden = false
             }
         }
     }

@@ -809,8 +809,8 @@
                                     <constraint firstAttribute="width" constant="184" id="sQT-7R-MxU"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="fullStar"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="emptyStar"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
@@ -924,6 +924,7 @@
                         <outlet property="imageImageView" destination="zSV-Jr-ks1" id="0OX-9i-GDG"/>
                         <outlet property="nameLabel" destination="Dep-he-AQu" id="eEK-qK-SgB"/>
                         <outlet property="pontuacaoLabel" destination="kcw-9f-oMF" id="APs-7d-qKr"/>
+                        <outlet property="signUpButton" destination="OiC-jz-qqf" id="aHF-BR-tvR"/>
                         <segue destination="Tz0-fD-UYr" kind="presentation" identifier="segueSignUp" modalPresentationStyle="pageSheet" id="ANk-tt-DIM"/>
                     </connections>
                 </viewController>
@@ -1220,8 +1221,8 @@
                                                 <constraint firstAttribute="width" constant="70" id="UVG-Zz-rPI"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="emptyStar"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="fullStar"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                                     <integer key="value" value="0"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1868,10 +1869,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="StarEmpty" width="22" height="22"/>
-        <image name="StarFull" width="22" height="22"/>
         <image name="bubble" width="20" height="20"/>
+        <image name="emptyStar" width="22" height="22"/>
         <image name="filter" width="20" height="20"/>
+        <image name="fullStar" width="22" height="22"/>
         <image name="news" width="20" height="20"/>
         <image name="paperplane" width="20" height="20"/>
         <image name="thumbs-up" width="20" height="20"/>
