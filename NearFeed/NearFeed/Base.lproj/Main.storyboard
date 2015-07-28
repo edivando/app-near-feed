@@ -205,7 +205,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVg-0H-0NH">
-                                <rect key="frame" x="160.5" y="430" width="280" height="30"/>
+                                <rect key="frame" x="161" y="430" width="280" height="30"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -789,7 +789,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qE-9Z-WUb">
-                                <rect key="frame" x="130" y="237" width="340" height="20.5"/>
+                                <rect key="frame" x="130" y="237" width="340" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="6tU-an-JXn"/>
                                     <constraint firstAttribute="width" constant="340" id="imc-SX-G4h"/>
@@ -820,6 +820,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1178,7 +1179,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTU-BW-i3E">
-                                            <rect key="frame" x="110" y="3" width="482" height="24.5"/>
+                                            <rect key="frame" x="110" y="3" width="482" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="212" id="BDm-9Y-waf"/>
                                                 <constraint firstAttribute="height" constant="24.5" id="Igt-Y6-Qua"/>
