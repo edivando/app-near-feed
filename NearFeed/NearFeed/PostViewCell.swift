@@ -10,17 +10,17 @@ import UIKit
 
 class PostViewCell: UITableViewCell, UIScrollViewDelegate {
 
-    @IBOutlet var postCell: UIView!
+//    @IBOutlet var postCell: UIView!
     
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var userLocality: UILabel!
     
-    @IBOutlet var postText: UITextView!
-    
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var postImagesScroll: UIScrollView!
+    @IBOutlet var postText: UILabel!
     @IBOutlet var postTime: UILabel!
+    @IBOutlet weak var postImagesScroll: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+   
     
     @IBOutlet var viewBarButton: UIView!
     var post = Post()
@@ -35,9 +35,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
-        postCell.layer.borderWidth = 0.5
-        postCell.layer.cornerRadius = 3
+//        postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
+//        postCell.layer.borderWidth = 0.5
+//        postCell.layer.cornerRadius = 3
         
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true

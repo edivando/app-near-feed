@@ -132,12 +132,12 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     }
     
     //MARK: UITableViewDataSource
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            return 400
-        }
-        return 80
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if indexPath.row == 0{
+//            return 400
+//        }
+//        return 80
+//    }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
