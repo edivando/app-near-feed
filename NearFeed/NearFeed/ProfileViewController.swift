@@ -68,61 +68,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
         }
     }
     
-//    func config() {
-//        
-//        if !PFAnonymousUtils.isLinkedWithUser(currentUser) {
-//            println("nao anonimo")
-//            
-//            editButton.enabled = true
-//            emailLabel.text = currentUser!["email"] as? String
-//            nameLabel.text = currentUser!["name"] as? String
-//            
-//            let number = currentUser!["score"] as? NSNumber
-//            
-//            
-//            User.findFirstUserByScore { (user) -> () in
-//                
-//                if let user = user {
-//                    self.maxScore = Int(user.score)
-//                } else {
-//                    self.maxScore = Int(self.currentUser!.score)
-//                }
-//                
-//                if let num = number {
-//                    self.pontuacaoLabel.text = String(stringInterpolationSegment: number!)
-//                    self.floatRatingView.rating = Float(Int(Float(num) / Float(self.maxScore!) * 5.0))
-//                } else {
-//                    self.pontuacaoLabel.text = String(0)
-//                }
-//                
-//              }
-//            
-//            if let user = currentUser{
-//                
-//                    self.imageImageView.image = UIImage(named: "user")
-//                    user.image.image({ (image) -> () in
-//                    
-//                    if let image = image{
-//                        
-//                        self.imageImageView.image = image
-//                    }
-//                })
-//            
-//            }
-//            
-//        } else {
-//            editButton.enabled = false
-////            signUpButton.hidden = false
-//            println("anonimo")
-//        }
-//    }
     
-//    func arredondarImagem(){
-//        imageImageView.layer.borderWidth=1.0
-//        imageImageView.layer.masksToBounds = false
-//        imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
-//        imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
-//        imageImageView.clipsToBounds = true
-//    }
+    @IBAction func signUp(sender: AnyObject) {
+        performSegueWithIdentifier("segueSignUp", sender: nil)
+    }
     
 }
