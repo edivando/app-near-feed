@@ -109,6 +109,10 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     //MARK: UITableViewDataSource
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0{
+            if posts[indexPath.section].images.count == 0{
+                return 180
+            }
+//            posts[indexPath.section].text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.width, height: CGFloat.max), options: NSStringDrawingOptions.UsesDeviceMetrics, attributes: @{NSFontAttributeName:UIFont()}, context: mil)
             return 400
         }
         return 80
@@ -139,6 +143,13 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             cell.postImagesScroll.delegate = cell
             
             cell.pageControl?.numberOfPages = cell.post.images.count
+            
+            if posts[indexPath.section].images.count == 0{
+                cell.postImagesScroll.hidden = true
+                cell.pageControl.hidden = true
+            }
+
+            cell.postText.scrollRangeToVisible(NSRange(location:0, length:0))
             
             cell.removeImagesFromScrollView()
             
