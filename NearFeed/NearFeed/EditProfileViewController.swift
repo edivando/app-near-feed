@@ -142,7 +142,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    // MARK: - Metodos para mover a screem para cima quando o teclado aparecer
+    // MARK: - Metodos para mover os elementos visuais para cima quando o teclado aparecer
     //http://www.jogendra.com/2015/01/uitextfield-move-up-when-keyboard.html
     func textFieldDidBeginEditing(textField: UITextField) {
         animateViewMoving(true, moveValue: 150)
