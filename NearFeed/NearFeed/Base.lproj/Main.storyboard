@@ -905,7 +905,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFU-oy-Sn1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="yFU-oy-Sn1">
                                 <rect key="frame" x="240" y="94" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="169" id="6eQ-kj-JUS"/>
@@ -921,17 +921,17 @@
                                 </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zy0-3n-ZRh" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
-                                <rect key="frame" x="150" y="324" width="300" height="30"/>
+                                <rect key="frame" x="16" y="324" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="FLe-8l-RRN"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Kuh-j6-pYt"/>
                                     <constraint firstAttribute="width" constant="400" id="imU-CP-W7f"/>
-                                    <constraint firstAttribute="width" constant="300" id="k8m-Dl-tTV"/>
+                                    <constraint firstAttribute="width" constant="568" id="k8m-Dl-tTV"/>
                                     <constraint firstAttribute="height" constant="30" id="nhV-17-N3W"/>
                                     <constraint firstAttribute="width" constant="260" id="tJU-jq-zB6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -948,6 +948,7 @@
                                         <exclude reference="FLe-8l-RRN"/>
                                         <exclude reference="Kuh-j6-pYt"/>
                                         <exclude reference="imU-CP-W7f"/>
+                                        <exclude reference="k8m-Dl-tTV"/>
                                         <exclude reference="tJU-jq-zB6"/>
                                     </mask>
                                 </variation>
@@ -971,7 +972,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHA-G4-36e" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
-                                <rect key="frame" x="150" y="274" width="300" height="30"/>
+                                <rect key="frame" x="16" y="274" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="9MV-ud-v5H"/>
                                     <constraint firstAttribute="height" constant="30" id="ErF-1F-TTK"/>
@@ -980,10 +981,10 @@
                                     <constraint firstAttribute="width" constant="400" id="jS5-VP-OiX"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="tE2-dW-xo8"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wZ9-9s-O3i"/>
-                                    <constraint firstAttribute="width" constant="300" id="xzx-ak-U41"/>
+                                    <constraint firstAttribute="width" constant="568" id="xzx-ak-U41"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1003,6 +1004,7 @@
                                         <exclude reference="jS5-VP-OiX"/>
                                         <exclude reference="tE2-dW-xo8"/>
                                         <exclude reference="wZ9-9s-O3i"/>
+                                        <exclude reference="xzx-ak-U41"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -1010,6 +1012,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="yFU-oy-Sn1" secondAttribute="centerX" id="10L-7u-7kV"/>
+                            <constraint firstItem="LHA-G4-36e" firstAttribute="trailing" secondItem="4v3-Pu-NLh" secondAttribute="trailingMargin" id="7dI-gT-uUg"/>
+                            <constraint firstItem="LHA-G4-36e" firstAttribute="leading" secondItem="4v3-Pu-NLh" secondAttribute="leadingMargin" id="A9U-dN-jNA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LHA-G4-36e" secondAttribute="trailing" id="CGX-Gh-es9"/>
                             <constraint firstItem="Zy0-3n-ZRh" firstAttribute="leading" secondItem="4v3-Pu-NLh" secondAttribute="leadingMargin" id="DiS-hg-EvA"/>
                             <constraint firstAttribute="centerX" secondItem="yFU-oy-Sn1" secondAttribute="centerX" id="FBD-QF-OWJ"/>
@@ -1017,6 +1021,7 @@
                             <constraint firstItem="LHA-G4-36e" firstAttribute="top" secondItem="DNT-Zy-iO3" secondAttribute="bottom" constant="30" id="HzX-T5-wtC"/>
                             <constraint firstItem="Zy0-3n-ZRh" firstAttribute="top" secondItem="LHA-G4-36e" secondAttribute="bottom" constant="41" id="JIy-xb-ydT"/>
                             <constraint firstItem="DNT-Zy-iO3" firstAttribute="trailing" secondItem="4v3-Pu-NLh" secondAttribute="trailingMargin" id="JRu-2B-aKg"/>
+                            <constraint firstItem="Zy0-3n-ZRh" firstAttribute="leading" secondItem="4v3-Pu-NLh" secondAttribute="leadingMargin" id="K6r-lq-3kH"/>
                             <constraint firstItem="DNT-Zy-iO3" firstAttribute="top" secondItem="yFU-oy-Sn1" secondAttribute="bottom" constant="205" id="LJi-Vd-aFJ"/>
                             <constraint firstItem="Zy0-3n-ZRh" firstAttribute="top" secondItem="LHA-G4-36e" secondAttribute="bottom" constant="20" id="MGM-j4-3X4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uYT-89-jsD" secondAttribute="trailing" id="NQT-S7-ouz"/>
@@ -1025,6 +1030,7 @@
                             <constraint firstItem="LHA-G4-36e" firstAttribute="top" secondItem="DNT-Zy-iO3" secondAttribute="bottom" constant="25" id="Ovu-eg-yqT"/>
                             <constraint firstItem="DNT-Zy-iO3" firstAttribute="leading" secondItem="4v3-Pu-NLh" secondAttribute="leadingMargin" constant="234" id="QAO-KJ-qeS"/>
                             <constraint firstAttribute="centerX" secondItem="Zy0-3n-ZRh" secondAttribute="centerX" id="S8b-9M-ghw"/>
+                            <constraint firstItem="Zy0-3n-ZRh" firstAttribute="trailing" secondItem="4v3-Pu-NLh" secondAttribute="trailingMargin" id="TwZ-0m-ELE"/>
                             <constraint firstItem="LHA-G4-36e" firstAttribute="leading" secondItem="4v3-Pu-NLh" secondAttribute="leadingMargin" id="TxY-ks-kEL"/>
                             <constraint firstItem="DNT-Zy-iO3" firstAttribute="top" secondItem="xXS-UZ-77x" secondAttribute="bottom" constant="314" id="VAq-D7-eAP"/>
                             <constraint firstAttribute="centerX" secondItem="DNT-Zy-iO3" secondAttribute="centerX" id="Wdv-bW-Y8W"/>
@@ -1052,6 +1058,12 @@
                                 <exclude reference="Ovu-eg-yqT"/>
                                 <exclude reference="TxY-ks-kEL"/>
                                 <exclude reference="pyq-n5-dLT"/>
+                                <exclude reference="yTx-fx-Jfc"/>
+                                <exclude reference="DiS-hg-EvA"/>
+                                <exclude reference="JIy-xb-ydT"/>
+                                <exclude reference="S8b-9M-ghw"/>
+                                <exclude reference="yhK-u4-uf0"/>
+                                <exclude reference="zUM-TW-vDH"/>
                                 <exclude reference="JRu-2B-aKg"/>
                                 <exclude reference="LJi-Vd-aFJ"/>
                                 <exclude reference="O0P-FI-aRQ"/>
@@ -1061,10 +1073,6 @@
                                 <exclude reference="jhZ-y6-fCr"/>
                                 <exclude reference="mDw-M2-yI9"/>
                                 <exclude reference="mka-tO-ZeS"/>
-                                <exclude reference="DiS-hg-EvA"/>
-                                <exclude reference="JIy-xb-ydT"/>
-                                <exclude reference="S8b-9M-ghw"/>
-                                <exclude reference="yhK-u4-uf0"/>
                                 <exclude reference="NQT-S7-ouz"/>
                                 <exclude reference="aiW-95-Oof"/>
                                 <exclude reference="fyT-Mz-RTa"/>

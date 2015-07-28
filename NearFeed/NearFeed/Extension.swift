@@ -10,7 +10,6 @@
 import Parse
 
 extension PFFile{
-    
     func image(callback:(image: UIImage?)->()){
         getDataInBackgroundWithBlock { (data, error) -> Void in
             if let data = data{
