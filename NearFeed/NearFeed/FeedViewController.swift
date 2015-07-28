@@ -166,6 +166,9 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             
             cell.removeImagesFromScrollView()
             
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
+            
             for (index,image) in enumerate(cell.post.images) {
                 image.image({ (image) -> () in
                     if let image = image{
@@ -224,27 +227,11 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "popoverMenu"{
-            var popoverMenuViewController = segue.destinationViewController as! MenuPopoverViewController
-            popoverMenuViewController.modalPresentationStyle = .Popover
-            popoverMenuViewController.popoverPresentationController?.delegate = self
-            var dummyCell = UITableViewCell() //celula pra fazer calculo da altura do popover
-            popoverMenuViewController.preferredContentSize = CGSizeMake(150,dummyCell.frame.size.height * 3)
-            popoverMenuViewController.feedType = feedType
-            popoverMenuViewController.updateFeedToLocation = {(location) in
-                self.feedType = location
-                Post.find(self.locationObject, type: self.feedType, page: 0, list: { (posts) -> () in
-                    self.posts = [Post]()
-                    self.posts = posts
-                    self.tableView.reloadData()
-                })
-            }
-        }
-        else if segue.identifier == "filterPopover"{
+        if segue.identifier == "filterPopover"{
             var popoverFilterViewController = segue.destinationViewController as! FilterPopoverViewController
             popoverFilterViewController.modalPresentationStyle = .Popover
             popoverFilterViewController.popoverPresentationController?.delegate = self
-            popoverFilterViewController.preferredContentSize = CGSizeMake(250,200)
+            popoverFilterViewController.preferredContentSize = CGSizeMake(300,400)
             popoverFilterViewController.locationObject = self.locationObject
             popoverFilterViewController.feedType = self.feedType
             popoverFilterViewController.updateFeedToLocation = {(feedType,locationObject) in

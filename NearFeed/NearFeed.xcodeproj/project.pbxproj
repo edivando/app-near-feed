@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5111933D1B57E6C80024828E /* ImageFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111933C1B57E6C80024828E /* ImageFocusViewController.swift */; };
-		519F5A931B5FDB340067DA7E /* MenuPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */; };
 		519F5A991B6114B10067DA7E /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */; };
 		519F5A9B1B6114C30067DA7E /* PostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */; };
 		519F5A9D1B6114D70067DA7E /* FilterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */; };
@@ -97,7 +96,6 @@
 /* Begin PBXFileReference section */
 		0BD3861DB7C4D1F5FAFD781A /* Pods-NearFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearFeed/Pods-NearFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		5111933C1B57E6C80024828E /* ImageFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFocusViewController.swift; sourceTree = "<group>"; };
-		519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopoverViewController.swift; sourceTree = "<group>"; };
 		519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCell.swift; sourceTree = "<group>"; };
 		519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopoverViewController.swift; sourceTree = "<group>"; };
@@ -393,7 +391,6 @@
 				7241F6D81B53E15F0033BB3C /* FeedViewController.swift */,
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
-				519F5A921B5FDB340067DA7E /* MenuPopoverViewController.swift */,
 				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
 				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
 				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
@@ -663,7 +660,6 @@
 				6DEAA2021B5E889000A657C6 /* FloatRatingView.swift in Sources */,
 				7241F6F81B53E4EB0033BB3C /* JiroTextField.swift in Sources */,
 				7241F72D1B544B5F0033BB3C /* City.swift in Sources */,
-				519F5A931B5FDB340067DA7E /* MenuPopoverViewController.swift in Sources */,
 				51ECA9B01B53E81A0006571B /* IndexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

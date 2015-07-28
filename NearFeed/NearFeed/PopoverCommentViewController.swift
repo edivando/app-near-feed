@@ -13,13 +13,15 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    var post:Post!
+    var post:Post?
     var comments:[PostComment]!
     
     //MARK: - Life cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44.0
 //        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -70,19 +72,23 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var comment = comments[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as! CommentPopoverTableViewCell
-
-        cell.commentDate.text = comment.createdAt?.dateFormat()
-        cell.userComment.text = comment.message
-        comment.user.image.image({ (image) -> () in
-            if let img = image{
-                var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! CommentPopoverTableViewCell
-                cellToUpdate.userImage.image = img
-            }
-        })
-        
-        cell.userName.text = comment.user["name"] as? String
-        return cell
+        if let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as? CommentPopoverTableViewCell{
+            comment.objectForKey("user")?.fetchIfNeededInBackgroundWithBlock({ (object, error) -> Void in
+                if let user = object as? User{
+                    cell.userName.text = user.name //  ["name"] as? String
+                    user.image.image({ (image) -> () in
+                        if let img = image{
+                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! CommentPopoverTableViewCell
+                            cellToUpdate.userImage.image = img
+                        }
+                    })
+                }
+            })
+            cell.commentDate.text = comment.createdAt?.dateFormat()
+            cell.userComment.text = comment.message
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,15 +120,19 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
             Message.info("Comment empty", text: "")
         }
         else{
-            post.addComment(textField.text)
+            if let post = post{
+                post.addComment(textField.text)
+            }
             textField.text = ""
             view.endEditing(true)
             updateComments()
         }
     }
     func updateComments(){
-        self.comments = post.comments
-        self.tableView.reloadData()
+        if let comments = post?.comments{
+            self.comments = comments
+            self.tableView.reloadData()
+        }
     }
 
 }
