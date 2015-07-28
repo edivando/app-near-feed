@@ -21,7 +21,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44.0
+        tableView.estimatedRowHeight = 50.0
 //        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -75,11 +75,10 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         if let cell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as? CommentPopoverTableViewCell{
             comment.objectForKey("user")?.fetchIfNeededInBackgroundWithBlock({ (object, error) -> Void in
                 if let user = object as? User{
-                    cell.userName.text = user.name //  ["name"] as? String
+                    cell.userName.text = user.name
                     user.image.image({ (image) -> () in
                         if let img = image{
-                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! CommentPopoverTableViewCell
-                            cellToUpdate.userImage.image = img
+                            cell.userImage.image = img
                         }
                     })
                 }
