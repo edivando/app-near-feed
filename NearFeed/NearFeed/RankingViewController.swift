@@ -100,8 +100,13 @@ class RankingViewController: UITableViewController {
             
             if let user = User.currentUser(){
                 cell.positionLabel.text = userPosition == 0 ? "..." : "\(userPosition)"
-                cell.nameLabel.text = user.name
-                cell.scoreLabel.text = "\(user.score) scores"
+                if PFAnonymousUtils.isLinkedWithUser(user){
+                    cell.nameLabel.text = "Annonymous"
+                    cell.scoreLabel.text = "00 scores"
+                }else{
+                    cell.nameLabel.text = user.name
+                    cell.scoreLabel.text = "\(user.score) scores"
+                }
                 cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
                 user.image.image({ (image) -> () in
                     if let image = image{

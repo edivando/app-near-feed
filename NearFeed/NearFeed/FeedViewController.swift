@@ -49,6 +49,8 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             }
         })
         
+        configAlertLocationServices()
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
@@ -59,6 +61,27 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     override func viewDidAppear(animated: Bool) {
         refreshNavbarColor()
         refresh()
+    }
+    
+    func configAlertLocationServices(){
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                println()
+            default:
+                var controller = UIAlertController (title: "Turn On Location Services to Allow “App” Determine Your Location", message: "", preferredStyle: .Alert)
+                controller.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Cancel) { (_) -> Void in
+                    let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+                    if let url = settingsUrl {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                    })
+                controller.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+                presentViewController(controller, animated: true, completion: nil)
+            }
+        } else {
+            println("Location services are not enabled")
+        }
     }
     
     func refreshNavbarColor(){

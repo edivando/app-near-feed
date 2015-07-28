@@ -27,8 +27,11 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         super.init()
         self.successCallback = callback
         if let user = user{
-            user.latitude = locationManager.location.coordinate.latitude
-            user.longitude = locationManager.location.coordinate.longitude
+            if locationManager.location != nil{
+                user.latitude = locationManager.location.coordinate.latitude
+                user.longitude = locationManager.location.coordinate.longitude
+                user.saveInBackground()
+            }
             
             //Get country or set default country
             if let country = user.country{
@@ -50,7 +53,6 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
             }else{
                 saveUserLocationRegion(user)
             }
-            user.saveInBackground()
         }
         getGeocoder()
     }
