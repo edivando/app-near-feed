@@ -135,44 +135,47 @@ class Post: PFObject, PFSubclassing {
         return nil
     }
     
-    
-    
+
 //Mark: Post methods
     func newPost(text: String, images: [UIImage]?, error: (error: NSError?)->()){
-        self.text = text
-        self.clicked = 0
-        self.visualizations = 0
-        if let imgs = images{
-            self.images = [PFFile]()
-            for img in imgs{
-                self.images.append(PFFile(data: UIImagePNGRepresentation(img)))
-            }
-        }
         if let user = User.currentUser() where user.isAuthenticated(){
-            self.user = user
-            self.latitude = user.latitude
-            self.longitude = user.longitude
-            if let country = user.country{
-                self.country = country
-            }
-            if let city = user.city{
-                self.city = city
-            }
-            if let region = user.region{
-                self.region = region
-            }
-            self.saveInBackgroundWithBlock({ (success, erro) -> Void in
-                if erro == nil {
-                    if let user = User.currentUser(){
-                        user.updateScores(.NewPost)
+            if !PFAnonymousUtils.isLinkedWithUser(user){
+                self.text = text
+                self.clicked = 0
+                self.visualizations = 0
+                if let imgs = images{
+                    self.images = [PFFile]()
+                    for img in imgs{
+                        self.images.append(PFFile(data: UIImagePNGRepresentation(img)))
                     }
-                    println("save post")
-                    error(error: nil)
-                }else{
-                    error(error: erro)
-                    println("not save post")
                 }
-            })
+                self.user = user
+                self.latitude = user.latitude
+                self.longitude = user.longitude
+                if let country = user.country{
+                    self.country = country
+                }
+                if let city = user.city{
+                    self.city = city
+                }
+                if let region = user.region{
+                    self.region = region
+                }
+                self.saveInBackgroundWithBlock({ (success, erro) -> Void in
+                    if erro == nil {
+                        if let user = User.currentUser(){
+                            user.updateScores(.NewPost)
+                        }
+                        println("save post")
+                        error(error: nil)
+                    }else{
+                        error(error: erro)
+                        println("not save post")
+                    }
+                })
+            }else{
+                error(error: NSError(domain: "User_Anonymous", code: 02, userInfo: nil))
+            }
         }else{
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
@@ -183,72 +186,91 @@ class Post: PFObject, PFSubclassing {
         saveInBackground()
     }
     
-    func addLike(like: Bool){
-        let postLike = PostLike()
-        postLike.like = like ? 1 : -1
-        postLike.post = self
-        if let user = User.currentUser(){
-            postLike.user = user
-        }
-        if likes.count == 0{
-            likes = [PostLike]()
-        }
-        likes.append(postLike)
-        saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                if let user = User.currentUser(){
-                    user.updateScores(.LikeSend)
+    func addLike(like: Bool, error: (error: NSError?)->()){
+        if let user = User.currentUser() where user.isAuthenticated(){
+            if !PFAnonymousUtils.isLinkedWithUser(user){
+                let postLike = PostLike()
+                postLike.like = like ? 1 : -1
+                postLike.post = self
+                postLike.user = user
+                if likes.count == 0{
+                    likes = [PostLike]()
                 }
-                self.user.updateScores(like ? .LikeReceive : .DislikeReceive)
-                println("save post like")
+                likes.append(postLike)
+                saveInBackgroundWithBlock { (success, error) -> Void in
+                    if success {
+                        if let user = User.currentUser(){
+                            user.updateScores(.LikeSend)
+                        }
+                        self.user.updateScores(like ? .LikeReceive : .DislikeReceive)
+                        println("save post like")
+                    }else{
+                        println("not save post like")
+                    }
+                }
             }else{
-                println("not save post like")
+                error(error: NSError(domain: "User_Anonymous", code: 02, userInfo: nil))
             }
+        }else{
+            error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
     }
     
-    func addComment(message: String){
-        let postComment = PostComment()
-        postComment.message = message
-        postComment.post = self
-        if let user = User.currentUser(){
-            postComment.user = user
-        }
-        if comments.count == 0 {
-            comments = [PostComment]()
-        }
-        comments.append(postComment)
-        saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                if let user = User.currentUser(){
-                    user.updateScores(.CommentSend)
+    func addComment(message: String, error: (error: NSError?)->()){
+        if let user = User.currentUser() where user.isAuthenticated(){
+            if !PFAnonymousUtils.isLinkedWithUser(user){
+                let postComment = PostComment()
+                postComment.message = message
+                postComment.post = self
+                postComment.user = user
+                if comments.count == 0 {
+                    comments = [PostComment]()
                 }
-                self.user.updateScores(.CommentReceive)
-                println("save post comment")
+                comments.append(postComment)
+                saveInBackgroundWithBlock { (success, error) -> Void in
+                    if success {
+                        if let user = User.currentUser(){
+                            user.updateScores(.CommentSend)
+                        }
+                        self.user.updateScores(.CommentReceive)
+                        println("save post comment")
+                    }else{
+                        println("not save post comment")
+                    }
+                }
             }else{
-                println("not save post comment")
+                error(error: NSError(domain: "User_Anonymous", code: 02, userInfo: nil))
             }
+        }else{
+            error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
     }
     
-    func addReport(message: String){
-        let postReport = PostReport()
-        postReport.message = message
-        postReport.post = self
-        if let user = User.currentUser(){
-            postReport.user = user
-        }
-        if reports.count == 0{
-            reports = [PostReport]()
-        }
-        reports.append(postReport)
-        saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                println("save post report")
+    func addReport(message: String, error: (error: NSError?)->()){
+        if let user = User.currentUser() where user.isAuthenticated(){
+            if !PFAnonymousUtils.isLinkedWithUser(user){
+                let postReport = PostReport()
+                postReport.message = message
+                postReport.post = self
+                if let user = User.currentUser(){
+                    postReport.user = user
+                }
+                if reports.count == 0{
+                    reports = [PostReport]()
+                }
+                reports.append(postReport)
+                saveInBackgroundWithBlock { (success, error) -> Void in
+                    if success {
+                        println("save post report")
+                    }else{
+                        println("not save post report")
+                    }
+                }
             }else{
-                println("not save post report")
+                error(error: NSError(domain: "User_Anonymous", code: 02, userInfo: nil))
             }
+        }else{
+            error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
-        
     }
 }

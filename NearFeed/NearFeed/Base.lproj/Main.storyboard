@@ -102,11 +102,12 @@
                         <outlet property="scrollView" destination="D42-Kh-sgr" id="0PF-Xb-j9y"/>
                         <outlet property="textView" destination="1LM-Xy-SPz" id="fRr-7P-XGH"/>
                         <outlet property="userLocation" destination="1hR-7I-fCF" id="oOI-vH-Uj5"/>
+                        <segue destination="Tz0-fD-UYr" kind="presentation" identifier="segueSignUp" id="Hdm-vl-8bh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr8-cL-zVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="582"/>
+            <point key="canvasLocation" x="1055" y="476"/>
         </scene>
         <!--Index View Controller-->
         <scene sceneID="yBI-be-yb4">
@@ -377,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kch-0J-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1837" y="-242"/>
+            <point key="canvasLocation" x="2565" y="702"/>
         </scene>
         <!--Popover Comment View Controller-->
         <scene sceneID="0H5-13-54w">
@@ -562,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1WH-h7-E0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2578" y="-160"/>
+            <point key="canvasLocation" x="2522" y="18"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="uAg-82-vaJ">
@@ -1134,7 +1135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnt-KX-btM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="1215"/>
+            <point key="canvasLocation" x="449" y="1795"/>
         </scene>
         <!--Ranking View Controller-->
         <scene sceneID="a0a-t7-tgb">
@@ -1335,7 +1336,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Sh-zx-Tl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="2235"/>
+            <point key="canvasLocation" x="-1445" y="2683"/>
         </scene>
         <!--Filter Popover View Controller-->
         <scene sceneID="su2-51-HV1">
@@ -1396,14 +1397,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAT-dL-iEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="-1120"/>
+            <point key="canvasLocation" x="2153" y="-776"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="qyk-b6-tuZ">
             <objects>
                 <tableViewController id="fbl-s8-0LV" customClass="FeedViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" sectionHeaderHeight="20" sectionFooterHeight="10" id="uTe-It-pOU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="511-nR-99f">
@@ -1745,16 +1746,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
+                    <size key="freeformSize" width="600" height="700"/>
                     <connections>
                         <outlet property="labelLocationType" destination="mf8-qg-tr8" id="7O2-3h-cLJ"/>
                         <outlet property="labelObjectName" destination="bSw-lN-zTF" id="65l-Ka-G1H"/>
                         <outlet property="navigationTopView" destination="X0g-Eg-uiH" id="h7x-qb-UWc"/>
+                        <segue destination="Tz0-fD-UYr" kind="presentation" identifier="segueSignUp" id="52g-ZW-MYH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dbb-8b-hae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="-455"/>
+            <point key="canvasLocation" x="1019" y="-479"/>
         </scene>
         <!--Post-->
         <scene sceneID="Lw0-3f-7t7">
@@ -1827,7 +1829,7 @@
         <image name="user2" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ANk-tt-DIM"/>
         <segue reference="T4T-El-DVB"/>
+        <segue reference="Hdm-vl-8bh"/>
     </inferredMetricsTieBreakers>
 </document>

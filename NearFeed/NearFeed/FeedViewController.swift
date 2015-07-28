@@ -76,15 +76,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             case .AuthorizedAlways, .AuthorizedWhenInUse:
                 println()
             default:
-                var controller = UIAlertController (title: "Turn On Location Services to Allow “App” Determine Your Location", message: "", preferredStyle: .Alert)
-                controller.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Cancel) { (_) -> Void in
-                    let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
-                    if let url = settingsUrl {
-                        UIApplication.sharedApplication().openURL(url)
-                    }
-                    })
-                controller.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
-                presentViewController(controller, animated: true, completion: nil)
+                Alert.locationServices(self)
             }
         } else {
             println("Location services are not enabled")
@@ -147,10 +139,6 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     }
     
     //MARK: UITableViewDataSource
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return posts.count
     }

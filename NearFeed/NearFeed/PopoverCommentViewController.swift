@@ -120,7 +120,12 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
         }
         else{
             if let post = post{
-                post.addComment(textField.text)
+                post.addComment(textField.text, error: { (error) -> () in
+                    
+                    Alert.userAnonymous(self)
+                    println("Error \(error)")
+                    
+                })
             }
             textField.text = ""
             view.endEditing(true)

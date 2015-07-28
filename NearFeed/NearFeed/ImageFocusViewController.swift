@@ -111,8 +111,11 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     }
     
     @IBAction func like(){
-        println("like")
-        post.addLike(true)
+        post.addLike(true, error: { (error) -> () in
+            Alert.userAnonymous(self)
+            println("Error \(error)")
+            
+        })
     }
     
     @IBAction func done(){
@@ -120,8 +123,11 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     }
     
     @IBAction func dislike(){
-        println("dislike")
-        post.addLike(false)
+        post.addLike(false, error: { (error) -> () in
+            Alert.userAnonymous(self)
+            println("Error \(error)")
+            
+        })
     }
     
     @IBAction func comment(){
@@ -129,8 +135,11 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     }
     
     @IBAction func report(){
-        println("report")
-        post.addReport("placeholder")
+        post.addReport("report", error: { (error) -> () in
+            Alert.userAnonymous(self)
+            println("Error \(error)")
+            
+        })
     }
     
 }

@@ -151,13 +151,21 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     @IBAction func postLike(sender: UIButton) {
-        post.addLike(true)
+        post.addLike(true, error: { (error) -> () in
+            
+            println("Error \(error)")
+            
+        })
         enableLike(false)
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
     
     @IBAction func postDislike(sender: UIButton) {
-        post.addLike(false)
+        post.addLike(false, error: { (error) -> () in
+        
+            println("Error \(error)")
+            
+        })
         enableLike(false)
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
