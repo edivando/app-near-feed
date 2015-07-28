@@ -13,6 +13,10 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     var imageToShow:UIImage!
     var post:Post!
     
+    @IBOutlet var btPostComment: UIButton!
+    @IBOutlet var btPostLIke: UIButton!
+    @IBOutlet var btPostDislike: UIButton!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -25,6 +29,10 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        btPostComment.cornerAndWhiteBorder()
+        btPostLIke.cornerAndWhiteBorder()
+        btPostDislike.cornerAndWhiteBorder()
         
         imageView.image = imageToShow
         scrollView.delegate = self

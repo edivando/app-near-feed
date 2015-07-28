@@ -14,6 +14,8 @@ class UserLocationViewController: UIViewController, CLLocationManagerDelegate, M
     private let locationManager = CLLocationManager()
     private var progress = MBProgressHUD()
     
+    private var locationAuthorized = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (CLLocationManager.locationServicesEnabled()) {
@@ -33,15 +35,18 @@ class UserLocationViewController: UIViewController, CLLocationManagerDelegate, M
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        performSegueWithIdentifier("segueTabBar", sender: self)
+        if locationAuthorized {
+            performSegueWithIdentifier("segueTabBar", sender: self)
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         switch(status) {
         case .AuthorizedAlways, .AuthorizedWhenInUse:
-            performSegueWithIdentifier("segueTabBar", sender: self)
+            locationAuthorized = true
+            viewDidAppear(true)
         default:
-            break
+            locationAuthorized = false
         }
     }
     

@@ -291,9 +291,52 @@
                                     <action selector="done" destination="M4a-c4-Cpc" eventType="touchUpInside" id="pTK-mo-NMx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsN-Qu-znA">
-                                <rect key="frame" x="516" y="550" width="68" height="30"/>
-                                <state key="normal" title="Comment">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88a-bz-TAR">
+                                <rect key="frame" x="16" y="548" width="47" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="aK5-6q-kT3"/>
+                                    <constraint firstAttribute="height" constant="34" id="yg8-pX-GPe"/>
+                                </constraints>
+                                <state key="normal" title="Report">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="report" destination="M4a-c4-Cpc" eventType="touchUpInside" id="F9G-ZK-nKA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JR-FE-hDC">
+                                <rect key="frame" x="390" y="545" width="60" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="7PX-pn-OrV"/>
+                                    <constraint firstAttribute="width" constant="60" id="EYV-Kq-ufh"/>
+                                </constraints>
+                                <state key="normal" title="0" image="thumbs-up2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dislike" destination="M4a-c4-Cpc" eventType="touchUpInside" id="fn2-8i-IZx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vav-CA-RVl">
+                                <rect key="frame" x="460" y="545" width="60" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="uty-hK-yIK"/>
+                                    <constraint firstAttribute="height" constant="34" id="w89-QV-3tz"/>
+                                </constraints>
+                                <state key="normal" title="0" image="thumbs-up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="like" destination="M4a-c4-Cpc" eventType="touchUpInside" id="wul-IQ-jNZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsN-Qu-znA">
+                                <rect key="frame" x="530" y="545" width="60" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="c8b-WT-8NL"/>
+                                    <constraint firstAttribute="width" constant="60" id="e8e-nY-bhX"/>
+                                </constraints>
+                                <state key="normal" title="0" image="bubble">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -302,53 +345,29 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JR-FE-hDC">
-                                <rect key="frame" x="463" y="550" width="45" height="30"/>
-                                <state key="normal" title="Dislike">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dislike" destination="M4a-c4-Cpc" eventType="touchUpInside" id="fn2-8i-IZx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88a-bz-TAR">
-                                <rect key="frame" x="16" y="550" width="47" height="30"/>
-                                <state key="normal" title="Report">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="report" destination="M4a-c4-Cpc" eventType="touchUpInside" id="F9G-ZK-nKA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vav-CA-RVl">
-                                <rect key="frame" x="425" y="550" width="30" height="30"/>
-                                <state key="normal" title="Like">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="like" destination="M4a-c4-Cpc" eventType="touchUpInside" id="wul-IQ-jNZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="meD-aO-1l3" secondAttribute="trailing" id="4gt-b3-lHZ"/>
                             <constraint firstItem="88a-bz-TAR" firstAttribute="leading" secondItem="AYt-JF-SLp" secondAttribute="leadingMargin" id="5fP-hO-7yY"/>
-                            <constraint firstItem="EsN-Qu-znA" firstAttribute="trailing" secondItem="AYt-JF-SLp" secondAttribute="trailingMargin" id="5j9-kQ-SXb"/>
-                            <constraint firstItem="EsN-Qu-znA" firstAttribute="centerY" secondItem="4JR-FE-hDC" secondAttribute="centerY" id="FLv-Jf-01k"/>
+                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="EsN-Qu-znA" secondAttribute="bottom" constant="21" id="IUU-9a-hl2"/>
                             <constraint firstItem="iOX-y2-z6p" firstAttribute="top" secondItem="ROG-Me-jnC" secondAttribute="bottom" id="PLR-ux-64s"/>
-                            <constraint firstItem="EsN-Qu-znA" firstAttribute="leading" secondItem="4JR-FE-hDC" secondAttribute="trailing" constant="8" id="PtO-eC-VJ7"/>
-                            <constraint firstItem="4JR-FE-hDC" firstAttribute="leading" secondItem="vav-CA-RVl" secondAttribute="trailing" constant="8" id="Pyn-e6-452"/>
                             <constraint firstItem="iOX-y2-z6p" firstAttribute="trailing" secondItem="AYt-JF-SLp" secondAttribute="trailingMargin" id="Wdl-II-Gc4"/>
                             <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="meD-aO-1l3" secondAttribute="bottom" id="YAU-yS-lUu"/>
-                            <constraint firstItem="4JR-FE-hDC" firstAttribute="centerY" secondItem="vav-CA-RVl" secondAttribute="centerY" id="ai9-s0-364"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EsN-Qu-znA" secondAttribute="trailing" constant="-6" id="b7a-2I-waF"/>
+                            <constraint firstItem="vav-CA-RVl" firstAttribute="leading" secondItem="4JR-FE-hDC" secondAttribute="trailing" constant="10" id="dgW-yo-7Ic"/>
+                            <constraint firstItem="EsN-Qu-znA" firstAttribute="leading" secondItem="vav-CA-RVl" secondAttribute="trailing" constant="10" id="eaN-jg-LcY"/>
                             <constraint firstItem="meD-aO-1l3" firstAttribute="top" secondItem="ROG-Me-jnC" secondAttribute="bottom" constant="-20" id="ejM-2g-e8S"/>
+                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="vav-CA-RVl" secondAttribute="bottom" constant="21" id="fdC-ow-LSG"/>
+                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="4JR-FE-hDC" secondAttribute="bottom" constant="21" id="gJK-RW-sn1"/>
                             <constraint firstItem="meD-aO-1l3" firstAttribute="leading" secondItem="AYt-JF-SLp" secondAttribute="leading" id="mVI-jJ-2Yb"/>
-                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="88a-bz-TAR" secondAttribute="bottom" constant="20" id="pbW-ZC-iRW"/>
-                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="EsN-Qu-znA" secondAttribute="bottom" constant="20" id="rJn-RZ-c33"/>
+                            <constraint firstItem="VCr-yo-Mg5" firstAttribute="top" secondItem="88a-bz-TAR" secondAttribute="bottom" constant="18" id="pbW-ZC-iRW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btPostComment" destination="EsN-Qu-znA" id="rk4-YH-MrF"/>
+                        <outlet property="btPostDislike" destination="4JR-FE-hDC" id="QFV-T9-mxy"/>
+                        <outlet property="btPostLIke" destination="vav-CA-RVl" id="vXr-pN-0j6"/>
                         <outlet property="imageConstraintBottom" destination="H0I-XM-zRQ" id="9r7-Ui-uXp"/>
                         <outlet property="imageConstraintLeft" destination="pTf-fp-CWa" id="Bqs-Ek-tGI"/>
                         <outlet property="imageConstraintRight" destination="41y-ks-BHn" id="1VB-qa-baG"/>
