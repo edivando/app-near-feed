@@ -68,4 +68,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate  {
         }
     }
     
+    
+    @IBAction func signUp(sender: AnyObject) {
+        performSegueWithIdentifier("segueSignUp", sender: nil)
+    }
+    
 }

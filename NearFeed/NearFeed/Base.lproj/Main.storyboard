@@ -830,7 +830,11 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axE-vL-KjU">
-                                <rect key="frame" x="272" y="381" width="56" height="30"/>
+                                <rect key="frame" x="260" y="381" width="80" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="n8i-XB-hib"/>
+                                    <constraint firstAttribute="width" constant="80" id="vTJ-Bk-EKx"/>
+                                </constraints>
                                 <state key="normal" title="Ranking">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -856,6 +860,19 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiC-jz-qqf">
+                                <rect key="frame" x="260" y="429" width="80" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Hs8-YC-o3D"/>
+                                    <constraint firstAttribute="width" constant="80" id="Tge-Ku-Gcy"/>
+                                </constraints>
+                                <state key="normal" title="Register">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="kaP-yj-CXQ" eventType="touchUpInside" id="rQV-IB-J8o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -873,6 +890,8 @@
                             <constraint firstItem="0qE-9Z-WUb" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="Mt5-v3-INF"/>
                             <constraint firstItem="zSV-Jr-ks1" firstAttribute="top" secondItem="pon-ap-6kq" secondAttribute="bottom" constant="30" id="PE1-pz-3X4"/>
                             <constraint firstAttribute="centerX" secondItem="Dep-he-AQu" secondAttribute="centerX" id="TwY-h8-Qyk"/>
+                            <constraint firstAttribute="centerX" secondItem="OiC-jz-qqf" secondAttribute="centerX" id="UnF-df-JtE"/>
+                            <constraint firstItem="OiC-jz-qqf" firstAttribute="top" secondItem="axE-vL-KjU" secondAttribute="bottom" constant="13" id="Vos-KV-sA4"/>
                             <constraint firstItem="Dep-he-AQu" firstAttribute="leading" secondItem="mtg-Tt-7tL" secondAttribute="leadingMargin" id="b9R-aU-K7n"/>
                             <constraint firstAttribute="centerX" secondItem="zSV-Jr-ks1" secondAttribute="centerX" id="hnk-eo-Q8s"/>
                             <constraint firstItem="0qE-9Z-WUb" firstAttribute="top" secondItem="Dep-he-AQu" secondAttribute="bottom" constant="9" id="j5B-9N-KiD"/>
