@@ -18,6 +18,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet var postText: UILabel!
     @IBOutlet var postTime: UILabel!
+    @IBOutlet var postVisualizations: UILabel!
     @IBOutlet weak var postImagesScroll: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
    
@@ -67,6 +68,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         if let image = imageView.image{
             openFocusImage(image: image)
         }
+        post.addClick()
     }
     
     func addGesturesToSubviews(){
@@ -100,9 +102,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
+        postVisualizations.text = post.visualizations.stringValue
         
         countLikeAndComment()
-        
 //        //Mostra imagem se existir
 //        let heightConstraint = NSLayoutConstraint(item: postImagesScroll, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
 //        if post.images.count > 0{

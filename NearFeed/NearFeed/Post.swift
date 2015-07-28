@@ -49,38 +49,47 @@ class Post: PFObject, PFSubclassing {
 
     
 //MARK: Finds Post Methods
-    static func find(object: PFObject?, type: LocationType, page: Int, list: (posts: [Post])->()){
+    static func find(object: PFObject?, type: LocationType, page: Int, list: (posts: [Post]?)->()){
         let pageLenght = 5
         if let query = Post.postQuery(object, type: type){
             query.skip = page * pageLenght
             query.limit = pageLenght
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
+                let posts = objects as? [Post]
+                list(posts: posts)
+                Post.updateVisualizations(posts)
             })
         }
     }
     
-    static func find(object: PFObject?, type: LocationType, greaterThanCreatedAt: NSDate, list: (posts: [Post])->()){
+    static func find(object: PFObject?, type: LocationType, greaterThanCreatedAt: NSDate, list: (posts: [Post]?)->()){
         if let query = Post.postQuery(object, type: type){
             query.whereKey("createdAt", greaterThan: greaterThanCreatedAt)
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
+                let posts = objects as? [Post]
+                list(posts: posts)
+                Post.updateVisualizations(posts)
             })
         }
     }
 
-    static func find(object: PFObject?, type: LocationType, lessThanCreatedAt: NSDate, list: (posts: [Post])->()){
+    static func find(object: PFObject?, type: LocationType, lessThanCreatedAt: NSDate, list: (posts: [Post]?)->()){
         if let query = Post.postQuery(object, type: type){
             query.whereKey("createdAt", lessThan: lessThanCreatedAt)
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                if error == nil, let posts = objects as? [Post]{
-                    list(posts: posts)
-                }
+                let posts = objects as? [Post]
+                list(posts: posts)
+                Post.updateVisualizations(posts)
             })
+        }
+    }
+    
+    private static func updateVisualizations(posts: [Post]?){
+        if let posts = posts{
+            for post in posts{
+                post.visualizations = post.visualizations.integerValue + 1
+                post.saveInBackground()
+            }
         }
     }
 
@@ -167,10 +176,6 @@ class Post: PFObject, PFSubclassing {
         }else{
             error(error: NSError(domain: "User_Not_Authenticated", code: 01, userInfo: nil))
         }
-    }
-    func addVisualization(){
-        visualizations = visualizations.integerValue + 1
-        saveInBackground()
     }
     
     func addClick(){
