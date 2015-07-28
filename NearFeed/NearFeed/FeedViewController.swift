@@ -39,6 +39,9 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50.0
+        
         UserLocation(callback: { (success) -> () in
             if !success {
                 println("Nao foi possivel obter sua localizacao: FeedViewController: viewDidLoad")
@@ -132,13 +135,6 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     }
     
     //MARK: UITableViewDataSource
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        if indexPath.row == 0{
-//            return 400
-//        }
-//        return 80
-//    }
-
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }
@@ -187,11 +183,17 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             }
             return cell
         }else if let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as? PostCommentCell{
-                
             let postComment = post.comments[indexPath.row-1]
-        
-            cell.userName.text = "User name comment"
-            cell.userImage.image = UIImage(named: "user")
+            postComment.objectForKey("user")?.fetchIfNeededInBackgroundWithBlock({ (object, error) -> Void in
+                if let user = object as? User{
+                    cell.userName.text = user.name
+                    user.image.image({ (image) -> () in
+                        if let img = image{
+                            cell.userImage.image = img
+                        }
+                    })
+                }
+            })
             cell.postComment.text = postComment.message
             cell.postDate.text = postComment.createdAt?.dateFormat()
             return cell

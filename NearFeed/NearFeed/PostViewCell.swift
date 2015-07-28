@@ -42,7 +42,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true
         
-        viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.25)
+        viewBarButton.backgroundColor = UIColor.blackColor()  //.colorWithAlphaComponent(0.25)
         
         btPostComment.cornerAndWhiteBorder()
         btPostLike.cornerAndWhiteBorder()
@@ -103,10 +103,13 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         countLikeAndComment()
         
-        for comment in post.comments{
-            println("Comment: \(comment.message)")
-        }
-        
+//        //Mostra imagem se existir
+//        let heightConstraint = NSLayoutConstraint(item: postImagesScroll, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
+//        if post.images.count > 0{
+//            postImagesScroll.addConstraint(heightConstraint)
+//        }else{
+//            postImagesScroll.removeConstraint(heightConstraint)
+//        }
         
     }
     
@@ -157,6 +160,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
 
+    @IBAction func postReport(sender: AnyObject) {
+        println("Report post: \(post.text)")
+    }
     
     
 }

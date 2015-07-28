@@ -64,7 +64,6 @@
 		7241F7141B53FD6B0033BB3C /* TWMessageBarManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7241F70C1B53FD6B0033BB3C /* TWMessageBarManager.podspec */; };
 		7241F7161B53FDAF0033BB3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7151B53FDAF0033BB3C /* Message.swift */; };
 		7241F7271B5403570033BB3C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7261B5403570033BB3C /* SignupViewController.swift */; };
-		7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F7281B543E360033BB3C /* PostTableViewCell.swift */; };
 		7241F72B1B5440210033BB3C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72A1B5440210033BB3C /* Country.swift */; };
 		7241F72D1B544B5F0033BB3C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72C1B544B5F0033BB3C /* City.swift */; };
 		7241F72F1B544EF50033BB3C /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241F72E1B544EF50033BB3C /* Region.swift */; };
@@ -160,7 +159,6 @@
 		7241F7151B53FDAF0033BB3C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7241F7221B53FF9E0033BB3C /* NearFeed-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NearFeed-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		7241F7261B5403570033BB3C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		7241F7281B543E360033BB3C /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		7241F72A1B5440210033BB3C /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		7241F72C1B544B5F0033BB3C /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		7241F72E1B544EF50033BB3C /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 				5111933C1B57E6C80024828E /* ImageFocusViewController.swift */,
 				51BDAD0E1B59284D00BFB6C3 /* PopoverCommentViewController.swift */,
 				519F5A9C1B6114D70067DA7E /* FilterPopoverViewController.swift */,
-				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
 				519F5A981B6114B10067DA7E /* FilterTableViewCell.swift */,
 				72A0E7731B62B13600CBCBD6 /* EditProfileViewController.swift */,
 				72A0E7741B62B13600CBCBD6 /* ProfileViewController.swift */,
@@ -443,8 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				721674EE1B5BE77500AC5881 /* PostViewCell.swift */,
+				519F5A9A1B6114C30067DA7E /* PostCommentCell.swift */,
 				51BDAD121B5D19FF00BFB6C3 /* CommentPopoverTableViewCell.swift */,
-				7241F7281B543E360033BB3C /* PostTableViewCell.swift */,
 				6DEA94B31B61069F00157861 /* RankingTableViewCell.swift */,
 			);
 			name = TableViewCell;
@@ -640,7 +637,6 @@
 				7241F6FA1B53E4EB0033BB3C /* MadokaTextField.swift in Sources */,
 				7241F6FD1B53E4EB0033BB3C /* YokoTextField.swift in Sources */,
 				7241F6F91B53E4EB0033BB3C /* KaedeTextField.swift in Sources */,
-				7241F7291B543E360033BB3C /* PostTableViewCell.swift in Sources */,
 				7241F7351B5554AE0033BB3C /* PostComment.swift in Sources */,
 				51BDAD0F1B59284D00BFB6C3 /* PopoverCommentViewController.swift in Sources */,
 				7241F6F71B53E4EB0033BB3C /* IsaoTextField.swift in Sources */,
