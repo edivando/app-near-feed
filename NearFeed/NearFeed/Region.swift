@@ -45,8 +45,8 @@ class Region: PFObject, PFSubclassing {
         if let query = Region.query(){
             if let city = city{
                 query.whereKey("city", equalTo: city)
-            }else if let obj = UserLocation.city.objectId{
-                query.whereKey("city", equalTo: UserLocation.city)
+//            }else if let obj = UserLocation.city.objectId{
+//                query.whereKey("city", equalTo: UserLocation.city)
             }else if let cityQuery = City.queryByName(UserLocation.cityName){
                 query.whereKey("city", matchesQuery: cityQuery)
             }

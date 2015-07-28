@@ -14,8 +14,6 @@ import Parse
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: - Variaveis globais
-    var currentUser : User?
-    var imageFile: PFFile?
     let imagePicker = UIImagePickerController()
     var email : String?
     
@@ -24,37 +22,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet var nameTextField: HoshiTextField!
     @IBOutlet var emailTextField: HoshiTextField!
     
-    
-    // MARK: - Buttons
-    @IBAction func saveBarButton(sender: AnyObject) {
-        
-        if let user = currentUser{
-            
-            user["username"] = emailTextField.text
-            user["email"] = emailTextField.text
-            user["name"] = nameTextField.text
-            
-            user.saveInBackground()
-            
-        }
-        
-        // Return to table view
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    @IBAction func changeImageButton(sender: AnyObject) {
-        addPhoto()
-    }
-    @IBAction func changePasswordButton(sender: AnyObject) {
-        
-        PFUser.requestPasswordResetForEmailInBackground(email!)
-        Message.info("Alert", text: "Mensagem enviada para o email")
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+    
         navigationController?.navigationBar.barTintColor = Color.blue
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
@@ -64,44 +34,22 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         nameTextField.delegate = self
         emailTextField.delegate = self
         
-        currentUser = User.currentUser()
+        imageImageView.toRound()
         
-        imagemRedonda()
+        if let currentUser = User.currentUser(){
+            email = currentUser.email
+            nameTextField.text = currentUser.name
+            emailTextField.text = currentUser.email
         
-        if let user = currentUser {
-            
-            email = user["email"] as? String
-            nameTextField.text = user["name"] as! String
-            emailTextField.text = user["email"] as! String
-            
-            imageImageView.image = UIImage(named: "user")
-        
-            user.image.image({ (image) -> () in
+            currentUser.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     self.imageImageView.image = image
                 }
             })
         }
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Metodos
-    
-    func imagemRedonda(){
-        imageImageView.layer.borderWidth=1.0
-        imageImageView.layer.masksToBounds = false
-        imageImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        imageImageView.layer.cornerRadius = 13
-        imageImageView.layer.cornerRadius = imageImageView.frame.size.height/2
-        imageImageView.clipsToBounds = true
-        
-    }
     func libraryPhoto(){
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .PhotoLibrary
@@ -117,16 +65,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
-        let pickedImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        //let imageData = UIImagePNGRepresentation(pickedImage)
-        imageFile = PFFile(data: UIImageJPEGRepresentation(pickedImage, 1.0))
-        self.imageImageView.image = pickedImage
-        currentUser!.setObject(imageFile!, forKey: "image")
-        currentUser!.saveInBackground()
-        println("PEGOU IMAGEM")
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage, let currentUser = User.currentUser(){
+            imageImageView.image = pickedImage
+            currentUser.image = PFFile(data: UIImageJPEGRepresentation(pickedImage, 0.1))
+            currentUser.saveInBackground()
+            picker.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -136,9 +80,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        nameTextField.resignFirstResponder()
-        emailTextField.resignFirstResponder()
+        var nextResponder = UIResponder()
+        if textField.isEqual(nameTextField){
+            nextResponder = emailTextField
+            nextResponder.becomeFirstResponder()
+        }else{
+            emailTextField.resignFirstResponder()
+        }
         return true
     }
     
@@ -148,8 +96,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func addPhoto (){
-        
-        
         let alertaController = UIAlertController(title: "Image from: ", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -169,9 +115,32 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         alertaController.addAction(libraryAction)
         
         presentViewController(alertaController, animated: true, completion: nil)
-        
-        
     }
+    
+    
+    // MARK: - Buttons
+    @IBAction func saveBarButton(sender: AnyObject) {
+        
+        if let user = User.currentUser(){
+            user.username = emailTextField.text
+            user.email = emailTextField.text
+            user.name = nameTextField.text
+            user.saveInBackground()
+        }
+        
+        // Return to table view
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func changeImageButton(sender: AnyObject) {
+        addPhoto()
+    }
+    
+    @IBAction func changePasswordButton(sender: AnyObject) {
+        PFUser.requestPasswordResetForEmailInBackground(email!)
+        Message.info("Change Password", text: "Sending email: \(email) to recover your account")
+    }
+    
     
     // MARK: - Metodos para mover a screem para cima quando o teclado aparecer
     //http://www.jogendra.com/2015/01/uitextfield-move-up-when-keyboard.html

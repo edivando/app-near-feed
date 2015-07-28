@@ -9,22 +9,24 @@
 import UIKit
 import Parse
 
-class RankingViewController: UIViewController, UITableViewDataSource {
+class RankingViewController: UITableViewController {
     
     var users = [User]()
-    var position : String?
+    var userPosition = 0
     var maxScore : Int?
+    var page = 0
+    var isLoading = false
     
-    //MARK: - Outlets
-    @IBOutlet var tableview: UITableView!
+//    //MARK: - Outlets
+//    @IBOutlet var tableview: UITableView!
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        page = 0
         //Remove linhas vazias
-        tableview.tableFooterView = UIView(frame: CGRectZero)
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         
         navigationController?.navigationBar.barTintColor = Color.blue
         navigationController?.navigationBar.translucent = false
@@ -34,31 +36,56 @@ class RankingViewController: UIViewController, UITableViewDataSource {
 //        tableview.dataSource = self
         //self.floatRatingView.editable = false
         
-        User.findAllOrderByScores { (users) -> () in
-            if let users = users{
-                var i = 0
-                for ; i < users.count ; i++ {
-                    
-                    if let data = users[i]["name"] as? String{
-                        
-                        self.users.append(users[i])
-                        println(data)
-                        
-                        if data == User.currentUser()?.name{
-                            //self.positionLabel.text = String(i+1)
-                            self.position = String(i+1)
-                        }
-                        
-                    }
-                    
-                }
+        loadUsers()
+    }
+    
+    func loadUsers(){
+        User.findAllOrderByScores(page, callback: { (users) -> () in
+            if let users = users where users.count > 0{
                 self.maxScore = Int(users[0].score)
+                
+                for (index, user) in enumerate(users){
+                    if user.objectId == User.currentUser()?.objectId{
+                        self.userPosition = User.paginationLenght * self.page + index + 1
+                    }
+                    self.users.append(user)
+                }
+                self.page++
             }
-            self.tableview.reloadData()
+            self.isLoading = false
+            self.tableView.reloadData()
+        })
+    }
+    
+    func updateUsers(){
+        User.findAllOrderByScores(page, callback: { (users) -> () in
+            if let users = users where users.count > 0{
+                for (index, user) in enumerate(users){
+                    if user.objectId == User.currentUser()?.objectId{
+                        self.userPosition = User.paginationLenght * self.page + index + 1
+                    }
+                    let indexPath = NSIndexPath(forRow: self.users.count, inSection: 1)
+                    self.users.append(user)
+                    self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+                self.page++
+            }
+            self.isLoading = false
+        })
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        var offset = scrollView.contentOffset.y
+        var maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if (maxOffset - offset) <= 40 {
+            if !isLoading && users.count > 0{
+                isLoading = true
+                updateUsers()
+            }
         }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Eu"
         } else {
@@ -66,44 +93,22 @@ class RankingViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = self.tableview.dequeueReusableCellWithIdentifier("cell") as! RankingTableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! RankingTableViewCell
         
         if indexPath.section == 0 {
             
-            //self.position = "999"
-            
-            let user = User.currentUser()!
-            
-            if self.position?.toInt() <= 1000 {
-                cell.positionLabel.text = "\(self.position!)"
-            } else {
-                cell.positionLabel.font = UIFont(name: "Helvetica", size: 10)
-                cell.positionLabel.text = "\(self.position!)"
+            if let user = User.currentUser(){
+                cell.positionLabel.text = userPosition == 0 ? "..." : "\(userPosition)"
+                cell.nameLabel.text = user.name
+                cell.scoreLabel.text = "\(user.score) scores"
+                cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
+                user.image.image({ (image) -> () in
+                    if let image = image{
+                        cell.imageview.image = image
+                    }
+                })
             }
-            cell.nameLabel.text = User.currentUser()?.name
-            cell.scoreLabel.text = "\(user.score) scores"
-            cell.floatRatingView.rating = Float(Int(Float(user.score) / Float(self.maxScore!) * 5.0))
-            user.image.image({ (image) -> () in
-                if let image = image{
-                    println("entrou no thumb")
-                    cell.imageview.image = image
-                }
-            })
-//            if let imageFile = User.currentUser()!["image"] as? PFFile {
-//                
-//                imageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-//                    if error == nil {
-//                        cell.imageview.image = UIImage(data: imageData!)
-//                    }
-//                })
-//            } else {
-//                cell.imageview.image = UIImage(named: "user")
-//            }
-            
-            return cell
-            
         } else {
             let user = users[indexPath.row]
             cell.nameLabel.text = user.name
@@ -113,19 +118,18 @@ class RankingViewController: UIViewController, UITableViewDataSource {
             cell.imageview.image = UIImage(named: "user")
             user.image.image({ (image) -> () in
                 if let image = image{
-                    println("entrou no thumb")
                     cell.imageview.image = image
                 }
             })
-            return cell
         }
+        return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if users.count == 0 {
             return 0
         } else {

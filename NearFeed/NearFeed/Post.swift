@@ -18,6 +18,8 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var region: Region
     @NSManaged var city: City
     @NSManaged var country: Country
+    @NSManaged var latitude: NSNumber
+    @NSManaged var longitude: NSNumber
     
     @NSManaged var likes: [PostLike]
     @NSManaged var comments: [PostComment]
@@ -96,24 +98,24 @@ class Post: PFObject, PFSubclassing {
             case .Region:
                 if let obj = object, let region = obj as? Region{
                     query.whereKey("region", equalTo: region)
-                }else if let obj = UserLocation.region.objectId{
-                    query.whereKey("region", equalTo: UserLocation.region)
+                }else if let user = User.current(), let region = user.region where region.objectId != nil{
+                    query.whereKey("region", equalTo: region)
                 }else if let regionQuery = Region.queryByName(UserLocation.regionName){
                     query.whereKey("region", matchesQuery: regionQuery)
                 }
             case .City:
                 if let obj = object, let city = obj as? City{
                     query.whereKey("city", equalTo: city)
-                }else if let obj = UserLocation.city.objectId{
-                    query.whereKey("city", equalTo: UserLocation.city)
+                }else if let user = User.current(), let city = user.city where city.objectId != nil{
+                    query.whereKey("city", equalTo: city)
                 }else if let cityQuery = City.queryByName(UserLocation.cityName){
                     query.whereKey("city", matchesQuery: cityQuery)
                 }
             default:
                 if let obj = object, let country = obj as? Country{
                     query.whereKey("country", equalTo: country)
-                }else if let obj = UserLocation.country.objectId{
-                    query.whereKey("country", equalTo: UserLocation.country)
+                }else if let user = User.current(), let country = user.country where country.objectId != nil{
+                    query.whereKey("country", equalTo: country)
                 }else if let countryQuery = Country.queryByName(UserLocation.countryName){
                     query.whereKey("country", matchesQuery: countryQuery)
                 }
@@ -139,11 +141,18 @@ class Post: PFObject, PFSubclassing {
         }
         if let user = User.currentUser() where user.isAuthenticated(){
             self.user = user
-            self.country = UserLocation.country
-            self.city = UserLocation.city
-            self.region = UserLocation.region
-            
-            self.saveEventually({ (success, erro) -> Void in
+            self.latitude = user.latitude
+            self.longitude = user.longitude
+            if let country = user.country{
+                self.country = country
+            }
+            if let city = user.city{
+                self.city = city
+            }
+            if let region = user.region{
+                self.region = region
+            }
+            self.saveInBackgroundWithBlock({ (success, erro) -> Void in
                 if erro == nil {
                     User.currentUser()!.updateScores(.NewPost)
                     println("save post")

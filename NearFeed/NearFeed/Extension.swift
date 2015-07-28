@@ -10,7 +10,6 @@
 import Parse
 
 extension PFFile{
-    
     func image(callback:(image: UIImage?)->()){
         getDataInBackgroundWithBlock { (data, error) -> Void in
             if let data = data{
@@ -58,6 +57,20 @@ extension UIColor {
     
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+}
+
+extension UIView{
+    func toRound(){
+        layer.masksToBounds = false
+        layer.cornerRadius = frame.size.height/2
+        clipsToBounds = true
+    }
+    
+    func cornerAndWhiteBorder(){
+        layer.borderColor = UIColor.whiteColor().CGColor
+        layer.borderWidth = 1
+        layer.cornerRadius = 3
     }
 }
 

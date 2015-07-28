@@ -39,13 +39,15 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         navigationController?.navigationBar.barStyle = UIBarStyle.Black
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        
-        Post.find(locationObject, type: feedType, page: pagePost) { (posts) -> () in
-            self.posts = posts
-            self.tableView.reloadData()
-            
-            UserLocation.updateCountryLocalityParse()
-        }
+        UserLocation(callback: { (success) -> () in
+            if !success {
+                println("Nao foi possivel obter sua localizacao: FeedViewController: viewDidLoad")
+            }
+            Post.find(self.locationObject, type: self.feedType, page: self.pagePost) { (posts) -> () in
+                self.posts = posts
+                self.tableView.reloadData() 
+            }
+        })
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refresh"), forControlEvents: UIControlEvents.ValueChanged)
@@ -132,8 +134,7 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let post = posts[indexPath.section]
-        if indexPath.row == 0{
-            var cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as! PostViewCell
+        if indexPath.row == 0, let cell = tableView.dequeueReusableCellWithIdentifier("cellPost", forIndexPath: indexPath) as? PostViewCell {
             cell.post = post
             cell.makePostCell()
 
@@ -156,35 +157,35 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
             for (index,image) in enumerate(cell.post.images) {
                 image.image({ (image) -> () in
                     if let image = image{
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            var cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! PostViewCell
-                            self.refreshScrollView(cellToUpdate.postImagesScroll, image: image, index: index, size:cell.post.images.count)
-                            cellToUpdate.addGesturesToSubviews()
-                        })
+                        self.refreshScrollView(cell.postImagesScroll, image: image, index: index, size:cell.post.images.count)
+                        cell.addGesturesToSubviews()
                     }
                 })
             }
             
             cell.openFocusImage = {(image) in
-                var focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as! ImageFocusViewController
-                focusImageViewController.imageToShow = image
-                focusImageViewController.post = cell.post
-                self.presentViewController(focusImageViewController, animated: true, completion: nil)
+                if let focusImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageFocus") as? ImageFocusViewController{
+                    focusImageViewController.imageToShow = image
+                    focusImageViewController.post = cell.post
+                    self.presentViewController(focusImageViewController, animated: true, completion: nil)
+                }
             }
             return cell
-        }else{
+        }else if let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as? PostCommentCell{
+                
             let postComment = post.comments[indexPath.row-1]
-            let cell = tableView.dequeueReusableCellWithIdentifier("cellPostComment", forIndexPath: indexPath) as! PostCommentCell
+        
             cell.userName.text = "User name comment"
             cell.userImage.image = UIImage(named: "user")
             cell.postComment.text = postComment.message
             cell.postDate.text = postComment.createdAt?.dateFormat()
             return cell
+        }else{
+            return UITableViewCell()
         }
     }
     
     //MARK: - Helper (ScrollViewCell)
-    
     func refreshScrollView(scrollView:UIScrollView, image:UIImage, index:Int, size:Int){
         imageFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
         imageFrame.size = scrollView.frame.size

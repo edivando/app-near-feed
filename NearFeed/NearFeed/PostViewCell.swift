@@ -44,18 +44,9 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.25)
         
-        btPostComment.layer.borderColor = UIColor.whiteColor().CGColor
-        btPostComment.layer.borderWidth = 1
-        btPostComment.layer.cornerRadius = 3
-        
-        btPostLike.layer.borderColor = UIColor.whiteColor().CGColor
-        btPostLike.layer.borderWidth = 1
-        btPostLike.layer.cornerRadius = 3
-        
-        btPostDislike.layer.borderColor = UIColor.whiteColor().CGColor
-        btPostDislike.layer.borderWidth = 1
-        btPostDislike.layer.cornerRadius = 3
-
+        btPostComment.cornerAndWhiteBorder()
+        btPostLike.cornerAndWhiteBorder()
+        btPostDislike.cornerAndWhiteBorder()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -13,6 +13,10 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     var imageToShow:UIImage!
     var post:Post!
     
+    @IBOutlet var btPostComment: UIButton!
+    @IBOutlet var btPostLIke: UIButton!
+    @IBOutlet var btPostDislike: UIButton!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -25,6 +29,10 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        btPostComment.cornerAndWhiteBorder()
+        btPostLIke.cornerAndWhiteBorder()
+        btPostDislike.cornerAndWhiteBorder()
         
         imageView.image = imageToShow
         scrollView.delegate = self
@@ -105,7 +113,6 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     @IBAction func like(){
         println("like")
         post.addLike(true)
-//        PostLike.addLike(post, like: true)
     }
     
     @IBAction func done(){
@@ -115,7 +122,6 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     @IBAction func dislike(){
         println("dislike")
         post.addLike(false)
-//        PostLike.addLike(post, like: false)
     }
     
     @IBAction func comment(){
@@ -125,7 +131,6 @@ class ImageFocusViewController: UIViewController, UIScrollViewDelegate, UIPopove
     @IBAction func report(){
         println("report")
         post.addReport("placeholder")
-//        PostReport.addReport(post, message: "placeholder")
     }
     
 }
