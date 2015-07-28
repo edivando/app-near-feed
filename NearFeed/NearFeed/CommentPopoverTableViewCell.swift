@@ -9,10 +9,10 @@
 import UIKit
 
 class CommentPopoverTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var userImage: UIImageView!
-
     @IBOutlet weak var commentDate: UILabel!
-    @IBOutlet var userComment: UITextView!
+    @IBOutlet var userComment: UILabel!
     @IBOutlet weak var userName: UILabel!
     
     override func awakeFromNib() {

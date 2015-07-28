@@ -154,7 +154,9 @@ class Post: PFObject, PFSubclassing {
             }
             self.saveInBackgroundWithBlock({ (success, erro) -> Void in
                 if erro == nil {
-                    User.currentUser()!.updateScores(.NewPost)
+                    if let user = User.currentUser(){
+                        user.updateScores(.NewPost)
+                    }
                     println("save post")
                     error(error: nil)
                 }else{
@@ -189,8 +191,9 @@ class Post: PFObject, PFSubclassing {
         likes.append(postLike)
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                //Update my scores
-                User.currentUser()!.updateScores(.LikeSend)
+                if let user = User.currentUser(){
+                    user.updateScores(.LikeSend)
+                }
                 self.user.updateScores(like ? .LikeReceive : .DislikeReceive)
                 println("save post like")
             }else{
@@ -212,7 +215,9 @@ class Post: PFObject, PFSubclassing {
         comments.append(postComment)
         saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                User.currentUser()!.updateScores(.CommentSend)
+                if let user = User.currentUser(){
+                    user.updateScores(.CommentSend)
+                }
                 self.user.updateScores(.CommentReceive)
                 println("save post comment")
             }else{

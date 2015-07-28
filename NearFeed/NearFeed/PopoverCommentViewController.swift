@@ -21,7 +21,7 @@ class PopoverCommentViewController: UIViewController, UITextFieldDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44.0
+        tableView.estimatedRowHeight = 50.0
 //        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
