@@ -225,15 +225,20 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     self.images = [UIImage]()
                     self.removeImagesFromScrollView()
                     self.refreshScrollView()
-                    self.progress.hide(true)
                     self.navigationItem.leftBarButtonItem?.enabled = true
                     self.navigationItem.rightBarButtonItem?.enabled = true
                 }
                 else{
                     if error?.code == 01{
                         Message.error("User not logged in", text: "Please, login before posting")
+                    }else if error?.code == 02{
+                        
+                        Alert.userAnonymous(self)
+                        println("error \(error?.domain)")
+                        
                     }
                 }
+                self.progress.hide(true)
             }
         }
     }

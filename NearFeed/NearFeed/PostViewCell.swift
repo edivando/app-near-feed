@@ -10,17 +10,18 @@ import UIKit
 
 class PostViewCell: UITableViewCell, UIScrollViewDelegate {
 
-    @IBOutlet var postCell: UIView!
+//    @IBOutlet var postCell: UIView!
     
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
     @IBOutlet var userLocality: UILabel!
     
-    @IBOutlet var postText: UITextView!
-    
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var postImagesScroll: UIScrollView!
+    @IBOutlet var postText: UILabel!
     @IBOutlet var postTime: UILabel!
+    @IBOutlet var postVisualizations: UILabel!
+    @IBOutlet weak var postImagesScroll: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+   
     
     @IBOutlet var viewBarButton: UIView!
     var post = Post()
@@ -35,14 +36,14 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
-        postCell.layer.borderWidth = 0.5
-        postCell.layer.cornerRadius = 3
+//        postCell.layer.borderColor = UIColor.lightGrayColor().CGColor
+//        postCell.layer.borderWidth = 0.5
+//        postCell.layer.cornerRadius = 3
         
         userImage.layer.cornerRadius = 25
         userImage.layer.masksToBounds = true
         
-        viewBarButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.25)
+        viewBarButton.backgroundColor = UIColor.blackColor()  //.colorWithAlphaComponent(0.25)
         
         btPostComment.cornerAndWhiteBorder()
         btPostLike.cornerAndWhiteBorder()
@@ -67,6 +68,7 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         if let image = imageView.image{
             openFocusImage(image: image)
         }
+        post.addClick()
     }
     
     func addGesturesToSubviews(){
@@ -100,13 +102,16 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         
         postTime.text = post.createdAt?.dateFormat()
         postText.text = post.text
+        postVisualizations.text = post.visualizations.stringValue
         
         countLikeAndComment()
-        
-        for comment in post.comments{
-            println("Comment: \(comment.message)")
-        }
-        
+//        //Mostra imagem se existir
+//        let heightConstraint = NSLayoutConstraint(item: postImagesScroll, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
+//        if post.images.count > 0{
+//            postImagesScroll.addConstraint(heightConstraint)
+//        }else{
+//            postImagesScroll.removeConstraint(heightConstraint)
+//        }
         
     }
     
@@ -146,17 +151,28 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     @IBAction func postLike(sender: UIButton) {
-        post.addLike(true)
+        post.addLike(true, error: { (error) -> () in
+            
+            println("Error \(error)")
+            
+        })
         enableLike(false)
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
     
     @IBAction func postDislike(sender: UIButton) {
-        post.addLike(false)
+        post.addLike(false, error: { (error) -> () in
+        
+            println("Error \(error)")
+            
+        })
         enableLike(false)
         btPostLike.titleLabel?.text = " \(post.likes.count + 1)"
     }
 
+    @IBAction func postReport(sender: AnyObject) {
+        println("Report post: \(post.text)")
+    }
     
     
 }

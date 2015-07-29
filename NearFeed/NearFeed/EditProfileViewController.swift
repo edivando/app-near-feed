@@ -121,16 +121,35 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - Buttons
     @IBAction func saveBarButton(sender: AnyObject) {
         
-        if let user = User.currentUser(){
-            user.username = emailTextField.text
-            user.email = emailTextField.text
-            user.name = nameTextField.text
-            user.saveInBackground()
+        if textfieldIsNotEmpty(nameTextField) && textfieldIsNotEmpty(emailTextField){
+   
+            if isValidEmail(emailTextField.text){
+                
+                
+                //if User.currentUser()?.username
+                
+                if let user = User.currentUser(){
+                    user.username = emailTextField.text
+                    user.email = emailTextField.text
+                    user.name = nameTextField.text
+                    user.saveInBackground()
+                
+                    // Return to table view
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+                
+            }
+            else{
+                showInvalidEmailAlertMessage()
+            }
+        
+        }
+        else{
+            showEmptyTextfieldAlertMessage()
         }
         
-        // Return to table view
-        self.navigationController?.popViewControllerAnimated(true)
     }
+    
     
     @IBAction func changeImageButton(sender: AnyObject) {
         addPhoto()
@@ -141,8 +160,45 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         Message.info("Change Password", text: "Sending email: \(email) to recover your account")
     }
     
+    // MARK: - Metodos auxiliares
     
-    // MARK: - Metodos para mover a screem para cima quando o teclado aparecer
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
+    }
+    
+    func showInvalidEmailAlertMessage(){
+        //self.progress.hide(true)
+        Message.error("Invalid email", text: "The email you provided is invalid")
+    }
+    
+    func textfieldIsNotEmpty(textField: UITextField) -> Bool{
+        var rawString = textField.text
+        var whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet
+        var trimmed = rawString.stringByTrimmingCharactersInSet(whitespace())
+        
+        if count(trimmed) == 0{
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
+    func showEmptyTextfieldAlertMessage(){
+        if !textfieldIsNotEmpty(emailTextField) && !textfieldIsNotEmpty(nameTextField) {
+            Message.error("Email and Name fields empty", text: "Please fill in your email and name")
+            
+        } else if !textfieldIsNotEmpty(emailTextField) {
+            Message.error("Email field empty", text: "Please fill in your email")
+        } else {
+            Message.error("Name field empty", text: "Please fill in your name")
+        }
+    }
+    
+    // MARK: - Metodos para mover os elementos visuais para cima quando o teclado aparecer
     //http://www.jogendra.com/2015/01/uitextfield-move-up-when-keyboard.html
     func textFieldDidBeginEditing(textField: UITextField) {
         animateViewMoving(true, moveValue: 150)
@@ -160,6 +216,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
         UIView.commitAnimations()
     }
+    
+    
+    
     
 
 }

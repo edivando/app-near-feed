@@ -160,4 +160,46 @@ class SignupViewController: UIViewController, UITextFieldDelegate, MBProgressHUD
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // MARK: - Metodos para mover os elementos visuais para cima quando o teclado aparecer
+    //http://www.jogendra.com/2015/01/uitextfield-move-up-when-keyboard.html
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+
+        if textField.tag == 0 {
+        animateViewMoving(true, moveValue: 0)
+        } else if textField.tag == 1 {
+            animateViewMoving(true, moveValue: 40)
+        } else if textField.tag == 2 {
+            animateViewMoving(true, moveValue: 80)
+        } else {
+            animateViewMoving(true, moveValue: 120)
+        }
+        
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+        
+        
+        if textField.tag == 0 {
+            animateViewMoving(false, moveValue: 0)
+        } else if textField.tag == 1 {
+            animateViewMoving(false, moveValue: 40)
+        } else if textField.tag == 2 {
+            animateViewMoving(false, moveValue: 80)
+        } else {
+            animateViewMoving(false, moveValue: 120)
+        }
+        
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        var movementDuration:NSTimeInterval = 0.3
+        var movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
+    }
 }

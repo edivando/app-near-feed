@@ -75,7 +75,7 @@ extension UIView{
 }
 
 
-class Color{
+struct Color{
     static let blue     = UIColor(netHex: 0x334D5C)
     static let green    = UIColor(netHex: 0x45B29D)
     static let yellow   = UIColor(netHex: 0xEFC94C)
@@ -83,6 +83,35 @@ class Color{
     static let red      = UIColor(netHex: 0xDF5A49)
     
     static let gray     = UIColor(netHex: 0x90A0A8)
+}
+
+struct Alert{
+    
+    static func locationServices(controller: UIViewController ){
+        Alert.alert(controller, style: UIAlertControllerStyle.Alert, title: "Turn On Location Services to Allow “App” Determine Your Location", message: nil, optTitle01: "Cancel", optTitle02: "Settings", callback01: {}, callback02: {
+            if let url = NSURL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        })
+    }
+    
+    static func userAnonymous(controller: UIViewController){
+        Alert.alert(controller, style: UIAlertControllerStyle.Alert, title: "User Anonymous", message: "You need register for concluded this action", optTitle01: "Register", optTitle02: "Cancel", callback01: {
+            controller.performSegueWithIdentifier("segueSignUp", sender: nil)
+        }, callback02: {})
+    }
+    
+    
+    static func alert(controller: UIViewController, style: UIAlertControllerStyle, title: String?, message: String?, optTitle01: String, optTitle02: String, callback01: ()->(), callback02: ()->()){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        alert.addAction(UIAlertAction(title: optTitle01, style: .Default, handler: { (_) -> Void in
+            callback01()
+        }))
+        alert.addAction(UIAlertAction(title: optTitle02, style: .Cancel, handler: { (_) -> Void in
+            callback02()
+        }))
+        controller.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 
