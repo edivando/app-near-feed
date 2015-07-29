@@ -577,7 +577,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-Nn-zHC" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-Nn-zHC" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="16" y="121" width="568" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="t0a-8K-Ivh"/>
@@ -597,7 +597,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWr-ug-3Ry" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWr-ug-3Ry" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="16" y="186" width="568" height="44"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -614,7 +614,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Verify password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzp-DF-g15" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Verify password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzp-DF-g15" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="16" y="316" width="568" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Z5y-lD-PUF"/>
@@ -634,7 +634,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D75-dJ-ZDx" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D75-dJ-ZDx" customClass="HoshiTextField" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="16" y="251" width="568" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="m7r-Nt-O3e"/>
@@ -654,7 +654,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-i6-QPO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB1-i6-QPO">
                                 <rect key="frame" x="16" y="414" width="280" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -663,7 +663,7 @@
                                     <action selector="cancel:" destination="Tz0-fD-UYr" eventType="touchUpInside" id="KjU-NM-beI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3U-ge-ZAf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3U-ge-ZAf">
                                 <rect key="frame" x="304" y="414" width="280" height="30"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1404,7 +1404,7 @@
         <scene sceneID="qyk-b6-tuZ">
             <objects>
                 <tableViewController id="fbl-s8-0LV" customClass="FeedViewController" customModule="NearFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" sectionHeaderHeight="20" sectionFooterHeight="10" id="uTe-It-pOU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="50" sectionHeaderHeight="20" sectionFooterHeight="10" id="uTe-It-pOU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1567,6 +1567,7 @@
                                                 <mask key="constraints">
                                                     <exclude reference="Gbc-iF-bMO"/>
                                                     <exclude reference="L2t-01-Ijs"/>
+                                                    <exclude reference="rpz-Vw-xcO"/>
                                                 </mask>
                                             </variation>
                                         </scrollView>
@@ -1632,7 +1633,7 @@
                                     <outlet property="viewBarButton" destination="s2K-YH-bAL" id="EfE-cs-9Lz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPostComment" rowHeight="50" id="nhc-qa-JiY" customClass="PostCommentCell" customModule="NearFeed" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellPostComment" rowHeight="50" id="nhc-qa-JiY" customClass="PostCommentCell" customModule="NearFeed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nhc-qa-JiY" id="IWu-i0-FIS">
@@ -1831,6 +1832,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="T4T-El-DVB"/>
-        <segue reference="Hdm-vl-8bh"/>
+        <segue reference="52g-ZW-MYH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -105,13 +105,12 @@ class PostViewCell: UITableViewCell, UIScrollViewDelegate {
         postVisualizations.text = post.visualizations.stringValue
         
         countLikeAndComment()
-//        //Mostra imagem se existir
-//        let heightConstraint = NSLayoutConstraint(item: postImagesScroll, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
-//        if post.images.count > 0{
-//            postImagesScroll.addConstraint(heightConstraint)
-//        }else{
-//            postImagesScroll.removeConstraint(heightConstraint)
-//        }
+        //Mostra imagem se existir
+        let heightConstraint = NSLayoutConstraint(item: postImagesScroll, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 250)
+        postImagesScroll.removeConstraints(postImagesScroll.constraints())
+        if post.images.count > 0{
+            postImagesScroll.addConstraint(heightConstraint)
+        }
         
     }
     
