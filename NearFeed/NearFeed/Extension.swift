@@ -101,6 +101,20 @@ struct Alert{
         }, callback02: {})
     }
     
+    static func postReport(controller: UIViewController, post: Post){
+        let msgs = ["Conteudo sexual", "Abuso infantil", "Spam", "Conteúdo violento ou repulsivo", "Outros"]
+        
+        
+        let alert = UIAlertController(title: "Report", message: "Select reason", preferredStyle: .ActionSheet)
+        for msg in msgs{
+            alert.addAction(UIAlertAction(title: msg, style: .Default, handler: { (_) -> Void in
+                post.addReport(msg, error: { (error) -> () in
+                    println(error)
+                })
+            }))
+        }
+        controller.presentViewController(alert, animated: true, completion: nil)
+    }
     
     static func alert(controller: UIViewController, style: UIAlertControllerStyle, title: String?, message: String?, optTitle01: String, optTitle02: String, callback01: ()->(), callback02: ()->()){
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)

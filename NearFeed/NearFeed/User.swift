@@ -21,7 +21,7 @@ class User: PFUser, PFSubclassing, CLLocationManagerDelegate {
     @NSManaged var latitude: NSNumber
     @NSManaged var longitude: NSNumber
     
-    static let paginationLenght = 10
+    static let paginationLenght = 25
     
     override class func initialize() {
         struct Static {
