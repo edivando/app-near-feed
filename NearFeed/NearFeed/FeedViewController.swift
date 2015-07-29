@@ -246,6 +246,22 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
         
     }
     
+    func commentOnPost(post:Post, comment:String){
+        //Metodo pra chamar quando apertar no botao do textfield
+    }
+    
+    func addAccessoryViewOnKeyboard(){
+        var keyboardToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 44))
+        var textField = UITextField(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width - 40, 40))
+//        var doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: commentOnPost(<#post: Post#>, comment: <#String#>), action: <#Selector#>)
+//            UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed)];
+//            
+//            [keyboardToolbar setItems:[NSArray arrayWithObjects:flexibleSpace, doneButton, nil]];
+//            [keyboardToolbar addSubview:segmentedControl];
+//            [textField setInputAccessoryView:keyboardToolbar];
+    }
+    
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
