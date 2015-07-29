@@ -179,8 +179,6 @@ class FeedViewController: UITableViewController, UIPopoverPresentationController
                 cell.postImagesScroll.hidden = true
                 cell.pageControl.hidden = true
             }
-
-            cell.postText.scrollRangeToVisible(NSRange(location:0, length:0))
             
             cell.removeImagesFromScrollView()
             
